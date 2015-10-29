@@ -23,10 +23,9 @@ function escapeSelector (selector) {
 }
 
 function displaySidebar () {
-  if (!isDesktop()) {
-    return;
-  }
-  $('.sidebar-toggle').trigger('click');
+  setTimeout(function () {
+    $('.sidebar-toggle').trigger('click');
+  }, 800);
 }
 
 function isMist () {

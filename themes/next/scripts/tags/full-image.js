@@ -3,20 +3,14 @@
 // Alias: {% fi /path/to/image, alt, title %}
 
 function fullImage(args) {
-  args = args.join(' ').split(',');
+  args = args.join('').split(',');
   var src = args[0];
-  var alt = args[1] || '';
-  var title = args[2] || '';
-
-  if (!src) {
-    hexo.log.warn('Image src can NOT be empty');
-  }
-  alt = alt.trim();
-  title = title.trim();
+  var alt = args[1];
+  var title = args[2];
 
   var image = ['<img src="' + src + '" class="full-image"'];
-  alt.length > 0 && image.push('alt="' + alt + '"');
-  title.length > 0 && image.push('title="' + title + '"');
+  alt && image.push('alt="' + alt + '"');
+  title && image.push('title="' + title + '"');
   image.push('/>');
 
   return image.join(' ');

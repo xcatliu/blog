@@ -91,7 +91,7 @@ $(document).ready(function () {
   sidebarToggleLines.push(sidebarToggleLine3rd);
 
   var SIDEBAR_WIDTH = '320px';
-  var SIDEBAR_DISPLAY_DURATION = 200;
+  var SIDEBAR_DISPLAY_DURATION = 300;
 
   var sidebarToggleMotion = {
     toggleEl: $('.sidebar-toggle'),
@@ -172,7 +172,6 @@ $(document).ready(function () {
       }
     }
   };
-  sidebarToggleMotion.init();
 
   var motionMiddleWares = {
     logo: function (integrator) {
@@ -186,7 +185,7 @@ $(document).ready(function () {
       $brand.size() > 0 && sequence.push({
         e: $brand,
         p: {opacity: 1},
-        o: {duration: 200}
+        o: {duration: 100}
       });
 
       isMist() && hasElement([$logoLineTop, $logoLineBottom]) &&
@@ -204,7 +203,7 @@ $(document).ready(function () {
       hasElement($subtitle) && sequence.push({
         e: $subtitle,
         p: {opacity: 1, top: 0},
-        o: {duration: 200}
+        o: {duration: 100}
       });
 
       if (sequence.length > 0) {
@@ -244,7 +243,6 @@ $(document).ready(function () {
     menu: function (integrator) {
       $('.menu-item').velocity('transition.slideDownIn', {
         display: null,
-        duration: 200,
         complete: function () {
           integrator.next();
         }
@@ -259,7 +257,7 @@ $(document).ready(function () {
 
       function postMotion () {
         var postMotionOptions = window.postMotionOptions || {
-            stagger: 100,
+            stagger: 300,
             drag: true
           };
         postMotionOptions.complete = function () {
@@ -270,14 +268,26 @@ $(document).ready(function () {
       }
     },
 
-    sidebar: function (integrator) {
-      if (CONFIG.sidebar === 'always') {
-        displaySidebar();
-      }
+    backToTop: function (integrator) {
+      var b2top = $('.back-to-top');
+      b2top.on('click', function () {
+        $('body').velocity('scroll');
+      });
+      integrator.next();
+    },
+
+    sidebarToggle: function (integrator) {
+      sidebarToggleMotion.init();
       integrator.next();
     }
   };
 
-  window.motionMiddleWares = motionMiddleWares;
+  motionIntegrator
+    .add(motionMiddleWares.logo)
+    .add(motionMiddleWares.menu)
+    .add(motionMiddleWares.sidebarToggle)
+    .add(motionMiddleWares.backToTop)
+    .add(motionMiddleWares.postList);
+
   window.motionIntegrator = motionIntegrator;
 });
