@@ -1,0 +1,90 @@
+//
+// Mist scheme
+// =================================================
+
+@import "_base";
+@import "_header";
+@import "_logo";
+@import "_menu";
+@import "_posts-expanded";
+
+
+// Components
+// --------------------------------------------------
+.btn {
+  padding: 0 10px;
+  border-width: 2px;
+  border-radius: 0;
+}
+
+.headband { display: none; }
+
+
+// Search
+// --------------------------------------------------
+.site-search {
+  float: right;
+  margin-top: 8px;
+
+  +mobile() {
+    float: none;
+    padding: 0 10px;
+  }
+
+  input {
+    padding: 3px;
+    border: none;
+    padding-left: 18px;
+    border-radius: 0;
+    width: 140px;
+    background: url($search-icon) no-repeat 0 50%;
+    background-size: 12px 12px;
+    outline: none;
+    border-bottom: 1px solid $grey-dark;
+    opacity: 0.5;
+    &:focus { opacity: 1; }
+  }
+}
+
+
+// Page - Post details
+// --------------------------------------------------
+.page-post-detail {
+  .post-title,
+  .post-meta { text-align: center; }
+
+  .post-title:before { display: none; }
+
+  .post-meta { margin-bottom: 60px; }
+}
+
+
+// Pagination
+// --------------------------------------------------
+.pagination {
+  margin: 120px 0 0;
+  text-align: left;
+
+  +mobile() {
+    margin: 80px 10px 0;
+    text-align: center;
+  }
+}
+
+// Footer
+// --------------------------------------------------
+.footer {
+  margin-top: 80px;
+  padding: 10px 0;
+  background: $whitesmoke;
+  color: $grey-dim;
+}
+.footer-inner {
+  margin: 0 auto;
+  text-align: left;
+
+  +mobile() { text-align: center; }
+}
+
+// Helpers
+// --------------------------------------------------
