@@ -70,6 +70,9 @@ theme: next
 ## Docs: http://hexo.io/docs/deployment.html
 deploy:
   type: git
+  repo: git@github.com:xcatliu/blog.git
+  branch: gh-pages
+  message:
 
 feed:
   type: atom
