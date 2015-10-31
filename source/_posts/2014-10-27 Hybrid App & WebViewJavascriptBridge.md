@@ -1,4 +1,5 @@
 title: Hybrid App & WebViewJavascriptBridge
+permalink: hybrid-app-webviewjavascriptbridge
 date: 2014-10-27
 categories:
 - Front End
