@@ -1,5 +1,12 @@
 title: Hybrid App & WebViewJavascriptBridge
 date: 2014-10-27
+categories:
+- Front End
+tags:
+- JavaScript
+- Hybrid App
+- WebViewJavascriptBridge
+- H5
 ---
 
 > Hybrid App（混合模式移动应用）是指介于 Web App 和 Native App 这两者之间的 App，兼具「Native App 良好用户交互体验的优势」和「Web App 跨平台开发的优势」。
@@ -92,5 +99,3 @@ connectWebViewJavascriptBridge(function(bridge) {
 - 时效性
 - 权限验证
 - Android 可能会为了释放内存，杀掉 WebView 进程，所以最好能够保存当前页面的状态
-
-
