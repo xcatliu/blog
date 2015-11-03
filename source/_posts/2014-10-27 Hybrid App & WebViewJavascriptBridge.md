@@ -12,7 +12,7 @@ tags:
 
 > Hybrid App（混合模式移动应用）是指介于 Web App 和 Native App 这两者之间的 App，兼具「Native App 良好用户交互体验的优势」和「Web App 跨平台开发的优势」。
 
-<!--more-->
+<!-- more -->
 
 ## 实现原理
 
