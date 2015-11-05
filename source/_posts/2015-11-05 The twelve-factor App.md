@@ -2,7 +2,7 @@ title: The twelve-factor App
 permalink: the-twelve-factor-app
 date: 2015-11-05 13:01:29
 categories:
-- Software Development
+- Full Stack
 tags:
 - twelve-factor
 ---
