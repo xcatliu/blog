@@ -3,6 +3,7 @@ permalink: hybrid-app-webviewjavascriptbridge
 date: 2014-10-27
 categories:
 - Full Stack
+- Work
 tags:
 - JavaScript
 - Hybrid App
