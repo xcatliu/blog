@@ -3,6 +3,8 @@ permalink: the-twelve-factor-app-in-node-js
 date: 2015-11-05 13:01:29
 categories:
 - Full Stack
+- Draft
+- English
 tags:
 - twelve-factor
 - Node.js
@@ -30,7 +32,7 @@ By using different branches and distributed versions, [Git] can naturally deal w
 
 ## II. Dependencies
 
-
+TBC
 
 ## Links
 
