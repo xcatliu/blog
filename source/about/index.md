@@ -36,6 +36,6 @@ Whenever you see this lovely cat, yeah that's me!
 - [react-ie8](https://github.com/xcatliu/react-ie8): Make your React app work in IE8
 - [V2HOT](https://github.com/xcatliu/V2HOT): An iOS App which lists hot topics in [v2ex](https://v2ex.com)
 
-Other projects I have contributed can found in [github.com/xcatliu](https://github.com/xcatliu)
+Other projects I have contributed can found in [github.com/xcatliu](https://github.com/xcatliu).
 
-For more information, just [google me](https://www.google.com/search?q=xcatliu).
+## For more information, just [google me](https://www.google.com/search?q=xcatliu)
