@@ -1,6 +1,6 @@
 title: "[Link] V2HOT 终于上线了，欢迎下载"
 permalink: link-v2hot-published
-date: 2015-15-16 22:10:22
+date: 2015-05-16 22:10:22
 categories:
 - Full Stack
 - Link
