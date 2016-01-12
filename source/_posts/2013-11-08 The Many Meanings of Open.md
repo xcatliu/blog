@@ -1,9 +1,9 @@
+---
 title: The Many Meanings of Open
 permalink: the-many-meanings-of-open
 date: 2013-11-08 21:02:22
 categories:
 - Life
-- Work
 tags:
 - Conference
 ---

@@ -1,10 +1,11 @@
+---
 title: "[Link] 纪念一下 365 天的坚持"
 permalink: link-memorial-at-the-insistence-of-365-days
 date: 2015-11-10 19:00:03
 categories:
 - Full Stack
-- Link
 tags:
+- Link
 - GitHub
 - v2ex
 ---

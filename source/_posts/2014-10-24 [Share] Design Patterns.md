@@ -1,11 +1,11 @@
+---
 title: "[Share] 设计模式浅析"
 permalink: share-design-patterns
 date: 2014-10-24
 categories:
 - Full Stack
-- Share
-- Work
 tags:
+- Share
 - Design Pattern
 ---
 

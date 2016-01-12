@@ -1,11 +1,11 @@
+---
 title: "[Share] JavaScript Fetch API"
 permalink: share-javascript-fetch-api
 date: 2015-11-10 19:00:03
 categories:
 - Full Stack
-- Share
-- Work
 tags:
+- Share
 - Fetch
 - JavaScript
 ---

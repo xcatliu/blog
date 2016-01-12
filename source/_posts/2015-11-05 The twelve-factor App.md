@@ -1,11 +1,12 @@
+---
 title: The twelve-factor App in Node.js
 permalink: the-twelve-factor-app-in-node-js
 date: 2015-11-05 13:01:29
 categories:
 - Full Stack
+tags:
 - Draft
 - English
-tags:
 - twelve-factor
 - Node.js
 ---

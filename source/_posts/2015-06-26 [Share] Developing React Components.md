@@ -1,10 +1,11 @@
+---
 title: "[Share] React 组件开发"
 permalink: share-developing-react-components
 date: 2015-06-26 18:44:30
 categories:
 - Full Stack
-- Share
 tags:
+- Share
 - React
 - Component
 - Video

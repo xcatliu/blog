@@ -1,12 +1,13 @@
+---
 title: "[Translate] 关于 YUI 的重要公告"
 permalink: translate-important-announcement-regarding-yui
 date: 2014-08-31 22:25:40
 categories:
 - Full Stack
-- Translate
 tags:
-- JavaScript
+- Translate
 - YUI
+- JavaScript
 ---
 
 原文：[Important Announcement Regarding YUI](http://yahooeng.tumblr.com/post/96098168666/important-announcement-regarding-yui)

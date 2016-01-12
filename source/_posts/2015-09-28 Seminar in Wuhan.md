@@ -1,9 +1,9 @@
+---
 title: 武汉宣讲会
 permalink: seminar-in-wuhan
 date: 2015-09-28 20:09:33
 categories:
 - Life
-- Work
 tags:
 - Campus
 ---

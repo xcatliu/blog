@@ -1,9 +1,9 @@
+---
 title: 高级工程师之路
 permalink: the-way-to-become-a-senior-software-engineer
 date: 2015-12-24 19:01:20
 categories:
 - Full Stack
-- Work
 tags:
 - Senior Software Engineer
 ---

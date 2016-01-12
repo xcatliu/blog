@@ -1,9 +1,9 @@
+---
 title: 基于 README 的文档管理
 permalink: use-readme-to-manage-your-docs
 date: 2014-12-09 13:20:22
 categories:
 - Full Stack
-- Work
 tags:
 - README
 - docs

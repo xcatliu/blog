@@ -1,11 +1,11 @@
+---
 title: "[Share] Thinking in React"
 permalink: share-thinking-in-react
 date: 2014-12-04 19:55:30
 categories:
 - Full Stack
-- Share
-- Work
 tags:
+- Share
 - React
 - JavaScript
 ---

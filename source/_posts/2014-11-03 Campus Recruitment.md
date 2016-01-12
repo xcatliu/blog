@@ -1,9 +1,9 @@
+---
 title: 校招季
 permalink: campus-recruitment
 date: 2014-11-03 19:03:33
 categories:
 - Life
-- Work
 tags:
 - Campus
 ---

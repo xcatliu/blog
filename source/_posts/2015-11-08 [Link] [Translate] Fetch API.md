@@ -1,10 +1,13 @@
+---
 title: "[Link] [Translate] Fetch API"
 permalink: link-translate-fetch-api
 date: 2015-11-08 19:23:30
 categories:
 - Full Stack
-- Drafts
 tags:
+- Link
+- Translate
+- Draft
 - Fetch
 - JavaScript
 ---

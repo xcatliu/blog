@@ -1,13 +1,13 @@
+---
 title: "[Share] Modular JS"
 permalink: share-modular-js
 date: 2014-03-06 18:34:30
 categories:
 - Full Stack
-- Share
-- Work
 tags:
-- JavaScript
+- Share
 - Modular
+- JavaScript
 ---
 
 Slide：http://slides.com/xcatliu/modular_js/

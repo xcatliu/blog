@@ -1,11 +1,11 @@
+---
 title: "[Share] React Native and V2HOT"
 permalink: share-react-native-and-v2hot
 date: 2015-07-10 17:33:52
 categories:
 - Full Stack
-- Link
-- Work
 tags:
+- Link
 - React
 - React Native
 - V2HOT

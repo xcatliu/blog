@@ -1,11 +1,11 @@
+---
 title: "[Link] 抽象语法树在 JavaScript 中的应用"
 permalink: abstract-syntax-tree
 date: 2014-10-08 16:39:22
 categories:
 - Full Stack
-- Link
-- Work
 tags:
+- Link
 - AST
 - UglifyJS
 - JavaScript

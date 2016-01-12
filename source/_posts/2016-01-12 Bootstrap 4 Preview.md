@@ -1,9 +1,9 @@
+---
 title: Bootstrap 4 初探
 permalink: bootstrap-4-preview
 date: 2016-01-12 15:42:04
 categories:
 - Full Stack
-- Work
 tags:
 - Bootstrap
 - css
