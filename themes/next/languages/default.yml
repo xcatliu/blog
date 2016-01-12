@@ -3,6 +3,8 @@ title:
   category: Category
   tag: Tag
 
+author: Author
+
 menu:
   home: Home
   archives: Archives
@@ -16,6 +18,7 @@ sidebar:
   toc: Table Of Contents
 
 post:
+  sticky: Sticky
   posted: Posted on
   in: In
   read_more: Read more

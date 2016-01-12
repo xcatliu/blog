@@ -3,6 +3,8 @@ title:
   category: Catégorie
   tag: Tag
 
+author: Author
+
 menu:
   home: Accueil
   archives: Archives
@@ -16,6 +18,7 @@ sidebar:
   toc: Table Des Matières
 
 post:
+  sticky: Sticky
   posted: Posté le
   in: In
   read_more: Lire la suite

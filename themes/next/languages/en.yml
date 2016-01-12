@@ -3,6 +3,8 @@ title:
   category: Category
   tag: Tag
 
+author: Author
+
 menu:
   home: Home
   archives: Archives
@@ -16,11 +18,13 @@ sidebar:
   toc: Table Of Contents
 
 post:
+  sticky: Sticky
   posted: Posted on
   in: In
   read_more: Read more
   untitled: Untitled
   toc_empty: This post does not have a Table Of Contents
+  visitors: visitors
 
 page:
   totally: Totally
