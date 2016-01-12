@@ -12,7 +12,7 @@ tags:
 
 Slide：http://slides.com/xcatliu/modular_js/
 
-<iframe src="//slides.com/xcatliu/modular_js/embed" width="595" height="400" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<iframe src="//slides.com/xcatliu/modular_js/embed" width="620" height="400" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 ## 概述，发展
 
