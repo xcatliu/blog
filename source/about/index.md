@@ -2,12 +2,7 @@ title: About
 date: 2015-10-29 19:02:26
 ---
 
-<img
-  src="https://avatars1.githubusercontent.com/u/5453359?v=3&s=460"
-  alt="xcatliu logo"
-  width="256"
-  height="256"
-/>
+![xcatliu logo](https://avatars1.githubusercontent.com/u/5453359?v=3&s=460)
 
 Hi! My name is Xcat Liu.
 
