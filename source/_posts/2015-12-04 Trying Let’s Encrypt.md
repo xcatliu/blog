@@ -12,8 +12,6 @@ tags:
 
 *Let's Encrypt* was [entering public beta](https://letsencrypt.org/2015/12/03/entering-public-beta.html) yesterday, let's encrypt!
 
-<!-- more -->
-
 ## What is *Let's Encrype*
 
 > Let’s Encrypt is a free, automated, and open certificate authority brought to you by the Internet Security Research Group (ISRG).
@@ -36,6 +34,8 @@ WARNING: Mac OS X support is very experimental at present...
 if you would like to work on improving it, please ensure you have backups
 and then run this script again with the --debug flag!
 ```
+
+<!-- more -->
 
 OK, let's running with the `--debug` flag:
 

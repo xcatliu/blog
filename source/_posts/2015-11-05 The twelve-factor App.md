@@ -14,8 +14,6 @@ The twelve-factor app is a methodology for building *software-as-a-service (aka 
 
 > It can be applied to apps written in any programming language, and which use any combination of backing services (database, queue, memory cache, etc).
 
-<!-- more -->
-
 First let's have a look at it:
 
 http://12factor.net/

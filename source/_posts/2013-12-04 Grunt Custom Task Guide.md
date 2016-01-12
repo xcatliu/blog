@@ -11,8 +11,6 @@ tags:
 
 在决定创建自己的 task 之前，最好搜索一下你的需求是不是已经有别人写好的了：http://gruntjs.com/plugins。
 
-<!-- more -->
-
 ## 简介
 
 grunt 有一套强大的创建任务机制，不管是 grunt 官方任务（如 grunt-contrib-uglify ）还是 npm 上其他人提供的 grunt 任务（如 grunt-mocha ）亦或是你自己创建的任务（如 mod_revision ），都是使用同一套机制。故阅读 grunt 官方任务源码，有助于我们创建自己的任务。
@@ -20,6 +18,8 @@ grunt 有一套强大的创建任务机制，不管是 grunt 官方任务（如 
 grunt 基于 node 开发，node 能做到的，在 grunt task 中都可以做到。
 
 一般来说，一个任务分三部分： `register task`，`load task`，`task config`。
+
+<!-- more -->
 
 ## 选择 task 的类型
 

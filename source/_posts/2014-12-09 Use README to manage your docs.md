@@ -13,8 +13,6 @@ tags:
 
 > A readme (or read me) file contains information about other files in a directory or archive and is very commonly distributed with computer software.
 
-<!-- more -->
-
 ## 为什么要在仓库中写文档
 
 - 文档和代码在一起，方便查看
@@ -38,6 +36,8 @@ tags:
 ## 愿景
 
 尽量替代掉「使用 wiki 或 website 管理文档」（或者 website 是通过 readme 文档生成的，do not repeat yourself）
+
+<!-- more -->
 
 ## readme 内容
 

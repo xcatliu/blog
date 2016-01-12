@@ -12,8 +12,6 @@ tags:
 
 Slide：http://slides.com/xcatliu/modular_js/
 
-<!-- more -->
-
 <iframe src="//slides.com/xcatliu/modular_js/embed" width="700" height="440" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 ## 概述，发展
@@ -30,6 +28,8 @@ Slide：http://slides.com/xcatliu/modular_js/
 - 动态加载
 - 服务器端 js，CommonJS
 - 发展到客户端 AMD
+
+<!-- more -->
 
 ## CommonJS
 

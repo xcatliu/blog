@@ -13,8 +13,6 @@ tags:
 
 Grunt 是一个基于任务的 JavaScript 项目命令行构建工具，运行于 Node.js 平台。 Grunt 能够从模板快速创建项目，合并、压缩和校验 CSS&JS 文件，运行单元测试以及启动静态服务器。
 
-<!-- more -->
-
 ### grunt 是如何工作的？
 
 刚刚接触 grunt ，举个例子可能不太恰当，但应该可以让你先比较准确的认识它。
@@ -32,6 +30,8 @@ Grunt 是一个基于任务的 JavaScript 项目命令行构建工具，运行�
 - task:uglify
 - task:qunit
 - task:concat
+
+<!-- more -->
 
 ### Why use a task runner?
 
