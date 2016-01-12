@@ -7,13 +7,13 @@ http://blog.xcatliu.com/
 ### Installation
 
 ```shell
-npm install -g hexo
+npm install
 ```
 
-### Serve in 0.0.0.0
+### Run in localhost
 
 ```shell
-hexo clean && hexo generate && hexo serve
+npm start
 ```
 
 Open your browser at http://0.0.0.0:4000
@@ -21,5 +21,5 @@ Open your browser at http://0.0.0.0:4000
 ## Deploy
 
 ```shell
-hexo clean && hexo generate && hexo deploy
+npm run deploy
 ```
