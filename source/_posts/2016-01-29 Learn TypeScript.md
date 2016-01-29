@@ -188,7 +188,6 @@ var c = Color.Green;
 
 > Tip: Enum 类型与 C++ 的用法类似。
 
-
 > Tip: `void` 类型一般用于不返回任何内容的 `function`。
 
 ## Interfaces
@@ -256,7 +255,6 @@ mySearch = function(src: string, sub: string) {
 
 > Tip: 使用 `()` 表示对函数的格式定义，`:` 后面的表示函数的返回值的类型。
 
-
 > Tip: 函数的变量名不需要和 Interface 中一模一样。
 
 ### Array
@@ -276,7 +274,6 @@ interface Dictionary {
 ```
 
 > Tip: 使用 `[]` 表示对数组的格式定义，`:` 后面的表示数组每一项的类型。
-
 
 > Tip: index 可以是 `string`，这时表示一个 `Dictinary`，它的每一项的值都必须和 `index` 定义的值一样。
 
