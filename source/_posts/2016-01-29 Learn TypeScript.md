@@ -6,6 +6,7 @@ categories:
 - Full Stack
 tags:
 - TypeScript
+- JavaScript
 ---
 
 TypeScript 是 JavaScript 的一个超集，由 Microsoft 开发，代码开源于 GitHub 上。
