@@ -10,6 +10,4 @@ tags:
 - JavaScript
 ---
 
-Published via v2ex:
-
-https://v2ex.com/t/214426
+Published via v2ex: https://v2ex.com/t/214426
