@@ -17,7 +17,7 @@ tags:
 
 每一个 node package 都有自己的版本号，一般定义在项目的 `package.json` 中，如：
 
-```
+```json
 {
   "name": "express",
   "description": "Fast, unopinionated, minimalist web framework",
@@ -51,7 +51,7 @@ MAJOR 表示主版本号，MINOR 表示次版本号，PATCH 表示修订号。
 
 举例如下：
 
-```
+```shell
 1.0​​.0-alpha
 1.0.0-alpha.1
 1.0.0-0.3.7
@@ -72,7 +72,7 @@ MAJOR 表示主版本号，MINOR 表示次版本号，PATCH 表示修订号。
 
 举例如下：
 
-```
+```shell
 1.0.0-alpha+001
 1.0.0+20130313144700
 1.0.0-beta+exp.sha.5114f85
