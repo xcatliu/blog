@@ -17,7 +17,7 @@ tags:
 
 每一个 node package 都有自己的版本号，一般定义在项目的 `package.json` 中，如：
 
-```json
+```
 {
   "name": "express",
   "description": "Fast, unopinionated, minimalist web framework",
