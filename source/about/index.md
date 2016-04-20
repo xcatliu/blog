@@ -16,7 +16,8 @@ Whenever you see this lovely cat, yeah that's me!
 
 ## Working Experience
 
-- 2015-04 ~ Now &nbsp;&nbsp; Meituan &nbsp;&nbsp; Senior Front-End Engineer
+- 2016-04 ~ Now     &nbsp;&nbsp; Microsoft &nbsp;&nbsp; Software Engineer II
+- 2015-04 ~ 2016-03 &nbsp;&nbsp; Meituan &nbsp;&nbsp; Senior Front-End Engineer
 - 2013-06 ~ 2015-03 &nbsp;&nbsp; Meituan &nbsp;&nbsp; Front-End Engineer
 - 2012-10 ~ 2013-01 &nbsp;&nbsp; Meituan &nbsp;&nbsp; Front-End Engineer Internship
 
@@ -26,7 +27,7 @@ Whenever you see this lovely cat, yeah that's me!
 
 ## Open Source Projects
 
-- [jekyllcn](https://github.com/xcatliu/jekyllcn): Chinese Version of jekyll docs
+- [JekyllCN](https://github.com/xcatliu/jekyllcn): Chinese Version of Jekyll docs
 - [reacat](https://github.com/reacat/reacat): Use React to generate your awesome static website
 - [react-ie8](https://github.com/xcatliu/react-ie8): Make your React app work in IE8
 - [V2HOT](https://github.com/xcatliu/V2HOT): An iOS App which lists hot topics in [v2ex](https://v2ex.com)

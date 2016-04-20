@@ -7,10 +7,10 @@
     "deploy": "hexo clean && hexo generate && hexo deploy"
   },
   "hexo": {
-    "version": "3.2.0-beta.2"
+    "version": "3.2.0"
   },
   "dependencies": {
-    "hexo": "^3.2.0-beta.2",
+    "hexo": "3.2.0",
     "hexo-deployer-git": "0.0.4",
     "hexo-generator-archive": "^0.1.2",
     "hexo-generator-category": "^0.1.2",
