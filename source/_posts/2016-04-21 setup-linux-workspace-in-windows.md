@@ -83,4 +83,4 @@ https://www.virtualbox.org/ticket/10085
 
 ## 遗留的问题
 
-1. 软链接还存在问题，有时候 Git 会显示有 Unstaged Change，但其实那是为了兼容 Linux 和 Windows 的软链接，而使文件多了一行内容。这个 Unstaged Change 无法被 Commit，也无法被 Checkout，所以对开发影像不大。但是有的脚本或者有的命令要求工作区是 Clear 的，这种情况就只能不在 Shared Folder 开发了。
+1. 软链接还存在问题，有时候 Git 会显示有 Unstaged Change，但其实那是为了兼容 Linux 和 Windows 的软链接，而使文件多了一行内容。这个 Unstaged Change 无法被 Commit，也无法被 Checkout，所以对开发影响不大。但是有的脚本或者有的命令要求工作区是 Clear 的，这种情况就只能不在 Shared Folder 开发了。
