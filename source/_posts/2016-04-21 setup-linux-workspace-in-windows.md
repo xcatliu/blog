@@ -85,7 +85,7 @@ https://www.virtualbox.org/ticket/10085
 
 - 软链接还存在问题，有时候 Git 会显示有 Unstaged Change，但其实那是为了兼容 Linux 和 Windows 的软链接，而使文件多了一行内容。这个 Unstaged Change 无法被 Commit，也无法被 Checkout，所以对开发影响不大。但是有的脚本或者有的命令要求工作区是 Clear 的，这种情况就只能不在 Shared Folder 开发了。
 - 可以试试 win10 的 Linux subsystem [@beginor](https://v2ex.com/member/beginor)
-- 可以试试在 linux 上安装 samba 服务，通过 windows 中的 “映射网络驱动器” 挂载到本地 windows 中，看起来就像是本机磁盘。 PHP 、 Python 这种动态语言项目放到这个磁盘里面，本地 IDE 编写代码， linux 上运行代码 [@odirus][https://v2ex.com/member/odirus]
+- 可以试试在 linux 上安装 samba 服务，通过 windows 中的 “映射网络驱动器” 挂载到本地 windows 中，看起来就像是本机磁盘。 PHP 、 Python 这种动态语言项目放到这个磁盘里面，本地 IDE 编写代码， linux 上运行代码 [@odirus](https://v2ex.com/member/odirus)
 - Vagrant [@ljcarsenal](https://v2ex.com/member/ljcarsenal)
 - 可以加个 VBoxHeadlessTray ，再也不用担心 Windows 10 自动重启了 [@ProjectAmber](https://v2ex.com/member/ProjectAmber)
 - 推荐用 samba 进行， sharefolder 中安装某些 nodejs npm 包也会出问题，还有文件权限也是个问题，除了普通文件共享，不建议使用 [@egen](https://v2ex.com/member/egen)
