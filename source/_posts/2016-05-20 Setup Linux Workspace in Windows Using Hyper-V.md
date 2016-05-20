@@ -74,7 +74,7 @@ sudo apt-get update
 sudo apt-get install samba
 ```
 
-下一步需要配置共享文件夹，这里有篇[参考文章](https://help.ubuntu.com/community/How%20to%20Create%20a%20Network%20Share%20Via%20Samba%20Via%20CLI%20(Command-line%20interface/Linux%20Terminal)%20-%20Uncomplicated,%20Simple%20and%20Brief%20Way!)，解释的非常详细。我这里做一个简单的介绍：
+下一步需要配置共享文件夹，这里有篇[参考文章][Samba Configuration]，解释的非常详细。我这里做一个简单的介绍：
 
 ### 1. 为 Samba 配置一个用户
 
@@ -144,4 +144,6 @@ testparm
 
 ## Links
 
-- [v2ex 上的讨论](https://v2ex.com/t/274202)
+- [Samba Configuration]
+
+[Samba Configuration]: https://help.ubuntu.com/community/How%20to%20Create%20a%20Network%20Share%20Via%20Samba%20Via%20CLI%20(Command-line%20interface/Linux%20Terminal)%20-%20Uncomplicated,%20Simple%20and%20Brief%20Way!
