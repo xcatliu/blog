@@ -1,0 +1,19 @@
+favicon: /favicon.ico
+
+menu:
+  home:
+    href: ''
+    icon: home
+  archive:
+    href: archives
+    icon: archive
+  categories:
+    href: categories
+    icon: list
+  tags:
+    href: tags
+    icon: tags
+  about:
+    href: about
+    icon: user
+    align: right
