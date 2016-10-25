@@ -1,0 +1,15 @@
+<% page.posts.forEach((post) => { %>
+  <article>
+    <h1><%- post.title %></h1>
+    <time datetime="<%- post.date.format() %>">
+      <%- post.date.format('YYYY-MM-DD') %>
+    </time>
+    <address>
+      <a>
+        <%- post.author %>
+      </a>
+    </address>
+    <%- post.excerpt || post.content %>
+  </article>
+  <hr/>
+<% }); %>
