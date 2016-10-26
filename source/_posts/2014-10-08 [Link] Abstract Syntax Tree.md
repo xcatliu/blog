@@ -1,14 +1,7 @@
 ---
-title: "[Link] 抽象语法树在 JavaScript 中的应用"
-permalink: link-abstract-syntax-tree
-date: 2014-10-08 16:39:22
+title: 抽象语法树在 JavaScript 中的应用
 categories:
-- Full Stack
-tags:
-- Link
-- AST
-- UglifyJS
-- JavaScript
+- Programmer
 ---
 
 发表在了美团技术博客中：http://tech.meituan.com/abstract-syntax-tree.html

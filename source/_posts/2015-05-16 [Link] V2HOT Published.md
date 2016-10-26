@@ -1,13 +1,7 @@
 ---
-title: "[Link] V2HOT 终于上线了，欢迎下载"
-permalink: link-v2hot-published
-date: 2015-05-16 22:10:22
+title: V2HOT 终于上线了，欢迎下载
 categories:
-- Full Stack
-tags:
-- Link
-- V2HOT
-- v2ex
+- Programmer
 ---
 
 Published via v2ex: https://v2ex.com/t/191420

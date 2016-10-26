@@ -1,13 +1,7 @@
 ---
-title: "[Link] Goodbye IE8"
-permalink: link-goodbye-ie8
-date: 2016-01-28 23:34:01
+title: Goodbye IE8
 categories:
-- Full Stack
-tags:
-- Link
-- IE8
-- GitHub
+- Programmer
 ---
 
 Published via GitHub: https://github.com/xcatliu/goodbye-ie8
