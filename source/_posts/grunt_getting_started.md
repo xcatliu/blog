@@ -1,5 +1,5 @@
 ---
-Title: Grunt Getting Started
+title: Grunt Getting Started
 categories:
 - Programmer
 ---

@@ -1,5 +1,5 @@
 ---
-Title: The Many Meanings of Open
+title: The Many Meanings of Open
 categories:
 - Life
 ---

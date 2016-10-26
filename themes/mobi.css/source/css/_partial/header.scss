@@ -1,11 +1,11 @@
 .theme-header {
-  margin-left: -14px;
-  margin-right: -14px;
+  margin-left: - $width-gap;
+  margin-right: - $width-gap;
   border-bottom: 1px solid #ddd;
 }
 
 .theme-nav-item-icon {
-  color: #666;
+  color: $color-text-muted;
   font-size: 30px;
   line-height: 50px;
   display: inline-block;
@@ -29,6 +29,6 @@
 }
 
 .theme-nav-item-current .theme-nav-item-link {
-  border-bottom: 3px solid #0080ff;
+  border-bottom: 3px solid $color-text-link;
   margin-bottom: -2px;
 }

@@ -1,0 +1,15 @@
+.pagination {
+  margin-top: $width-gap-big;
+  text-align: center;
+
+  .page-number,
+  .extend {
+    padding: 0 $width-gap-half;
+    margin: 0 $width-gap-half;
+  }
+
+  .page-number.current,
+  .space {
+    color: $color-text-muted;
+  }
+}

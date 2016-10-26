@@ -1,5 +1,5 @@
 ---
-Title: 撸了两个 Hexo 的 Plugins
+title: 撸了两个 Hexo 的 Plugins
 categories:
 - Programmer
 ---
