@@ -1,16 +1,3 @@
-<!doctype html>
-<html lang="<%= page.lang %>">
-  <%- partial('_partial/head') %>
-  <body>
-    <div class="flex-center">
-      <div class="container">
-        <%- partial('_partial/header') %>
-        <%- partial('_partial/posts_excerpted') %>
-        <%- partial('_partial/pagination') %>
-        <%- partial('_partial/footer') %>
-      </div>
-      <%- partial('_partial/sidebar') %>
-    </div>
-    <%- partial('_partial/google_analytics') %>
-  </body>
-</html>
+<%- partial('_partial/posts_excerpt') %>
+<%- partial('_partial/pagination') %>
+<%- partial('_partial/footer') %>

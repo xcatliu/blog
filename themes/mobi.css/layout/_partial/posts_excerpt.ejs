@@ -1,17 +1,17 @@
 <% page.posts.forEach((post, index) => { %>
   <article>
     <h1 class="text-center">
-      <%- post.title %>
+      <%= post.title %>
     </h1>
     <div class="top-gap text-center theme-post-meta">
-      <time datetime="<%- post.date.format() %>">
-        <%- post.date.format('YYYY-MM-DD') %>
+      <time datetime="<%= post.date.format() %>">
+        <%= post.date.format('YYYY-MM-DD') %>
       </time>
       <small>
         · In 
         <% post.categories.forEach((category) => { %>
-          <a href="<%- url_for_lang(category.path) %>">
-            <%- category.name %>
+          <a href="<%= url_for_lang(category.path) %>">
+            <%= category.name %>
           </a>
         <% }) %>
       </small>
@@ -21,7 +21,7 @@
     </div>
   </article>
   <p class="top-gap-big text-center">
-    <a href="<%- url_for_lang(post.path) %>">
+    <a href="<%= url_for_lang(post.path) %>">
       继续阅读
     </a>
   </p>
