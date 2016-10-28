@@ -1,0 +1,16 @@
+<div class="top-gap text-center text-muted">
+  <small>
+    <%= __('post.posted') %>
+    <time datetime="<%= post.date.format() %>">
+      <%= post.date.format('YYYY-MM-DD') %>
+    </time>
+
+    <span class="theme-separator">·</span>
+    
+    <%= __('post.in') %>
+    <%-
+      post.categories.map((category) =>
+        `<a class="text-muted" href="${url_for_lang(category.path)}">${category.name}</a>`).join(' > ')
+    %>
+  </small>
+</div>

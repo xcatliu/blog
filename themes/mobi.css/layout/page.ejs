@@ -1,0 +1,9 @@
+<% if (page.type === 'categories') { %>
+  <%- partial('_partial/categories') %>
+<% } else if (page.type === 'tags') { %>
+  <%- partial('_partial/tags') %>
+<% } else { %>
+  <%- partial('_partial/page') %>
+  <%- partial('_partial/comments') %>
+<% } %>
+<%- partial('_partial/footer') %>

@@ -1,0 +1,19 @@
+<% page.posts.forEach((post, index) => { %>
+  <article>
+    <h1 class="text-center">
+      <%= post.title %>
+    </h1>
+    <%- partial('post_meta', { post: post }) %>
+    <div class="top-gap-big">
+      <%- post.excerpt || post.content %>
+    </div>
+  </article>
+  <p class="top-gap-big text-center">
+    <a href="<%= url_for_lang(post.path) %>#more">
+      <%= __('more') %>
+    </a>
+  </p>
+  <% if (index < page.posts.length - 1) { %>
+    <hr class="top-gap-big"/>
+  <% } %>
+<% }); %>

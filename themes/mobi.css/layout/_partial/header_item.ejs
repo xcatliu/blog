@@ -1,0 +1,28 @@
+<div class="theme-nav-item flex-center flex-middle
+  <%
+    if (url_for_lang(item.href) === url_for_lang('/')) {
+      if (url_for(path) === `${url_for_lang('/')}index.html`) {
+        %>theme-nav-item-current<%
+      }
+    } else if (url_for(path).indexOf(url_for_lang(item.href)) === 0) {
+      %>theme-nav-item-current<%
+    }
+  %>
+">
+  <a
+    class="unit-0 theme-nav-item-link text-center"
+    href="<%= url_for_lang(item.href) %>"
+    title="<%= title %>"
+  >
+    <% if (item.icon) { %>
+      <i class="theme-nav-item-icon fa fa-<%= item.icon %>"></i>
+    <% } %>
+    <% if (item.img) { %>
+      <img
+        class="theme-nav-item-img"
+        src="<%= item.img %>"
+        alt="<%= title %>"
+      />
+    <% } %>
+  </a>
+</div>

@@ -1,0 +1,26 @@
+favicon: /favicon.ico
+
+menu:
+  home:
+    href: ''
+    icon: home
+  archives:
+    href: archives
+    icon: archive
+  categories:
+    href: categories
+    icon: th
+  tags:
+    href: tags
+    icon: tags
+  about:
+    href: about
+    icon: user
+    align: right
+
+disqus_shortname: xcatliu
+
+# Google Analytics
+google_analytics: UA-45256157-6
+
+since: 2012

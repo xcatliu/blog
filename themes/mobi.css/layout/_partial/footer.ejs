@@ -1,0 +1,23 @@
+<hr class="top-gap-big"/>
+
+<p class="text-center">
+  <small class="text-muted">
+    &copy;
+    <%
+      const current = date(Date.now(), 'YYYY');
+      if (theme.since && theme.since.toString() !== current) {
+    %>
+      <%= theme.since %> -
+    <% } %>
+    <span itemprop="copyrightYear"><%= current %></span>
+    <i class="fa fa-heart" style="color:red;"></i>
+    <span itemprop="copyrightHolder"><%= config.author %></span>
+
+    <br/>
+
+    <%- __('footer.powered', '<a class="text-muted" href="https://hexo.io" title="Hexo">Hexo</a>') %>
+    <span class="theme-separator">·</span>
+    <%= __('footer.theme') %>
+    <a class="text-muted" href="https://github.com/xcatliu/hexo-theme-mobi.css" title="Hexo Theme Mobi.css">Mobi.css</a>
+  </small>
+</p>
