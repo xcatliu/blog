@@ -1,3 +1,3 @@
 ---
-layout: category
+type: categories
 ---

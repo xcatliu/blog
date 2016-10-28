@@ -3,26 +3,14 @@
     <h1 class="text-center">
       <%= post.title %>
     </h1>
-    <div class="top-gap text-center theme-post-meta">
-      <time datetime="<%= post.date.format() %>">
-        <%= post.date.format('YYYY-MM-DD') %>
-      </time>
-      <small>
-        · In 
-        <% post.categories.forEach((category) => { %>
-          <a href="<%= url_for_lang(category.path) %>">
-            <%= category.name %>
-          </a>
-        <% }) %>
-      </small>
-    </div>
+    <%- partial('post_meta', { post: post }) %>
     <div class="top-gap-big">
       <%- post.excerpt || post.content %>
     </div>
   </article>
   <p class="top-gap-big text-center">
-    <a href="<%= url_for_lang(post.path) %>">
-      继续阅读
+    <a href="<%= url_for_lang(post.path) %>#more">
+      <%= __('more') %>
     </a>
   </p>
   <% if (index < page.posts.length - 1) { %>

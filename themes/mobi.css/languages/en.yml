@@ -1,2 +1,22 @@
 scan: Scan to view on mobile
-footer: Designed and built with <i class="fa fa-heart" style="color:red;"></i> by <a href="https://github.com/xcatliu/">@xcatliu</a>.
+
+more: Read More
+
+title:
+  archives: Archives
+  categories: Categories
+  tags: Tags
+
+post:
+  author: Author
+  sticky: Sticky
+  posted: Posted on
+  in: In
+  read_more: Read more
+  untitled: Untitled
+  toc_empty: This post does not have a Table of Contents
+  visitors: visitors
+
+footer:
+  powered: "Powered by %s"
+  theme: Theme

@@ -2,9 +2,14 @@
 title: 撸了两个 Hexo 的 Plugins
 categories:
 - Programmer
+tags:
+- Hexo
+- JavaScript
 ---
 
 Published via V2EX: https://v2ex.com/t/289667
+
+<!-- more -->
 
 ---
 

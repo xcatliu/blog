@@ -1,0 +1,11 @@
+<h1 class="text-center"><%= __('title.tags') %></h1>
+<ul class="theme-text-muted">
+  <% site.tags.sort('name').forEach((tag) => { %>
+    <li>
+      <a href="<%= url_for_lang(tag.path) %>">
+        <%= tag.name %>
+      </a>
+      <small>(<%= tag.length %>)</small>
+    </li>
+  <% }) %>
+</ul>

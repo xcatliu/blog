@@ -1,0 +1,11 @@
+<h1 class="text-center"><%= __('title.categories') %></h1>
+<ul class="theme-text-muted">
+  <% site.categories.sort('name').forEach((category) => { %>
+    <li>
+      <a href="<%= url_for_lang(category.path) %>">
+        <%= category.name %>
+      </a>
+      <small>(<%= category.length %>)</small>
+    </li>
+  <% }) %>
+</ul>

@@ -1,17 +1,15 @@
-disqus_shortname: xcatliu
-
 favicon: /favicon.ico
 
 menu:
   home:
     href: ''
     icon: home
-  archive:
+  archives:
     href: archives
     icon: archive
   categories:
     href: categories
-    icon: list
+    icon: th
   tags:
     href: tags
     icon: tags
@@ -19,3 +17,10 @@ menu:
     href: about
     icon: user
     align: right
+
+disqus_shortname: xcatliu
+
+# Google Analytics
+google_analytics: UA-45256157-6
+
+since: 2012

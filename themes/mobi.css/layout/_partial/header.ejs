@@ -2,11 +2,11 @@
   <header class="theme-header">
     <nav class="flex-left">
       <% Object.keys(theme.menu).filter(key => theme.menu[key].align !== 'right').forEach(key => { %>
-        <%- partial('header_item', theme.menu[key]) %>
+        <%- partial('header_item', { title: key, item: theme.menu[key] }) %>
       <% }) %>
       <div class="unit"></div>
       <% Object.keys(theme.menu).filter(key => theme.menu[key].align === 'right').forEach(key => { %>
-        <%- partial('header_item', theme.menu[key]) %>
+        <%- partial('header_item', { title: key, item: theme.menu[key] }) %>
       <% }) %>
     </nav>
   </header>
