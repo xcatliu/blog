@@ -1,4 +1,4 @@
-<div class="top-gap text-center theme-text-muted">
+<div class="top-gap text-center text-muted">
   <small>
     <%= __('post.posted') %>
     <time datetime="<%= post.date.format() %>">
@@ -10,7 +10,7 @@
     <%= __('post.in') %>
     <%-
       post.categories.map((category) =>
-        `<a class="theme-text-muted" href="${url_for_lang(category.path)}">${category.name}</a>`).join(' > ')
+        `<a class="text-muted" href="${url_for_lang(category.path)}">${category.name}</a>`).join(' > ')
     %>
   </small>
 </div>

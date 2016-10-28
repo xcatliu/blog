@@ -6,11 +6,11 @@
   <div class="top-gap-big">
     <%- page.content %>
   </div>
-  <div class="top-gap-big text-center theme-text-muted">
+  <div class="top-gap-big text-center text-muted">
     <small>
       <%-
         page.tags.map((tag) =>
-          `<a class="theme-text-muted" href="${url_for_lang(tag.path)}">#${tag.name}</a>`).join(' , ')
+          `<a class="text-muted" href="${url_for_lang(tag.path)}">#${tag.name}</a>`).join(' , ')
       %>
     </small>
   </div>
