@@ -1,5 +1,6 @@
 ---
 title: 纪念一下 365 天的坚持
+date: 2015-06-17
 categories:
 - Programmer
 ---

@@ -1,5 +1,6 @@
 ---
 title: The twelve-factor App in Node.js
+date: 2015-11-05
 categories:
 - Programmer
 ---

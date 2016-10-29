@@ -1,5 +1,6 @@
 ---
 title: "Thinking in React"
+date: 2014-12-04
 categories:
 - Programmer
 ---

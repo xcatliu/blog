@@ -1,5 +1,6 @@
 ---
 title: React Native and V2HOT
+date: 2015-07-10
 categories:
 - Programmer
 ---

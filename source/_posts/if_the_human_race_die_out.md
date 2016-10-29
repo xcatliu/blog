@@ -2,9 +2,11 @@
 title: 假如人类灭绝了，可以留给下一个文明有限的遗产，那么该留些什么呢？
 categories:
 - Ideas
+tags:
+- V2EX
 ---
 
-Published via V2EX: https://v2ex.com/t/254418
+发表在 V2EX 上：https://v2ex.com/t/254418
 
 ---
 

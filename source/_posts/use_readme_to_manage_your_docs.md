@@ -1,5 +1,6 @@
 ---
 title: 基于 README 的文档管理
+date: 2014-12-09
 categories:
 - Programmer
 ---

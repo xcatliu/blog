@@ -2,9 +2,12 @@
 title: 在 Chrome 中调试 Android 浏览器
 categories:
 - Programmer
+tags:
+- Android
+- Debug
 ---
 
-> 最近需要使用 Chrome Developer Tools 调试 Android 浏览器，但是[官方指南][remote-debugging]并不是很好使，经过一番折腾，终于调试成功了，在此把经验分享给需要的朋友。
+最近需要使用 Chrome Developer Tools 调试 Android 浏览器，但是[官方指南][remote-debugging]并不是很好使，经过一番折腾，终于调试成功了，在此把经验分享给需要的朋友。
 
 Chrome Developer Tools 是前端工程师必不可少的工具，它极大的提高了我们的开发调试效率。在移动开发的时代，我们也必须掌握手机浏览器在 Chrome 中调试的方法。本篇仅介绍 Android。
 

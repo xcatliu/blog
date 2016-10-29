@@ -1,7 +1,12 @@
 ---
 title: GeoJSON 和 TopoJSON
+date: 2015-04-24
 categories:
 - Programmer
+tags:
+- JSON
+- GeoJSON
+- TopoJSON
 ---
 
 > GeoJSON 是用来描述一系列几何形状的数据结构。它可以描述以下几种几何类型：Point、LineString、Polygon、MultiPoint、MultiLineString 和 MultiPolygon。

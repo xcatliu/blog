@@ -1,7 +1,11 @@
 ---
 title: 设计模式浅析
+date: 2014-10-24
 categories:
 - Programmer
+tags:
+- Design Pattern
+- Share
 ---
 
 Slide：http://www.slideshare.net/XcatLiu/ss-56943521
