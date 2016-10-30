@@ -2,11 +2,16 @@
 title: Bootstrap 4 初探
 categories:
 - Programmer
+tags:
+- Bootstrap
+- CSS
 ---
 
 Bootstrap 作为 GitHub 上 Stars 最多的项目，可以说是万众瞩目，issues 和 pull requests 也居高不下，足以看出其后劲依然很足。
 
 截止到本文发布，Bootstrap 4 已经推出 alpha 2 版本一个多月了，让我们一起玩转 Bootstrap 4 吧！
+
+<!-- more -->
 
 ## 新特性
 
@@ -41,8 +46,6 @@ wells，thumbnails 和 panels 被废弃，使用 cards 替代。
 ### 主题市场
 
 Bootstrap 推出了[官方的主题市场][themes]。
-
-<!-- more -->
 
 ## Bootstrap 4 文档中值得关注的地方
 

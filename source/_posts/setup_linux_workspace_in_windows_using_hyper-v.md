@@ -2,11 +2,17 @@
 title: 在 Windows 中配置 Linux 工作环境（使用 Hyper-V）
 categories:
 - Programmer
+tags:
+- Hyper-V
+- Samba
+- Windows
 ---
 
 > [上次使用 Vitural Box 安装了 Ubuntu](http://blog.xcatliu.com/2016/04/21/setup-linux-workspace-in-windows/)，结果一个月之后挂了，这次试试上次被推荐的 Hyper-V 吧。
 
 基于[上次 v2ex 上的建议](https://v2ex.com/t/274202)，这次选择的方案是：Hyper-V + Ubuntu + PuTTY + Samba。
+
+<!-- more -->
 
 ## Hyper-V
 

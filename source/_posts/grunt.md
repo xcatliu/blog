@@ -1,7 +1,12 @@
 ---
 title: Grunt
+date: 2013-09-27
 categories:
 - Programmer
+tags:
+- Grunt
+- JavaScript
+- Share
 ---
 
 ## Grunt API

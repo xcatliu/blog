@@ -1,7 +1,12 @@
 ---
 title: Grunt Custom Task 指南
+date: 2013-12-04
 categories:
 - Programmer
+tags:
+- Grunt
+- Task
+- JavaScript
 ---
 
 阅读这篇之前，请了解 grunt ，可以参考 [Grunt Getting Starting]。

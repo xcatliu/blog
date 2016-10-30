@@ -1,7 +1,10 @@
 ---
 title: The Many Meanings of Open
+date: 2013-11-08
 categories:
 - Life
+tags:
+- Summary
 ---
 
 ## 会议介绍
