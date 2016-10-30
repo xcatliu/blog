@@ -10,8 +10,6 @@ tags:
 
 > 发表在 V2EX 上：https://v2ex.com/t/289667
 
-<!-- more -->
-
 都是从 git log 获取数据填充到 posts 中：
 
 ## [hexo-filter-date-from-git]( https://github.com/xcatliu/hexo-filter-date-from-git)

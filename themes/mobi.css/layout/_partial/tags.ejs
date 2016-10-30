@@ -1,8 +1,8 @@
 <h1 class="text-center"><%= __('title.tags') %></h1>
 <ul class="text-muted">
-  <% site.tags.sort('name').forEach((tag) => { %>
+  <% site.tags.sort('-length').forEach((tag) => { %>
     <li>
-      <a href="<%= url_for_lang(tag.path) %>">
+      <a href="<%= tag.permalink %>">
         <%= tag.name %>
       </a>
       <small>(<%= tag.length %>)</small>

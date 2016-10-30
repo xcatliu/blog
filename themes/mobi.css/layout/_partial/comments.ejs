@@ -7,7 +7,7 @@
       'zh-Hans': 'zh'
     };
     var disqus_config = function () {
-      this.language = langMap['<%= page.lang %>'];
+      this.language = langMap['<%= page.lang %>'] || langMap['en'];
       this.page.url = '<%= page.permalink %>';
       this.page.identifier = '<%= page.path %>';
       this.page.title = '<%= page.title %>';

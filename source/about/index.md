@@ -2,9 +2,11 @@
 title: About
 ---
 
-![xcatliu logo](https://avatars1.githubusercontent.com/u/5453359?v=3&s=460)
+![xcatliu logo](/assets/about/xcatliu_512.png)
 
 Hi! My name is Xcat Liu.
+
+中文昵称是流浪小猫，也可以叫我小猫。
 
 Whenever you see this lovely cat, yeah that's me!
 
@@ -27,11 +29,13 @@ Whenever you see this lovely cat, yeah that's me!
 
 ## Open Source Projects
 
-- [JekyllCN](https://github.com/xcatliu/jekyllcn): Chinese Version of Jekyll docs
-- [reacat](https://github.com/reacat/reacat): Use React to generate your awesome static website
+- [Mobi.css](https://github.com/xcatliu/mobi.css): A lightweight, flexible css framework that focus on mobile
 - [react-ie8](https://github.com/xcatliu/react-ie8): Make your React app work in IE8
-- [V2HOT](https://github.com/xcatliu/V2HOT): An iOS App which lists hot topics in [v2ex](https://v2ex.com)
+- [JekyllCN](https://github.com/xcatliu/jekyllcn): Jekyll 的中文翻译网站
+- [From JavaScript to TypeScript](https://github.com/xcatliu/from-javascript-to-typescript): 一本面向 JavaScript 程序员的 TypeScript 学习教程
 
-Other projects I have contributed can found in [github.com/xcatliu](https://github.com/xcatliu).
+Other projects that I have contributed can found in [github.com/xcatliu](https://github.com/xcatliu).
 
-## For more information, just [google me](https://www.google.com/search?q=xcatliu)
+If you love my projects, please [buy me a coffee](https://github.com/xcatliu/buy-me-a-coffee) to support me.
+
+BTW, you can even [google me](https://www.google.com/search?q=xcatliu)!
