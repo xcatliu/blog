@@ -4,14 +4,16 @@ date: 2015-04-24
 categories:
 - Programmer
 tags:
-- JSON
 - GeoJSON
 - TopoJSON
+- JSON
 ---
 
 > GeoJSON 是用来描述一系列几何形状的数据结构。它可以描述以下几种几何类型：Point、LineString、Polygon、MultiPoint、MultiLineString 和 MultiPolygon。
 
 > TopoJSON 是 GeoJSON 的拓展，用来描述拓扑结构。通过提取图形中公用的点来减少冗余，一般可以把 GeoJSON 的大小压缩到原来的 20%。
+
+<!-- more -->
 
 ## GeoJSON
 
@@ -26,8 +28,6 @@ GeoJSON 使用 `type` 表示数据的类型。
 GeoJSON 使用一维数组表示 `Point`，二维数组表示 `MultiPoint` 或 `LineString`（或 `LinearRing` 即环线），三维数组表示 `MultiLineString` 或 `Polygon`（包含洞的面），四维数组表示 `MultiPolygon`。
 
 具体的规则，请直接看 [GeoJSON 规范]（最好阅读完了再继续往下看）。
-
-<!-- more -->
 
 ## TopoJSON
 

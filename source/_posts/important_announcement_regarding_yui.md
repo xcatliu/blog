@@ -2,9 +2,13 @@
 title: 关于 YUI 的重要公告
 categories:
 - Programmer
+tags:
+- YUI
+- JavaScript
+- Translate
 ---
 
-原文：[Important Announcement Regarding YUI](http://yahooeng.tumblr.com/post/96098168666/important-announcement-regarding-yui)
+> 原文：[Important Announcement Regarding YUI](http://yahooeng.tumblr.com/post/96098168666/important-announcement-regarding-yui)
 
 译者按：YUI 伴随着我两年有余，我见证了它的伟大与落魄。它开创了模块加载，发扬了命名空间。它有强大的事件和控件机制，也有臃肿的条件加载和皮肤。它的精髓有如一座图书馆，让你不由得感慨设计之宏大，它的 features 有如一个工具箱，翻箱倒柜一定可以找到合适的工具。然而，时代的巨浪袭来，船大难以掉头，最终被淹没。值得我们反思。本人翻译经验不多，难免有纰漏之处，望指正，另外原文也值得一读。
 

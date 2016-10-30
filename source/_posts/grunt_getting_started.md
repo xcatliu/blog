@@ -4,8 +4,8 @@ date: 2013-11-08
 categories:
 - Programmer
 tags:
-- JavaScript
 - Grunt
+- JavaScript
 ---
 
 ## Grunt 简介

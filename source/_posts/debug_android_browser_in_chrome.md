@@ -3,13 +3,15 @@ title: 在 Chrome 中调试 Android 浏览器
 categories:
 - Programmer
 tags:
-- Android
 - Debug
+- Android
 ---
 
 最近需要使用 Chrome Developer Tools 调试 Android 浏览器，但是[官方指南][remote-debugging]并不是很好使，经过一番折腾，终于调试成功了，在此把经验分享给需要的朋友。
 
 Chrome Developer Tools 是前端工程师必不可少的工具，它极大的提高了我们的开发调试效率。在移动开发的时代，我们也必须掌握手机浏览器在 Chrome 中调试的方法。本篇仅介绍 Android。
+
+<!-- more -->
 
 ## 环境
 
@@ -31,7 +33,7 @@ Chrome Developer Tools 是前端工程师必不可少的工具，它极大的提
 
 进入设置，找到开发者模式即可。但是 Android 4.2 之后的机器，开发者模式都被隐藏了，需要在关于设备中找到 Build Number，中文对应的可能是「内部版本号」，找到之后狂点它，过一会儿就会提示是否开启开发者模式了。
 
-![Android Build Number](http://7xthy2.com1.z0.glb.clouddn.com/blog/2016-04-28-android-build-number.png)
+![Android Build Number](/assets/debug_android_browser_in_chrome/android_build_number.png)
 
 ## 连接手机和电脑
 
@@ -72,7 +74,7 @@ Tips：电脑上打开的 Chrome Developer Tools 的页面，是根据手机上�
 
 最后来一个成功的截图吧！
 
-![Chrome Inspect Android Browser](http://7xthy2.com1.z0.glb.clouddn.com/blog/2016-04-28-chrome-inspect-android-browser.png)
+![Chrome Inspect Android Browser](/assets/debug_android_browser_in_chrome/chrome_inspect_android_browser.png)
 
 ## Links
 

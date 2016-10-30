@@ -3,9 +3,12 @@ title: Modular JS
 date: 2014-03-06
 categories:
 - Programmer
+tags:
+- Modular
+- JavaScript
 ---
 
-Slide：http://slides.com/xcatliu/modular_js/
+> Slide：http://slides.com/xcatliu/modular_js/
 
 <iframe src="//slides.com/xcatliu/modular_js/embed" width="620" height="400" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 

@@ -5,13 +5,12 @@ categories:
 tags:
 - Hexo
 - JavaScript
+- V2EX
 ---
 
-Published via V2EX: https://v2ex.com/t/289667
+> 发表在 V2EX 上：https://v2ex.com/t/289667
 
 <!-- more -->
-
----
 
 都是从 git log 获取数据填充到 posts 中：
 

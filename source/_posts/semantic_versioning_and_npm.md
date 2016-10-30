@@ -3,6 +3,10 @@ title: npm 语义化版本号
 date: 2015-04-14
 categories:
 - Programmer
+tags:
+- Semantic
+- npm
+- JavaScript
 ---
 
 > 本文开始介绍了 [npm] 中语义化版本号的格式，然后对如何升级版本号进行了归纳，最后总结了如何正确的定义依赖的版本号。
@@ -20,6 +24,8 @@ categories:
   "...": "..."
 }
 ```
+
+<!-- more -->
 
 ## 版本号的格式
 
@@ -88,8 +94,6 @@ MAJOR 表示主版本号，MINOR 表示次版本号，PATCH 表示修订号。
 [npm] 使用的是 [semver] 的宽松模式。
 
 具体内容可以阅读源码了解。
-
-<!-- more -->
 
 ## 如何升级版本号
 

@@ -3,6 +3,9 @@ title: 基于 README 的文档管理
 date: 2014-12-09
 categories:
 - Programmer
+tags:
+- README
+- Markdown
 ---
 
 ## 什么是 readme
@@ -16,6 +19,8 @@ categories:
 - 使用 markdown 格式的 README 文档可以在 GitHub 中直接查看
 - 可以在 vim 中查看
 - README 已经能（并且能更好的）满足大部分需求
+
+<!-- more -->
 
 ## markdown 规则
 
@@ -32,8 +37,6 @@ categories:
 ## 愿景
 
 尽量替代掉「使用 wiki 或 website 管理文档」（或者 website 是通过 readme 文档生成的，do not repeat yourself）
-
-<!-- more -->
 
 ## readme 内容
 

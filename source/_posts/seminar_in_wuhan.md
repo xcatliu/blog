@@ -3,6 +3,8 @@ title: 武汉宣讲会
 date: 2015-09-28
 categories:
 - Life
+tags:
+- Summary
 ---
 
 今年有幸和刘江老师还有 zj 美女一起参加了武汉的宣讲会，我负责师兄师姐交流的部分。有一些感想：
