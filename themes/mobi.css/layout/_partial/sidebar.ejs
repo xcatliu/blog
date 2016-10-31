@@ -31,9 +31,11 @@
           <h5><%= __('sidebar.links') %></h5>
           <p class="text-muted">
             <small>
-            <%- Object.keys(theme.sidebar[key]).map((name) =>
-              `<a class="text-muted" href="${theme.sidebar[key][name]}">${name}</a>`
-            ).join('<span class="theme-separator">·</span>') %>
+              <ul class="theme-list-style-none">
+                <%- Object.keys(theme.sidebar[key]).map((name) =>
+                  `<li><a class="text-muted" href="${theme.sidebar[key][name]}">${name}</a></li>`
+                ).join('') %>
+              </ul>
             </small>
           </p>
         <% break;
