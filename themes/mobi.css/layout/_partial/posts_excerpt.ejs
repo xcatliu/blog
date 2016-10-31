@@ -1,7 +1,9 @@
 <% page.posts.forEach((post, index) => { %>
   <article>
     <h1 class="text-center">
-      <%= post.title %>
+      <a class="theme-title-link" href="<%= url_for(post.path) %>">
+        <%= post.title %>
+      </a>
     </h1>
     <%- partial('post_meta', { post: post }) %>
     <div class="top-gap-big">
@@ -9,7 +11,7 @@
     </div>
   </article>
   <p class="top-gap-big text-center">
-    <a href="<%= post.permalink %>#more">
+    <a href="<%= url_for(post.path) %>#more">
       <%= __('more') %>
     </a>
   </p>

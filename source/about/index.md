@@ -10,24 +10,24 @@ Hi! My name is Xcat Liu.
 
 Whenever you see this lovely cat, yeah that's me!
 
-## Social Network
+## Social network
 
 - [GitHub](https://github.com/xcatliu)
 - [Twitter](https://twitter.com/xcatliu)
 - [Gmail](mailto:xcatliu@gmail.com)
 
-## Working Experience
+## Working experience
 
 - 2016-04 ~ Now     &nbsp;&nbsp; Microsoft &nbsp;&nbsp; Software Engineer II
 - 2015-04 ~ 2016-03 &nbsp;&nbsp; Meituan &nbsp;&nbsp; Senior Front-End Engineer
 - 2013-06 ~ 2015-03 &nbsp;&nbsp; Meituan &nbsp;&nbsp; Front-End Engineer
 - 2012-10 ~ 2013-01 &nbsp;&nbsp; Meituan &nbsp;&nbsp; Front-End Engineer Internship
 
-## Educational Background
+## Educational background
 
 - 2009-09 ~ 2013-06 &nbsp;&nbsp; Bachelor of WuHan University &nbsp;&nbsp; Major: Computer Science and Technology
 
-## Open Source Projects
+## Open source projects
 
 - [Mobi.css](https://github.com/xcatliu/mobi.css): A lightweight, flexible css framework that focus on mobile
 - [react-ie8](https://github.com/xcatliu/react-ie8): Make your React app work in IE8

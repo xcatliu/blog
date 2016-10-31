@@ -10,7 +10,7 @@
     <small>
       <%-
         page.tags.map((tag) =>
-          `<a class="text-muted" href="${tag.permalink}">#${tag.name}</a>`).join(' , ')
+          `<a class="text-muted" href="${url_for(tag.path)}">#${tag.name}</a>`).join(' , ')
       %>
     </small>
   </div>

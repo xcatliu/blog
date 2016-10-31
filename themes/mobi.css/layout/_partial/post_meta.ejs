@@ -10,7 +10,7 @@
     <%= __('post.in') %>
     <%-
       post.categories.map((category) =>
-        `<a class="text-muted" href="${category.permalink}">${category.name}</a>`).join(' > ')
+        `<a class="text-muted" href="${url_for(category.path)}">${category.name}</a>`).join(' > ')
     %>
   </small>
 </div>

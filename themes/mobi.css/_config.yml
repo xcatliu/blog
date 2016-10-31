@@ -18,6 +18,20 @@ menu:
     icon: user
     align: right
 
+sidebar:
+  title: true
+  subtitle: false
+  avatar: /assets/about/xcatliu_512.png
+  description: true
+  social:
+    GitHub: https://github.com/xcatliu
+    Twitter: https://twitter.com/xcatliu
+    Gmail: mailto:xcatliu@gmail.com
+  links:
+    "James Pan's Blog": https://blog.jamespan.me/
+    康瑞部落: http://www.kangry.net/blog/
+  toc: true
+
 disqus_shortname: xcatliu
 
 # Google Analytics

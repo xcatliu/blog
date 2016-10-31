@@ -1,7 +1,7 @@
 <ul class="top-gap-big text-muted">
   <% page.posts.forEach((post, index) => { %>
     <li>
-      <a href="<%= post.permalink %>">
+      <a href="<%= url_for(post.path) %>">
         <%= post.title %>
       </a>
     </li>
