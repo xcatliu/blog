@@ -2,8 +2,9 @@
 title: Links
 ---
 
-- [James Pan's Blog](https://blog.jamespan.me/)
 - [康瑞部落](http://www.kangry.net/blog/)
+- [创造狮](http://chuangzaoshi.com/)
+- [James Pan's Blog](https://blog.jamespan.me/)
 - [搞机男](http://www.gaojinan.com/)
 - [久久日记本](http://blog.99diary.com/)
 - [Augix](http://augix.me/)
