@@ -107,5 +107,5 @@ tags:
 在其他平台上查看：
 
 - [阅读原文](http://blog.xcatliu.com/2017/01/06/2016_summery/)
-- [v2ex]()
+- [v2ex](https://www.v2ex.com/t/332724)
 - [知乎专栏](https://zhuanlan.zhihu.com/p/24753057)
