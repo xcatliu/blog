@@ -56,4 +56,4 @@ tags:
 - 作者：[xcatliu](https://github.com/xcatliu/)
 - 字数统计：约 6 万字（直接统计的字符数）
 
-更多介绍请[进入 GitHub]((https://github.com/xcatliu/typescript-tutorial)) 查看。
+更多介绍请[进入 GitHub](https://github.com/xcatliu/typescript-tutorial) 查看。
