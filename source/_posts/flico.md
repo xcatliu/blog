@@ -15,6 +15,8 @@ tags:
 
 目前用起来还不错，比 2016 mbp 13 寸大一些。
 
+<!-- more -->
+
 ![FLICO-01](/assets/flico/FLICO-01.jpeg)
 ![FLICO-02](/assets/flico/FLICO-02.jpeg)
 ![FLICO-03](/assets/flico/FLICO-03.jpeg)
