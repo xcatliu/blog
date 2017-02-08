@@ -32,7 +32,7 @@ Whenever you see this lovely cat, yeah that's me!
 - [Mobi.css](https://github.com/xcatliu/mobi.css): A lightweight, flexible css framework that focus on mobile
 - [react-ie8](https://github.com/xcatliu/react-ie8): Make your React app work in IE8
 - [JekyllCN](https://github.com/xcatliu/jekyllcn): Jekyll 的中文翻译网站
-- [From JavaScript to TypeScript](https://github.com/xcatliu/from-javascript-to-typescript): 一本面向 JavaScript 程序员的 TypeScript 学习教程
+- [TypeScript 入门教程](https://github.com/xcatliu/typescript-tutorial): 从 JavaScript 程序员的角度总结思考，循序渐进的理解 TypeScript
 
 Other projects that I have contributed can found in [github.com/xcatliu](https://github.com/xcatliu).
 
