@@ -17,6 +17,14 @@ tags:
 - [Live Demo](http://xcatliu.com/)
 - [GitHub](https://github.com/xcatliu/xcatliu.github.io)
 
+## 特点
+
+1. 托管在 GitHub Pages 上，不需要服务器，不需要注册域名（也可以绑定自己的域名）
+2. 使用 GitHub Pages 上的 Jekyll 自动构建，不需要任何学习成本
+3. 所有内容均配置化，一看就知道如何修改
+4. GitHub Repos 的信息会自动抓取
+5. 适配了桌面端和移动端，简单精致
+
 ## 创建自己的页面
 
 > 注意，下面使用 `{{ }}` 包装的部分需要替换为你自己的内容
