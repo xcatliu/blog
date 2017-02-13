@@ -30,9 +30,9 @@ tags:
 > 注意，下面使用 `${}` 包装的部分需要替换为你自己的内容
 
 1. Fork [这个仓库](https://github.com/xcatliu/xcatliu.github.io)
-2. 将仓库名更新为 `${ YOUR_GITHUB_ID }.github.io`
-3. 更新 `CNAME` 为 `${ YOUR_DOMAIN }`，并且在域名的 DNS Records 中，为它添加一个 CNAME 记录指向 `${ YOUR_GITHUB_ID }.github.io`（如果你没有域名，将此文件留空即可）
+2. 将仓库名更新为 `${YOUR_GITHUB_ID}.github.io`
+3. 更新 `CNAME` 为 `${ YOUR_DOMAIN }`，并且在域名的 DNS Records 中，为它添加一个 CNAME 记录指向 `${YOUR_GITHUB_ID}.github.io`（如果你没有域名，将此文件留空即可）
 4. 更新 `_config.yml` 以及 `assets/img/` 中的图片资源
-5. 打开 `${ YOUR_DOMAIN }` 看看吧！（如果你没有域名，请打开 `${ YOUR_GITHUB_ID }.github.io`）
+5. 打开 `${YOUR_DOMAIN}` 看看吧！（如果你没有域名，请打开 `${YOUR_GITHUB_ID}.github.io`）
 
 来创建自己的 About Me 页面吧！
