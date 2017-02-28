@@ -22,7 +22,7 @@ title: Links
 - [ranchoh](http://dbview.org/)
 - [学院](http://xueyuan.me/)
 - [BFDZ](http://www.bfdz.ink/)
-- [Hanxv's Blog](http://hanxv.pw/)
+- [Hanxv's Blog](https://hanxv.pw/)
 - [Love Coding](http://www.leetao94.cn/)
 - [DoraJDJ's Zone](https://yudachi.biz/)
 - [I'm tracyone](http://onetracy.com/)
