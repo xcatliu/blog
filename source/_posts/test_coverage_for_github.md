@@ -12,13 +12,10 @@ tags:
 
 ![pagic test coverage](/assets/test_coverage_for_github/pagic.png)
 
-上图中的 `build passing` 表示 [travis](https://travis-ci.org/xcatliu/pagic) build 通过了，用绿色背景显示，表明很安全。
-
-`npm v0.4.1` 表示最新版本是 `v0.4.1`，用橙色背景显示，表明是不稳定的版本。
-
-`downloads 165/month` 表示最近一个月 npm 里的下载数量为 165 次，用黄绿色背景显示，表明 165 次已经比较多了，但是还不算最好的成绩。
-
-`coverage 100%` 表示测试覆盖率达到了 100%，用绿色背景显示，表明很安全。
+- 上图中的 `build passing` 表示 [travis](https://travis-ci.org/xcatliu/pagic) build 通过了，用绿色背景显示，表明很安全。
+- `npm v0.4.1` 表示最新版本是 `v0.4.1`，用橙色背景显示，表明是不稳定的版本。
+- `downloads 165/month` 表示最近一个月 npm 里的下载数量为 165 次，用黄绿色背景显示，表明 165 次已经比较多了，但是还不算最好的成绩。
+- `coverage 100%` 表示测试覆盖率达到了 100%，用绿色背景显示，表明很安全。
 
 介绍 GitHub 与 Travis CI 结合的文章已经很多了，本篇文章主要介绍一下测试覆盖率的概念以及如何将测试覆盖率的 badge 添加到 README.md 中。
 
