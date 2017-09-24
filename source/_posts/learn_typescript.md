@@ -1,7 +1,7 @@
 ---
 title: Learn TypeScript
 categories:
-- Programmer
+- 程序员
 tags:
 - TypeScript
 - JavaScript

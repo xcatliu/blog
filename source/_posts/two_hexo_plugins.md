@@ -1,7 +1,7 @@
 ---
 title: 撸了两个 Hexo 的 Plugins
 categories:
-- Programmer
+- 程序员
 tags:
 - Hexo
 - JavaScript

@@ -1,0 +1,26 @@
+favicon: /favicon.ico
+
+sidebar:
+  title: true
+  subtitle: true
+  description: false
+  avatar: /assets/about/xcatliu_512.png
+  welcome: 欢迎访问流浪小猫的博客，这里搜集了我的技术文章和生活感悟，希望能够与您一起交流，共同成长。
+  social:
+    - url: https://github.com/xcatliu
+      icon: czs-github
+    - url: https://www.v2ex.com/member/xcatliu
+      icon: czs-v2ex
+    - url: https://twitter.com/xcatliu
+      icon: czs-twitter
+    - url: mailto:xcatliu@gmail.com
+      icon: czs-message-l
+    - url: /atom.xml
+      icon: czs-rss
+
+disqus_shortname: xcatliu
+
+# Google Analytics
+google_analytics: UA-45256157-6
+
+since: 2012

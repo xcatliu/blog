@@ -1,7 +1,7 @@
 ---
 title: 从 isArray 谈起
 categories:
-- Programmer
+- 程序员
 tags:
 - Array
 - JavaScript

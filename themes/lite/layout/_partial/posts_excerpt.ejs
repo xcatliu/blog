@@ -1,0 +1,59 @@
+<ul class="top-gap-big theme-posts-ul">
+  <% page.posts.forEach((post, index) => { %>
+    <li>
+      <a href="<%= url_for(post.path) %>" class="theme-header-link">
+        <h2><%= post.title %></h2>
+      </a>
+      <div class="text-small text-muted">
+        <i class="czs-user-l"></i>
+        <a class="text-muted theme-text-no-decoration" href="https://github.com/<%= post.author %>"><%= post.author %></a>
+        <span class="theme-separator">·</span>
+        <i class="czs-bookmark-l"></i>
+        <%-
+          post.categories.map((category) =>
+            `<a class="text-muted theme-text-no-decoration" href="${url_for(category.path)}">${category.name}</a>`).join(' > ')
+        %>
+        <span class="theme-comment-count-container theme-hide theme-comment-count-container-transparent">
+          <span class="theme-separator">·</span>
+          <a class="text-muted theme-text-no-decoration" href="<%= url_for(post.path) %>#disqus_thread">
+            <i class="czs-comment-l"></i>
+            <span class="disqus-comment-count theme-comment-count" data-disqus-identifier="<%= post.path %>"></span>
+          </a>
+        </span>
+      </div>
+      <% if (post.excerpt) { %>
+        <% if (post.excerpt.indexOf('<p') === 0) { %>
+          <%- post.excerpt %>
+        <% } else { %>
+          <p><%- post.excerpt %></p>
+        <% } %>
+          <p><a class="text-muted" href="<%= url_for(post.path) %>#more">
+            <%= __('more') %>
+          </a></p>
+      <% } %>
+      <div class="top-gap-big theme-posts-gap"></div>
+    </li>
+  <% }); %>
+</ul>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.theme-comment-count-container').forEach(function (countContainerNode) {
+    var countNode = countContainerNode.querySelector('.theme-comment-count');
+    var cycles = 0;
+    var countInterval = setInterval(function () {
+      cycles += 1;
+      var count = countNode.innerText;
+      if (count !== '' || cycles > 10) {
+        clearInterval(countInterval);
+      }
+      if (count > 0) {
+        countContainerNode.classList.remove('theme-hide');
+        setTimeout(function () {
+          countContainerNode.classList.remove('theme-comment-count-container-transparent');
+        }, 0);
+      }
+    }, 1000)
+  });
+});
+</script>

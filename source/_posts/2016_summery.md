@@ -1,13 +1,11 @@
 ---
-title: 流浪小猫的 2016 年总结
+title: 我的 2016 年总结
 date: 2017-01-06
 categories:
-- Life
+- 生活
 tags:
 - Summary
 ---
-
-我的 2016 总结成一句话就是：
 
 > 在迷惘中坚持，在交流中成长。
 
@@ -64,7 +62,7 @@ tags:
 - 开源了 [Mobi.css]( https://github.com/xcatliu/mobi.css)，一个轻量灵活的移动端 CSS 框架。并[在 7 天内获得了 600 个 Stars]( https://www.v2ex.com/t/304129)
 - 做了个 Markdown 编辑器[码字 md](http://mazimd.com)
 - 给 SimpleMDE [添加了主题系统](https://github.com/xcatliu/simplemde-theme-base)
-- 产生了[各种各样稀奇古怪的点子](https://github.com/open-ideas-club/ideas)
+- 产生了[各种各样稀奇古怪的点子](https://github.com/open-创意-club/创意)
 
 持续的贡献，也让我收获了一些 stars 和 follows，慢慢的开始有人叫我大神。
 

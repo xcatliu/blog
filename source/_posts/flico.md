@@ -1,10 +1,11 @@
 ---
-title: 晒键盘 - 斐尔可（ FILCO） FKBC87MC/EFB2「87 双模忍者圣手二代」蓝牙有线双模机械键盘 黑色青轴
+title: 晒键盘 - FILCO 87 双模忍者圣手二代 黑色青轴
 categories:
-- Life
+- 生活
 tags:
 - Flico
 - Keyboard
+excerpt: <img alt="FLICO-05" src="/assets/flico/FLICO-05.jpeg" />
 ---
 
 > 发表在 V2EX 上：https://www.v2ex.com/t/337333
@@ -14,8 +15,6 @@ tags:
 没抢到什么优惠券，狠下心还是入手了。
 
 目前用起来还不错，比 2016 mbp 13 寸大一些。
-
-<!-- more -->
 
 ![FLICO-01](/assets/flico/FLICO-01.jpeg)
 ![FLICO-02](/assets/flico/FLICO-02.jpeg)

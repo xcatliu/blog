@@ -2,7 +2,7 @@
 title: 7 天 600 stars， Mobi.css 是如何诞生的
 date: 2016-09-05
 categories:
-- Programmer
+- 程序员
 tags:
 - Mobi.css
 - Summary

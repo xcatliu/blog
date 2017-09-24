@@ -2,7 +2,7 @@
 title: Hybrid App & WebViewJavascriptBridge
 date: 2014-10-27
 categories:
-- Programmer
+- 程序员
 tags:
 - Hybrid App
 - WebViewJavascriptBridge

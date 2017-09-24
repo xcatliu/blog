@@ -2,7 +2,7 @@
 title: 武汉宣讲会
 date: 2015-09-28
 categories:
-- Life
+- 生活
 tags:
 - Summary
 ---

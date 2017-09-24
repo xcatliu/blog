@@ -1,0 +1,95 @@
+<div class="theme-sidebar-mask theme-hide"></div>
+<aside class="theme-sidebar-wrapper">
+  <div class="container flex-left units-gap theme-header-container">
+    <a class="unit-0 theme-header-icon theme-icon-link" href="/archives">
+      <i class="czs-folder-l"></i>
+    </a>
+    <a class="unit-0 theme-header-icon theme-icon-link" href="/categories">
+      <i class="czs-bookmark-l"></i>
+    </a>
+    <a class="unit-0 theme-header-icon theme-icon-link" href="/tags">
+      <i class="czs-tag-l"></i>
+    </a>
+    <div class="unit"></div>
+    <a class="unit-0 theme-header-icon theme-icon-link" href="http://xcatliu.com">
+      <i class="czs-user-l"></i>
+    </a>
+  </div>
+  <div class="container">
+    <% Object.keys(theme.sidebar).forEach((key) => {
+      if (!theme.sidebar[key]) return;
+      switch (key) {
+        case 'title': %>
+          <h2><%= config.title %></h2>
+        <% break;
+        case 'subtitle': %>
+          <p class="top-gap-0 text-muted"><%= config.subtitle %></p>
+        <% break;
+        case 'description': %>
+          <p><%= config.description %></p>
+        <% break;
+        case 'avatar': %>
+          <div class="flex-left flex-middle top-gap">
+            <img alt="Avatar" height="24" src="<%= theme.sidebar.avatar %>"/>
+            <span class="theme-sidebar-author"><%= config.author %></span>
+          </div>
+        <% break;
+        case 'welcome': %>
+          <p><%= theme.sidebar.welcome %></p>
+        <% break;
+        case 'social': %>
+          <p>
+            <% theme.sidebar.social.forEach(({ url, icon }) => { %>
+              <a class="theme-icon-link theme-sidebar-social" target="_blank" href="<%= url %>"><i class="<%= icon %>"></i></a>
+            <% }) %>
+          </p>
+        <% break;
+        case 'links': %>
+          <h5><%= __('sidebar.links') %></h5>
+          <p class="text-muted">
+            <small>
+              <ul class="theme-list-style-none">
+                <%- Object.keys(theme.sidebar[key]).map((name) =>
+                  `<li><a class="text-muted" href="${theme.sidebar[key][name]}">${name}</a></li>`
+                ).join('') %>
+              </ul>
+            </small>
+          </p>
+        <% break;
+        case 'toc':
+          if (is_post()) { %>
+            <h5><%= __('sidebar.toc') %></h5>
+            <small><%- toc(page.content, { list_number: false }) %></small>
+          <% }
+          break;
+        default:
+          if (key.indexOf('custom_') === 0) { %>
+            <%- theme.sidebar[key] %>
+          <% }
+      }
+    }) %>
+  </div>
+</aside>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var themeSidebarWrapper = document.querySelector('.theme-sidebar-wrapper');
+  var themeHeaderSidebarIcon = document.querySelector('.theme-header-sidebar-icon');
+  var themeSidebarMask = document.querySelector('.theme-sidebar-mask');
+  var themeBody = document.querySelector('.theme-body');
+  themeHeaderSidebarIcon.addEventListener('click', function() {
+    themeSidebarMask.classList.remove('theme-hide');
+    setTimeout(function() {
+      themeBody.classList.add('theme-body-open-sidebar');
+    }, 0);
+  });
+
+  var themeSidebarMask = document.querySelector('.theme-sidebar-mask');
+  themeSidebarMask.addEventListener('click', function() {
+    themeBody.classList.remove('theme-body-open-sidebar');
+    setTimeout(function() {
+      themeSidebarMask.classList.add('theme-hide');
+    }, 300);
+  });
+});
+</script>

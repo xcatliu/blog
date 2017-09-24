@@ -1,7 +1,7 @@
 ---
 title: 在 Windows 中配置 Linux 工作环境
 categories:
-- Programmer
+- 程序员
 tags:
 - VituralBox
 - Linux

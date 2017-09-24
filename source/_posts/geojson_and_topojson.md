@@ -2,7 +2,7 @@
 title: GeoJSON 和 TopoJSON
 date: 2015-04-24
 categories:
-- Programmer
+- 程序员
 tags:
 - GeoJSON
 - TopoJSON

@@ -1,12 +1,16 @@
 ---
 title: 三分钟创建一个简单精致的 About Me 页面
 categories:
-- Programmer
+- 程序员
 tags:
 - About
 - GitHub
 - Jekyll
 ---
+
+> 通过 Fork 一个仓库，创建基于 GitHub Pages 的 About Me 页面。
+
+<!-- more -->
 
 一个「About Me」页面，能够使别人快速的对你有一个大致的了解。
 

@@ -2,7 +2,7 @@
 title: V2HOT 终于上线了，欢迎下载
 date: 2015-05-16
 categories:
-- Programmer
+- 程序员
 tags:
 - V2HOT
 - V2EX

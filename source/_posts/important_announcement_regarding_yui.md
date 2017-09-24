@@ -1,7 +1,7 @@
 ---
 title: 关于 YUI 的重要公告
 categories:
-- Programmer
+- 程序员
 tags:
 - YUI
 - JavaScript

@@ -2,7 +2,7 @@
 title: 码字 md - 干净精致的 Markdown 编辑器
 date: 2017-01-01
 categories:
-- Programmer
+- 程序员
 tags:
 - mazimd
 - Markdown

@@ -1,11 +1,12 @@
 ---
 title: GitHub 上的测试覆盖率
 categories:
-- Programmer
+- 程序员
 tags:
 - Coverage
 - Test
 - GitHub
+excerpt: 介绍 GitHub 与 Travis CI 结合的文章已经很多了，本篇文章主要介绍一下测试覆盖率的概念以及如何将测试覆盖率的 badge 添加到 README.md 中。
 ---
 
 开源项目的 README.md 中，一般都会在前面放上一些 badge，除了可以让读者快速的了解项目的一些信息以外，还为 README.md 添加了些许色彩。以 [Pagic](https://github.com/xcatliu/pagic) 为例：
@@ -18,8 +19,6 @@ tags:
 - `coverage 100%` 表示测试覆盖率达到了 100%，用绿色背景显示，表明很安全。
 
 介绍 GitHub 与 Travis CI 结合的文章已经很多了，本篇文章主要介绍一下测试覆盖率的概念以及如何将测试覆盖率的 badge 添加到 README.md 中。
-
-<!-- more -->
 
 ## 统一 badge
 

@@ -2,7 +2,7 @@
 title: 展望 2015
 date: 2015-01-01
 categories:
-- Life
+- 生活
 tags:
 - Plan
 - Summary

@@ -1,0 +1,105 @@
+<div class="flex-center theme-header-wrapper">
+  <div class="container flex-left units-gap theme-header-container">
+    <a href="/" class="unit-0 theme-header-icon theme-icon-link">
+      <i class="czs-home-l"></i>
+    </a>
+    <div class="flex-center text-center flex-middle unit theme-header-title theme-header-title-no-transition">
+      <%= config.title %>
+    </div>
+    <a class="unit-0 theme-header-icon theme-icon-link theme-header-sidebar-icon" href="javascript:void(0);">
+      <i class="czs-menu-l"></i>
+    </a>
+  </div>
+</div>
+<div class="theme-header-placeholder"></div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var themeHeaderTitle = document.querySelector('.theme-header-title');
+  fitThemeHeaderTitleSize();
+
+  function fitThemeHeaderTitleSize() {
+    var currentFontSize = 20;
+    do {
+      themeHeaderTitle.style.fontSize = currentFontSize + 'px';
+      currentFontSize -= 1;
+    } while (getHeight(themeHeaderTitle) > 36);
+    function getHeight() {
+      return parseInt(getComputedStyle(themeHeaderTitle).height);
+    }
+    function getFontSize() {
+      return parseInt(getComputedStyle(themeHeaderTitle).fontSize);
+    }
+  }
+
+  var firstH1 = document.getElementsByTagName('h1')[0];
+  var originHeaderText = themeHeaderTitle.innerText;
+  if (firstH1) {
+    document.addEventListener('scroll', throttle(function() {
+      var bottom = firstH1.getBoundingClientRect().bottom;
+      if (bottom < 44.5) {
+        setTitleText(firstH1.innerText, false);
+      } else {
+        setTitleText(originHeaderText, true);
+      }
+
+      function setTitleText(text, isIn) {
+        if (themeHeaderTitle.innerText === text) {
+          return;
+        }
+        var top = isIn ? 10 : -10;
+        themeHeaderTitle.classList.add('theme-header-title-transparent');
+        themeHeaderTitle.style.top = top + 'px';
+        setTimeout(function() {
+          themeHeaderTitle.classList.add('theme-header-title-no-transition');
+          themeHeaderTitle.style.top = -top + 'px';
+          setTimeout(function() {
+            themeHeaderTitle.classList.remove('theme-header-title-no-transition');
+            themeHeaderTitle.classList.remove('theme-header-title-transparent');
+            themeHeaderTitle.style.top = '0px';
+            themeHeaderTitle.innerText = text;
+            fitThemeHeaderTitleSize();
+          }, 17);
+        }, 150);
+      }
+    }, 300));
+  }
+
+  // Returns a function, that, when invoked, will only be triggered at most once
+  // during a given window of time. Normally, the throttled function will run
+  // as much as it can, without ever going more than once per `wait` duration;
+  // but if you'd like to disable the execution on the leading edge, pass
+  // `{leading: false}`. To disable execution on the trailing edge, ditto.
+  function throttle(func, wait, options) {
+    var context, args, result;
+    var timeout = null;
+    var previous = 0;
+    if (!options) options = {};
+    var later = function() {
+      previous = options.leading === false ? 0 : Date.now();
+      timeout = null;
+      result = func.apply(context, args);
+      if (!timeout) context = args = null;
+    };
+    return function() {
+      var now = Date.now();
+      if (!previous && options.leading === false) previous = now;
+      var remaining = wait - (now - previous);
+      context = this;
+      args = arguments;
+      if (remaining <= 0 || remaining > wait) {
+        if (timeout) {
+          clearTimeout(timeout);
+          timeout = null;
+        }
+        previous = now;
+        result = func.apply(context, args);
+        if (!timeout) context = args = null;
+      } else if (!timeout && options.trailing !== false) {
+        timeout = setTimeout(later, remaining);
+      }
+      return result;
+    };
+  };
+});
+</script>

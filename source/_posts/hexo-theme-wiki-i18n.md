@@ -2,7 +2,7 @@
 title: 新姿势：在 GitHub 基于 Hexo 写 Wiki
 date: 2016-06-25
 categories:
-- Programmer
+- 程序员
 tags:
 - Wiki
 - Hexo

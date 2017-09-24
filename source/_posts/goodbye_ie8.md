@@ -1,7 +1,7 @@
 ---
 title: Goodbye IE8
 categories:
-- Programmer
+- 程序员
 tags:
 - IE8
 - GitHub

@@ -2,7 +2,7 @@
 title: Fetch API
 date: 2015-11-08
 categories:
-- Programmer
+- 程序员
 tags:
 - Fetch
 - Translate

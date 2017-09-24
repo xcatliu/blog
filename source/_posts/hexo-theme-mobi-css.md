@@ -1,10 +1,11 @@
 ---
 title: 基于 Mobi.css 的官方 Hexo 主题
 categories:
-- Programmer
+- 程序员
 tags:
 - Hexo
 - Mobi.css
+excerpt: 基于 Mobi.css 的官方 Hexo 主题
 ---
 
 GitHub: https://github.com/xcatliu/hexo-theme-mobi.css

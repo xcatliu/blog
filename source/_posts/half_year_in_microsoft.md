@@ -2,7 +2,7 @@
 title: 我来微软这半年
 date: 2016-10-23
 categories:
-- Programmer
+- 程序员
 tags:
 - Summary
 - Microsoft

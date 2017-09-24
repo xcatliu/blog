@@ -2,7 +2,7 @@
 title: 抽象语法树在 JavaScript 中的应用
 date: 2014-10-08
 categories:
-- Programmer
+- 程序员
 tags:
 - AST
 - UglifyJS

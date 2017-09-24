@@ -2,7 +2,7 @@
 title: Modular JS
 date: 2014-03-06
 categories:
-- Programmer
+- 程序员
 tags:
 - Modular
 - JavaScript

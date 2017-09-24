@@ -2,7 +2,7 @@
 title: JavaScript Fetch API
 date: 2015-11-10
 categories:
-- Programmer
+- 程序员
 tags:
 - Fetch
 - JavaScript

@@ -2,7 +2,7 @@
 title: 校招季
 date: 2014-11-03
 categories:
-- Life
+- 生活
 tags:
 - Campus
 ---

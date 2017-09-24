@@ -2,7 +2,7 @@
 title: 「Mobi.css」轻量，灵活的移动端 css 框架
 date: 2016-08-29
 categories:
-- Programmer
+- 程序员
 tags:
 - Mobi.css
 - CSS

@@ -1,7 +1,7 @@
 ---
 title: 随手撸了个测试屏幕坏点的网页
 categories:
-- Programmer
+- 程序员
 tags:
 - Hack1day
 - V2EX

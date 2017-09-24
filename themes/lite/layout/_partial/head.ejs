@@ -1,0 +1,39 @@
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+
+  <% /* #238, Disable Baidu tranformation */ %>
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+  <% if (theme.google_site_verification) { %>
+    <meta name="google-site-verification" content="<%= theme.google_site_verification %>" />
+  <% } %>
+  <% if (theme.baidu_site_verification) { %>
+    <meta name="baidu-site-verification" content="<%= theme.baidu_site_verification %>" />
+  <% } %>
+  <% if (theme.qihu_site_verification) { %>
+    <meta name="360-site-verification" content="<%= theme.qihu_site_verification %>" />
+  <% } %>
+
+  <%- css([
+    'css/mobi.css-3.0.4/dist/mobi.min.css',
+    'css/caomei1.2.1/style.css',
+    'css/theme.css'
+  ]) %>
+
+  <% if (page.tags && page.tags.length) { %>
+    <meta name="keywords" content="<%= page.tags.map((tag) => tag.name).join(', ') %>" />
+  <% } %>
+
+  <% if (config.feed && config.feed.path) { %>
+    <link rel="alternate" href="<%= url_for(config.feed.path) %>" title="<%= config.title %>" type="application/atom+xml" />
+  <% } %>
+
+  <% if (theme.favicon) { %>
+    <%- favicon_tag(theme.favicon) %>
+  <% } %>
+
+  <title><%= (page.title ? (page.title + ' - ') : '') + config.title %></title>
+</head>

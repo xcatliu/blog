@@ -2,7 +2,7 @@
 title: React Native and V2HOT
 date: 2015-07-10
 categories:
-- Programmer
+- 程序员
 tags:
 - React Native
 - V2HOT

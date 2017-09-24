@@ -1,7 +1,7 @@
 ---
 title: 假如人类灭绝了，可以留给下一个文明有限的遗产，那么该留些什么呢？
 categories:
-- Ideas
+- 创意
 tags:
 - V2EX
 ---

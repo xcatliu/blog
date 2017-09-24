@@ -1,7 +1,7 @@
 ---
 title: 高级工程师之路
 categories:
-- Programmer
+- 程序员
 tags:
 - Senior
 - Summary

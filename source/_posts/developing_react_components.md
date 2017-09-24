@@ -2,7 +2,7 @@
 title: React 组件开发
 date: 2015-06-26
 categories:
-- Programmer
+- 程序员
 tags:
 - React
 - JavaScript
