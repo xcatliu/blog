@@ -1,7 +1,7 @@
 ---
 title: 在 Chrome 中调试 Android 浏览器
 categories:
-- 程序员
+- Programmer
 tags:
 - Debug
 - Android

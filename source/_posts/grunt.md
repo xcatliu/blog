@@ -2,7 +2,7 @@
 title: Grunt
 date: 2013-09-27
 categories:
-- 程序员
+- Programmer
 tags:
 - Grunt
 - JavaScript
@@ -25,8 +25,6 @@ grunt.registerTask('dist', ['concat:dist', 'uglify:dist']); // 可以写任务�
 grunt.registerTask('default', 'default task description', 'build'); // 可以定义带冒号的任务
 grunt.registerTask('build:dist', ['concat:dist', 'uglify:dist']);
 ```
-
-<!-- more -->
 
 ### Function Task
 

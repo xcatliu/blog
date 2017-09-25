@@ -2,7 +2,7 @@
 title: 我来微软这半年
 date: 2016-10-23
 categories:
-- 程序员
+- Programmer
 tags:
 - Summary
 - Microsoft
@@ -30,8 +30,6 @@ tags:
 在美团，我带的团队曾经一个多月就完成了包括 iOS 和 Android 的一个完整的 Hybrid 项目。
 
 在微软，这几乎是不可能的事情。
-
-<!-- more -->
 
 做一个 Feature 之前，需要对各个方面进行审核：
 

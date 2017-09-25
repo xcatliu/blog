@@ -2,7 +2,7 @@
 title: 设计模式浅析
 date: 2014-10-24
 categories:
-- 程序员
+- Programmer
 tags:
 - Design Pattern
 - Share

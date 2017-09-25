@@ -1,0 +1,17 @@
+more: Read more
+
+title:
+  archives: Archives
+  categories: Categories
+  tags: Tags
+  home: Home
+  more: More
+
+sidebar:
+  social: Social network
+  toc: Table of content
+  links: Links
+
+footer:
+  powered: "Powered by %s"
+  theme: Theme

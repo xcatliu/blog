@@ -2,10 +2,11 @@
 title: Modular JS
 date: 2014-03-06
 categories:
-- 程序员
+- Programmer
 tags:
 - Modular
 - JavaScript
+excerpt: 分享一个我在组内分享的 Slide
 ---
 
 > Slide：http://slides.com/xcatliu/modular_js/
@@ -26,8 +27,6 @@ tags:
 - 动态加载
 - 服务器端 js，CommonJS
 - 发展到客户端 AMD
-
-<!-- more -->
 
 ## CommonJS
 

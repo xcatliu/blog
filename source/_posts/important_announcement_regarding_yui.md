@@ -1,11 +1,12 @@
 ---
 title: 关于 YUI 的重要公告
 categories:
-- 程序员
+- Programmer
 tags:
 - YUI
 - JavaScript
 - Translate
+excerpt: 翻译《Important Announcement Regarding YUI》
 ---
 
 > 原文：[Important Announcement Regarding YUI](http://yahooeng.tumblr.com/post/96098168666/important-announcement-regarding-yui)
@@ -15,8 +16,6 @@ tags:
 正文：
 
 2005 年，雅虎创造了 YUI（[Yahoo User Interface library](http://yuilibrary.com/)），2006 年 2 月 13 日，[雅虎开源了 YUI](http://www.yuiblog.com/blog/2006/02/13/the-yahoo-user-interface-library/)。尽管从那时起 YUI 发生了巨大的演变，但它的宗旨始终都是为 web 富应用的开发提供包罗万象的工具。一直以来，YUI 都是雅虎的重要部分，无数行基于 YUI 的代码到现在仍运行在雅虎的网站上。然而我们很清楚，web 技术正在朝着一个新的方向发展。
-
-<!-- more -->
 
 众所周知，web 技术在过去几年经历了巨大的转型。JavaScript 已经越来越流行。Node.JS 的出现使得 JavaScript 得以在服务器端运行，为创造前后端统一的单页应用开启了一座大门。新的包管理工具（npm，bower）激发了第三方开发者，构建了完整的生态系统，推动了开源、单一目标、拥抱 UNIX 哲学的模块开发，促进了复杂用例的发展。新的构建工具（Grunt 和其完整的生态系统、Broccoli、Gulp）使得组装小模块成为大而精密结合的应用变得容易。新的框架（Backbone、React、Ember、Polymer、Angular 等）使得构建可伸缩可复用的 web 应用成为可能。新的测试工具（Mocha、Casper、Karma 等）降低了构建持续测试体系的成本。与此同时，国际标准（W3C、Ecma）一直在制定大型 JavaScript 框架的规范，浏览器厂商也在致力于实现上述规范。借助于「自升级浏览器」（使用户可以一直保持最新版本的浏览器），未来各浏览器的差异应该会越来越小。
 

@@ -2,7 +2,7 @@
 title: Hybrid App & WebViewJavascriptBridge
 date: 2014-10-27
 categories:
-- 程序员
+- Programmer
 tags:
 - Hybrid App
 - WebViewJavascriptBridge
@@ -10,6 +10,8 @@ tags:
 ---
 
 > Hybrid App（混合模式移动应用）是指介于 Web App 和 Native App 这两者之间的 App，兼具「Native App 良好用户交互体验的优势」和「Web App 跨平台开发的优势」。
+
+<!-- more -->
 
 ## 实现原理
 
@@ -37,8 +39,6 @@ Hybrid App 的原理很简单——在原生应用中开启一个网页。可以
 以上问题可以带着关键字 Google 一下，一般均可以解决。
 
 处理了以上的问题之后，一个简单的 H5 页面就可以实现出来了，接下来就是 WebView 和 Native 之间的交互。
-
-<!-- more -->
 
 ### WebView 和 Native 之间的交互
 

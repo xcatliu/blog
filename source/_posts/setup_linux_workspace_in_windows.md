@@ -1,7 +1,7 @@
 ---
 title: 在 Windows 中配置 Linux 工作环境
 categories:
-- 程序员
+- Programmer
 tags:
 - VituralBox
 - Linux
@@ -10,13 +10,13 @@ tags:
 
 > 由于我的大部分项目都是基于 Linux 的，所以在 Windows 中配置一个 Linux 工作环境是非常有必要的（别问我为什么不用 MacBook 了 T_T）
 
+<!-- more -->
+
 2016-05-20 更新：可以使用更加先进的 [Hyper-V + Samba 方案](http://blog.xcatliu.com/2016/05/20/setup-linux-workspace-in-windows-using-hyper-v/)。
 
 要在 Windows 上使用 Linux，最方便最好用的就是装个虚拟机，再用 SSH 连上了。Linux 当然选择无图形界面的 Server 版，所以还需要能够方便的在 Windows 上访问到 Linux 上的文件。
 
 其中每一项都可以有很多选择，不过都是大同小异了。这里我选择的是 VituralBox + Ubuntu + PuTTY + Shared Folders。
-
-<!-- more -->
 
 ## VituralBox
 

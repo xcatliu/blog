@@ -2,7 +2,7 @@
 title: 我的 2016 年总结
 date: 2017-01-06
 categories:
-- 生活
+- Life
 tags:
 - Summary
 ---

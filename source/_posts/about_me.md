@@ -1,7 +1,7 @@
 ---
 title: 三分钟创建一个简单精致的 About Me 页面
 categories:
-- 程序员
+- Programmer
 tags:
 - About
 - GitHub

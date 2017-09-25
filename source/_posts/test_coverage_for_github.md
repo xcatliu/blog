@@ -1,7 +1,7 @@
 ---
 title: GitHub 上的测试覆盖率
 categories:
-- 程序员
+- Programmer
 tags:
 - Coverage
 - Test

@@ -2,11 +2,12 @@
 title: 码字 md - 干净精致的 Markdown 编辑器
 date: 2017-01-01
 categories:
-- 程序员
+- Programmer
 tags:
 - mazimd
 - Markdown
 - V2EX
+excerpt: 新写了一个 Online Markdown 编辑器，目前还不是很完善。先分享出来，希望大家会喜欢。
 ---
 
 > 发表在 V2EX 上：https://www.v2ex.com/t/332273

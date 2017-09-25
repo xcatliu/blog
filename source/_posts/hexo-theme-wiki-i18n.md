@@ -2,7 +2,7 @@
 title: 新姿势：在 GitHub 基于 Hexo 写 Wiki
 date: 2016-06-25
 categories:
-- 程序员
+- Programmer
 tags:
 - Wiki
 - Hexo
@@ -21,8 +21,6 @@ tags:
 - 插件，按字母顺序归档：[hexo-generator-archive-alphabet](https://github.com/xcatliu/hexo-generator-archive-alphabet)
 - 插件，按字母顺序归档（多语言版）：[hexo-generator-archive-alphabet-i18n](https://github.com/xcatliu/hexo-generator-archive-alphabet-i18n)
 - 插件，生成多语言的首页：[hexo-generator-index-i18n](https://github.com/xcatliu/hexo-generator-index-i18n)
-
-<!-- more -->
 
 ## 再上截图
 

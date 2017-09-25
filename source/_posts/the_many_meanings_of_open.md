@@ -2,9 +2,10 @@
 title: The Many Meanings of Open
 date: 2013-11-08
 categories:
-- 生活
+- Life
 tags:
 - Summary
+excerpt: 参加万维网之父、万维网联盟创始人见面会的感想
 ---
 
 ## 会议介绍
@@ -29,8 +30,6 @@ tags:
 今天天气晴朗，万里无云，我和小伙伴们吃完饭来到了大北航音乐厅，听 Tim 的演讲。
 
 主题是《The many meanings of 'open'》，分为了 5 个方面，下面总结一下要点：
-
-<!-- more -->
 
 ### 开放的万维网
 

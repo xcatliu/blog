@@ -1,7 +1,7 @@
 ---
 title: Bootstrap 4 初探
 categories:
-- 程序员
+- Programmer
 tags:
 - Bootstrap
 - CSS

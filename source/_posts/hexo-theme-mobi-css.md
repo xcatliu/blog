@@ -1,7 +1,7 @@
 ---
 title: 基于 Mobi.css 的官方 Hexo 主题
 categories:
-- 程序员
+- Programmer
 tags:
 - Hexo
 - Mobi.css

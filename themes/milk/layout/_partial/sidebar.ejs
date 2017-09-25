@@ -1,15 +1,7 @@
 <div class="theme-sidebar-mask theme-hide"></div>
 <aside class="theme-sidebar-wrapper">
   <div class="container flex-left units-gap theme-header-container">
-    <% theme.sidebar.menu.forEach(({ url, icon, placeholder }) => {
-      if (placeholder) { %>
-        <div class="unit"></div>
-      <% } else { %>
-        <a class="unit-0 theme-header-icon theme-icon-link" href="<%= url %>">
-          <i class="<%= icon %>"></i>
-        </a>
-      <% }
-    }); %>
+    <%- partial('icons', { icons: theme.sidebar.menu }) %>
   </div>
   <div class="container">
     <% Object.keys(theme.sidebar).forEach((key) => {
@@ -34,10 +26,8 @@
           <p><%= theme.sidebar.welcome %></p>
         <% break;
         case 'social': %>
-          <p>
-            <% theme.sidebar.social.forEach(({ url, icon }) => { %>
-              <a class="theme-icon-link theme-sidebar-social" target="_blank" href="<%= url %>"><i class="<%= icon %>"></i></a>
-            <% }) %>
+          <p class="theme-sidebar-social">
+            <%- partial('icons', { icons: theme.sidebar.social }) %>
           </p>
         <% break;
         case 'links': %>
@@ -59,33 +49,8 @@
           <% }
           break;
         default:
-          if (key.indexOf('custom_') === 0) { %>
-            <%- theme.sidebar[key] %>
-          <% }
+          <%- theme.sidebar[key] %>
       }
     }) %>
   </div>
 </aside>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  var themeSidebarWrapper = document.querySelector('.theme-sidebar-wrapper');
-  var themeHeaderSidebarIcon = document.querySelector('.theme-header-sidebar-icon');
-  var themeSidebarMask = document.querySelector('.theme-sidebar-mask');
-  var themeBody = document.querySelector('.theme-body');
-  themeHeaderSidebarIcon.addEventListener('click', function() {
-    themeSidebarMask.classList.remove('theme-hide');
-    setTimeout(function() {
-      themeBody.classList.add('theme-body-open-sidebar');
-    }, 0);
-  });
-
-  var themeSidebarMask = document.querySelector('.theme-sidebar-mask');
-  themeSidebarMask.addEventListener('click', function() {
-    themeBody.classList.remove('theme-body-open-sidebar');
-    setTimeout(function() {
-      themeSidebarMask.classList.add('theme-hide');
-    }, 300);
-  });
-});
-</script>

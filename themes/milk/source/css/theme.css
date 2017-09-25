@@ -5,7 +5,8 @@
 
 .theme-icon-link {
     color: #333;
-    font-size: 24px;
+}
+a.theme-icon-link {
     text-decoration: none;
 }
 
@@ -13,55 +14,22 @@ a.theme-text-no-decoration {
     text-decoration: none;
 }
 
-
-
-.theme-posts-ul {
-    padding-left: 0;
-    list-style: none;
-}
-
-.theme-header-link {
-    color: #333;
-}
-
 .theme-separator {
     margin: 0 0.2em;
 }
 
-.theme-comment-count-container {
-    opacity: 1;
-    transition: opacity 0.3s;
-}
-
-.theme-comment-count-container-transparent {
-    opacity: 0;
-}
-
-a.theme-icon-link {
-    text-decoration: none;
-}
-
-[class*="czs-"] {
-    position: relative;
-    top: 0.1em;
-}
-
-.theme-posts-gap {
+.theme-bfc {
     display: inline-block;
 }
 
-.theme-pagination .page-number,
-.theme-pagination .extend {
-    text-decoration: none;
-    padding: 0 7.5px;
-    margin: 0 7.5px;
+.theme-ul-no-style {
+    padding-left: 0;
+    list-style: none;
 }
 
-.theme-pagination .page-number.current,
-.theme-pagination .space {
-    color: #777;
-}
 
+
+/* Header */
 .theme-header-wrapper {
     position: fixed;
     width: 100%;
@@ -93,29 +61,21 @@ a.theme-icon-link {
 .theme-header-title-transparent {
     opacity: 0;
 }
-.theme-header-title-relative-top {
-    top: -10px;
-}
-.theme-header-title-relative-bottom {
-    top: 10px;
-}
 .theme-header-title-no-transition {
     transition-property: none;
+}
+
+.theme-header-link {
+    color: #333;
 }
 
 .theme-header-icon {
     min-width: 39px;
 }
 
-.theme-sidebar-author {
-    font-weight: normal;
-    margin-left: 0.5em;
-}
-
 
 
 /* Sidebar */
-
 .theme-sidebar-wrapper {
     position: fixed;
     top: 0;
@@ -139,7 +99,6 @@ a.theme-icon-link {
 }
 .theme-body-open-sidebar {
     right: 250px;
-    overflow: hidden;
 }
 
 .theme-sidebar-mask {
@@ -160,7 +119,47 @@ a.theme-icon-link {
 
 .theme-sidebar-social {
     font-size: 20px;
+}
+.theme-sidebar-social .theme-icon-link {
     margin-right: 0.2em;
+}
+
+.theme-sidebar-author {
+    margin-left: 0.5em;
+}
+
+
+
+/* Pagination */
+.theme-pagination .page-number,
+.theme-pagination .extend {
+    text-decoration: none;
+    padding: 0 7.5px;
+    margin: 0 7.5px;
+}
+
+.theme-pagination .page-number.current,
+.theme-pagination .space {
+    color: #777;
+}
+
+
+
+/* Comment */
+.theme-comment-count-container {
+    opacity: 1;
+    transition: opacity 0.3s;
+}
+.theme-comment-count-container-transparent {
+    opacity: 0;
+}
+
+
+
+/* Icon */
+[class*="czs-"] {
+    position: relative;
+    top: 0.1em;
 }
 
 

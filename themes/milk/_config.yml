@@ -1,16 +1,29 @@
 favicon: /favicon.ico
 
+post:
+  append:
+    <blockquote class="top-gap-big">
+      <p>
+        本文遵循 <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" class"text-muted">CC BY-ND-ND 3.0</a> 协议，转载请注明原作者，禁止商用，禁止演绎。
+      </p>
+    </blockquote>
+
+
 sidebar:
   menu:
     - url: /archives
       icon: czs-folder-l
+      title: 归档
     - url: /categories
       icon: czs-bookmark-l
+      title: 分类
     - url: /tags
       icon: czs-tag-l
+      title: 标签
     - placeholder: true
     - url: http://xcatliu.com
       icon: czs-user-l
+      title: 关于我
   title: true
   subtitle: true
   description: false
@@ -19,14 +32,24 @@ sidebar:
   social:
     - url: https://github.com/xcatliu
       icon: czs-github
+      title: GitHub
     - url: https://www.v2ex.com/member/xcatliu
       icon: czs-v2ex
+      title: V2EX
     - url: https://twitter.com/xcatliu
       icon: czs-twitter
+      title: Twitter
     - url: mailto:xcatliu@gmail.com
       icon: czs-message-l
+      title: Gmail
     - url: /atom.xml
       icon: czs-rss
+      title: RSS 订阅
+  links:
+    康瑞部落: http://www.kangry.net/blog/
+    创造狮: http://chuangzaoshi.com/
+    "James Pan's Blog": https://blog.jamespan.me/
+    More: /links
 
 disqus_shortname: xcatliu
 

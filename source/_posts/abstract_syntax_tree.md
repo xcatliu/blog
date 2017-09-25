@@ -2,7 +2,7 @@
 title: 抽象语法树在 JavaScript 中的应用
 date: 2014-10-08
 categories:
-- 程序员
+- Programmer
 tags:
 - AST
 - UglifyJS
@@ -14,8 +14,6 @@ tags:
 ## 抽象语法树是什么
 
 > 在计算机科学中，抽象语法树（Abstract syntax tree 或者缩写为 AST），或者语法树（Syntax tree），是源代码的抽象语法结构的树状表现形式，这里特指编程语言的源代码。树上的每个节点都表示源代码中的一种结构。之所以说语法是「抽象」的，是因为这里的语法并不会表示出真实语法中出现的每个细节。<sup>[1]</sup>
-
-<!-- more -->
 
 果然比较抽象，不如先看几个例子：
 

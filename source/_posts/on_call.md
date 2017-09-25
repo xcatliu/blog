@@ -1,7 +1,7 @@
 ---
 title: 在微软 on call 的经历
 categories:
-- 程序员
+- Programmer
 tags:
 - On call
 - Microsoft

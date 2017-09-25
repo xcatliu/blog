@@ -1,7 +1,7 @@
 ---
 title: 我写的第一本书《TypeScript 入门教程》
 categories:
-- 程序员
+- Programmer
 tags:
 - TypeScript
 - Tutorial

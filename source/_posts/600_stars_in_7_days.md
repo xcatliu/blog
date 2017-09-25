@@ -2,11 +2,12 @@
 title: 7 天 600 stars， Mobi.css 是如何诞生的
 date: 2016-09-05
 categories:
-- 程序员
+- Programmer
 tags:
 - Mobi.css
 - Summary
 - V2EX
+excerpt: Mobi.css 是一个轻量、灵活的移动端 CSS 框架。发布一周以来，获得了 600+ stars，登上了 GitHub Trending Top1（CSS），在 Hacker News 上进入了前三。
 ---
 
 > 发表在 V2EX 上：https://www.v2ex.com/t/304129
@@ -20,8 +21,6 @@ tags:
 > Mobi.css 是一个轻量、灵活的移动端 CSS 框架。发布一周以来，获得了 600+ stars，登上了 GitHub Trending Top1（CSS），在 Hacker News 上进入了前三。
 >
 > 这篇文章会先介绍一下创造 Mobi.css 的思路，再介绍一下我在推广 Mobi.css 中的心得。
-
-<!-- more -->
 
 ## 为什么要创造 Mobi.css
 

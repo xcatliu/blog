@@ -2,7 +2,7 @@
 title: "Thinking in React"
 date: 2014-12-04
 categories:
-- 程序员
+- Programmer
 tags:
 - React
 - Share

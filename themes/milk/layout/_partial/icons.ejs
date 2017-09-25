@@ -1,0 +1,9 @@
+<% icons.forEach((icon) => {
+  if (icon.placeholder) { %>
+    <div class="unit"></div>
+  <% } else { %>
+    <a class="unit-0 theme-icon-link" href="<%= icon.url %>" title="<%= icon.title %>">
+      <i class="<%= icon.icon %>"></i>
+    </a>
+  <% }
+}) %>

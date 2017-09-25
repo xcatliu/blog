@@ -2,7 +2,7 @@
 title: Grunt Custom Task 指南
 date: 2013-12-04
 categories:
-- 程序员
+- Programmer
 tags:
 - Grunt
 - Task
@@ -20,8 +20,6 @@ grunt 有一套强大的创建任务机制，不管是 grunt 官方任务（如 
 grunt 基于 node 开发，node 能做到的，在 grunt task 中都可以做到。
 
 一般来说，一个任务分三部分： `register task`，`load task`，`task config`。
-
-<!-- more -->
 
 ## 选择 task 的类型
 

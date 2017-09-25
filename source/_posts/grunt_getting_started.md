@@ -2,7 +2,7 @@
 title: Grunt Getting Started
 date: 2013-11-08
 categories:
-- 程序员
+- Programmer
 tags:
 - Grunt
 - JavaScript
@@ -31,8 +31,6 @@ Grunt 是一个基于任务的 JavaScript 项目命令行构建工具，运行�
 - task:uglify
 - task:qunit
 - task:concat
-
-<!-- more -->
 
 ### Why use a task runner?
 

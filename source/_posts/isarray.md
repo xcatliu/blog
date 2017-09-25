@@ -1,13 +1,15 @@
 ---
 title: 从 isArray 谈起
 categories:
-- 程序员
+- Programmer
 tags:
 - Array
 - JavaScript
 ---
 
 怎么判断数组是前端面试经常被问到的一个问题，数组也是最难以准确判断的类型之一。今天咱们就来谈谈如何判断数组。
+
+<!-- more -->
 
 ## typeof
 
@@ -33,8 +35,6 @@ Object (host and does not implement [[Call]]) | Implementation-defined except ma
 对一个数组执行 `typeof`，总是会返回 `"object"`，
 
 故 `typeof` 对判断数组无能为力，pass。
-
-<!-- more -->
 
 ## instanceof
 

@@ -1,7 +1,7 @@
 ---
 title: 写给 26 岁的自己
 categories:
-- 生活
+- Life
 tags:
 - Birthday
 ---

@@ -2,7 +2,7 @@
 title: 撸了一个三行情诗表白网页，可朋友圈分享，但是卡爆了
 date: 2015-08-20
 categories:
-- 程序员
+- Programmer
 tags:
 - Canvas
 - V2EX

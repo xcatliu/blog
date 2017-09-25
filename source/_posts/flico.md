@@ -1,7 +1,7 @@
 ---
 title: 晒键盘 - FILCO 87 双模忍者圣手二代 黑色青轴
 categories:
-- 生活
+- Life
 tags:
 - Flico
 - Keyboard
