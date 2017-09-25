@@ -13,9 +13,7 @@
   %>
   <span class="theme-comment-count-container theme-hide theme-comment-count-container-transparent">
     <span class="theme-separator">·</span>
-    <a class="text-muted theme-text-no-decoration" href="<%= url_for(post.path) %>#disqus_thread">
-      <i class="czs-comment-l"></i>
-      <span class="disqus-comment-count theme-comment-count" data-disqus-identifier="<%= post.path %>"></span>
-    </a>
+    <i class="czs-comment-l"></i>
+    <a class="text-muted theme-text-no-decoration theme-comment-count" data-disqus-identifier="<%= post.path %>" href="<%= url_for(post.path) %>#disqus_thread"></a>
   </span>
 </div>
