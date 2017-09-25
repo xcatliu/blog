@@ -1,7 +1,7 @@
 <div class="theme-sidebar-mask theme-hide"></div>
 <aside class="theme-sidebar-wrapper">
   <div class="container flex-left units-gap theme-header-container">
-    <%- partial('icons', { icons: theme.sidebar.menu }) %>
+    <%- partial('icons', { icons: theme.menu }) %>
   </div>
   <div class="container">
     <% Object.keys(theme.sidebar).forEach((key) => {
@@ -9,27 +9,27 @@
       switch (key) {
         case 'title': %>
           <h2><%= config.title %></h2>
-        <% break;
+          <% break;
         case 'subtitle': %>
           <p class="top-gap-0 text-muted"><%= config.subtitle %></p>
-        <% break;
+          <% break;
         case 'description': %>
           <p><%= config.description %></p>
-        <% break;
+          <% break;
         case 'avatar': %>
           <div class="flex-left flex-middle top-gap">
             <img alt="Avatar" height="24" src="<%= theme.sidebar.avatar %>"/>
             <span class="theme-sidebar-author"><%= config.author %></span>
           </div>
-        <% break;
+          <% break;
         case 'welcome': %>
           <p><%= theme.sidebar.welcome %></p>
-        <% break;
+          <% break;
         case 'social': %>
           <p class="theme-sidebar-social">
             <%- partial('icons', { icons: theme.sidebar.social }) %>
           </p>
-        <% break;
+          <% break;
         case 'links': %>
           <h5><%= __('sidebar.links') %></h5>
           <p class="text-muted">
@@ -41,7 +41,7 @@
               </ul>
             </small>
           </p>
-        <% break;
+          <% break;
         case 'toc':
           if (is_post()) { %>
             <h5><%= __('sidebar.toc') %></h5>
@@ -49,8 +49,8 @@
           <% }
           break;
         default:
-          <%- theme.sidebar[key] %>
-      }
+          %><%- theme.sidebar[key] %>
+      <% }
     }) %>
   </div>
 </aside>

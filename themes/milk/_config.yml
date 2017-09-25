@@ -8,22 +8,22 @@ post:
       </p>
     </blockquote>
 
+menu:
+  - url: /archives
+    icon: czs-folder-l
+    title: 归档
+  - url: /categories
+    icon: czs-bookmark-l
+    title: 分类
+  - url: /tags
+    icon: czs-tag-l
+    title: 标签
+  - placeholder: true
+  - url: http://xcatliu.com
+    icon: czs-user-l
+    title: 关于我
 
 sidebar:
-  menu:
-    - url: /archives
-      icon: czs-folder-l
-      title: 归档
-    - url: /categories
-      icon: czs-bookmark-l
-      title: 分类
-    - url: /tags
-      icon: czs-tag-l
-      title: 标签
-    - placeholder: true
-    - url: http://xcatliu.com
-      icon: czs-user-l
-      title: 关于我
   title: true
   subtitle: true
   description: false

@@ -1,5 +1,5 @@
 ---
-title: Links
+title: 友情链接
 ---
 
 - [康瑞部落](http://www.kangry.net/blog/)
