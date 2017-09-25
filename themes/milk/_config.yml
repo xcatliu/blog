@@ -1,6 +1,16 @@
 favicon: /favicon.ico
 
 sidebar:
+  menu:
+    - url: /archives
+      icon: czs-folder-l
+    - url: /categories
+      icon: czs-bookmark-l
+    - url: /tags
+      icon: czs-tag-l
+    - placeholder: true
+    - url: http://xcatliu.com
+      icon: czs-user-l
   title: true
   subtitle: true
   description: false

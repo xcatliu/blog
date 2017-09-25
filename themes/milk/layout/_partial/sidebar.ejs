@@ -1,19 +1,15 @@
 <div class="theme-sidebar-mask theme-hide"></div>
 <aside class="theme-sidebar-wrapper">
   <div class="container flex-left units-gap theme-header-container">
-    <a class="unit-0 theme-header-icon theme-icon-link" href="/archives">
-      <i class="czs-folder-l"></i>
-    </a>
-    <a class="unit-0 theme-header-icon theme-icon-link" href="/categories">
-      <i class="czs-bookmark-l"></i>
-    </a>
-    <a class="unit-0 theme-header-icon theme-icon-link" href="/tags">
-      <i class="czs-tag-l"></i>
-    </a>
-    <div class="unit"></div>
-    <a class="unit-0 theme-header-icon theme-icon-link" href="http://xcatliu.com">
-      <i class="czs-user-l"></i>
-    </a>
+    <% theme.sidebar.menu.forEach(({ url, icon, placeholder }) => {
+      if (placeholder) { %>
+        <div class="unit"></div>
+      <% } else { %>
+        <a class="unit-0 theme-header-icon theme-icon-link" href="<%= url %>">
+          <i class="<%= icon %>"></i>
+        </a>
+      <% }
+    }); %>
   </div>
   <div class="container">
     <% Object.keys(theme.sidebar).forEach((key) => {

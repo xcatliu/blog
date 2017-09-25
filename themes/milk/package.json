@@ -1,0 +1,26 @@
+{
+  "name": "hexo-theme-milk",
+  "version": "0.3.0",
+  "description": "A hexo theme like milk",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xcatliu/hexo-theme-milk.git"
+  },
+  "keywords": [
+    "milk",
+    "hexo",
+    "hexo-theme",
+    "mobi-css",
+    "css"
+  ],
+  "author": "xcatliu <xcatliu@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/xcatliu/hexo-theme-milk/issues"
+  },
+  "homepage": "https://github.com/xcatliu/hexo-theme-milk#readme"
+}

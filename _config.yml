@@ -64,7 +64,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: lite
+theme: milk
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
