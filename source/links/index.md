@@ -2,7 +2,6 @@
 title: 友情链接
 ---
 
-- [康瑞部落](http://www.kangry.net/blog/)
 - [创造狮](http://chuangzaoshi.com/)
 - [James Pan's Blog](https://blog.jamespan.me/)
 - [搞机男](http://www.gaojinan.com/)
@@ -54,3 +53,4 @@ title: 友情链接
 - [汀雨博客](https://fyibmsd.com/)
 - [Nicksxs's Blog](http://nicksxs.me/)
 - [cllgeek](https://www.cllgeek.com/)
+- [赵的拇指](https://www.zhaofinger.com/)
