@@ -9,9 +9,9 @@ tags:
 - en
 ---
 
-Git hooks is a useful tool to run scripts before or after events. We usually use it to check the format of commit message, prevent pushing code to master branch, or run test scripts before pushing.
+Git hooks is a useful tool to run scripts before or after events. We usually use it to check the format of commit message, lint our code, prevent pushing code to master branch, or run test scripts before pushing.
 
-Sometimes we need to get the changelist is pre-push hook. It may not be as easy as you think -- it's hard to know how many commits you have been submitted since you last checking out to the new branch.
+Sometimes we need to get the changelist in pre-push hook. It may not be as easy as you think -- It's hard to know how many commits you have been submitted since you last checking out to the new branch.
 
 After some investigation, I've found a way to get the diff file list between the current `HEAD` and `origin/master`:
 
@@ -24,4 +24,4 @@ common_ancestor=`git merge-base HEAD origin/master`
 changelist=`git diff $common_ancestor HEAD --name-only --diff-filter=ACMRT`
 ```
 
-Posted in [gist](https://gist.github.com/xcatliu/ddc2aec4e4cde0824429477f7ea233cd)
+Posted to [gist](https://gist.github.com/xcatliu/ddc2aec4e4cde0824429477f7ea233cd)
