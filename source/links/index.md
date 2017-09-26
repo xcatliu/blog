@@ -54,3 +54,4 @@ title: 友情链接
 - [Nicksxs's Blog](http://nicksxs.me/)
 - [cllgeek](https://www.cllgeek.com/)
 - [赵的拇指](https://www.zhaofinger.com/)
+- [梦遥奇缘](http://www.idiot6.com/)
