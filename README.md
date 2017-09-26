@@ -1,9 +1,7 @@
-# 流浪小猫的博客
+# 流浪小猫的博客 / xcatliu's Blog
 
-记录我的成长点滴
-
-- 网址：http://blog.xcatliu.com/
-- 主题：[牛奶](https://github.com/xcatliu/blog/tree/master/themes/milk)
+- Homepage: http://blog.xcatliu.com/
+- Theme: [Milk](https://github.com/xcatliu/blog/tree/master/themes/milk)
 
 ## Getting Start
 
