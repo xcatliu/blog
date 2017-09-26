@@ -1,6 +1,6 @@
 # A hexo theme like milk
 
-Demo: [Xcat Liu's blog](http://blog.xcatliu.com)
+Demo: [流浪小猫的博客](http://blog.xcatliu.com)
 
 ## Usage
 
