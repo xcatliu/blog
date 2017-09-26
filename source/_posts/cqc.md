@@ -35,13 +35,13 @@ tags:
 
 ### Installation
 
-```sh
+```bash
 npm install -g cqc
 ```
 
 ### Usage
 
-```sh
+```bash
 cqc src/**/*.js src/**/*.jsx
 ```
 

@@ -15,3 +15,11 @@ sidebar:
 footer:
   powered: "Powered by %s"
   theme: Theme
+
+post:
+  append:
+    <blockquote class="top-gap-big">
+      <p>
+        This article is using the <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.en" class"text-muted">CC BY-NC-ND 3.0</a> license.
+      </p>
+    </blockquote>
