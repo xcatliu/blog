@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
   //
   // Show comment count is larger than 0
   //
-  document.querySelectorAll('.theme-comment-count-container').forEach(function (countContainerNode) {
+  Array.prototype.forEach.call(document.querySelectorAll('.theme-comment-count-container'), function (countContainerNode) {
     var countNode = countContainerNode.querySelector('.theme-comment-count');
     var cycles = 0;
     var countInterval = setInterval(function () {
