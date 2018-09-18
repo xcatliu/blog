@@ -17,7 +17,6 @@ title: 友情链接
 - [某人的不靠谱杂货铺](https://www.kilerd.me/)
 - [农村人](https://xiaoshangmin.com/)
 - [V2M](https://maimieng.com/)
-- [2B 铅笔](http://www.bixiv.com/)
 - [ranchoh](http://dbview.org/)
 - [学院](http://xueyuan.me/)
 - [BFDZ](http://www.bfdz.ink/)
@@ -55,3 +54,4 @@ title: 友情链接
 - [cllgeek](https://www.cllgeek.com/)
 - [赵的拇指](https://www.zhaofinger.com/)
 - [梦遥奇缘](http://www.idiot6.com/)
+- [Peter1303's Blog](http://peter1303.github.io/)
