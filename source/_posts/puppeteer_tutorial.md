@@ -8,7 +8,32 @@ tags:
 - Puppeteer
 ---
 
-Puppeteer 是 Chrome 出品的一个无头浏览器。如果你听说过 Phantomjs 或者 Selenium，那么就应该知道它是做什么的了。Puppeteer 与它们类似，提供了一系列 api，让我们可以通过脚本控制浏览器的行为，理论上可以做到任何浏览器能做的事。
+Puppeteer 是 Google Chrome 出品的一个无头浏览器。如果你听说过 Phantomjs 或者 Selenium，那么就应该知道它是做什么的了。Puppeteer 与它们类似，提供了一系列 api，通过 DevTools 协议控制 Chromium/Chrome 浏览器的行为。
+
+## 什么是无头浏览器
+
+无头浏览器就是没有用户界面的浏览器，即通过写脚本来使用无头浏览器访问网站，还可以做一些点击等行为。
+
+Puppeteer 一般使用无头的模式运行，这样的开销较小。当然也提供了使用完整的 Chromium/Chrome 来运行的模式。
+
+## Puppeteer 能做什么
+
+能够做几乎所有浏览器能做的事情。
+
+- 网页截图，或生成 pdf
+- 爬取 SPA 或 SSR 网站
+- 自动化表单提交，UI测试，键盘输入等
+- 创建一个最新的自动化测试环境。使用最新的 js 和最新的 Chrome 浏览器运行测试用例
+- 捕获网站的时间线，帮助诊断性能问题
+- 测试 Chrome 插件
+
+## Puppeteer 与其他无头浏览器有什么区别？
+
+- Puppeteer 由 Google Chrome 维护，速度快、安全、稳定、易用
+- 其他无头浏览器可以支持多种浏览器环境（Safari, Chrome, Firefox 等），而 Puppeteer 只支持 Chromium/Chrome
+- Puppeteer 有完善的事件系统，不需要频繁的 `sleep(1000)` 了
+- Puppeteer 的调试功能很强大，还支持在 DevTools 里面调试
+- Puppeteer 能够创建一个「真实」的行为，如点击
 
 ## 安装 Puppeteer
 
@@ -82,3 +107,7 @@ $ node test.js
 至此，成功完成了 Puppeteer 的安装。
 
 ## 未完待续
+
+## 参考
+
+- [Puppeteer 文档](https://pptr.dev/)
