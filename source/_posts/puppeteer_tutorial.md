@@ -239,4 +239,5 @@ Page 是 Puppeteer 中最重要的一个 API，也是它的核心所在，这里
 ## 参考
 
 - [Puppeteer 文档](https://pptr.dev/)
+- [Chromium CLI 参数](https://peter.sh/experiments/chromium-command-line-switches/)
 - [预设的 EmulateOptions](https://github.com/GoogleChrome/puppeteer/blob/master/DeviceDescriptors.js)
