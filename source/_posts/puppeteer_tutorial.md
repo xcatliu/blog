@@ -112,7 +112,7 @@ Puppeteer 通过 DevTools 协议控制 Chromium/Chrome 浏览器。它的结构�
 
 > 下图中淡化显示的可以忽略
 
-![Puppeteer 结构](/assets/puppeteer_tutorial/puppeteer-structure.png)
+![Puppeteer 结构](/assets/puppeteer_turorial/puppeteer-structure.png)
 
 - Puppeteer 通过 DevTools 协议控制 Chromium/Chrome 浏览器
 - 一个浏览器（Browser）实例可以包含多个浏览器上下文（Browser contexts），就像我们打开一个普通的 Chrome 之后又打开一个隐身模式的 Chrome
