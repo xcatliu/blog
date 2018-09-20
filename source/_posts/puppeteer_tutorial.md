@@ -43,7 +43,7 @@ Puppeteer 一般使用无头的模式运行，这样的开销较小。当然也�
 npm install puppeteer --save-dev
 ```
 
-万事开头难，第一步安装时就会遇到问题。
+万事开头难，第一步安装时就会遇到问题（如果没有报错，请跳过这一段）。
 
 Puppeteer 安装过程中会去下载 Chromium，墙内用户则会报错。如果你看到以下信息，说明是下载 Chromium 时连接不上。
 
@@ -125,116 +125,139 @@ Puppeteer 通过 DevTools 协议控制 Chromium/Chrome 浏览器。它的结构�
 
 Puppeteer 的大部分 API 的返回值都是 `Promise`，故推荐使用 `async` `await` 来处理异步操作。Puppeteer 的 API 包含以下类：
 
-- Puppeteer 主要用于创建一个浏览器实例，也可以用来下载新的 Chromium，或者设置浏览器的默认参数
-- BrowserFetcher 用于下载和管理 Chromium
-- Browser 可以创建一个或多个 Page
-- BrowserContext 创建一个隐身模式的浏览器时需要用到
-- Page **主要 API，用于操作一个页面，后面会详细介绍**
-- Workder 用于处理 WebWorker
-- Keyboard 可以触发键盘按键
-- Mouse 可以触发鼠标动作
-- TouchScreen 可以触发触摸屏的动作
-- Tracing 用于分析性能
-- Dialog 存在于 page 的 `dialog` 事件回调中，表示调用弹窗后的对象，包括 `alert`, `beforeunload`, `confirm` 和 `prompt`
-- ConsoleMessage 存在于 page 的 `console` 事件回调中，表示调用 `console.log` 等方法后的对象
-- Frame 常用于处理包含多个 frame 的页面。page 中的很多方法就是直接调用的主 frame 的方法
-- ExecutionContext 执行上下文存在于 frame、浏览器插件、worker 中。可以用来直接执行一段 js
-- JSHandle 通过 `page.evaluateHandle` 生成，用于将页面中的 handler 挑出来传递使用
-- ElementHandle 通过 `page.$` 生成，用于将页面中某个元素的 handler 挑出来传递使用
-- Request 在 `page.setRequestInterception` 方法中使用，可以处理页面的请求
-- Response 表示页面接收到的响应
-- SecurityDetails 表示页面的安全信息
-- Target 可以是 page, background_page, service_worker, browser 等
-- CDPSession 用于直接和 Devtools 通信
-- Coverage 用于分析 js 和 css 的代码被页面使用的比例
-- TimeoutError 超时错误
+类名|描述
+-----|-----
+`Puppeteer`|主要用于创建一个浏览器实例，也可以用来下载新的 Chromium，或者设置浏览器的默认参数
+`BrowserFetcher`|用于下载和管理 Chromium
+`Browser`|可以创建一个或多个 Page
+`BrowserContext`|创建一个隐身模式的浏览器时需要用到
+`Page`|**主要 API，用于操作一个页面，后面会详细介绍**
+`Worker`|用于处理 WebWorker
+`Keyboard`|可以触发键盘按键
+`Mouse`|可以触发鼠标动作
+`TouchScreen`|可以触发触摸屏的动作
+`Tracing`|用于分析性能
+`Dialog`|存在于 page 的 `dialog` 事件回调中，表示调用弹窗后的对象，包括 `alert`, `beforeunload`, `confirm` 和 `prompt`
+`ConsoleMessage`|存在于 page 的 `console` 事件回调中，表示调用 `console.log` 等方法后的对象
+`Frame`|常用于处理包含多个 frame 的页面。page 中的很多方法就是直接调用的主 frame 的方法
+`ExecutionContext`|执行上下文存在于 frame、浏览器插件、worker 中。可以用来直接执行一段 js
+`JSHandle`|通过 `page.evaluateHandle` 生成，用于将页面中的 handler 挑出来传递使用
+`ElementHandle`|通过 `page.$` 生成，用于将页面中某个元素的 handler 挑出来传递使用
+`Request`|在 `page.setRequestInterception` 方法中使用，可以处理页面的请求
+`Response`|表示页面接收到的响应
+`SecurityDetails`|表示页面的安全信息
+`Target`|可以是 page, background\_page, service\_worker, browser 等
+`CDPSession`|用于直接和 Devtools 通信
+`Coverage`|用于分析 js 和 css 的代码被页面使用的比例
+`TimeoutError`|超时错误
 
 ### Page
 
 Page 是 Puppeteer 中最重要的一个 API，也是它的核心所在，这里会介绍一些常用的 Page API。
 
-#### 命名空间
-
-通过一些命名空间可以快速访问到该页面下的其他实例，如 `page.keyboard`, `page.mouse`, `page.touchscreen` 等。
-
 #### 设置页面环境
 
-- `page.emulate(options)` 设置 viewport 和 ua
-- `page.setViewport(viewport)` 设置 viewport
-- `page.setUserAgent(userAgent)` 设置 ua
-- `page.setRequestInterception(value)` **中断所有请求，并可以修改请求的返回值**
-- `page.addScriptTag(options)` 添加 js 脚本
-- `page.addStyleTag(options)` 添加 css
-- `page.setContent(html)` 设置整个 html
-- `page.setCacheEnabled(enabled)` 设置缓存是否开启
-- `page.setExtraHTTPHeaders(headers)` 设置额外的 http 头
-- `page.setGeolocation(options)` 设置地理位置
-- `page.setJavaScriptEnabled(enabled)` 设置 js 是否开启
-- `page.setOfflineMode(enabled)` 设置离线模式
-- `page.deleteCookie(...cookies)` 删除 cookies
-- `page.setCookie(...cookies)` 设置 cookies
+方法名|描述
+-----|-----
+`page.emulate`|设置 viewport 和 ua
+`page.setViewport`|设置 viewport
+`page.setUserAgent`|设置 ua
+`page.setRequestInterception`|**中断所有请求，并可以修改请求的返回值**
+`page.addScriptTag`|添加 js 脚本
+`page.addStyleTag`|添加 css
+`page.setContent`|设置整个 html
+`page.setCacheEnabled`|设置缓存是否开启
+`page.setExtraHTTPHeaders`|设置额外的 http 头
+`page.setGeolocation`|设置地理位置
+`page.setJavaScriptEnabled`|设置 js 是否开启
+`page.setOfflineMode`|设置离线模式
+`page.deleteCookie`|删除 cookies
+`page.setCookie`|设置 cookies
 
 #### 模拟动作
 
 一般会先滚动视窗到相应元素那，再执行动作。
 
-- `page.click(selector[, options])` 点击
-- `page.tap(selector)` 手指点击
-- `page.focus(selector)` 聚焦
-- `page.hover(selector)` hover
-- `page.type(selector, text[, options])` 在指定元素中输入内容
-- `page.select(selector, ...values)` 选中 `<select>` 的某个选项
+方法名|描述
+-----|-----
+`page.click`|点击
+`page.tap`|手指点击
+`page.focus`|聚焦
+`page.hover`|hover
+`page.type`|在指定元素中输入内容
+`page.select`|选中 `<select>` 的某个选项
 
 #### 等待
 
-- `page.waitFor(selectorOrFunctionOrTimeout[, options[, ...args]])` 等待某个元素渲染出来，或者某个函数执行之后返回 `true`，或者直接等待指定的时间
-- `page.waitForSelector(selector[, options])` 等待某个元素被渲染
-- `page.waitForFunction(pageFunction[, options[, ...args]])` 等待某个函数执行之后返回 `true`
-- `page.waitForNavigation(options)` 等待页面跳转
-- `page.waitForRequest(urlOrPredicate, options)` 等待某个特定的请求被发出
-- `page.waitForResponse(urlOrPredicate, options)` 等待某个特定的请求收到了回应
+方法名|描述
+-----|-----
+`page.waitFor`|等待某个元素渲染出来，或者某个函数执行之后返回 `true`，或者直接等待指定的时间
+`page.waitForSelector`|等待某个元素被渲染
+`page.waitForFunction`|等待某个函数执行之后返回 `true`
+`page.waitForNavigation`|等待页面跳转
+`page.waitForRequest`|等待某个特定的请求被发出
+`page.waitForResponse`|等待某个特定的请求收到了回应
 
 #### 执行脚本
 
-- `page.$(selector)` 使用 `document.querySelector` 获取结果，会返回 `ElementHandle`，可以传递使用
-- `page.$$(selector)` 同上，不过使用的是 `document.querySelectorAll`
-- `page.$eval(selector, pageFunction[, ...args])` 将 `document.querySelector` 获取的结果传递给 `pageFunction`
-- `page.$$eval(selector, pageFunction[, ...args])` 同上，不过使用的是 `document.querySelectorAll`
-- `page.evaluate(pageFunction, ...args)` 直接执行脚本
-- `page.evaluateHandle(pageFunction, ...args)` 执行脚本，返回的是 `JSHandle`，可以传递使用
-- `page.evaluateOnNewDocument(pageFunction, ...args)` 在下个 frame 执行脚本
-- `page.exposeFunction(name, puppeteerFunction)` 将函数注入到 `window` 对象上
-- `page.queryObjects(prototypeHandle)` 获取所有属于这个类的对象，可以传递使用
+方法名|描述
+-----|-----
+`page.$`|使用 `document.querySelector` 获取结果，会返回 `ElementHandle`，可以传递使用
+`page.$$`|同上，不过使用的是 `document.querySelectorAll`
+`page.$eval`|将 `document.querySelector` 获取的结果传递给 `pageFunction`
+`page.$$eval`|同上，不过使用的是 `document.querySelectorAll`
+`page.evaluate`|直接执行脚本
+`page.evaluateHandle`|执行脚本，返回的是 `JSHandle`，可以传递使用
+`page.evaluateOnNewDocument`|在下个 frame 执行脚本
+`page.exposeFunction`|将函数注入到 `window` 对象上
+`page.queryObjects`|获取所有属于这个类的对象，可以传递使用
 
 #### 页面跳转
 
-- `page.goto(url, options)` 跳转页面
-- `page.close(options)` 关闭
-- `page.goBack(options)` 后退
-- `page.goForward(options)` 前进
-- `page.reload(options)` 刷新
-- `page.setDefaultNavigationTimeout(timeout)` 设置页面跳转的超时时常
+方法名|描述
+-----|-----
+`page.goto`|跳转页面
+`page.close`|关闭
+`page.goBack`|后退
+`page.goForward`|前进
+`page.reload`|刷新
+`page.setDefaultNavigationTimeout`|设置页面跳转的超时时长
 
 #### 获取内容
 
-- `page.screenshot([options])` 截屏
-- `page.pdf(options)` 生成 pdf
-- `page.content()` 获取整个页面内容
-- `page.title()` 获取页面 title
-- `page.url()` 获取页面 url
-- `page.viewport()` 获取页面 viewport
-- `page.cookies(...urls)` 获取 cookies
+方法名|描述
+-----|-----
+`page.screenshot`|截屏
+`page.pdf`|生成 pdf
+`page.content`|获取整个页面内容
+`page.title`|获取页面 title
+`page.url`|获取页面 url
+`page.viewport`|获取页面 viewport
+`page.cookies`|获取 cookies
 
 #### 事件
 
-- `page.on('console')` 监听 `console.log` 等的调用
-- `page.on('dialog')` 监听页面的 `alert`, `beforeunload`, `confirm` 和 `prompt` 弹窗
-- `page.on('domcontentloaded')` 监听页面的加载
-- `page.on('pageerror')` 监听页面错误
-- `page.on('request')` 监听页面发送的请求
-- `page.on('requestfailed')` 监听失败的请求
-- `page.on('requestfinished')` 监听完成的请求
-- `page.on('response')` 监听页面接受到的响应
+事件名|描述
+-----|-----
+`page.on('console')`|监听 `console.log` 等的调用
+`page.on('dialog')`|监听页面的 `alert`, `beforeunload`, `confirm` 和 `prompt` 弹窗
+`page.on('load')`|监听页面的加载
+`page.on('domcontentloaded')`|监听页面 dom 加载完成
+`page.on('pageerror')`|监听页面错误
+`page.on('request')`|监听页面发送的请求
+`page.on('requestfailed')`|监听失败的请求
+`page.on('requestfinished')`|监听完成的请求
+`page.on('response')`|监听页面接受到的响应
+
+#### 命名空间
+
+通过一些命名空间可以快速访问到该页面下的其他实例。
+
+属性名|描述
+-----|-----
+`page.keyboard`|访问到页面的 Keyboard 对象
+`page.mouse`|访问到页面的 Mouse 对象
+`page.touchscreen`|访问到页面的 TouchScreen 对象
 
 ## 参考
 
