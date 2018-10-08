@@ -99,10 +99,9 @@ $ node test.js
 3. 执行 `node test.js` 提示无法找到 Chromium
 4. 手动下载步骤 1 中的 `chrome-win32.zip`，注意不同版本、不同系统的下载地址是不一样的
 5. 开启一个静态文件服务，使得 `http://127.0.0.1:8000/chrome-win32.zip` 指向需要下载的文件
-6. 将 `./node_modules/puppeteer/lib/BrowserFetcher.js` 这个文件中的 `%s/chromium-browser-snapshots/Win_x64/%d/chrome-win32.zip` 替换为 `http://127.0.0.1:8000/chrome-win32.zip`
-7. 搜索这个文件中的 `downloadURLs`，去掉对应的 `util.format` 的调用，使其直接使用 `downloadURLs[this._platform]`
-8. 执行 `node ./node_modules/puppeteer/install.js` 完成安装
-9. 执行 `node test.js` 测试能否成功生成截图
+6. 改写 `downloadURL` 方法，使其直接返回 `http://127.0.0.1:8000/chrome-win32.zip`
+7. 执行 `node ./node_modules/puppeteer/install.js` 完成安装
+8. 执行 `node test.js` 测试能否成功生成截图
 
 至此，成功完成了 Puppeteer 的安装。
 
