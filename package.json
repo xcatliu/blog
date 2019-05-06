@@ -11,8 +11,8 @@
     "version": "3.3.9"
   },
   "dependencies": {
-    "hexo": "3.3.9",
-    "hexo-deployer-git": "^0.3.1",
+    "hexo": "3.8.0",
+    "hexo-deployer-git": "^1.0.0",
     "hexo-filter-author-from-git": "^0.1.1",
     "hexo-filter-date-from-git": "^0.1.2",
     "hexo-front-matter-excerpt": "^0.2.0",
@@ -25,10 +25,10 @@
     "hexo-prism-plugin": "^2.2.0",
     "hexo-renderer-ejs": "^0.3.0",
     "hexo-renderer-marked": "^0.3.0",
-    "hexo-server": "^0.2.0"
+    "hexo-server": "^0.3.3"
   },
   "devDependencies": {
-    "eslint": "^4.7.2",
+    "eslint": "^5.16.0",
     "eslint-config-alloy": "^1.2.1"
   }
 }
