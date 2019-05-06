@@ -1,5 +1,7 @@
 # 流浪小猫的博客
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/xcatliu/blog.svg)](https://greenkeeper.io/)
+
 - Homepage: http://blog.xcatliu.com/
 - Theme: [Milk](https://github.com/xcatliu/blog/tree/master/themes/milk)
 
