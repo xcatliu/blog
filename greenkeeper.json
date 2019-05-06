@@ -1,0 +1,11 @@
+{
+  "groups": {
+    "default": {
+      "packages": [
+        "package.json",
+        "themes/milk/package.json",
+        "themes/milk/source/css/mobi.css-3.1.1/package.json"
+      ]
+    }
+  }
+}
