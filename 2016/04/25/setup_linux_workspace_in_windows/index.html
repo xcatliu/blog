@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+
+  
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+  
+  
+  
+
+  <link rel="stylesheet" href="/css/mobi.css-3.1.1/dist/mobi.min.css">
+<link rel="stylesheet" href="/css/caomei1.2.1/style.css">
+<link rel="stylesheet" href="/css/theme.css">
+
+  
+    <meta name="keywords" content="VituralBox, Linux, Windows" />
+  
+
+  
+    <link rel="alternate" href="/atom.xml" title="流浪小猫的博客" type="application/atom+xml" />
+  
+
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+
+  <title>在 Windows 中配置 Linux 工作环境 - 流浪小猫的博客</title>
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+  <body class="theme-body">
+    <div class="flex-center theme-header-wrapper">
+  <div class="container flex-left units-gap theme-header-container">
+    <a href="/" class="unit-0 theme-header-icon theme-icon-link" title="首页">
+      <i class="czs-home-l"></i>
+    </a>
+    <div class="flex-center text-center flex-middle unit theme-header-title theme-header-title-no-transition">
+      流浪小猫的博客
+    </div>
+    <a class="unit-0 theme-header-icon theme-icon-link theme-header-sidebar-icon" href="javascript:void(0);" title="更多">
+      <i class="czs-menu-l"></i>
+    </a>
+  </div>
+</div>
+<div class="theme-header-placeholder"></div>
+
+    <div class="flex-center">
+      <div class="container">
+        <article>
+  <h1 class="text-center">
+    在 Windows 中配置 Linux 工作环境
+  </h1>
+  <div class="text-center top-gap">
+    <div class="text-small text-muted">
+  <time datetime="2016-04-25T11:37:38+08:00">
+    2016-04-25
+  </time>
+  <span class="theme-separator">·</span>
+  <i class="czs-user-l"></i>
+  <a class="text-muted theme-text-no-decoration" href="https://github.com/xcatliu">xcatliu</a>
+  <span class="theme-separator">·</span>
+  <i class="czs-bookmark-l"></i>
+  <a class="text-muted theme-text-no-decoration" href="/categories/Programmer/">Programmer</a>
+  <span class="theme-comment-count-container theme-hide theme-comment-count-container-transparent">
+    <span class="theme-separator">·</span>
+    <i class="czs-comment-l"></i>
+    <a class="text-muted theme-text-no-decoration theme-comment-count" data-disqus-identifier="2016/04/25/setup_linux_workspace_in_windows/" href="/2016/04/25/setup_linux_workspace_in_windows/#disqus_thread"></a>
+  </span>
+</div>
+
+  </div>
+  <div class="top-gap-big">
+    <blockquote>
+<p>由于我的大部分项目都是基于 Linux 的，所以在 Windows 中配置一个 Linux 工作环境是非常有必要的（别问我为什么不用 MacBook 了 T_T）</p>
+</blockquote>
+<a id="more"></a>
+<p>2016-05-20 更新：可以使用更加先进的 <a href="http://blog.xcatliu.com/2016/05/20/setup-linux-workspace-in-windows-using-hyper-v/">Hyper-V + Samba 方案</a>。</p>
+<p>要在 Windows 上使用 Linux，最方便最好用的就是装个虚拟机，再用 SSH 连上了。Linux 当然选择无图形界面的 Server 版，所以还需要能够方便的在 Windows 上访问到 Linux 上的文件。</p>
+<p>其中每一项都可以有很多选择，不过都是大同小异了。这里我选择的是 VituralBox + Ubuntu + PuTTY + Shared Folders。</p>
+<h2 id="VituralBox"><a href="#VituralBox" class="headerlink" title="VituralBox"></a>VituralBox</h2><p>官网：<a href="https://www.virtualbox.org/" target="_blank" rel="external">https://www.virtualbox.org/</a></p>
+<p>无需多介绍，开源免费小巧。装无图形界面的 Linux 足矣。安装比较简单，直接默认选项即可。需要注意的是，之后<strong>安装虚拟机的时候，最好存储在非系统盘</strong>，因为虚拟机可能会占用空间比较大，而且非系统盘不容易丢失。</p>
+<p>其他选择：<a href="http://www.vmware.com/" target="_blank" rel="external">VMware</a></p>
+<h2 id="Ubuntu"><a href="#Ubuntu" class="headerlink" title="Ubuntu"></a>Ubuntu</h2><p>官网：<a href="http://www.ubuntu.com/server" target="_blank" rel="external">http://www.ubuntu.com/server</a></p>
+<p>Linux 中，Ubuntu 使用最广泛，比较适合新手，遇到问题基本都能 Google 出来。既然是在虚拟机中安装 Linux，那么图形界面实在没有多少用途了。纯命令行也很适合学习。</p>
+<p>安装 LTS 版本的 Ubuntu，可以获得五年的支持。所以我选择的是 <code>ubuntu-14.04.4-server-amd64</code>，不过听说 <code>16.04 LTS</code> 也快出了，应该使用起来差别不大吧。</p>
+<p>安装之前，<strong>需要把 Network 设置为 Bridged Adapter</strong>，这样子方便 Windows 端能够使用 PuTTY 连接上 Linux，也能够用浏览器通过 IP 访问 Linux 中的服务。</p>
+<blockquote>
+<p>Tip: 系统语言最好选英语，避免不必要的错误。</p>
+</blockquote>
+<p>安装完成后，登录系统，输入 <code>ifconfig</code> 查询 IP，记录下来。</p>
+<h2 id="PuTTY"><a href="#PuTTY" class="headerlink" title="PuTTY"></a>PuTTY</h2><p>官网：<a href="http://www.putty.org/" target="_blank" rel="external">http://www.putty.org/</a></p>
+<p>PuTTY 是 Windows 上用于 SSH 连接的工具，使用很方便，输入 IP 即可。</p>
+<blockquote>
+<p>Tip: 如果想要保存自定义的配置，登录之后，打开设置，配置好之后，点 Default Settings，然后点击 Save 即可。</p>
+</blockquote>
+<blockquote>
+<p>Tip: 推荐使用 <a href="https://tmux.github.io/" target="_blank" rel="external">tmux</a> 保存当前会话。</p>
+</blockquote>
+<h2 id="Shared-Folders"><a href="#Shared-Folders" class="headerlink" title="Shared Folders"></a>Shared Folders</h2><p>共享文件夹之后，就可以用 Windows 上的编辑器（IDE）编辑 Linux 上的文件了。这个步骤比较复杂，配置过程中还遇到诸多问题，所以详细记录一下。</p>
+<h3 id="配置-Shared-Folder"><a href="#配置-Shared-Folder" class="headerlink" title="配置 Shared Folder"></a>配置 Shared Folder</h3><ol>
+<li>在 Windows 上创建一个 Folder <code>D:\Share</code></li>
+<li>关闭 Linux 系统</li>
+<li>配置 Linux 的 Shared Folders，添加一项，配置为 <code>D:\Share</code>，<strong>并且勾选 <code>Auto-mount</code>（重要）</strong>，会自动挂载到 <code>/media/sf_Share</code>。</li>
+</ol>
+<h3 id="访问-Shared-Folder"><a href="#访问-Shared-Folder" class="headerlink" title="访问 Shared Folder"></a>访问 Shared Folder</h3><p>如果尝试在 Linux 中访问 <code>/media/sf_Share</code>，会说无权限访问，是因为访问 <code>/media/sf_Share</code> 需要管理员权限。所以<strong>使用管理员权限运行</strong> VituralBox 即可。</p>
+<h3 id="无法创建软链接"><a href="#无法创建软链接" class="headerlink" title="无法创建软链接"></a>无法创建软链接</h3><p>在 Shared Folder 中，默认是无法创建软链接的，google 一下可以找到解决方案，但是依然无法解决问题，后经过研究，应该按照如下方式配置：</p>
+<ol>
+<li>打开 Windows 中的 cmd，进入 <code>C:\Program Files\Oracle\VirtualBox</code>，然后执行 <code>VBoxManage setextradata ubuntu VBoxInternal2/SharedFoldersEnableSymlinksCreate/Share 1</code>。注意，<code>ubuntu</code> 是你的机器名字，<code>Share</code> 是你共享文件夹的名字。</li>
+<li>设置完之后，需要重新启动 VirtualBox。如果还是不行，可以尝试先用非管理员模式启动 VirtualBox，再使用管理员模式启动即可。</li>
+</ol>
+<p>另外，取消刚刚的配置的命令是：<code>VBoxManage setextradata ubuntu VBoxInternal2/SharedFoldersEnableSymlinksCreate/Share</code>。<br>查看有哪些配置的命令是：<code>VBoxManage getextradata ubuntu enumerate</code>。</p>
+<p>更多讨论请看：<br><a href="https://github.com/mitchellh/vagrant/issues/713" target="_blank" rel="external">https://github.com/mitchellh/vagrant/issues/713</a><br><a href="https://www.virtualbox.org/ticket/10085" target="_blank" rel="external">https://www.virtualbox.org/ticket/10085</a></p>
+<p>至此，Linux 工作环境已经已经配置完毕，可以愉快的体验了！</p>
+<h2 id="Next-Step"><a href="#Next-Step" class="headerlink" title="Next Step"></a>Next Step</h2><ul>
+<li style="list-style: none"><input type="checkbox" checked> 软链接还存在问题，有时候 Git 会显示有 Unstaged Change，但其实那是为了兼容 Linux 和 Windows 的软链接，而使文件多了一行内容。这个 Unstaged Change 无法被 Commit，也无法被 Checkout，所以对开发影响不大。但是有的脚本或者有的命令要求工作区是 Clear 的，这种情况就只能不在 Shared Folder 开发了。</li>
+<li style="list-style: none"><input type="checkbox"> 可以试试 win10 的 Linux subsystem <a href="https://v2ex.com/member/beginor" target="_blank" rel="external">@beginor</a></li>
+<li style="list-style: none"><input type="checkbox" checked> 可以试试在 linux 上安装 samba 服务，通过 windows 中的 “映射网络驱动器” 挂载到本地 windows 中，看起来就像是本机磁盘。 PHP 、 Python 这种动态语言项目放到这个磁盘里面，本地 IDE 编写代码， linux 上运行代码 <a href="https://v2ex.com/member/odirus" target="_blank" rel="external">@odirus</a></li>
+<li style="list-style: none"><input type="checkbox"> Vagrant <a href="https://v2ex.com/member/ljcarsenal" target="_blank" rel="external">@ljcarsenal</a></li>
+<li style="list-style: none"><input type="checkbox"> 可以加个 VBoxHeadlessTray ，再也不用担心 Windows 10 自动重启了 <a href="https://v2ex.com/member/ProjectAmber" target="_blank" rel="external">@ProjectAmber</a></li>
+<li style="list-style: none"><input type="checkbox" checked> 推荐用 samba 进行， sharefolder 中安装某些 nodejs npm 包也会出问题，还有文件权限也是个问题，除了普通文件共享，不建议使用 <a href="https://v2ex.com/member/egen" target="_blank" rel="external">@egen</a></li>
+<li style="list-style: none"><input type="checkbox"> babun 体验更佳 <a href="https://v2ex.com/member/cyio" target="_blank" rel="external">@cyio</a></li>
+<li style="list-style: none"><input type="checkbox" checked> Windows 10 的话直接用系统自带的 Hyper-V 就行了 <a href="https://v2ex.com/member/Kymair" target="_blank" rel="external">@Kymair</a></li>
+</ul>
+<h2 id="Links"><a href="#Links" class="headerlink" title="Links"></a>Links</h2><ul>
+<li><a href="https://v2ex.com/t/274202" target="_blank" rel="external">v2ex 上的讨论</a></li>
+</ul>
+
+  </div>
+</article>
+<blockquote class="top-gap-big"> <p> 本文遵循 <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" class"text-muted">CC BY-ND-ND 3.0</a> 协议，转载请注明原作者，禁止商用，禁止演绎。 </p> </blockquote>
+<div class="top-gap-big text-center text-muted">
+  <small>
+    <i class="czs-tag-l"></i>
+    <a class="text-muted" href="/tags/VituralBox/">VituralBox</a> , <a class="text-muted" href="/tags/Linux/">Linux</a> , <a class="text-muted" href="/tags/Windows/">Windows</a>
+  </small>
+</div>
+
+
+  <div id="disqus_thread" class="top-gap-big"></div>
+  <script>
+    var langMap = {
+      en: 'en',
+      'zh-CN': 'zh'
+    };
+    var disqus_config = function () {
+      this.language = langMap['zh-CN'] || langMap['en'];
+      this.page.url = 'http://blog.xcatliu.com/2016/04/25/setup_linux_workspace_in_windows/';
+      this.page.identifier = '2016/04/25/setup_linux_workspace_in_windows/';
+      this.page.title = '在 Windows 中配置 Linux 工作环境';
+    };
+    (function() {
+      var d = document, s = d.createElement('script');
+      s.src = '//xcatliu.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        <hr class="top-gap-big"></hr>
+<p class="text-center">
+  <small class="text-muted">
+    &copy;
+    
+      2012 -
+    
+    <span itemprop="copyrightYear">2020</span>
+    <i class="czs-heart" style="color:red;"></i>
+    <span itemprop="copyrightHolder">xcatliu</span>
+
+    <br/>
+
+    由 <a class="text-muted" href="https://hexo.io" title="Hexo">Hexo</a> 强力驱动
+    <span class="theme-separator">·</span>
+    主题
+    <a class="text-muted" href="https://github.com/xcatliu/hexo-theme-milk">Milk</a>
+  </small>
+</p>
+
+      </div>
+      <div class="theme-sidebar-mask theme-hide"></div>
+<aside class="theme-sidebar-wrapper">
+  <div class="container flex-left units-gap theme-header-container">
+    
+    <a class="unit-0 theme-icon-link" href="/archives" title="归档">
+      <i class="czs-folder-l"></i>
+    </a>
+  
+    <a class="unit-0 theme-icon-link" href="/categories" title="分类">
+      <i class="czs-bookmark-l"></i>
+    </a>
+  
+    <a class="unit-0 theme-icon-link" href="/tags" title="标签">
+      <i class="czs-tag-l"></i>
+    </a>
+  
+    <div class="unit"></div>
+  
+    <a class="unit-0 theme-icon-link" href="http://xcatliu.com" title="关于我">
+      <i class="czs-user-l"></i>
+    </a>
+  
+
+  </div>
+  <div class="container">
+    
+          <h2>流浪小猫的博客</h2>
+          
+          <p class="top-gap-0 text-muted">记录我的成长点滴</p>
+          
+          <div class="flex-left flex-middle top-gap">
+            <img alt="Avatar" height="24" src="/assets/about/xcatliu_512.png"/>
+            <span class="theme-sidebar-author">xcatliu</span>
+          </div>
+          
+          <p>欢迎访问流浪小猫的博客，这里搜集了我的技术文章和生活感悟，希望能够与您一起交流，共同成长。</p>
+          
+          <p class="theme-sidebar-social">
+            
+    <a class="unit-0 theme-icon-link" href="https://github.com/xcatliu" title="GitHub">
+      <i class="czs-github"></i>
+    </a>
+  
+    <a class="unit-0 theme-icon-link" href="https://www.v2ex.com/member/xcatliu" title="V2EX">
+      <i class="czs-v2ex"></i>
+    </a>
+  
+    <a class="unit-0 theme-icon-link" href="https://twitter.com/xcatliu" title="Twitter">
+      <i class="czs-twitter"></i>
+    </a>
+  
+    <a class="unit-0 theme-icon-link" href="mailto:xcatliu@gmail.com" title="Gmail">
+      <i class="czs-message-l"></i>
+    </a>
+  
+    <a class="unit-0 theme-icon-link" href="/atom.xml" title="RSS 订阅">
+      <i class="czs-rss"></i>
+    </a>
+  
+
+          </p>
+          
+          <h5>友情链接</h5>
+          <p class="text-muted">
+            <small>
+              <ul class="theme-list-style-none">
+                <li><a class="text-muted" href="http://chuangzaoshi.com/">创造狮</a></li><li><a class="text-muted" href="https://blog.jamespan.me/">James Pan's Blog</a></li><li><a class="text-muted" href="/links">More</a></li>
+              </ul>
+            </small>
+          </p>
+          
+  </div>
+</aside>
+
+    </div>
+    <script src="/js/theme.js"></script>
+    
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45256157-6', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+
+    
+  <script id="dsq-count-scr" src="//xcatliu.disqus.com/count.js" async></script>
+
+  </body>
+</html>

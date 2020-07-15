@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+
+  
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+  
+  
+  
+
+  <link rel="stylesheet" href="/css/mobi.css-3.1.1/dist/mobi.min.css">
+<link rel="stylesheet" href="/css/caomei1.2.1/style.css">
+<link rel="stylesheet" href="/css/theme.css">
+
+  
+    <meta name="keywords" content="JavaScript, Array" />
+  
+
+  
+    <link rel="alternate" href="/atom.xml" title="流浪小猫的博客" type="application/atom+xml" />
+  
+
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+
+  <title>从 isArray 谈起 - 流浪小猫的博客</title>
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+  <body class="theme-body">
+    <div class="flex-center theme-header-wrapper">
+  <div class="container flex-left units-gap theme-header-container">
+    <a href="/" class="unit-0 theme-header-icon theme-icon-link" title="首页">
+      <i class="czs-home-l"></i>
+    </a>
+    <div class="flex-center text-center flex-middle unit theme-header-title theme-header-title-no-transition">
+      流浪小猫的博客
+    </div>
+    <a class="unit-0 theme-header-icon theme-icon-link theme-header-sidebar-icon" href="javascript:void(0);" title="更多">
+      <i class="czs-menu-l"></i>
+    </a>
+  </div>
+</div>
+<div class="theme-header-placeholder"></div>
+
+    <div class="flex-center">
+      <div class="container">
+        <article>
+  <h1 class="text-center">
+    从 isArray 谈起
+  </h1>
+  <div class="text-center top-gap">
+    <div class="text-small text-muted">
+  <time datetime="2015-11-03T18:16:17+08:00">
+    2015-11-03
+  </time>
+  <span class="theme-separator">·</span>
+  <i class="czs-user-l"></i>
+  <a class="text-muted theme-text-no-decoration" href="https://github.com/xcatliu">xcatliu</a>
+  <span class="theme-separator">·</span>
+  <i class="czs-bookmark-l"></i>
+  <a class="text-muted theme-text-no-decoration" href="/categories/Programmer/">Programmer</a>
+  <span class="theme-comment-count-container theme-hide theme-comment-count-container-transparent">
+    <span class="theme-separator">·</span>
+    <i class="czs-comment-l"></i>
+    <a class="text-muted theme-text-no-decoration theme-comment-count" data-disqus-identifier="2015/11/03/isarray/" href="/2015/11/03/isarray/#disqus_thread"></a>
+  </span>
+</div>
+
+  </div>
+  <div class="top-gap-big">
+    <p>怎么判断数组是前端面试经常被问到的一个问题，数组也是最难以准确判断的类型之一。今天咱们就来谈谈如何判断数组。</p>
+<a id="more"></a>
+<h2 id="typeof"><a href="#typeof" class="headerlink" title="typeof"></a>typeof</h2><p><code>typeof</code> 是 JavaScript 中判断类型的运算符，语法如下<sup><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof" target="_blank" rel="external">1</a></sup>：</p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">typeof</span> operand
+</code></pre>
+<p>可是 <code>typeof</code> 返回的结果不尽如人意<sup><a href="http://www.ecma-international.org/ecma-262/5.1/#sec-11.4.3" target="_blank" rel="external">2</a></sup>：</p>
+<table class="table">
+<thead>
+<tr>
+<th>Type of val</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Undefined</td>
+<td><code>&quot;undefined&quot;</code></td>
+</tr>
+<tr>
+<td>Null</td>
+<td><code>&quot;object&quot;</code></td>
+</tr>
+<tr>
+<td>Boolean</td>
+<td><code>&quot;boolean&quot;</code></td>
+</tr>
+<tr>
+<td>Number</td>
+<td><code>&quot;number&quot;</code></td>
+</tr>
+<tr>
+<td>String</td>
+<td><code>&quot;string&quot;</code></td>
+</tr>
+<tr>
+<td>Object (native and does not implement [[Call]])</td>
+<td><code>&quot;object&quot;</code></td>
+</tr>
+<tr>
+<td>Object (native or host and does implement [[Call]])</td>
+<td><code>&quot;function&quot;</code></td>
+</tr>
+<tr>
+<td>Object (host and does not implement [[Call]])</td>
+<td>Implementation-defined except may not be <code>&quot;undefined&quot;</code>, <code>&quot;boolean&quot;</code>, <code>&quot;number&quot;</code>, or <code>&quot;string&quot;</code></td>
+</tr>
+</tbody>
+</table>
+<p>对一个数组执行 <code>typeof</code>，总是会返回 <code>&quot;object&quot;</code>，</p>
+<p>故 <code>typeof</code> 对判断数组无能为力，pass。</p>
+<h2 id="instanceof"><a href="#instanceof" class="headerlink" title="instanceof"></a>instanceof</h2><p><code>instanceof</code> 是 JavaScript 中判断是否继承的运算符，语法如下<sup><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/instanceof" target="_blank" rel="external">3</a></sup>：</p>
+<pre class=" language-js"><code class="language-js">object <span class="token keyword">instanceof</span> <span class="token class-name">constructor</span>
+</code></pre>
+<p>故可以通过 <code>instanceof</code> 判断数组：</p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">isArray</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> obj <span class="token keyword">instanceof</span> <span class="token class-name">Array</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>那么，<code>instanceof</code> 有什么弊端呢？</p>
+<p>答案就是 <code>instanceof</code> 无法判断跨 frame 的数组类型：</p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">var</span> iframe <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'iframe'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+document<span class="token punctuation">.</span>body<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span>iframe<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> FrameArray <span class="token operator">=</span> window<span class="token punctuation">.</span>frames<span class="token punctuation">[</span>window<span class="token punctuation">.</span>frames<span class="token punctuation">.</span>length<span class="token number">-1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>Array<span class="token punctuation">;</span>
+<span class="token keyword">var</span> array <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FrameArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>array <span class="token keyword">instanceof</span> <span class="token class-name">Array</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// false</span>
+</code></pre>
+<p>于是，在 ES5 中有了 <code>Array.isArray</code>。</p>
+<h2 id="Array-isArray"><a href="#Array-isArray" class="headerlink" title="Array.isArray"></a>Array.isArray</h2><p>语法如下<sup><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/isArray" target="_blank" rel="external">4</a></sup>：</p>
+<pre class=" language-js"><code class="language-js">Array<span class="token punctuation">.</span><span class="token function">isArray</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span>
+</code></pre>
+<p>遗憾的是，<code>Array.isArray</code> 是 es5 的方法，并不兼容所有浏览器，ie9 以下浏览器都不支持<sup><a href="http://kangax.github.io/compat-table/es5/#Array.isArray" target="_blank" rel="external">5</a></sup>。</p>
+<p>2009 年，Prototype.js 维护者 kangax 发现可以用 <code>Object.prototype.toString</code> 判断数组<sup><a href="http://perfectionkills.com/instanceof-considered-harmful-or-how-to-write-a-robust-isarray/" target="_blank" rel="external">6</a></sup>，终于给数组的判断画上了句号。</p>
+<h2 id="Object-prototype-toString"><a href="#Object-prototype-toString" class="headerlink" title="Object.prototype.toString"></a>Object.prototype.toString</h2><p><code>Object.prototype.toString</code> 的规则如下<sup><a href="http://www.ecma-international.org/ecma-262/5.1/#sec-15.2.4.2" target="_blank" rel="external">7</a></sup>：</p>
+<blockquote>
+<p>When the toString method is called, the following steps are taken:</p>
+<ol>
+<li>If the this value is undefined, return “[object Undefined]”.</li>
+<li>If the this value is null, return “[object Null]”.</li>
+<li>Let O be the result of calling ToObject passing the this value as the argument.</li>
+<li>Let class be the value of the [[Class]] internal property of O.</li>
+<li>Return the String value that is the result of concatenating the three Strings “[object “, class, and “]”.</li>
+</ol>
+</blockquote>
+<p>而数组的 <code>[[class]]</code> 值是 <code>&quot;Array&quot;</code><sup><a href="http://www.ecma-international.org/ecma-262/5.1/#sec-15.4.2.1" target="_blank" rel="external">8</a></sup>：</p>
+<blockquote>
+<p>15.4.2.1 new Array ( [ item0 [ , item1 [ , … ] ] ] )<br>…<br>The [[Class]] internal property of the newly constructed object is set to “Array”.<br>…</p>
+</blockquote>
+<p>由此可知，<code>Object.prototype.toString</code> 可用来判断数组：</p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">isArray</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> Object<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>toString<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token string">'[object Array]'</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>此方法给不支持 <code>Array.isArray</code> 的浏览器提供了判断数组的方式，结合原生方法，我们可以得到适用性比较强的 <code>isArray</code>：</p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">var</span> isArray <span class="token operator">=</span> Array<span class="token punctuation">.</span>isArray <span class="token operator">||</span> <span class="token keyword">function</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> Object<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>toString<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token string">'[object Array]'</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+<h2 id="对比其他类库"><a href="#对比其他类库" class="headerlink" title="对比其他类库"></a>对比其他类库</h2><pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">// jQuery</span>
+jQuery<span class="token punctuation">.</span><span class="token function">each</span><span class="token punctuation">(</span><span class="token string">"Boolean Number String Function Array Date RegExp Object Error"</span><span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">" "</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> name<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    class2type<span class="token punctuation">[</span> <span class="token string">"[object "</span> <span class="token operator">+</span> name <span class="token operator">+</span> <span class="token string">"]"</span> <span class="token punctuation">]</span> <span class="token operator">=</span> name<span class="token punctuation">.</span><span class="token function">toLowerCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+jQuery<span class="token punctuation">.</span>type <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span> obj <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span> obj <span class="token operator">==</span> <span class="token keyword">null</span> <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> obj <span class="token operator">+</span> <span class="token string">""</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token keyword">typeof</span> obj <span class="token operator">===</span> <span class="token string">"object"</span> <span class="token operator">||</span> <span class="token keyword">typeof</span> obj <span class="token operator">===</span> <span class="token string">"function"</span> <span class="token operator">?</span>
+        class2type<span class="token punctuation">[</span> toString<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span> <span class="token punctuation">]</span> <span class="token operator">||</span> <span class="token string">"object"</span> <span class="token punctuation">:</span>
+        <span class="token keyword">typeof</span> obj<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+jQuery<span class="token punctuation">.</span>isArray <span class="token operator">=</span> Array<span class="token punctuation">.</span>isArray <span class="token operator">||</span> <span class="token keyword">function</span><span class="token punctuation">(</span> obj <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> jQuery<span class="token punctuation">.</span><span class="token function">type</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token string">"array"</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+<pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">// YUI</span>
+<span class="token keyword">var</span> TYPES <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token string">'undefined'</span>        <span class="token punctuation">:</span> <span class="token string">'undefined'</span><span class="token punctuation">,</span>
+    <span class="token string">'number'</span>           <span class="token punctuation">:</span> <span class="token string">'number'</span><span class="token punctuation">,</span>
+    <span class="token string">'boolean'</span>          <span class="token punctuation">:</span> <span class="token string">'boolean'</span><span class="token punctuation">,</span>
+    <span class="token string">'string'</span>           <span class="token punctuation">:</span> <span class="token string">'string'</span><span class="token punctuation">,</span>
+    <span class="token string">'[object Function]'</span><span class="token punctuation">:</span> <span class="token string">'function'</span><span class="token punctuation">,</span>
+    <span class="token string">'[object RegExp]'</span>  <span class="token punctuation">:</span> <span class="token string">'regexp'</span><span class="token punctuation">,</span>
+    <span class="token string">'[object Array]'</span>   <span class="token punctuation">:</span> <span class="token string">'array'</span><span class="token punctuation">,</span>
+    <span class="token string">'[object Date]'</span>    <span class="token punctuation">:</span> <span class="token string">'date'</span><span class="token punctuation">,</span>
+    <span class="token string">'[object Error]'</span>   <span class="token punctuation">:</span> <span class="token string">'error'</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+L<span class="token punctuation">.</span>type <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>o<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> TYPES<span class="token punctuation">[</span><span class="token keyword">typeof</span> o<span class="token punctuation">]</span> <span class="token operator">||</span> TYPES<span class="token punctuation">[</span>TOSTRING<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>o<span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">||</span> <span class="token punctuation">(</span>o <span class="token operator">?</span> <span class="token string">'object'</span> <span class="token punctuation">:</span> <span class="token string">'null'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+L<span class="token punctuation">.</span>isArray <span class="token operator">=</span> L<span class="token punctuation">.</span><span class="token function">_isNative</span><span class="token punctuation">(</span>Array<span class="token punctuation">.</span>isArray<span class="token punctuation">)</span> <span class="token operator">?</span> Array<span class="token punctuation">.</span>isArray <span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>o<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> L<span class="token punctuation">.</span><span class="token function">type</span><span class="token punctuation">(</span>o<span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token string">'array'</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+<pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">// Prototype.js</span>
+<span class="token keyword">var</span> ARRAY_CLASS <span class="token operator">=</span> <span class="token string">'[object Array]'</span><span class="token punctuation">;</span>
+<span class="token keyword">function</span> <span class="token function">isArray</span><span class="token punctuation">(</span>object<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> _toString<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>object<span class="token punctuation">)</span> <span class="token operator">===</span> ARRAY_CLASS<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">var</span> hasNativeIsArray <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> Array<span class="token punctuation">.</span>isArray <span class="token operator">==</span> <span class="token string">'function'</span><span class="token punctuation">)</span>
+    <span class="token operator">&amp;&amp;</span> Array<span class="token punctuation">.</span><span class="token function">isArray</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span>Array<span class="token punctuation">.</span><span class="token function">isArray</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>hasNativeIsArray<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    isArray <span class="token operator">=</span> Array<span class="token punctuation">.</span>isArray<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">// underscore.js</span>
+<span class="token keyword">var</span> toString <span class="token operator">=</span> Object<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>toString<span class="token punctuation">;</span>
+_<span class="token punctuation">.</span>isArray <span class="token operator">=</span> nativeIsArray <span class="token operator">||</span> <span class="token keyword">function</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> toString<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token string">'[object Array]'</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+<pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">// lodash.js</span>
+<span class="token keyword">var</span> isArray <span class="token operator">=</span> nativeIsArray <span class="token operator">||</span> <span class="token keyword">function</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> value <span class="token operator">&amp;&amp;</span> <span class="token keyword">typeof</span> value <span class="token operator">==</span> <span class="token string">'object'</span> <span class="token operator">&amp;&amp;</span> <span class="token keyword">typeof</span> value<span class="token punctuation">.</span>length <span class="token operator">==</span> <span class="token string">'number'</span> <span class="token operator">&amp;&amp;</span>
+        toString<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span> <span class="token operator">==</span> arrayClass <span class="token operator">||</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+<p>其中，jQuery，Prototype.js 和 lodash.js 对数组判断比较严格，加了其他限制。其他的类库和咱们的一样。</p>
+<p>说明通过 <code>Array.isArray</code> 结合 <code>Object.ptototype.toString</code> 来判断数组，基本不会有问题。</p>
+<h2 id="iframe-Object-prototype-toString-or-Array-isArray"><a href="#iframe-Object-prototype-toString-or-Array-isArray" class="headerlink" title="iframe Object.prototype.toString or Array.isArray"></a>iframe Object.prototype.toString or Array.isArray</h2><p>JavaScript 中，<code>Object.prototype</code> 的方法都可以被重写，假如想想极端情况，一个熊孩子重写了 <code>Object.prototype.toString</code>，又重写了 <code>Array.isArray</code> 那岂不是上面的所有类库判断数组的方法都失效了？</p>
+<p>经过测试确实如此，还好我们还有办法补救，以下即为 <strong>终极判断数组</strong> 方法：</p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">isArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    document<span class="token punctuation">.</span>body<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span>document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'iframe'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> frame <span class="token operator">=</span> window<span class="token punctuation">.</span>frames<span class="token punctuation">[</span>window<span class="token punctuation">.</span>frames<span class="token punctuation">.</span>length<span class="token number">-1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> FrameArray <span class="token operator">=</span> frame<span class="token punctuation">.</span>Array<span class="token punctuation">;</span>
+    <span class="token keyword">var</span> FrameObject <span class="token operator">=</span> frame<span class="token punctuation">.</span>Object<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> FrameArray<span class="token punctuation">.</span>isArray <span class="token operator">||</span> <span class="token keyword">function</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> FrameObject<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>toString<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token string">'[object Array]'</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>通过创建一个新的 <code>iframe</code>，保证原生方法没有被重写，确实绝妙。</p>
+<p>不过，实际情况下不会有熊孩子闲着蛋疼去修改 <code>Object.prototype.toString</code> 和 <code>Array.isArray</code> 的，所以此种方法判断数组，有点画蛇添足了，仅作为茶余饭后的思考。</p>
+<h2 id="createElement-也被复写了"><a href="#createElement-也被复写了" class="headerlink" title="createElement 也被复写了"></a>createElement 也被复写了</h2><p>熊孩子：老湿，这个 iframe 方法确实厉害，但是假如我把 <code>document.createElement</code> 也复写了，怎么办呢？</p>
+<p>老湿：熊孩子滚远点！</p>
+<h2 id="Links"><a href="#Links" class="headerlink" title="Links"></a>Links</h2><ol>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof" target="_blank" rel="external">MDN typeof</a></li>
+<li><a href="http://www.ecma-international.org/ecma-262/5.1/#sec-11.4.3" target="_blank" rel="external">es5 typeof</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/instanceof" target="_blank" rel="external">MDN instanceof</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/isArray" target="_blank" rel="external">MDN isArray</a></li>
+<li><a href="http://kangax.github.io/compat-table/es5/#Array.isArray" target="_blank" rel="external">caniuse isArray</a></li>
+<li><a href="http://perfectionkills.com/instanceof-considered-harmful-or-how-to-write-a-robust-isarray/" target="_blank" rel="external">kangax isArray</a></li>
+<li><a href="http://www.ecma-international.org/ecma-262/5.1/#sec-15.2.4.2" target="_blank" rel="external">MDN toString</a></li>
+<li><a href="http://www.ecma-international.org/ecma-262/5.1/#sec-15.4.2.1" target="_blank" rel="external">MDN newArray</a></li>
+</ol>
+
+  </div>
+</article>
+<blockquote class="top-gap-big"> <p> 本文遵循 <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" class"text-muted">CC BY-ND-ND 3.0</a> 协议，转载请注明原作者，禁止商用，禁止演绎。 </p> </blockquote>
+<div class="top-gap-big text-center text-muted">
+  <small>
+    <i class="czs-tag-l"></i>
+    <a class="text-muted" href="/tags/JavaScript/">JavaScript</a> , <a class="text-muted" href="/tags/Array/">Array</a>
+  </small>
+</div>
+
+
+  <div id="disqus_thread" class="top-gap-big"></div>
+  <script>
+    var langMap = {
+      en: 'en',
+      'zh-CN': 'zh'
+    };
+    var disqus_config = function () {
+      this.language = langMap['zh-CN'] || langMap['en'];
+      this.page.url = 'http://blog.xcatliu.com/2015/11/03/isarray/';
+      this.page.identifier = '2015/11/03/isarray/';
+      this.page.title = '从 isArray 谈起';
+    };
+    (function() {
+      var d = document, s = d.createElement('script');
+      s.src = '//xcatliu.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        <hr class="top-gap-big"></hr>
+<p class="text-center">
+  <small class="text-muted">
+    &copy;
+    
+      2012 -
+    
+    <span itemprop="copyrightYear">2020</span>
+    <i class="czs-heart" style="color:red;"></i>
+    <span itemprop="copyrightHolder">xcatliu</span>
+
+    <br/>
+
+    由 <a class="text-muted" href="https://hexo.io" title="Hexo">Hexo</a> 强力驱动
+    <span class="theme-separator">·</span>
+    主题
+    <a class="text-muted" href="https://github.com/xcatliu/hexo-theme-milk">Milk</a>
+  </small>
+</p>
+
+      </div>
+      <div class="theme-sidebar-mask theme-hide"></div>
+<aside class="theme-sidebar-wrapper">
+  <div class="container flex-left units-gap theme-header-container">
+    
+    <a class="unit-0 theme-icon-link" href="/archives" title="归档">
+      <i class="czs-folder-l"></i>
+    </a>
+  
+    <a class="unit-0 theme-icon-link" href="/categories" title="分类">
+      <i class="czs-bookmark-l"></i>
+    </a>
+  
+    <a class="unit-0 theme-icon-link" href="/tags" title="标签">
+      <i class="czs-tag-l"></i>
+    </a>
+  
+    <div class="unit"></div>
+  
+    <a class="unit-0 theme-icon-link" href="http://xcatliu.com" title="关于我">
+      <i class="czs-user-l"></i>
+    </a>
+  
+
+  </div>
+  <div class="container">
+    
+          <h2>流浪小猫的博客</h2>
+          
+          <p class="top-gap-0 text-muted">记录我的成长点滴</p>
+          
+          <div class="flex-left flex-middle top-gap">
+            <img alt="Avatar" height="24" src="/assets/about/xcatliu_512.png"/>
+            <span class="theme-sidebar-author">xcatliu</span>
+          </div>
+          
+          <p>欢迎访问流浪小猫的博客，这里搜集了我的技术文章和生活感悟，希望能够与您一起交流，共同成长。</p>
+          
+          <p class="theme-sidebar-social">
+            
+    <a class="unit-0 theme-icon-link" href="https://github.com/xcatliu" title="GitHub">
+      <i class="czs-github"></i>
+    </a>
+  
+    <a class="unit-0 theme-icon-link" href="https://www.v2ex.com/member/xcatliu" title="V2EX">
+      <i class="czs-v2ex"></i>
+    </a>
+  
+    <a class="unit-0 theme-icon-link" href="https://twitter.com/xcatliu" title="Twitter">
+      <i class="czs-twitter"></i>
+    </a>
+  
+    <a class="unit-0 theme-icon-link" href="mailto:xcatliu@gmail.com" title="Gmail">
+      <i class="czs-message-l"></i>
+    </a>
+  
+    <a class="unit-0 theme-icon-link" href="/atom.xml" title="RSS 订阅">
+      <i class="czs-rss"></i>
+    </a>
+  
+
+          </p>
+          
+          <h5>友情链接</h5>
+          <p class="text-muted">
+            <small>
+              <ul class="theme-list-style-none">
+                <li><a class="text-muted" href="http://chuangzaoshi.com/">创造狮</a></li><li><a class="text-muted" href="https://blog.jamespan.me/">James Pan's Blog</a></li><li><a class="text-muted" href="/links">More</a></li>
+              </ul>
+            </small>
+          </p>
+          
+  </div>
+</aside>
+
+    </div>
+    <script src="/js/theme.js"></script>
+    
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45256157-6', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+
+    
+  <script id="dsq-count-scr" src="//xcatliu.disqus.com/count.js" async></script>
+
+  </body>
+</html>

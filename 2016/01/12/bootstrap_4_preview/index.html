@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+
+  
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+  
+  
+  
+
+  <link rel="stylesheet" href="/css/mobi.css-3.1.1/dist/mobi.min.css">
+<link rel="stylesheet" href="/css/caomei1.2.1/style.css">
+<link rel="stylesheet" href="/css/theme.css">
+
+  
+    <meta name="keywords" content="Bootstrap, CSS" />
+  
+
+  
+    <link rel="alternate" href="/atom.xml" title="流浪小猫的博客" type="application/atom+xml" />
+  
+
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+
+  <title>Bootstrap 4 初探 - 流浪小猫的博客</title>
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+  <body class="theme-body">
+    <div class="flex-center theme-header-wrapper">
+  <div class="container flex-left units-gap theme-header-container">
+    <a href="/" class="unit-0 theme-header-icon theme-icon-link" title="首页">
+      <i class="czs-home-l"></i>
+    </a>
+    <div class="flex-center text-center flex-middle unit theme-header-title theme-header-title-no-transition">
+      流浪小猫的博客
+    </div>
+    <a class="unit-0 theme-header-icon theme-icon-link theme-header-sidebar-icon" href="javascript:void(0);" title="更多">
+      <i class="czs-menu-l"></i>
+    </a>
+  </div>
+</div>
+<div class="theme-header-placeholder"></div>
+
+    <div class="flex-center">
+      <div class="container">
+        <article>
+  <h1 class="text-center">
+    Bootstrap 4 初探
+  </h1>
+  <div class="text-center top-gap">
+    <div class="text-small text-muted">
+  <time datetime="2016-01-12T20:11:56+08:00">
+    2016-01-12
+  </time>
+  <span class="theme-separator">·</span>
+  <i class="czs-user-l"></i>
+  <a class="text-muted theme-text-no-decoration" href="https://github.com/xcatliu">xcatliu</a>
+  <span class="theme-separator">·</span>
+  <i class="czs-bookmark-l"></i>
+  <a class="text-muted theme-text-no-decoration" href="/categories/Programmer/">Programmer</a>
+  <span class="theme-comment-count-container theme-hide theme-comment-count-container-transparent">
+    <span class="theme-separator">·</span>
+    <i class="czs-comment-l"></i>
+    <a class="text-muted theme-text-no-decoration theme-comment-count" data-disqus-identifier="2016/01/12/bootstrap_4_preview/" href="/2016/01/12/bootstrap_4_preview/#disqus_thread"></a>
+  </span>
+</div>
+
+  </div>
+  <div class="top-gap-big">
+    <p>Bootstrap 作为 GitHub 上 Stars 最多的项目，可以说是万众瞩目，issues 和 pull requests 也居高不下，足以看出其后劲依然很足。</p>
+<p>截止到本文发布，Bootstrap 4 已经推出 alpha 2 版本一个多月了，让我们一起玩转 Bootstrap 4 吧！</p>
+<a id="more"></a>
+<h2 id="新特性"><a href="#新特性" class="headerlink" title="新特性"></a>新特性</h2><p>先来看看 <a href="http://blog.getbootstrap.com/2015/08/19/bootstrap-4-alpha/" target="_blank" rel="external">Bootstrap 4 的新特性</a>：</p>
+<h3 id="使用-Sass-替代-Less"><a href="#使用-Sass-替代-Less" class="headerlink" title="使用 Sass 替代 Less"></a>使用 Sass 替代 Less</h3><p>众多 css 预处理器里面，Sass 一直保持了最活跃的开发者社区，使用 Sass 替代 Less 想必是众望所归。</p>
+<h3 id="支持-Flexbox-了"><a href="#支持-Flexbox-了" class="headerlink" title="支持 Flexbox 了"></a>支持 Flexbox 了</h3><p>允许用户构建 Bootstrap 的时候将 flexbox 设置为 true，这样网格系统和一些组件都使用 flexbox 布局啦。</p>
+<p>当然兼容性上会存在很大问题，不过如果开发只支持高级浏览器的企业应用，就赶紧拥抱 flexbox 吧。</p>
+<h3 id="新组件-Cards"><a href="#新组件-Cards" class="headerlink" title="新组件 Cards"></a>新组件 Cards</h3><p>wells，thumbnails 和 panels 被废弃，使用 cards 替代。</p>
+<h3 id="提供更多自定义选项"><a href="#提供更多自定义选项" class="headerlink" title="提供更多自定义选项"></a>提供更多自定义选项</h3><p>使用 Reboot 替代 Normalize.css，提供了更多的自定义选项。</p>
+<h3 id="不再支持-IE8"><a href="#不再支持-IE8" class="headerlink" title="不再支持 IE8"></a>不再支持 IE8</h3><p>虽然官方说不支持 IE8 了，但是 Bootstrap 4 在 IE8 下应该也不会有很多 bug，可能需要<a href="http://v4-alpha.getbootstrap.com/getting-started/browsers-devices/" target="_blank" rel="external">一些兼容性的处理</a>即可。</p>
+<h3 id="重写了-JavaScript-组件"><a href="#重写了-JavaScript-组件" class="headerlink" title="重写了 JavaScript 组件"></a>重写了 JavaScript 组件</h3><p>然而还是基于 jQuery 开发，可能是为了适应更广大的用户群体吧。</p>
+<h3 id="主题市场"><a href="#主题市场" class="headerlink" title="主题市场"></a>主题市场</h3><p>Bootstrap 推出了<a href="http://themes.getbootstrap.com/" target="_blank" rel="external">官方的主题市场</a>。</p>
+<h2 id="Bootstrap-4-文档中值得关注的地方"><a href="#Bootstrap-4-文档中值得关注的地方" class="headerlink" title="Bootstrap 4 文档中值得关注的地方"></a>Bootstrap 4 文档中值得关注的地方</h2><p>我推荐大家把 <a href="http://v4-alpha.getbootstrap.com/" target="_blank" rel="external">Bootstrap 4 文档</a>阅读一遍，不过对于已经很熟悉 Bootstrap 3 的同学，可以只关注以下部分即可：</p>
+<h3 id="构建-Bootstrap"><a href="#构建-Bootstrap" class="headerlink" title="构建 Bootstrap"></a>构建 Bootstrap</h3><ul>
+<li><a href="http://v4-alpha.getbootstrap.com/getting-started/options/" target="_blank" rel="external">自定义配置</a></li>
+<li><a href="http://v4-alpha.getbootstrap.com/getting-started/flexbox/" target="_blank" rel="external">Flexbox</a></li>
+<li><a href="http://v4-alpha.getbootstrap.com/getting-started/build-tools/" target="_blank" rel="external">如何构建</a></li>
+<li><a href="http://v4-alpha.getbootstrap.com/content/reboot/" target="_blank" rel="external">Reboot</a></li>
+</ul>
+<p><strong>注意：margin-top 不使用了，只有 margin-bottom，这样的好处是单向的 margin 更容易控制</strong></p>
+<h3 id="移动支持"><a href="#移动支持" class="headerlink" title="移动支持"></a>移动支持</h3><ul>
+<li><a href="http://v4-alpha.getbootstrap.com/layout/responsive-utilities/" target="_blank" rel="external">Responsive utilities</a></li>
+</ul>
+<h3 id="新组件"><a href="#新组件" class="headerlink" title="新组件"></a>新组件</h3><ul>
+<li><a href="http://v4-alpha.getbootstrap.com/components/card/" target="_blank" rel="external">Cards</a></li>
+</ul>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><ul>
+<li><a href="http://v4-alpha.getbootstrap.com/getting-started/browsers-devices/" target="_blank" rel="external">兼容性的干货</a></li>
+<li><a href="http://v4-alpha.getbootstrap.com/migration/" target="_blank" rel="external">迁移</a></li>
+</ul>
+<h2 id="如何关注-Bootstrap-4-项目"><a href="#如何关注-Bootstrap-4-项目" class="headerlink" title="如何关注 Bootstrap 4 项目"></a>如何关注 Bootstrap 4 项目</h2><p>可以关注以下内容：</p>
+<ul>
+<li><a href="http://blog.getbootstrap.com/" target="_blank" rel="external">Bootstrap 新闻</a></li>
+<li><a href="https://github.com/twbs/bootstrap/tree/v4-dev" target="_blank" rel="external">Bootstrap 4 的开发分支</a></li>
+<li><a href="https://bootstrap-slack.herokuapp.com/" target="_blank" rel="external">Bootstrap Slack 讨论</a></li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li>看得出来 Bootstrap 4 提供了很大的自由性，鼓励用户自己编译自己需要的版本</li>
+<li>Bootstrap 布局了 Theme 市场，相信社区会越来越活跃</li>
+<li>Bootstrap 4 摒弃了 IE8，支持了 flexbox，是时候一起推动 css 的迭代了</li>
+</ul>
+<h2 id="Links"><a href="#Links" class="headerlink" title="Links"></a>Links</h2><ul>
+<li><a href="http://blog.getbootstrap.com/" target="_blank" rel="external">Bootstrap 新闻</a></li>
+<li><a href="http://v4-alpha.getbootstrap.com/" target="_blank" rel="external">Bootstrap 4 alpha 文档</a></li>
+<li><a href="http://blog.getbootstrap.com/2015/08/19/bootstrap-4-alpha/" target="_blank" rel="external">Bootstrap 4 新特性</a></li>
+<li><a href="https://github.com/twbs/bootstrap/tree/v4-dev" target="_blank" rel="external">Bootstrap 4 开发分支</a></li>
+<li><a href="https://bootstrap-slack.herokuapp.com/" target="_blank" rel="external">Bootstrap Slack 讨论</a></li>
+<li><a href="http://themes.getbootstrap.com/" target="_blank" rel="external">Bootstrap Themes</a></li>
+</ul>
+
+  </div>
+</article>
+<blockquote class="top-gap-big"> <p> 本文遵循 <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" class"text-muted">CC BY-ND-ND 3.0</a> 协议，转载请注明原作者，禁止商用，禁止演绎。 </p> </blockquote>
+<div class="top-gap-big text-center text-muted">
+  <small>
+    <i class="czs-tag-l"></i>
+    <a class="text-muted" href="/tags/Bootstrap/">Bootstrap</a> , <a class="text-muted" href="/tags/CSS/">CSS</a>
+  </small>
+</div>
+
+
+  <div id="disqus_thread" class="top-gap-big"></div>
+  <script>
+    var langMap = {
+      en: 'en',
+      'zh-CN': 'zh'
+    };
+    var disqus_config = function () {
+      this.language = langMap['zh-CN'] || langMap['en'];
+      this.page.url = 'http://blog.xcatliu.com/2016/01/12/bootstrap_4_preview/';
+      this.page.identifier = '2016/01/12/bootstrap_4_preview/';
+      this.page.title = 'Bootstrap 4 初探';
+    };
+    (function() {
+      var d = document, s = d.createElement('script');
+      s.src = '//xcatliu.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        <hr class="top-gap-big"></hr>
+<p class="text-center">
+  <small class="text-muted">
+    &copy;
+    
+      2012 -
+    
+    <span itemprop="copyrightYear">2020</span>
+    <i class="czs-heart" style="color:red;"></i>
+    <span itemprop="copyrightHolder">xcatliu</span>
+
+    <br/>
+
+    由 <a class="text-muted" href="https://hexo.io" title="Hexo">Hexo</a> 强力驱动
+    <span class="theme-separator">·</span>
+    主题
+    <a class="text-muted" href="https://github.com/xcatliu/hexo-theme-milk">Milk</a>
+  </small>
+</p>
+
+      </div>
+      <div class="theme-sidebar-mask theme-hide"></div>
+<aside class="theme-sidebar-wrapper">
+  <div class="container flex-left units-gap theme-header-container">
+    
+    <a class="unit-0 theme-icon-link" href="/archives" title="归档">
+      <i class="czs-folder-l"></i>
+    </a>
+  
+    <a class="unit-0 theme-icon-link" href="/categories" title="分类">
+      <i class="czs-bookmark-l"></i>
+    </a>
+  
+    <a class="unit-0 theme-icon-link" href="/tags" title="标签">
+      <i class="czs-tag-l"></i>
+    </a>
+  
+    <div class="unit"></div>
+  
+    <a class="unit-0 theme-icon-link" href="http://xcatliu.com" title="关于我">
+      <i class="czs-user-l"></i>
+    </a>
+  
+
+  </div>
+  <div class="container">
+    
+          <h2>流浪小猫的博客</h2>
+          
+          <p class="top-gap-0 text-muted">记录我的成长点滴</p>
+          
+          <div class="flex-left flex-middle top-gap">
+            <img alt="Avatar" height="24" src="/assets/about/xcatliu_512.png"/>
+            <span class="theme-sidebar-author">xcatliu</span>
+          </div>
+          
+          <p>欢迎访问流浪小猫的博客，这里搜集了我的技术文章和生活感悟，希望能够与您一起交流，共同成长。</p>
+          
+          <p class="theme-sidebar-social">
+            
+    <a class="unit-0 theme-icon-link" href="https://github.com/xcatliu" title="GitHub">
+      <i class="czs-github"></i>
+    </a>
+  
+    <a class="unit-0 theme-icon-link" href="https://www.v2ex.com/member/xcatliu" title="V2EX">
+      <i class="czs-v2ex"></i>
+    </a>
+  
+    <a class="unit-0 theme-icon-link" href="https://twitter.com/xcatliu" title="Twitter">
+      <i class="czs-twitter"></i>
+    </a>
+  
+    <a class="unit-0 theme-icon-link" href="mailto:xcatliu@gmail.com" title="Gmail">
+      <i class="czs-message-l"></i>
+    </a>
+  
+    <a class="unit-0 theme-icon-link" href="/atom.xml" title="RSS 订阅">
+      <i class="czs-rss"></i>
+    </a>
+  
+
+          </p>
+          
+          <h5>友情链接</h5>
+          <p class="text-muted">
+            <small>
+              <ul class="theme-list-style-none">
+                <li><a class="text-muted" href="http://chuangzaoshi.com/">创造狮</a></li><li><a class="text-muted" href="https://blog.jamespan.me/">James Pan's Blog</a></li><li><a class="text-muted" href="/links">More</a></li>
+              </ul>
+            </small>
+          </p>
+          
+  </div>
+</aside>
+
+    </div>
+    <script src="/js/theme.js"></script>
+    
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45256157-6', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+
+    
+  <script id="dsq-count-scr" src="//xcatliu.disqus.com/count.js" async></script>
+
+  </body>
+</html>

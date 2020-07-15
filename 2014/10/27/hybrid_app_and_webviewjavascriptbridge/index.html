@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+
+  
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+  
+  
+  
+
+  <link rel="stylesheet" href="/css/mobi.css-3.1.1/dist/mobi.min.css">
+<link rel="stylesheet" href="/css/caomei1.2.1/style.css">
+<link rel="stylesheet" href="/css/theme.css">
+
+  
+    <meta name="keywords" content="JavaScript, Hybrid App, WebViewJavascriptBridge" />
+  
+
+  
+    <link rel="alternate" href="/atom.xml" title="流浪小猫的博客" type="application/atom+xml" />
+  
+
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+
+  <title>Hybrid App &amp; WebViewJavascriptBridge - 流浪小猫的博客</title>
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+  <body class="theme-body">
+    <div class="flex-center theme-header-wrapper">
+  <div class="container flex-left units-gap theme-header-container">
+    <a href="/" class="unit-0 theme-header-icon theme-icon-link" title="首页">
+      <i class="czs-home-l"></i>
+    </a>
+    <div class="flex-center text-center flex-middle unit theme-header-title theme-header-title-no-transition">
+      流浪小猫的博客
+    </div>
+    <a class="unit-0 theme-header-icon theme-icon-link theme-header-sidebar-icon" href="javascript:void(0);" title="更多">
+      <i class="czs-menu-l"></i>
+    </a>
+  </div>
+</div>
+<div class="theme-header-placeholder"></div>
+
+    <div class="flex-center">
+      <div class="container">
+        <article>
+  <h1 class="text-center">
+    Hybrid App &amp; WebViewJavascriptBridge
+  </h1>
+  <div class="text-center top-gap">
+    <div class="text-small text-muted">
+  <time datetime="2014-10-27T00:00:00+08:00">
+    2014-10-27
+  </time>
+  <span class="theme-separator">·</span>
+  <i class="czs-user-l"></i>
+  <a class="text-muted theme-text-no-decoration" href="https://github.com/xcatliu">xcatliu</a>
+  <span class="theme-separator">·</span>
+  <i class="czs-bookmark-l"></i>
+  <a class="text-muted theme-text-no-decoration" href="/categories/Programmer/">Programmer</a>
+  <span class="theme-comment-count-container theme-hide theme-comment-count-container-transparent">
+    <span class="theme-separator">·</span>
+    <i class="czs-comment-l"></i>
+    <a class="text-muted theme-text-no-decoration theme-comment-count" data-disqus-identifier="2014/10/27/hybrid_app_and_webviewjavascriptbridge/" href="/2014/10/27/hybrid_app_and_webviewjavascriptbridge/#disqus_thread"></a>
+  </span>
+</div>
+
+  </div>
+  <div class="top-gap-big">
+    <blockquote>
+<p>Hybrid App（混合模式移动应用）是指介于 Web App 和 Native App 这两者之间的 App，兼具「Native App 良好用户交互体验的优势」和「Web App 跨平台开发的优势」。</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h2><p>Hybrid App 的原理很简单——在原生应用中开启一个网页。可以是全屏都交给网页，或者是一部分（比如导航栏）由原生应用实现，另一部分是一个网页。</p>
+<h2 id="技术细节"><a href="#技术细节" class="headerlink" title="技术细节"></a>技术细节</h2><h3 id="H5-页面的实现"><a href="#H5-页面的实现" class="headerlink" title="H5 页面的实现"></a>H5 页面的实现</h3><p>作为前端，对这块应该已经很熟悉了，与传统的网页不同，H5 页面需要注意以下几点：</p>
+<ul>
+<li>适应手机屏幕<ul>
+<li>viewport</li>
+<li>0.5px border</li>
+<li>high resolution @2x @3x</li>
+</ul>
+</li>
+<li>控制页面大小<ul>
+<li>模块化加载</li>
+<li>资源缓存</li>
+<li>Loading 动画</li>
+</ul>
+</li>
+<li>兼容性<ul>
+<li>Android 和 iPhone 均为 Webkit 内核</li>
+<li>手机浏览器和应用中的 WebView 有区别（更多的是需要 Native 去处理）</li>
+<li>不同版本的 Android 有区别</li>
+</ul>
+</li>
+</ul>
+<p>以上问题可以带着关键字 Google 一下，一般均可以解决。</p>
+<p>处理了以上的问题之后，一个简单的 H5 页面就可以实现出来了，接下来就是 WebView 和 Native 之间的交互。</p>
+<h3 id="WebView-和-Native-之间的交互"><a href="#WebView-和-Native-之间的交互" class="headerlink" title="WebView 和 Native 之间的交互"></a>WebView 和 Native 之间的交互</h3><p>与传统的网页不同，Hybrid 的优势在于 WebView 和 Native 之间可以交互。有如下几种成熟的解决方案：</p>
+<ul>
+<li>自定义 scheme</li>
+<li>WebViewJavaScriptBridge</li>
+</ul>
+<p>自定义 scheme 可以理解为，定义一种 xxx 协议，把网页中链接的地址设置为 xxx://do.something，当点击这个链接的时候，则会被 Native 截获，优点是简单，缺点是单向的。</p>
+<p>WebViewJavaScriptBridge 则是在 WebView 的全局环境（window）中注入一个 bridge 对象，js 中需要对它进行初始化，监听事件，这样就可以接收到 Native 中发出的事件。同时 Native 中也监听了事件，可以收到 WebView 中发出的事件。这样就实现了双向的通信。</p>
+<p><a href="https://github.com/marcuswestin/WebViewJavascriptBridge" target="_blank" rel="external">WebViewJavaScriptBridge 的 iOS 实现</a></p>
+<p><a href="https://github.com/fangj/WebViewJavascriptBridge" target="_blank" rel="external">WebViewJavaScriptBeige 的 Android 实现</a></p>
+<p>iOS 和 Android 端有各自的实现，不做介绍，只简单看看 JavaScript 端的实现：</p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">connectWebViewJavascriptBridge</span><span class="token punctuation">(</span>callback<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>window<span class="token punctuation">.</span>WebViewJavascriptBridge<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">callback</span><span class="token punctuation">(</span>WebViewJavascriptBridge<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        document<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'WebViewJavascriptBridgeReady'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token function">callback</span><span class="token punctuation">(</span>WebViewJavascriptBridge<span class="token punctuation">)</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">connectWebViewJavascriptBridge</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>bridge<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token comment" spellcheck="true">/* Init your app here */</span>
+
+    bridge<span class="token punctuation">.</span><span class="token function">init</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>message<span class="token punctuation">,</span> responseCallback<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'Received message: '</span> <span class="token operator">+</span> message<span class="token punctuation">)</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>responseCallback<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token function">responseCallback</span><span class="token punctuation">(</span><span class="token string">"Right back atcha"</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    bridge<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">'Hello from the javascript'</span><span class="token punctuation">)</span>
+    bridge<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">'Please respond to this'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token function">responseCallback</span><span class="token punctuation">(</span>responseData<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Javascript got its response"</span><span class="token punctuation">,</span> responseData<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
+<p>代码很简单，自己看吧。</p>
+<h3 id="建议通过-bridge-实现的功能"><a href="#建议通过-bridge-实现的功能" class="headerlink" title="建议通过 bridge 实现的功能"></a>建议通过 bridge 实现的功能</h3><ul>
+<li>地理位置</li>
+<li>摄像头</li>
+<li>选取文件</li>
+<li>等等</li>
+</ul>
+<h3 id="其他需要注意的问题"><a href="#其他需要注意的问题" class="headerlink" title="其他需要注意的问题"></a>其他需要注意的问题</h3><ul>
+<li>时效性</li>
+<li>权限验证</li>
+<li>Android 可能会为了释放内存，杀掉 WebView 进程，所以最好能够保存当前页面的状态</li>
+</ul>
+
+  </div>
+</article>
+<blockquote class="top-gap-big"> <p> 本文遵循 <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" class"text-muted">CC BY-ND-ND 3.0</a> 协议，转载请注明原作者，禁止商用，禁止演绎。 </p> </blockquote>
+<div class="top-gap-big text-center text-muted">
+  <small>
+    <i class="czs-tag-l"></i>
+    <a class="text-muted" href="/tags/JavaScript/">JavaScript</a> , <a class="text-muted" href="/tags/Hybrid-App/">Hybrid App</a> , <a class="text-muted" href="/tags/WebViewJavascriptBridge/">WebViewJavascriptBridge</a>
+  </small>
+</div>
+
+
+  <div id="disqus_thread" class="top-gap-big"></div>
+  <script>
+    var langMap = {
+      en: 'en',
+      'zh-CN': 'zh'
+    };
+    var disqus_config = function () {
+      this.language = langMap['zh-CN'] || langMap['en'];
+      this.page.url = 'http://blog.xcatliu.com/2014/10/27/hybrid_app_and_webviewjavascriptbridge/';
+      this.page.identifier = '2014/10/27/hybrid_app_and_webviewjavascriptbridge/';
+      this.page.title = 'Hybrid App &amp; WebViewJavascriptBridge';
+    };
+    (function() {
+      var d = document, s = d.createElement('script');
+      s.src = '//xcatliu.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        <hr class="top-gap-big"></hr>
+<p class="text-center">
+  <small class="text-muted">
+    &copy;
+    
+      2012 -
+    
+    <span itemprop="copyrightYear">2020</span>
+    <i class="czs-heart" style="color:red;"></i>
+    <span itemprop="copyrightHolder">xcatliu</span>
+
+    <br/>
+
+    由 <a class="text-muted" href="https://hexo.io" title="Hexo">Hexo</a> 强力驱动
+    <span class="theme-separator">·</span>
+    主题
+    <a class="text-muted" href="https://github.com/xcatliu/hexo-theme-milk">Milk</a>
+  </small>
+</p>
+
+      </div>
+      <div class="theme-sidebar-mask theme-hide"></div>
+<aside class="theme-sidebar-wrapper">
+  <div class="container flex-left units-gap theme-header-container">
+    
+    <a class="unit-0 theme-icon-link" href="/archives" title="归档">
+      <i class="czs-folder-l"></i>
+    </a>
+  
+    <a class="unit-0 theme-icon-link" href="/categories" title="分类">
+      <i class="czs-bookmark-l"></i>
+    </a>
+  
+    <a class="unit-0 theme-icon-link" href="/tags" title="标签">
+      <i class="czs-tag-l"></i>
+    </a>
+  
+    <div class="unit"></div>
+  
+    <a class="unit-0 theme-icon-link" href="http://xcatliu.com" title="关于我">
+      <i class="czs-user-l"></i>
+    </a>
+  
+
+  </div>
+  <div class="container">
+    
+          <h2>流浪小猫的博客</h2>
+          
+          <p class="top-gap-0 text-muted">记录我的成长点滴</p>
+          
+          <div class="flex-left flex-middle top-gap">
+            <img alt="Avatar" height="24" src="/assets/about/xcatliu_512.png"/>
+            <span class="theme-sidebar-author">xcatliu</span>
+          </div>
+          
+          <p>欢迎访问流浪小猫的博客，这里搜集了我的技术文章和生活感悟，希望能够与您一起交流，共同成长。</p>
+          
+          <p class="theme-sidebar-social">
+            
+    <a class="unit-0 theme-icon-link" href="https://github.com/xcatliu" title="GitHub">
+      <i class="czs-github"></i>
+    </a>
+  
+    <a class="unit-0 theme-icon-link" href="https://www.v2ex.com/member/xcatliu" title="V2EX">
+      <i class="czs-v2ex"></i>
+    </a>
+  
+    <a class="unit-0 theme-icon-link" href="https://twitter.com/xcatliu" title="Twitter">
+      <i class="czs-twitter"></i>
+    </a>
+  
+    <a class="unit-0 theme-icon-link" href="mailto:xcatliu@gmail.com" title="Gmail">
+      <i class="czs-message-l"></i>
+    </a>
+  
+    <a class="unit-0 theme-icon-link" href="/atom.xml" title="RSS 订阅">
+      <i class="czs-rss"></i>
+    </a>
+  
+
+          </p>
+          
+          <h5>友情链接</h5>
+          <p class="text-muted">
+            <small>
+              <ul class="theme-list-style-none">
+                <li><a class="text-muted" href="http://chuangzaoshi.com/">创造狮</a></li><li><a class="text-muted" href="https://blog.jamespan.me/">James Pan's Blog</a></li><li><a class="text-muted" href="/links">More</a></li>
+              </ul>
+            </small>
+          </p>
+          
+  </div>
+</aside>
+
+    </div>
+    <script src="/js/theme.js"></script>
+    
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45256157-6', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+
+    
+  <script id="dsq-count-scr" src="//xcatliu.disqus.com/count.js" async></script>
+
+  </body>
+</html>

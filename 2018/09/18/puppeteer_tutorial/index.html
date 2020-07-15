@@ -1,0 +1,733 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+
+  
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+  
+  
+  
+
+  <link rel="stylesheet" href="/css/mobi.css-3.1.1/dist/mobi.min.css">
+<link rel="stylesheet" href="/css/caomei1.2.1/style.css">
+<link rel="stylesheet" href="/css/theme.css">
+
+  
+    <meta name="keywords" content="JavaScript, Puppeteer" />
+  
+
+  
+    <link rel="alternate" href="/atom.xml" title="流浪小猫的博客" type="application/atom+xml" />
+  
+
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+
+  <title>Puppeteer 指南 - 流浪小猫的博客</title>
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+  <body class="theme-body">
+    <div class="flex-center theme-header-wrapper">
+  <div class="container flex-left units-gap theme-header-container">
+    <a href="/" class="unit-0 theme-header-icon theme-icon-link" title="首页">
+      <i class="czs-home-l"></i>
+    </a>
+    <div class="flex-center text-center flex-middle unit theme-header-title theme-header-title-no-transition">
+      流浪小猫的博客
+    </div>
+    <a class="unit-0 theme-header-icon theme-icon-link theme-header-sidebar-icon" href="javascript:void(0);" title="更多">
+      <i class="czs-menu-l"></i>
+    </a>
+  </div>
+</div>
+<div class="theme-header-placeholder"></div>
+
+    <div class="flex-center">
+      <div class="container">
+        <article>
+  <h1 class="text-center">
+    Puppeteer 指南
+  </h1>
+  <div class="text-center top-gap">
+    <div class="text-small text-muted">
+  <time datetime="2018-09-18T00:00:00+08:00">
+    2018-09-18
+  </time>
+  <span class="theme-separator">·</span>
+  <i class="czs-user-l"></i>
+  <a class="text-muted theme-text-no-decoration" href="https://github.com/xcatliu">xcatliu</a>
+  <span class="theme-separator">·</span>
+  <i class="czs-bookmark-l"></i>
+  <a class="text-muted theme-text-no-decoration" href="/categories/Programmer/">Programmer</a>
+  <span class="theme-comment-count-container theme-hide theme-comment-count-container-transparent">
+    <span class="theme-separator">·</span>
+    <i class="czs-comment-l"></i>
+    <a class="text-muted theme-text-no-decoration theme-comment-count" data-disqus-identifier="2018/09/18/puppeteer_tutorial/" href="/2018/09/18/puppeteer_tutorial/#disqus_thread"></a>
+  </span>
+</div>
+
+  </div>
+  <div class="top-gap-big">
+    <p>Puppeteer 是 Google Chrome 出品的一个无头浏览器。如果你听说过 Phantomjs 或者 Selenium，那么就应该知道它是做什么的了。Puppeteer 与它们类似，提供了一系列 api，通过 DevTools 协议控制 Chromium/Chrome 浏览器的行为。</p>
+<h2 id="什么是无头浏览器"><a href="#什么是无头浏览器" class="headerlink" title="什么是无头浏览器"></a>什么是无头浏览器</h2><p>无头浏览器就是没有用户界面的浏览器，即通过写脚本来使用无头浏览器访问网站，还可以做一些点击等行为。</p>
+<p>Puppeteer 一般使用无头的模式运行，这样的开销较小。当然也提供了使用完整的 Chromium/Chrome 来运行的模式。</p>
+<h2 id="Puppeteer-能做什么"><a href="#Puppeteer-能做什么" class="headerlink" title="Puppeteer 能做什么"></a>Puppeteer 能做什么</h2><p>能够做几乎所有浏览器能做的事情。</p>
+<ul>
+<li>网页截图，或生成 pdf</li>
+<li>爬取 SPA 或 SSR 网站</li>
+<li>自动化表单提交，UI测试，键盘输入等</li>
+<li>创建一个最新的自动化测试环境。使用最新的 js 和最新的 Chrome 浏览器运行测试用例</li>
+<li>捕获网站的时间线，帮助诊断性能问题</li>
+<li>测试 Chrome 插件</li>
+</ul>
+<h2 id="Puppeteer-与其他无头浏览器有什么区别？"><a href="#Puppeteer-与其他无头浏览器有什么区别？" class="headerlink" title="Puppeteer 与其他无头浏览器有什么区别？"></a>Puppeteer 与其他无头浏览器有什么区别？</h2><ul>
+<li>Puppeteer 由 Google Chrome 维护，速度快、安全、稳定、易用</li>
+<li>其他无头浏览器可以支持多种浏览器环境（Safari, Chrome, Firefox 等），而 Puppeteer 只支持 Chromium/Chrome</li>
+<li>Puppeteer 有完善的事件系统，不需要频繁的 <code>sleep(1000)</code> 了</li>
+<li>Puppeteer 的调试功能很强大，还支持在 DevTools 里面调试</li>
+<li>Puppeteer 能够创建一个「真实」的行为，如点击</li>
+</ul>
+<h2 id="安装-Puppeteer"><a href="#安装-Puppeteer" class="headerlink" title="安装 Puppeteer"></a>安装 Puppeteer</h2><p>先创建一个测试用的项目，执行 <code>npm init</code> 初始化好 <code>package.json</code>，然后执行以下命令安装 Puppeteer：</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> puppeteer --save-dev
+</code></pre>
+<p>万事开头难，第一步安装时就会遇到问题（如果没有报错，请跳过这一段）。</p>
+<p>Puppeteer 安装过程中会去下载 Chromium，墙内用户则会报错。如果你看到以下信息，说明是下载 Chromium 时连接不上。</p>
+<pre class=" language-bash"><code class="language-bash">ERROR: Failed to download Chromium r588429<span class="token operator">!</span> Set <span class="token string">"PUPPETEER_SKIP_CHROMIUM_DOWNLOAD"</span> <span class="token function">env</span> variable to skip download.
+Error: Download failed: server returned code 502. URL: https://storage.googleapis.com/chromium-browser-snapshots/Win_x64/588429/chrome-win32.zip
+</code></pre>
+<p>或者</p>
+<pre class=" language-bash"><code class="language-bash">ERROR: Failed to download Chromium r588429<span class="token operator">!</span> Set <span class="token string">"PUPPETEER_SKIP_CHROMIUM_DOWNLOAD"</span> <span class="token function">env</span> variable to skip download.
+<span class="token punctuation">{</span> Error: connect ETIMEDOUT 172.217.24.48:443
+</code></pre>
+<p>如提示所说，设置 <code>PUPPETEER_SKIP_CHROMIUM_DOWNLOAD</code> 可以跳过安装 Chromium。</p>
+<pre class=" language-bash"><code class="language-bash">PUPPETEER_SKIP_CHROMIUM_DOWNLOAD<span class="token operator">=</span>1 <span class="token function">npm</span> <span class="token function">install</span> puppeteer --save-dev
+</code></pre>
+<p>此时可以安装成功，但是使用 Puppeteer 时会由于找不到 Chromium 而报错。可以创建一个文件 <code>test.js</code>，内容如下：</p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">const</span> puppeteer <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'puppeteer'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">(</span><span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> browser <span class="token operator">=</span> <span class="token keyword">await</span> puppeteer<span class="token punctuation">.</span><span class="token function">launch</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> page <span class="token operator">=</span> <span class="token keyword">await</span> browser<span class="token punctuation">.</span><span class="token function">newPage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">await</span> page<span class="token punctuation">.</span><span class="token function">goto</span><span class="token punctuation">(</span><span class="token string">'https://example.com'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">await</span> page<span class="token punctuation">.</span><span class="token function">screenshot</span><span class="token punctuation">(</span><span class="token punctuation">{</span>path<span class="token punctuation">:</span> <span class="token string">'example.png'</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">await</span> browser<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>然后执行 <code>node test.js</code> 则会报错：</p>
+<pre class=" language-bash"><code class="language-bash">$ node test.js
+<span class="token punctuation">(</span>node:18368<span class="token punctuation">)</span> UnhandledPromiseRejectionWarning: Unhandled promise rejection <span class="token punctuation">(</span>rejection id: 1<span class="token punctuation">)</span>: Error: Chromium revision is not downloaded. Run <span class="token string">"npm install"</span> or <span class="token string">"yarn install"</span>
+<span class="token punctuation">(</span>node:18368<span class="token punctuation">)</span> <span class="token punctuation">[</span>DEP0018<span class="token punctuation">]</span> DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero <span class="token keyword">exit</span> code.
+</code></pre>
+<p>一个解决方案是先手动下载 Chromium，然后在执行时通过配置指定 Chromium 位置，<a href="https://juejin.im/post/5b4a043751882519790c7ad7" target="_blank" rel="external">这篇文章</a>给出了解决步骤。</p>
+<p>但是我更倾向于还原 Puppeteer 安装时的过程。但是由于一些环境原因，即便翻墙了也只能手动下载 Chromium，无法在安装 Puppeteer 时自动下载 Chromium。</p>
+<p>读了一下源码之后，可以这么解决：</p>
+<ol>
+<li>安装 Puppeteer，安装失败，提示无法下载 <code>https://storage.googleapis.com/chromium-browser-snapshots/Win_x64/588429/chrome-win32.zip</code></li>
+<li>使用 <code>PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=1 npm install puppeteer --save-dev</code> 成功安装 Puppeteer</li>
+<li>执行 <code>node test.js</code> 提示无法找到 Chromium</li>
+<li>手动下载步骤 1 中的 <code>chrome-win32.zip</code>，注意不同版本、不同系统的下载地址是不一样的</li>
+<li>开启一个静态文件服务，使得 <code>http://127.0.0.1:8000/chrome-win32.zip</code> 指向需要下载的文件</li>
+<li>改写 <code>downloadURL</code> 方法，使其直接返回 <code>http://127.0.0.1:8000/chrome-win32.zip</code></li>
+<li>执行 <code>node ./node_modules/puppeteer/install.js</code> 完成安装</li>
+<li>执行 <code>node test.js</code> 测试能否成功生成截图</li>
+</ol>
+<p>至此，成功完成了 Puppeteer 的安装。</p>
+<h2 id="Puppeteer-结构"><a href="#Puppeteer-结构" class="headerlink" title="Puppeteer 结构"></a>Puppeteer 结构</h2><p>Puppeteer 通过 DevTools 协议控制 Chromium/Chrome 浏览器。它的结构和浏览器结构类似。</p>
+<blockquote>
+<p>下图中淡化显示的可以忽略</p>
+</blockquote>
+<p><img src="/assets/puppeteer_turorial/puppeteer-structure.png" alt="Puppeteer 结构"></p>
+<ul>
+<li>Puppeteer 通过 DevTools 协议控制 Chromium/Chrome 浏览器</li>
+<li>一个浏览器（Browser）实例可以包含多个浏览器上下文（Browser contexts），就像我们打开一个普通的 Chrome 之后又打开一个隐身模式的 Chrome</li>
+<li>一个浏览器上下文（BrowserContext）可以包含多个页面（Pages）</li>
+<li>一个页面（Page）包含至少一个主 frame，也可以包含其他 frames（在主 frame 中通过 iframe 或 frame 标签创建的）</li>
+<li>一个 frame 包含至少一个执行上下文（Execution context），也可以包含其他执行上下文（由 Chrome 插件创建的）</li>
+<li>一个 Workder 包含一个执行上下文，由 WebWorker 创建</li>
+</ul>
+<h2 id="Puppeteer-API"><a href="#Puppeteer-API" class="headerlink" title="Puppeteer API"></a>Puppeteer API</h2><p>Puppeteer 的大部分 API 的返回值都是 <code>Promise</code>，故推荐使用 <code>async</code> <code>await</code> 来处理异步操作。Puppeteer 的 API 包含以下类：</p>
+<table class="table">
+<thead>
+<tr>
+<th>类名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Puppeteer</code></td>
+<td>主要用于创建一个浏览器实例，也可以用来下载新的 Chromium，或者设置浏览器的默认参数</td>
+</tr>
+<tr>
+<td><code>BrowserFetcher</code></td>
+<td>用于下载和管理 Chromium</td>
+</tr>
+<tr>
+<td><code>Browser</code></td>
+<td>可以创建一个或多个 Page</td>
+</tr>
+<tr>
+<td><code>BrowserContext</code></td>
+<td>创建一个隐身模式的浏览器时需要用到</td>
+</tr>
+<tr>
+<td><code>Page</code></td>
+<td><strong>主要 API，用于操作一个页面，后面会详细介绍</strong></td>
+</tr>
+<tr>
+<td><code>Worker</code></td>
+<td>用于处理 WebWorker</td>
+</tr>
+<tr>
+<td><code>Keyboard</code></td>
+<td>可以触发键盘按键</td>
+</tr>
+<tr>
+<td><code>Mouse</code></td>
+<td>可以触发鼠标动作</td>
+</tr>
+<tr>
+<td><code>TouchScreen</code></td>
+<td>可以触发触摸屏的动作</td>
+</tr>
+<tr>
+<td><code>Tracing</code></td>
+<td>用于分析性能</td>
+</tr>
+<tr>
+<td><code>Dialog</code></td>
+<td>存在于 page 的 <code>dialog</code> 事件回调中，表示调用弹窗后的对象，包括 <code>alert</code>, <code>beforeunload</code>, <code>confirm</code> 和 <code>prompt</code></td>
+</tr>
+<tr>
+<td><code>ConsoleMessage</code></td>
+<td>存在于 page 的 <code>console</code> 事件回调中，表示调用 <code>console.log</code> 等方法后的对象</td>
+</tr>
+<tr>
+<td><code>Frame</code></td>
+<td>常用于处理包含多个 frame 的页面。page 中的很多方法就是直接调用的主 frame 的方法</td>
+</tr>
+<tr>
+<td><code>ExecutionContext</code></td>
+<td>执行上下文存在于 frame、浏览器插件、worker 中。可以用来直接执行一段 js</td>
+</tr>
+<tr>
+<td><code>JSHandle</code></td>
+<td>通过 <code>page.evaluateHandle</code> 生成，用于将页面中的 handler 挑出来传递使用</td>
+</tr>
+<tr>
+<td><code>ElementHandle</code></td>
+<td>通过 <code>page.$</code> 生成，用于将页面中某个元素的 handler 挑出来传递使用</td>
+</tr>
+<tr>
+<td><code>Request</code></td>
+<td>在 <code>page.setRequestInterception</code> 方法中使用，可以处理页面的请求</td>
+</tr>
+<tr>
+<td><code>Response</code></td>
+<td>表示页面接收到的响应</td>
+</tr>
+<tr>
+<td><code>SecurityDetails</code></td>
+<td>表示页面的安全信息</td>
+</tr>
+<tr>
+<td><code>Target</code></td>
+<td>可以是 page, background_page, service_worker, browser 等</td>
+</tr>
+<tr>
+<td><code>CDPSession</code></td>
+<td>用于直接和 Devtools 通信</td>
+</tr>
+<tr>
+<td><code>Coverage</code></td>
+<td>用于分析 js 和 css 的代码被页面使用的比例</td>
+</tr>
+<tr>
+<td><code>TimeoutError</code></td>
+<td>超时错误</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Page"><a href="#Page" class="headerlink" title="Page"></a>Page</h3><p>Page 是 Puppeteer 中最重要的一个 API，也是它的核心所在，这里会介绍一些常用的 Page API。</p>
+<h4 id="设置页面环境"><a href="#设置页面环境" class="headerlink" title="设置页面环境"></a>设置页面环境</h4><table class="table">
+<thead>
+<tr>
+<th>方法名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>page.emulate</code></td>
+<td>设置 viewport 和 ua</td>
+</tr>
+<tr>
+<td><code>page.setViewport</code></td>
+<td>设置 viewport</td>
+</tr>
+<tr>
+<td><code>page.setUserAgent</code></td>
+<td>设置 ua</td>
+</tr>
+<tr>
+<td><code>page.setRequestInterception</code></td>
+<td><strong>中断所有请求，并可以修改请求的返回值</strong></td>
+</tr>
+<tr>
+<td><code>page.addScriptTag</code></td>
+<td>添加 js 脚本</td>
+</tr>
+<tr>
+<td><code>page.addStyleTag</code></td>
+<td>添加 css</td>
+</tr>
+<tr>
+<td><code>page.setContent</code></td>
+<td>设置整个 html</td>
+</tr>
+<tr>
+<td><code>page.setCacheEnabled</code></td>
+<td>设置缓存是否开启</td>
+</tr>
+<tr>
+<td><code>page.setExtraHTTPHeaders</code></td>
+<td>设置额外的 http 头</td>
+</tr>
+<tr>
+<td><code>page.setGeolocation</code></td>
+<td>设置地理位置</td>
+</tr>
+<tr>
+<td><code>page.setJavaScriptEnabled</code></td>
+<td>设置 js 是否开启</td>
+</tr>
+<tr>
+<td><code>page.setOfflineMode</code></td>
+<td>设置离线模式</td>
+</tr>
+<tr>
+<td><code>page.deleteCookie</code></td>
+<td>删除 cookies</td>
+</tr>
+<tr>
+<td><code>page.setCookie</code></td>
+<td>设置 cookies</td>
+</tr>
+</tbody>
+</table>
+<h4 id="模拟动作"><a href="#模拟动作" class="headerlink" title="模拟动作"></a>模拟动作</h4><p>一般会先滚动视窗到相应元素那，再执行动作。</p>
+<table class="table">
+<thead>
+<tr>
+<th>方法名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>page.click</code></td>
+<td>点击</td>
+</tr>
+<tr>
+<td><code>page.tap</code></td>
+<td>手指点击</td>
+</tr>
+<tr>
+<td><code>page.focus</code></td>
+<td>聚焦</td>
+</tr>
+<tr>
+<td><code>page.hover</code></td>
+<td>hover</td>
+</tr>
+<tr>
+<td><code>page.type</code></td>
+<td>在指定元素中输入内容</td>
+</tr>
+<tr>
+<td><code>page.select</code></td>
+<td>选中 <code>&lt;select&gt;</code> 的某个选项</td>
+</tr>
+</tbody>
+</table>
+<h4 id="等待"><a href="#等待" class="headerlink" title="等待"></a>等待</h4><table class="table">
+<thead>
+<tr>
+<th>方法名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>page.waitFor</code></td>
+<td>等待某个元素渲染出来，或者某个函数执行之后返回 <code>true</code>，或者直接等待指定的时间</td>
+</tr>
+<tr>
+<td><code>page.waitForSelector</code></td>
+<td>等待某个元素被渲染</td>
+</tr>
+<tr>
+<td><code>page.waitForFunction</code></td>
+<td>等待某个函数执行之后返回 <code>true</code></td>
+</tr>
+<tr>
+<td><code>page.waitForNavigation</code></td>
+<td>等待页面跳转</td>
+</tr>
+<tr>
+<td><code>page.waitForRequest</code></td>
+<td>等待某个特定的请求被发出</td>
+</tr>
+<tr>
+<td><code>page.waitForResponse</code></td>
+<td>等待某个特定的请求收到了回应</td>
+</tr>
+</tbody>
+</table>
+<h4 id="执行脚本"><a href="#执行脚本" class="headerlink" title="执行脚本"></a>执行脚本</h4><table class="table">
+<thead>
+<tr>
+<th>方法名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>page.$</code></td>
+<td>使用 <code>document.querySelector</code> 获取结果，会返回 <code>ElementHandle</code>，可以传递使用</td>
+</tr>
+<tr>
+<td><code>page.$$</code></td>
+<td>同上，不过使用的是 <code>document.querySelectorAll</code></td>
+</tr>
+<tr>
+<td><code>page.$eval</code></td>
+<td>将 <code>document.querySelector</code> 获取的结果传递给 <code>pageFunction</code></td>
+</tr>
+<tr>
+<td><code>page.$$eval</code></td>
+<td>同上，不过使用的是 <code>document.querySelectorAll</code></td>
+</tr>
+<tr>
+<td><code>page.evaluate</code></td>
+<td>直接执行脚本</td>
+</tr>
+<tr>
+<td><code>page.evaluateHandle</code></td>
+<td>执行脚本，返回的是 <code>JSHandle</code>，可以传递使用</td>
+</tr>
+<tr>
+<td><code>page.evaluateOnNewDocument</code></td>
+<td>在下个 frame 执行脚本</td>
+</tr>
+<tr>
+<td><code>page.exposeFunction</code></td>
+<td>将函数注入到 <code>window</code> 对象上</td>
+</tr>
+<tr>
+<td><code>page.queryObjects</code></td>
+<td>获取所有属于这个类的对象，可以传递使用</td>
+</tr>
+</tbody>
+</table>
+<h4 id="页面跳转"><a href="#页面跳转" class="headerlink" title="页面跳转"></a>页面跳转</h4><table class="table">
+<thead>
+<tr>
+<th>方法名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>page.goto</code></td>
+<td>跳转页面</td>
+</tr>
+<tr>
+<td><code>page.close</code></td>
+<td>关闭</td>
+</tr>
+<tr>
+<td><code>page.goBack</code></td>
+<td>后退</td>
+</tr>
+<tr>
+<td><code>page.goForward</code></td>
+<td>前进</td>
+</tr>
+<tr>
+<td><code>page.reload</code></td>
+<td>刷新</td>
+</tr>
+<tr>
+<td><code>page.setDefaultNavigationTimeout</code></td>
+<td>设置页面跳转的超时时长</td>
+</tr>
+</tbody>
+</table>
+<h4 id="获取内容"><a href="#获取内容" class="headerlink" title="获取内容"></a>获取内容</h4><table class="table">
+<thead>
+<tr>
+<th>方法名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>page.screenshot</code></td>
+<td>截屏</td>
+</tr>
+<tr>
+<td><code>page.pdf</code></td>
+<td>生成 pdf</td>
+</tr>
+<tr>
+<td><code>page.content</code></td>
+<td>获取整个页面内容</td>
+</tr>
+<tr>
+<td><code>page.title</code></td>
+<td>获取页面 title</td>
+</tr>
+<tr>
+<td><code>page.url</code></td>
+<td>获取页面 url</td>
+</tr>
+<tr>
+<td><code>page.viewport</code></td>
+<td>获取页面 viewport</td>
+</tr>
+<tr>
+<td><code>page.cookies</code></td>
+<td>获取 cookies</td>
+</tr>
+</tbody>
+</table>
+<h4 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h4><table class="table">
+<thead>
+<tr>
+<th>事件名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>page.on(&#39;console&#39;)</code></td>
+<td>监听 <code>console.log</code> 等的调用</td>
+</tr>
+<tr>
+<td><code>page.on(&#39;dialog&#39;)</code></td>
+<td>监听页面的 <code>alert</code>, <code>beforeunload</code>, <code>confirm</code> 和 <code>prompt</code> 弹窗</td>
+</tr>
+<tr>
+<td><code>page.on(&#39;load&#39;)</code></td>
+<td>监听页面的加载</td>
+</tr>
+<tr>
+<td><code>page.on(&#39;domcontentloaded&#39;)</code></td>
+<td>监听页面 dom 加载完成</td>
+</tr>
+<tr>
+<td><code>page.on(&#39;pageerror&#39;)</code></td>
+<td>监听页面错误</td>
+</tr>
+<tr>
+<td><code>page.on(&#39;request&#39;)</code></td>
+<td>监听页面发送的请求</td>
+</tr>
+<tr>
+<td><code>page.on(&#39;requestfailed&#39;)</code></td>
+<td>监听失败的请求</td>
+</tr>
+<tr>
+<td><code>page.on(&#39;requestfinished&#39;)</code></td>
+<td>监听完成的请求</td>
+</tr>
+<tr>
+<td><code>page.on(&#39;response&#39;)</code></td>
+<td>监听页面接受到的响应</td>
+</tr>
+</tbody>
+</table>
+<h4 id="命名空间"><a href="#命名空间" class="headerlink" title="命名空间"></a>命名空间</h4><p>通过一些命名空间可以快速访问到该页面下的其他实例。</p>
+<table class="table">
+<thead>
+<tr>
+<th>属性名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>page.keyboard</code></td>
+<td>访问到页面的 Keyboard 对象</td>
+</tr>
+<tr>
+<td><code>page.mouse</code></td>
+<td>访问到页面的 Mouse 对象</td>
+</tr>
+<tr>
+<td><code>page.touchscreen</code></td>
+<td>访问到页面的 TouchScreen 对象</td>
+</tr>
+</tbody>
+</table>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://pptr.dev/" target="_blank" rel="external">Puppeteer 文档</a></li>
+<li><a href="https://peter.sh/experiments/chromium-command-line-switches/" target="_blank" rel="external">Chromium CLI 参数</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/DeviceDescriptors.js" target="_blank" rel="external">预设的 EmulateOptions</a></li>
+</ul>
+
+  </div>
+</article>
+<blockquote class="top-gap-big"> <p> 本文遵循 <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" class"text-muted">CC BY-ND-ND 3.0</a> 协议，转载请注明原作者，禁止商用，禁止演绎。 </p> </blockquote>
+<div class="top-gap-big text-center text-muted">
+  <small>
+    <i class="czs-tag-l"></i>
+    <a class="text-muted" href="/tags/JavaScript/">JavaScript</a> , <a class="text-muted" href="/tags/Puppeteer/">Puppeteer</a>
+  </small>
+</div>
+
+
+  <div id="disqus_thread" class="top-gap-big"></div>
+  <script>
+    var langMap = {
+      en: 'en',
+      'zh-CN': 'zh'
+    };
+    var disqus_config = function () {
+      this.language = langMap['zh-CN'] || langMap['en'];
+      this.page.url = 'http://blog.xcatliu.com/2018/09/18/puppeteer_tutorial/';
+      this.page.identifier = '2018/09/18/puppeteer_tutorial/';
+      this.page.title = 'Puppeteer 指南';
+    };
+    (function() {
+      var d = document, s = d.createElement('script');
+      s.src = '//xcatliu.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        <hr class="top-gap-big"></hr>
+<p class="text-center">
+  <small class="text-muted">
+    &copy;
+    
+      2012 -
+    
+    <span itemprop="copyrightYear">2020</span>
+    <i class="czs-heart" style="color:red;"></i>
+    <span itemprop="copyrightHolder">xcatliu</span>
+
+    <br/>
+
+    由 <a class="text-muted" href="https://hexo.io" title="Hexo">Hexo</a> 强力驱动
+    <span class="theme-separator">·</span>
+    主题
+    <a class="text-muted" href="https://github.com/xcatliu/hexo-theme-milk">Milk</a>
+  </small>
+</p>
+
+      </div>
+      <div class="theme-sidebar-mask theme-hide"></div>
+<aside class="theme-sidebar-wrapper">
+  <div class="container flex-left units-gap theme-header-container">
+    
+    <a class="unit-0 theme-icon-link" href="/archives" title="归档">
+      <i class="czs-folder-l"></i>
+    </a>
+  
+    <a class="unit-0 theme-icon-link" href="/categories" title="分类">
+      <i class="czs-bookmark-l"></i>
+    </a>
+  
+    <a class="unit-0 theme-icon-link" href="/tags" title="标签">
+      <i class="czs-tag-l"></i>
+    </a>
+  
+    <div class="unit"></div>
+  
+    <a class="unit-0 theme-icon-link" href="http://xcatliu.com" title="关于我">
+      <i class="czs-user-l"></i>
+    </a>
+  
+
+  </div>
+  <div class="container">
+    
+          <h2>流浪小猫的博客</h2>
+          
+          <p class="top-gap-0 text-muted">记录我的成长点滴</p>
+          
+          <div class="flex-left flex-middle top-gap">
+            <img alt="Avatar" height="24" src="/assets/about/xcatliu_512.png"/>
+            <span class="theme-sidebar-author">xcatliu</span>
+          </div>
+          
+          <p>欢迎访问流浪小猫的博客，这里搜集了我的技术文章和生活感悟，希望能够与您一起交流，共同成长。</p>
+          
+          <p class="theme-sidebar-social">
+            
+    <a class="unit-0 theme-icon-link" href="https://github.com/xcatliu" title="GitHub">
+      <i class="czs-github"></i>
+    </a>
+  
+    <a class="unit-0 theme-icon-link" href="https://www.v2ex.com/member/xcatliu" title="V2EX">
+      <i class="czs-v2ex"></i>
+    </a>
+  
+    <a class="unit-0 theme-icon-link" href="https://twitter.com/xcatliu" title="Twitter">
+      <i class="czs-twitter"></i>
+    </a>
+  
+    <a class="unit-0 theme-icon-link" href="mailto:xcatliu@gmail.com" title="Gmail">
+      <i class="czs-message-l"></i>
+    </a>
+  
+    <a class="unit-0 theme-icon-link" href="/atom.xml" title="RSS 订阅">
+      <i class="czs-rss"></i>
+    </a>
+  
+
+          </p>
+          
+          <h5>友情链接</h5>
+          <p class="text-muted">
+            <small>
+              <ul class="theme-list-style-none">
+                <li><a class="text-muted" href="http://chuangzaoshi.com/">创造狮</a></li><li><a class="text-muted" href="https://blog.jamespan.me/">James Pan's Blog</a></li><li><a class="text-muted" href="/links">More</a></li>
+              </ul>
+            </small>
+          </p>
+          
+  </div>
+</aside>
+
+    </div>
+    <script src="/js/theme.js"></script>
+    
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45256157-6', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+
+    
+  <script id="dsq-count-scr" src="//xcatliu.disqus.com/count.js" async></script>
+
+  </body>
+</html>

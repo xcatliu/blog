@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+
+  
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+  
+  
+  
+
+  <link rel="stylesheet" href="/css/mobi.css-3.1.1/dist/mobi.min.css">
+<link rel="stylesheet" href="/css/caomei1.2.1/style.css">
+<link rel="stylesheet" href="/css/theme.css">
+
+  
+    <meta name="keywords" content="JavaScript, Grunt, Task" />
+  
+
+  
+    <link rel="alternate" href="/atom.xml" title="流浪小猫的博客" type="application/atom+xml" />
+  
+
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+
+  <title>Grunt Custom Task 指南 - 流浪小猫的博客</title>
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+  <body class="theme-body">
+    <div class="flex-center theme-header-wrapper">
+  <div class="container flex-left units-gap theme-header-container">
+    <a href="/" class="unit-0 theme-header-icon theme-icon-link" title="首页">
+      <i class="czs-home-l"></i>
+    </a>
+    <div class="flex-center text-center flex-middle unit theme-header-title theme-header-title-no-transition">
+      流浪小猫的博客
+    </div>
+    <a class="unit-0 theme-header-icon theme-icon-link theme-header-sidebar-icon" href="javascript:void(0);" title="更多">
+      <i class="czs-menu-l"></i>
+    </a>
+  </div>
+</div>
+<div class="theme-header-placeholder"></div>
+
+    <div class="flex-center">
+      <div class="container">
+        <article>
+  <h1 class="text-center">
+    Grunt Custom Task 指南
+  </h1>
+  <div class="text-center top-gap">
+    <div class="text-small text-muted">
+  <time datetime="2013-12-04T00:00:00+08:00">
+    2013-12-04
+  </time>
+  <span class="theme-separator">·</span>
+  <i class="czs-user-l"></i>
+  <a class="text-muted theme-text-no-decoration" href="https://github.com/xcatliu">xcatliu</a>
+  <span class="theme-separator">·</span>
+  <i class="czs-bookmark-l"></i>
+  <a class="text-muted theme-text-no-decoration" href="/categories/Programmer/">Programmer</a>
+  <span class="theme-comment-count-container theme-hide theme-comment-count-container-transparent">
+    <span class="theme-separator">·</span>
+    <i class="czs-comment-l"></i>
+    <a class="text-muted theme-text-no-decoration theme-comment-count" data-disqus-identifier="2013/12/04/grunt_custom_task_guide/" href="/2013/12/04/grunt_custom_task_guide/#disqus_thread"></a>
+  </span>
+</div>
+
+  </div>
+  <div class="top-gap-big">
+    <p>阅读这篇之前，请了解 grunt ，可以参考 [Grunt Getting Starting]。</p>
+<p>在决定创建自己的 task 之前，最好搜索一下你的需求是不是已经有别人写好的了：<a href="http://gruntjs.com/plugins。" target="_blank" rel="external">http://gruntjs.com/plugins。</a></p>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>grunt 有一套强大的创建任务机制，不管是 grunt 官方任务（如 grunt-contrib-uglify ）还是 npm 上其他人提供的 grunt 任务（如 grunt-mocha ）亦或是你自己创建的任务（如 mod_revision ），都是使用同一套机制。故阅读 grunt 官方任务源码，有助于我们创建自己的任务。</p>
+<p>grunt 基于 node 开发，node 能做到的，在 grunt task 中都可以做到。</p>
+<p>一般来说，一个任务分三部分： <code>register task</code>，<code>load task</code>，<code>task config</code>。</p>
+<h2 id="选择-task-的类型"><a href="#选择-task-的类型" class="headerlink" title="选择 task 的类型"></a>选择 task 的类型</h2><p>在创建自己的任务之前要明确，这个任务是单任务类型，还是多任务类型。</p>
+<h3 id="单任务类型"><a href="#单任务类型" class="headerlink" title="单任务类型"></a>单任务类型</h3><p>单任务适用于只有一个单一的使用场景，如 watch 只需要监听配置中指定的文件。</p>
+<h4 id="Alias-task"><a href="#Alias-task" class="headerlink" title="Alias task"></a>Alias task</h4><pre class=" language-js"><code class="language-js">grunt<span class="token punctuation">.</span>task<span class="token punctuation">.</span><span class="token function">registerTask</span><span class="token punctuation">(</span>taskName<span class="token punctuation">,</span> taskList<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>依次运行 <code>taskList</code> 中的任务，本文不做重点介绍。</p>
+<h4 id="Function-task"><a href="#Function-task" class="headerlink" title="Function task"></a>Function task</h4><pre class=" language-js"><code class="language-js">grunt<span class="token punctuation">.</span>task<span class="token punctuation">.</span><span class="token function">registerTask</span><span class="token punctuation">(</span>taskName<span class="token punctuation">,</span> description<span class="token punctuation">,</span> taskFunction<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>运行 <code>taskFunction</code> 中的内容</p>
+<h3 id="多任务类型"><a href="#多任务类型" class="headerlink" title="多任务类型"></a>多任务类型</h3><p>多任务适用于多种不同的使用场景，如在不同的环境中，<code>jshint</code> 的配置可以不一样。</p>
+<pre class=" language-js"><code class="language-js">grunt<span class="token punctuation">.</span>task<span class="token punctuation">.</span><span class="token function">registerMultiTask</span><span class="token punctuation">(</span>taskName<span class="token punctuation">,</span> description<span class="token punctuation">,</span> taskFunction<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>不同于单任务类型，<code>taskFunction</code> 中 <code>this</code> 会有一个 <code>target</code> 属性标识当前运行的哪一个 <code>target</code> ， <code>config</code> 中也比单任务多一个 <code>target</code> 层级。</p>
+<pre class=" language-js"><code class="language-js">grunt<span class="token punctuation">.</span><span class="token function">initConfig</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">// watch 是一个单任务</span>
+  <span class="token comment" spellcheck="true">// 直接运行 grunt watch</span>
+  watch<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    files<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'**/*'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    tasks<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'jshint'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token comment" spellcheck="true">// concat 是一个多任务</span>
+  <span class="token comment" spellcheck="true">// 运行 grunt concat:dist 与 grunt concat:dev 得到不同的结果</span>
+  <span class="token comment" spellcheck="true">// dist 和 dev 是两个 target</span>
+  concat<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    options<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      separator<span class="token punctuation">:</span> <span class="token string">';'</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    dist<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      src<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'src/intro.js'</span><span class="token punctuation">,</span> <span class="token string">'src/project.js'</span><span class="token punctuation">,</span> <span class="token string">'src/outro.js'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+      dest<span class="token punctuation">:</span> <span class="token string">'dist/built.js'</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    dev<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      src<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token operator">...</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+      dest<span class="token punctuation">:</span> <span class="token string">'...'</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h2 id="向-task-传参"><a href="#向-task-传参" class="headerlink" title="向 task 传参"></a>向 task 传参</h2><p>多数情况下， custom task 中会需要使用参数。</p>
+<p><code>taskFunction</code> 有多种方式接收参数，应根据不同的需求使用不同的方式。</p>
+<h3 id="在-config-中配置"><a href="#在-config-中配置" class="headerlink" title="在 config 中配置"></a>在 config 中配置</h3><p>grunt 可以通过 <code>this.options</code> 获取在 <code>config</code> 中设置的参数。</p>
+<pre class=" language-js"><code class="language-js">grunt<span class="token punctuation">.</span><span class="token function">initConfig</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  custom_task<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// task-level options</span>
+    options<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      comments<span class="token punctuation">:</span> <span class="token string">'/* 自动生成，无需修改 */'</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    dist<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      <span class="token comment" spellcheck="true">// target-level options</span>
+      options<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        comments<span class="token punctuation">:</span> <span class="token string">'/* 通过 dist target 生成 */'</span>
+      <span class="token punctuation">}</span>
+      src<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'src/intro.js'</span><span class="token punctuation">,</span> <span class="token string">'src/project.js'</span><span class="token punctuation">,</span> <span class="token string">'src/outro.js'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+      dest<span class="token punctuation">:</span> <span class="token string">'dist/built.js'</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    dev<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      src<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token operator">...</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+      dest<span class="token punctuation">:</span> <span class="token string">'...'</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+grunt<span class="token punctuation">.</span>task<span class="token punctuation">.</span><span class="token function">registerMutliTask</span><span class="token punctuation">(</span><span class="token string">'custom_task'</span><span class="token punctuation">,</span> <span class="token string">'A custom task'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> options <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">options</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    comments<span class="token punctuation">:</span> <span class="token string">'/* config 没有配置 */'</span><span class="token punctuation">,</span>
+    words<span class="token punctuation">:</span> <span class="token string">'hello world'</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  grunt<span class="token punctuation">.</span>log<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span>options<span class="token punctuation">.</span>comments<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  grunt<span class="token punctuation">.</span>log<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span>options<span class="token punctuation">.</span>words<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// grunt custom_task:dist</span>
+<span class="token comment" spellcheck="true">// </span><span class="token comment" spellcheck="true">/* 通过 dist target 生成 */</span>
+<span class="token comment" spellcheck="true">// hello world</span>
+<span class="token comment" spellcheck="true">// grunt custom_task:dev</span>
+<span class="token comment" spellcheck="true">// </span><span class="token comment" spellcheck="true">/* config 没有配置 */</span>
+<span class="token comment" spellcheck="true">// hello world</span>
+</code></pre>
+<p>优先级 <code>target-level options</code> &gt; <code>task-level options</code> &gt; <code>defaultsObj argument</code>。</p>
+<p>注意：单任务由于没有 <code>target</code> 故只包含两个层级。</p>
+<h3 id="运行时通过-arguments-传参"><a href="#运行时通过-arguments-传参" class="headerlink" title="运行时通过 arguments 传参"></a>运行时通过 arguments 传参</h3><p>grunt 命令中空格用来分隔多个 tasks。</p>
+<pre class=" language-shell"><code class="language-shell">grunt jshint:dist uglify:dist concat:dist
+# 相当于
+grunt jshint:dist
+grunt uglify:dist
+grunt concat:dist
+
+# 若想在 custom task 中接受命令行中的参数， grunt 提供了以冒号分隔 arguments 的机制
+grunt custom_single_task:arg1:arg2
+grunt custom_mutli_task:target:arg1:arg2
+</code></pre>
+<p>参考如下例子：</p>
+<pre class=" language-js"><code class="language-js">grunt<span class="token punctuation">.</span>task<span class="token punctuation">.</span><span class="token function">registerMutliTask</span><span class="token punctuation">(</span><span class="token string">'custom_single_task'</span><span class="token punctuation">,</span> <span class="token string">'A custom single task'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>arg1<span class="token punctuation">,</span> arg2<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  grunt<span class="token punctuation">.</span>log<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span>arg1<span class="token punctuation">,</span> arg2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// 也可以通过 arguments 访问到</span>
+grunt<span class="token punctuation">.</span>task<span class="token punctuation">.</span><span class="token function">registerMutliTask</span><span class="token punctuation">(</span><span class="token string">'custom_task'</span><span class="token punctuation">,</span> <span class="token string">'A custom task'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  grunt<span class="token punctuation">.</span>log<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span>arguments<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> arguments<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h3 id="运行时通过-option-传参"><a href="#运行时通过-option-传参" class="headerlink" title="运行时通过 option 传参"></a>运行时通过 option 传参</h3><p>另一种传参机制是通过形如 <code>--env=dist</code> 的形式，使得多个任务可以共用一个参数。</p>
+<pre class=" language-shell"><code class="language-shell">grunt custom_task1 costom_task2 costom_task3:target --env=dist
+</code></pre>
+<p>在 <code>taskFunction</code> 中可以通过 <code>grunt.opton(key[, val])</code> 获得这种参数：</p>
+<pre class=" language-js"><code class="language-js">grunt<span class="token punctuation">.</span>task<span class="token punctuation">.</span><span class="token function">registerTask</span><span class="token punctuation">(</span><span class="token string">'custom_task'</span><span class="token punctuation">,</span> <span class="token string">'A custom task'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> env <span class="token operator">=</span> grunt<span class="token punctuation">.</span><span class="token function">option</span><span class="token punctuation">(</span><span class="token string">'env'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  grunt<span class="token punctuation">.</span><span class="token function">option</span><span class="token punctuation">(</span><span class="token string">'stack'</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  grunt<span class="token punctuation">.</span>log<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span>env<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>若使用的是 <code>--env</code> 则 <code>env</code> 的值为 <code>true</code>。</p>
+<p>需要注意的是，不要和其他 grunt 自带的参数使用混淆了，它们包括：</p>
+<ul>
+<li>–help, -h</li>
+<li>–base</li>
+<li>–no-color</li>
+<li>–gruntfile</li>
+<li>–debug, -d</li>
+<li>–stack</li>
+<li>–force, -f</li>
+<li>–tasks</li>
+<li>–npm</li>
+<li>–no-write</li>
+<li>–verbose, -v</li>
+<li>–version, -V</li>
+<li>–completion</li>
+</ul>
+<h2 id="异步机制"><a href="#异步机制" class="headerlink" title="异步机制"></a>异步机制</h2><p>对于一个异步任务，需要使用 <code>this.async</code> 方法声明它是异步的，然后在执行完成时调用 <code>this.async()()</code>，举例如下：</p>
+<pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">// Tell Grunt this task is asynchronous.</span>
+<span class="token keyword">var</span> done <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token keyword">async</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// Your async code.</span>
+<span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">// Let's simulate an error, sometimes.</span>
+  <span class="token keyword">var</span> success <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">0.5</span><span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">// All done!</span>
+  <span class="token function">done</span><span class="token punctuation">(</span>success<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>注意，如果有多个出口，需要在每个出口都调用 <code>done()</code>。</p>
+
+  </div>
+</article>
+<blockquote class="top-gap-big"> <p> 本文遵循 <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" class"text-muted">CC BY-ND-ND 3.0</a> 协议，转载请注明原作者，禁止商用，禁止演绎。 </p> </blockquote>
+<div class="top-gap-big text-center text-muted">
+  <small>
+    <i class="czs-tag-l"></i>
+    <a class="text-muted" href="/tags/JavaScript/">JavaScript</a> , <a class="text-muted" href="/tags/Grunt/">Grunt</a> , <a class="text-muted" href="/tags/Task/">Task</a>
+  </small>
+</div>
+
+
+  <div id="disqus_thread" class="top-gap-big"></div>
+  <script>
+    var langMap = {
+      en: 'en',
+      'zh-CN': 'zh'
+    };
+    var disqus_config = function () {
+      this.language = langMap['zh-CN'] || langMap['en'];
+      this.page.url = 'http://blog.xcatliu.com/2013/12/04/grunt_custom_task_guide/';
+      this.page.identifier = '2013/12/04/grunt_custom_task_guide/';
+      this.page.title = 'Grunt Custom Task 指南';
+    };
+    (function() {
+      var d = document, s = d.createElement('script');
+      s.src = '//xcatliu.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        <hr class="top-gap-big"></hr>
+<p class="text-center">
+  <small class="text-muted">
+    &copy;
+    
+      2012 -
+    
+    <span itemprop="copyrightYear">2020</span>
+    <i class="czs-heart" style="color:red;"></i>
+    <span itemprop="copyrightHolder">xcatliu</span>
+
+    <br/>
+
+    由 <a class="text-muted" href="https://hexo.io" title="Hexo">Hexo</a> 强力驱动
+    <span class="theme-separator">·</span>
+    主题
+    <a class="text-muted" href="https://github.com/xcatliu/hexo-theme-milk">Milk</a>
+  </small>
+</p>
+
+      </div>
+      <div class="theme-sidebar-mask theme-hide"></div>
+<aside class="theme-sidebar-wrapper">
+  <div class="container flex-left units-gap theme-header-container">
+    
+    <a class="unit-0 theme-icon-link" href="/archives" title="归档">
+      <i class="czs-folder-l"></i>
+    </a>
+  
+    <a class="unit-0 theme-icon-link" href="/categories" title="分类">
+      <i class="czs-bookmark-l"></i>
+    </a>
+  
+    <a class="unit-0 theme-icon-link" href="/tags" title="标签">
+      <i class="czs-tag-l"></i>
+    </a>
+  
+    <div class="unit"></div>
+  
+    <a class="unit-0 theme-icon-link" href="http://xcatliu.com" title="关于我">
+      <i class="czs-user-l"></i>
+    </a>
+  
+
+  </div>
+  <div class="container">
+    
+          <h2>流浪小猫的博客</h2>
+          
+          <p class="top-gap-0 text-muted">记录我的成长点滴</p>
+          
+          <div class="flex-left flex-middle top-gap">
+            <img alt="Avatar" height="24" src="/assets/about/xcatliu_512.png"/>
+            <span class="theme-sidebar-author">xcatliu</span>
+          </div>
+          
+          <p>欢迎访问流浪小猫的博客，这里搜集了我的技术文章和生活感悟，希望能够与您一起交流，共同成长。</p>
+          
+          <p class="theme-sidebar-social">
+            
+    <a class="unit-0 theme-icon-link" href="https://github.com/xcatliu" title="GitHub">
+      <i class="czs-github"></i>
+    </a>
+  
+    <a class="unit-0 theme-icon-link" href="https://www.v2ex.com/member/xcatliu" title="V2EX">
+      <i class="czs-v2ex"></i>
+    </a>
+  
+    <a class="unit-0 theme-icon-link" href="https://twitter.com/xcatliu" title="Twitter">
+      <i class="czs-twitter"></i>
+    </a>
+  
+    <a class="unit-0 theme-icon-link" href="mailto:xcatliu@gmail.com" title="Gmail">
+      <i class="czs-message-l"></i>
+    </a>
+  
+    <a class="unit-0 theme-icon-link" href="/atom.xml" title="RSS 订阅">
+      <i class="czs-rss"></i>
+    </a>
+  
+
+          </p>
+          
+          <h5>友情链接</h5>
+          <p class="text-muted">
+            <small>
+              <ul class="theme-list-style-none">
+                <li><a class="text-muted" href="http://chuangzaoshi.com/">创造狮</a></li><li><a class="text-muted" href="https://blog.jamespan.me/">James Pan's Blog</a></li><li><a class="text-muted" href="/links">More</a></li>
+              </ul>
+            </small>
+          </p>
+          
+  </div>
+</aside>
+
+    </div>
+    <script src="/js/theme.js"></script>
+    
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45256157-6', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+
+    
+  <script id="dsq-count-scr" src="//xcatliu.disqus.com/count.js" async></script>
+
+  </body>
+</html>

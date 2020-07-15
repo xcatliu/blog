@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+
+  
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+  
+  
+  
+
+  <link rel="stylesheet" href="/css/mobi.css-3.1.1/dist/mobi.min.css">
+<link rel="stylesheet" href="/css/caomei1.2.1/style.css">
+<link rel="stylesheet" href="/css/theme.css">
+
+  
+    <meta name="keywords" content="JavaScript, Share, Grunt" />
+  
+
+  
+    <link rel="alternate" href="/atom.xml" title="流浪小猫的博客" type="application/atom+xml" />
+  
+
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+
+  <title>Grunt - 流浪小猫的博客</title>
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+  <body class="theme-body">
+    <div class="flex-center theme-header-wrapper">
+  <div class="container flex-left units-gap theme-header-container">
+    <a href="/" class="unit-0 theme-header-icon theme-icon-link" title="首页">
+      <i class="czs-home-l"></i>
+    </a>
+    <div class="flex-center text-center flex-middle unit theme-header-title theme-header-title-no-transition">
+      流浪小猫的博客
+    </div>
+    <a class="unit-0 theme-header-icon theme-icon-link theme-header-sidebar-icon" href="javascript:void(0);" title="更多">
+      <i class="czs-menu-l"></i>
+    </a>
+  </div>
+</div>
+<div class="theme-header-placeholder"></div>
+
+    <div class="flex-center">
+      <div class="container">
+        <article>
+  <h1 class="text-center">
+    Grunt
+  </h1>
+  <div class="text-center top-gap">
+    <div class="text-small text-muted">
+  <time datetime="2013-09-27T00:00:00+08:00">
+    2013-09-27
+  </time>
+  <span class="theme-separator">·</span>
+  <i class="czs-user-l"></i>
+  <a class="text-muted theme-text-no-decoration" href="https://github.com/xcatliu">xcatliu</a>
+  <span class="theme-separator">·</span>
+  <i class="czs-bookmark-l"></i>
+  <a class="text-muted theme-text-no-decoration" href="/categories/Programmer/">Programmer</a>
+  <span class="theme-comment-count-container theme-hide theme-comment-count-container-transparent">
+    <span class="theme-separator">·</span>
+    <i class="czs-comment-l"></i>
+    <a class="text-muted theme-text-no-decoration theme-comment-count" data-disqus-identifier="2013/09/27/grunt/" href="/2013/09/27/grunt/#disqus_thread"></a>
+  </span>
+</div>
+
+  </div>
+  <div class="top-gap-big">
+    <h2 id="Grunt-API"><a href="#Grunt-API" class="headerlink" title="Grunt API"></a>Grunt API</h2><h3 id="grunt-registerTask"><a href="#grunt-registerTask" class="headerlink" title="grunt.registerTask"></a>grunt.registerTask</h3><p>alias for <code>grunt.task.registerTask</code></p>
+<h3 id="Alias-Task"><a href="#Alias-Task" class="headerlink" title="Alias Task"></a>Alias Task</h3><pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">// http://gruntjs.com/api/grunt.task#grunt.task.registertask</span>
+grunt<span class="token punctuation">.</span><span class="token function">registerTask</span><span class="token punctuation">(</span>taskName<span class="token punctuation">,</span> taskList<span class="token punctuation">)</span><span class="token punctuation">;</span>
+grunt<span class="token punctuation">.</span><span class="token function">registerTask</span><span class="token punctuation">(</span><span class="token string">'default'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'jshint'</span><span class="token punctuation">,</span> <span class="token string">'qunit'</span><span class="token punctuation">,</span> <span class="token string">'concat'</span><span class="token punctuation">,</span> <span class="token string">'uglify'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+grunt<span class="token punctuation">.</span><span class="token function">registerTask</span><span class="token punctuation">(</span><span class="token string">'dist'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'concat:dist'</span><span class="token punctuation">,</span> <span class="token string">'uglify:dist'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 可以写任务描述</span>
+grunt<span class="token punctuation">.</span><span class="token function">registerTask</span><span class="token punctuation">(</span><span class="token string">'default'</span><span class="token punctuation">,</span> <span class="token string">'default task description'</span><span class="token punctuation">,</span> <span class="token string">'build'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 可以定义带冒号的任务</span>
+grunt<span class="token punctuation">.</span><span class="token function">registerTask</span><span class="token punctuation">(</span><span class="token string">'build:dist'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'concat:dist'</span><span class="token punctuation">,</span> <span class="token string">'uglify:dist'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h3 id="Function-Task"><a href="#Function-Task" class="headerlink" title="Function Task"></a>Function Task</h3><pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">// http://gruntjs.com/api/grunt.task#grunt.task.registertask</span>
+grunt<span class="token punctuation">.</span>task<span class="token punctuation">.</span><span class="token function">registerTask</span><span class="token punctuation">(</span>taskName<span class="token punctuation">,</span> description<span class="token punctuation">,</span> taskFunction<span class="token punctuation">)</span><span class="token punctuation">;</span>
+grunt<span class="token punctuation">.</span>task<span class="token punctuation">.</span><span class="token function">registerTask</span><span class="token punctuation">(</span><span class="token string">'foo'</span><span class="token punctuation">,</span> <span class="token string">'A sample task that logs stuff.'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>arg1<span class="token punctuation">,</span> arg2<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>arguments<span class="token punctuation">.</span>length <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    grunt<span class="token punctuation">.</span>log<span class="token punctuation">.</span><span class="token function">writeln</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">+</span> <span class="token string">", no args"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    grunt<span class="token punctuation">.</span>log<span class="token punctuation">.</span><span class="token function">writeln</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">+</span> <span class="token string">", "</span> <span class="token operator">+</span> arg1 <span class="token operator">+</span> <span class="token string">" "</span> <span class="token operator">+</span> arg2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// grunt foo:testing:123</span>
+<span class="token comment" spellcheck="true">// foo, testing 123</span>
+</code></pre>
+<h3 id="grunt-registerMultiTask"><a href="#grunt-registerMultiTask" class="headerlink" title="grunt.registerMultiTask"></a>grunt.registerMultiTask</h3><p>alias for <code>grunt.task.registerMultiTask</code></p>
+<blockquote>
+<p>When a multi task is run, Grunt looks for a property of the same name in the Grunt configuration. Multi-tasks can have multiple configurations, defined using arbitrarily named “targets.”</p>
+</blockquote>
+<pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">// http://gruntjs.com/creating-tasks#multi-tasks</span>
+grunt<span class="token punctuation">.</span><span class="token function">registerMultiTask</span><span class="token punctuation">(</span>taskName<span class="token punctuation">,</span> <span class="token punctuation">[</span>description<span class="token punctuation">,</span> <span class="token punctuation">]</span> taskFunction<span class="token punctuation">)</span><span class="token punctuation">;</span>
+grunt<span class="token punctuation">.</span><span class="token function">initConfig</span><span class="token punctuation">(</span><span class="token punctuation">{</span> log<span class="token punctuation">:</span> <span class="token punctuation">{</span> foo<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> bar<span class="token punctuation">:</span> <span class="token string">'hello world'</span><span class="token punctuation">,</span> baz<span class="token punctuation">:</span> <span class="token boolean">false</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+grunt<span class="token punctuation">.</span><span class="token function">registerMultiTask</span><span class="token punctuation">(</span><span class="token string">'log'</span><span class="token punctuation">,</span> <span class="token string">'Log stuff.'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  grunt<span class="token punctuation">.</span>log<span class="token punctuation">.</span><span class="token function">writeln</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>target <span class="token operator">+</span> <span class="token string">': '</span> <span class="token operator">+</span> <span class="token keyword">this</span><span class="token punctuation">.</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">// grunt log:foo</span>
+  <span class="token comment" spellcheck="true">// foo: 1,2,3</span>
+  <span class="token comment" spellcheck="true">// grunt log:bar</span>
+  <span class="token comment" spellcheck="true">// bar: hello world</span>
+  <span class="token comment" spellcheck="true">// grunt log</span>
+  <span class="token comment" spellcheck="true">// foo: 1,2,3</span>
+  <span class="token comment" spellcheck="true">// bar: hello world</span>
+  <span class="token comment" spellcheck="true">// baz: false</span>
+</code></pre>
+<h3 id="grunt-config"><a href="#grunt-config" class="headerlink" title="grunt.config"></a>grunt.config</h3><pre class=" language-js"><code class="language-js">grunt<span class="token punctuation">.</span><span class="token function">config</span><span class="token punctuation">(</span><span class="token punctuation">[</span>prop <span class="token punctuation">[</span><span class="token punctuation">,</span> value<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+grunt<span class="token punctuation">.</span>config<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token punctuation">[</span>prop<span class="token punctuation">]</span><span class="token punctuation">)</span>
+grunt<span class="token punctuation">.</span>config<span class="token punctuation">.</span><span class="token keyword">set</span><span class="token punctuation">(</span>prop<span class="token punctuation">,</span> value<span class="token punctuation">)</span>
+</code></pre>
+<h3 id="grunt-file"><a href="#grunt-file" class="headerlink" title="grunt.file"></a>grunt.file</h3><pre class=" language-js"><code class="language-js">grunt<span class="token punctuation">.</span>file<span class="token punctuation">.</span><span class="token function">read</span><span class="token punctuation">(</span>filepath <span class="token punctuation">[</span><span class="token punctuation">,</span> options<span class="token punctuation">]</span><span class="token punctuation">)</span>
+grunt<span class="token punctuation">.</span>file<span class="token punctuation">.</span><span class="token function">readJSON</span><span class="token punctuation">(</span>filepath <span class="token punctuation">[</span><span class="token punctuation">,</span> options<span class="token punctuation">]</span><span class="token punctuation">)</span>
+grunt<span class="token punctuation">.</span>file<span class="token punctuation">.</span><span class="token function">readYAML</span><span class="token punctuation">(</span>filepath <span class="token punctuation">[</span><span class="token punctuation">,</span> options<span class="token punctuation">]</span><span class="token punctuation">)</span>
+grunt<span class="token punctuation">.</span>file<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span>filepath<span class="token punctuation">,</span> contents <span class="token punctuation">[</span><span class="token punctuation">,</span> options<span class="token punctuation">]</span><span class="token punctuation">)</span>
+</code></pre>
+<h3 id="grunt-option"><a href="#grunt-option" class="headerlink" title="grunt.option"></a>grunt.option</h3><blockquote>
+<p>The Grunt option API is for sharing parameters across multiple tasks and accessing parameters set on the command line.<br>An example would be a flag to target whether your build is for development or staging. On the command line: grunt deploy –target=staging would cause grunt.option(‘target’) to return “staging”.</p>
+</blockquote>
+<pre class=" language-js"><code class="language-js">grunt<span class="token punctuation">.</span><span class="token function">option</span><span class="token punctuation">(</span>key<span class="token punctuation">[</span><span class="token punctuation">,</span> val<span class="token punctuation">]</span><span class="token punctuation">)</span>
+</code></pre>
+<h3 id="this-options"><a href="#this-options" class="headerlink" title="this.options"></a>this.options</h3><blockquote>
+<p>Returns an options object. Properties of the optional defaultsObj argument will be overridden by any task-level options object properties, which will be further overridden in multi tasks by any target-level options object properties.</p>
+</blockquote>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">options</span><span class="token punctuation">(</span><span class="token punctuation">[</span>defaultsObj<span class="token punctuation">]</span><span class="token punctuation">)</span>
+</code></pre>
+<h3 id="this-files"><a href="#this-files" class="headerlink" title="this.files"></a>this.files</h3><blockquote>
+<p>In a multi task, all files specified using any Grunt-supported file formats and options, globbing patterns or dynamic mappings will automatically be normalized into a single format: the Files Array file format.<br>What this means is that tasks don’t need to contain a ton of boilerplate for explicitly handling custom file formats, globbing patterns, mapping source files to destination files or filtering out files or directories. A task user can just specify files per the Configuring tasks guide, and Grunt will handle all the details.</p>
+</blockquote>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">this</span><span class="token punctuation">.</span>files<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>file<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> contents <span class="token operator">=</span> file<span class="token punctuation">.</span>src<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>filepath<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// Remove nonexistent files (it's up to you to filter or warn here).</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>grunt<span class="token punctuation">.</span>file<span class="token punctuation">.</span><span class="token function">exists</span><span class="token punctuation">(</span>filepath<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      grunt<span class="token punctuation">.</span>log<span class="token punctuation">.</span><span class="token function">warn</span><span class="token punctuation">(</span><span class="token string">'Source file "'</span> <span class="token operator">+</span> filepath <span class="token operator">+</span> <span class="token string">'" not found.'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>filepath<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// Read and return the file's source.</span>
+    <span class="token keyword">return</span> grunt<span class="token punctuation">.</span>file<span class="token punctuation">.</span><span class="token function">read</span><span class="token punctuation">(</span>filepath<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">'\n'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">// Write joined contents to destination filepath.</span>
+  grunt<span class="token punctuation">.</span>file<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span>file<span class="token punctuation">.</span>dest<span class="token punctuation">,</span> contents<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">// Print a success message.</span>
+  grunt<span class="token punctuation">.</span>log<span class="token punctuation">.</span><span class="token function">writeln</span><span class="token punctuation">(</span><span class="token string">'File "'</span> <span class="token operator">+</span> file<span class="token punctuation">.</span>dest <span class="token operator">+</span> <span class="token string">'" created.'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h2 id="最佳实践"><a href="#最佳实践" class="headerlink" title="最佳实践"></a>最佳实践</h2><ul>
+<li>解耦</li>
+<li>灵活运用 <code>grunt.option</code>, <code>this.options</code>, <code>this.target</code></li>
+<li>参考 grunt 官方任务 <code>contrib-*</code></li>
+</ul>
+
+  </div>
+</article>
+<blockquote class="top-gap-big"> <p> 本文遵循 <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" class"text-muted">CC BY-ND-ND 3.0</a> 协议，转载请注明原作者，禁止商用，禁止演绎。 </p> </blockquote>
+<div class="top-gap-big text-center text-muted">
+  <small>
+    <i class="czs-tag-l"></i>
+    <a class="text-muted" href="/tags/JavaScript/">JavaScript</a> , <a class="text-muted" href="/tags/Share/">Share</a> , <a class="text-muted" href="/tags/Grunt/">Grunt</a>
+  </small>
+</div>
+
+
+  <div id="disqus_thread" class="top-gap-big"></div>
+  <script>
+    var langMap = {
+      en: 'en',
+      'zh-CN': 'zh'
+    };
+    var disqus_config = function () {
+      this.language = langMap['zh-CN'] || langMap['en'];
+      this.page.url = 'http://blog.xcatliu.com/2013/09/27/grunt/';
+      this.page.identifier = '2013/09/27/grunt/';
+      this.page.title = 'Grunt';
+    };
+    (function() {
+      var d = document, s = d.createElement('script');
+      s.src = '//xcatliu.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+        <hr class="top-gap-big"></hr>
+<p class="text-center">
+  <small class="text-muted">
+    &copy;
+    
+      2012 -
+    
+    <span itemprop="copyrightYear">2020</span>
+    <i class="czs-heart" style="color:red;"></i>
+    <span itemprop="copyrightHolder">xcatliu</span>
+
+    <br/>
+
+    由 <a class="text-muted" href="https://hexo.io" title="Hexo">Hexo</a> 强力驱动
+    <span class="theme-separator">·</span>
+    主题
+    <a class="text-muted" href="https://github.com/xcatliu/hexo-theme-milk">Milk</a>
+  </small>
+</p>
+
+      </div>
+      <div class="theme-sidebar-mask theme-hide"></div>
+<aside class="theme-sidebar-wrapper">
+  <div class="container flex-left units-gap theme-header-container">
+    
+    <a class="unit-0 theme-icon-link" href="/archives" title="归档">
+      <i class="czs-folder-l"></i>
+    </a>
+  
+    <a class="unit-0 theme-icon-link" href="/categories" title="分类">
+      <i class="czs-bookmark-l"></i>
+    </a>
+  
+    <a class="unit-0 theme-icon-link" href="/tags" title="标签">
+      <i class="czs-tag-l"></i>
+    </a>
+  
+    <div class="unit"></div>
+  
+    <a class="unit-0 theme-icon-link" href="http://xcatliu.com" title="关于我">
+      <i class="czs-user-l"></i>
+    </a>
+  
+
+  </div>
+  <div class="container">
+    
+          <h2>流浪小猫的博客</h2>
+          
+          <p class="top-gap-0 text-muted">记录我的成长点滴</p>
+          
+          <div class="flex-left flex-middle top-gap">
+            <img alt="Avatar" height="24" src="/assets/about/xcatliu_512.png"/>
+            <span class="theme-sidebar-author">xcatliu</span>
+          </div>
+          
+          <p>欢迎访问流浪小猫的博客，这里搜集了我的技术文章和生活感悟，希望能够与您一起交流，共同成长。</p>
+          
+          <p class="theme-sidebar-social">
+            
+    <a class="unit-0 theme-icon-link" href="https://github.com/xcatliu" title="GitHub">
+      <i class="czs-github"></i>
+    </a>
+  
+    <a class="unit-0 theme-icon-link" href="https://www.v2ex.com/member/xcatliu" title="V2EX">
+      <i class="czs-v2ex"></i>
+    </a>
+  
+    <a class="unit-0 theme-icon-link" href="https://twitter.com/xcatliu" title="Twitter">
+      <i class="czs-twitter"></i>
+    </a>
+  
+    <a class="unit-0 theme-icon-link" href="mailto:xcatliu@gmail.com" title="Gmail">
+      <i class="czs-message-l"></i>
+    </a>
+  
+    <a class="unit-0 theme-icon-link" href="/atom.xml" title="RSS 订阅">
+      <i class="czs-rss"></i>
+    </a>
+  
+
+          </p>
+          
+          <h5>友情链接</h5>
+          <p class="text-muted">
+            <small>
+              <ul class="theme-list-style-none">
+                <li><a class="text-muted" href="http://chuangzaoshi.com/">创造狮</a></li><li><a class="text-muted" href="https://blog.jamespan.me/">James Pan's Blog</a></li><li><a class="text-muted" href="/links">More</a></li>
+              </ul>
+            </small>
+          </p>
+          
+  </div>
+</aside>
+
+    </div>
+    <script src="/js/theme.js"></script>
+    
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-45256157-6', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+
+    
+  <script id="dsq-count-scr" src="//xcatliu.disqus.com/count.js" async></script>
+
+  </body>
+</html>
