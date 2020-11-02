@@ -8,3 +8,5 @@ Thumbs.db
 db.json
 public
 .deploy*
+
+dist
