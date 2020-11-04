@@ -1,15 +1,17 @@
 ---
-title: 我的 2016 年总结
 date: 2017-01-06
 categories:
-- Life
+  - 多彩生活
 tags:
-- Summary
+  - 总结思考
+links:
+  v2ex: https://www.v2ex.com/t/332724
+  知乎: https://zhuanlan.zhihu.com/p/24753057
 ---
 
-> 在迷惘中坚持，在交流中成长。
+# 我的 2016 年总结
 
-<!-- more -->
+> 在迷惘中坚持，在交流中成长。
 
 ## 出游土耳其
 
@@ -19,19 +21,19 @@ tags:
 
 蔚蓝的天空和大海：
 
-![Turkey Ocean](/assets/2016_summery/turkey_ocean.jpg)
+![Turkey Ocean](../assets/2016_summery/turkey_ocean.jpg)
 
 形似雪山的棉花堡：
 
-![Turkey Pamukkale](/assets/2016_summery/turkey_pamukkale.jpg)
+![Turkey Pamukkale](../assets/2016_summery/turkey_pamukkale.jpg)
 
 外星地貌的卡帕多奇亚
 
-![Turkey Balloon](/assets/2016_summery/turkey_balloon.jpg)
+![Turkey Balloon](../assets/2016_summery/turkey_balloon.jpg)
 
 遍地清真寺的伊斯坦布尔
 
-![Turkey Mosque](/assets/2016_summery/turkey_mosque.jpg)
+![Turkey Mosque](../assets/2016_summery/turkey_mosque.jpg)
 
 这里留下了太多回忆。
 
@@ -95,15 +97,3 @@ tags:
 经常一个灵感来了，就渐渐偏离了之前规划的道路。
 
 所以这次，我给自己一个自由，看看 2017 年能创造怎样的精彩。
-
-## Links
-
-- [关于我](http://blog.xcatliu.com/about/)
-- [我的博客](http://blog.xcatliu.com/)
-- [我的 GitHub](https://github.com/xcatliu)
-
-在其他平台上查看：
-
-- [阅读原文](http://blog.xcatliu.com/2017/01/06/2016_summery/)
-- [v2ex](https://www.v2ex.com/t/332724)
-- [知乎专栏](https://zhuanlan.zhihu.com/p/24753057)

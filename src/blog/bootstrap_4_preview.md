@@ -1,17 +1,16 @@
 ---
-title: Bootstrap 4 初探
 categories:
-- Programmer
+  - 编程世界
 tags:
-- Bootstrap
-- CSS
+  - Bootstrap
+  - CSS
 ---
+
+# Bootstrap 4 初探
 
 Bootstrap 作为 GitHub 上 Stars 最多的项目，可以说是万众瞩目，issues 和 pull requests 也居高不下，足以看出其后劲依然很足。
 
 截止到本文发布，Bootstrap 4 已经推出 alpha 2 版本一个多月了，让我们一起玩转 Bootstrap 4 吧！
-
-<!-- more -->
 
 ## 新特性
 

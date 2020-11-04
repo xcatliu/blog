@@ -1,16 +1,15 @@
 ---
-title: 展望 2015
 date: 2015-01-01
 categories:
-- Life
+  - 多彩生活
 tags:
-- Plan
-- Summary
+  - 计划
+  - 总结思考
 ---
 
-2015 年就要来了，煽情的话就不说了，这里统计一下 2014 年做过的事，以及对 2015 年的展望。
+# 展望 2015
 
-<!-- more -->
+2015 年就要来了，煽情的话就不说了，这里统计一下 2014 年做过的事，以及对 2015 年的展望。
 
 ## 2014 年做过的事
 
@@ -30,7 +29,7 @@ tags:
 - 阅读《重构》
 - Angular
 - 开始面试工作
-- 开始 [GitHub Dally] 计划
+- 开始 [GitHub Dally][] 计划
 - 统一使用 xcatliu 作为代号
 
 ### 2014Q3
@@ -53,7 +52,7 @@ tags:
 - 学习 React 并用于生产环境
 - Browserify
 - 阅读《设计模式》
-- 开始写一个博客系统 [Xcat]
+- 开始写一个博客系统 [Xcat][]
 - 买了 iPhone6
 - 当上了导师
 - 带爸爸玩北京
@@ -65,7 +64,7 @@ tags:
 - 健身，有腹肌
 - 健康生活，缓解身体的毛病
 - 一次出国旅行
-- 继续 [GitHub Dally] 计划
+- 继续 [GitHub Dally][] 计划
 - 坚持每月两篇博客
 - T 型战略（深度 + 广度）学习计划
 - 认真工作，拿更多 S
@@ -75,10 +74,10 @@ tags:
 
 ## Links
 
-- [GitHub Dally]
+- [GitHub Dally][]
 - [《抽象语法树在 JavaScript 中的应用》][abstract-syntax-tree]
 - [YUI 停止维护][important-announcement-regarding-yui]
-- [Xcat]
+- [Xcat][]
 
 [GitHub Dally]:https://github.com/xcatliu
 [abstract-syntax-tree]:http://xcatliu.com/posts/abstract-syntax-tree.html

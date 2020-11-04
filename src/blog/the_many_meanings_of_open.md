@@ -1,12 +1,13 @@
 ---
-title: The Many Meanings of Open
 date: 2013-11-08
 categories:
-- Life
+  - 多彩生活
 tags:
-- Summary
+  - 总结思考
 excerpt: 参加万维网之父、万维网联盟创始人见面会的感想
 ---
+
+# The Many Meanings of Open
 
 ## 会议介绍
 

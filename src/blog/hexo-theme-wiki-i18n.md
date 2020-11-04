@@ -1,15 +1,15 @@
 ---
-title: 新姿势：在 GitHub 基于 Hexo 写 Wiki
 date: 2016-06-25
 categories:
-- Programmer
+  - 编程世界
 tags:
-- Wiki
-- Hexo
-- V2EX
+  - Wiki
+  - Hexo
+links:
+  v2ex: https://v2ex.com/t/288151
 ---
 
-> 发表在 V2EX 上：https://www.v2ex.com/t/288151
+# 新姿势：在 GitHub 基于 Hexo 写 Wiki
 
 最近想尝试下用 Hexo 写 Wiki ，发现还挺酷的，所以把主题和一些插件提取出来了，分享给大家。
 
@@ -26,15 +26,15 @@ tags:
 
 ### 首页
 
-![wiki-i18n screenshot 1](/assets/hexo-theme-wiki-i18n/screenshot_1.png)
+![wiki-i18n screenshot 1](../assets/hexo-theme-wiki-i18n/screenshot_1.png)
 
 ### 归档页
 
-![wiki-i18n screenshot 2](/assets/hexo-theme-wiki-i18n/screenshot_2.png)
+![wiki-i18n screenshot 2](../assets/hexo-theme-wiki-i18n/screenshot_2.png)
 
 ### 内容页
 
-![wiki-i18n screenshot 3](/assets/hexo-theme-wiki-i18n/screenshot_3.png)
+![wiki-i18n screenshot 3](../assets/hexo-theme-wiki-i18n/screenshot_3.png)
 
 ## 主题特性
 

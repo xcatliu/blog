@@ -1,13 +1,14 @@
 ---
-title: 抽象语法树在 JavaScript 中的应用
 date: 2014-10-08
 categories:
-- Programmer
+  - 编程世界
 tags:
-- AST
-- UglifyJS
-- JavaScript
+  - AST
+  - UglifyJS
+  - JavaScript
 ---
+
+# 抽象语法树在 JavaScript 中的应用
 
 > 发表在美团技术博客上：http://tech.meituan.com/abstract-syntax-tree.html
 

@@ -1,15 +1,15 @@
 ---
-title: 我来微软这半年
 date: 2016-10-23
 categories:
-- Programmer
+  - 编程世界
 tags:
-- Summary
-- Microsoft
-- V2EX
+  - 总结思考
+  - 微软
+links:
+  v2ex: https://v2ex.com/t/314814
 ---
 
-> 发表在 V2EX 上：https://www.v2ex.com/t/314814
+# 我来微软这半年
 
 转眼间已经离开美团，来到微软半年了。
 

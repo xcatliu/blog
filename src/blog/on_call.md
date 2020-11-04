@@ -1,18 +1,17 @@
 ---
-title: 在微软 on call 的经历
 categories:
-- Programmer
+  - 编程世界
 tags:
 - On call
 - Microsoft
-- Summary
+  - 总结思考
 ---
+
+# 在微软 on call 的经历
 
 之前一直听说微软、亚马逊等企业需要 on call，但是不清楚具体要做什么。
 
 上周第一次在微软 on call，写一点感受。
-
-<!-- more -->
 
 ## On call 是什么
 

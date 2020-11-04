@@ -1,26 +1,22 @@
 ---
-title: 码字 md 发布 v2 啦
 date: 2017-07-17
 categories:
-- Programmer
+  - 编程世界
 tags:
-- mazimd
-- Markdown
-- V2EX
-excerpt: 码字 md 是一个在线 markdown 编辑器，自发布以来一直收到很多好评
+  - mazimd
+  - Markdown
+outdated: true
+links:
+  v2ex: https://v2ex.com/t/371914
+  homepage: http://mazimd.com/pages/new
+  GitHub: https://github.com/xcatliu/mazimd
 ---
 
-> 发表在 V2EX 上：https://www.v2ex.com/t/371914
-
-- Online demo: http://mazimd.com/pages/new
-- GitHub mazimd: https://github.com/xcatliu/mazimd
-- GitHub mazimd-api: https://github.com/xcatliu/mazimd-api
-
-## 什么是码字 md
+# 码字 md 发布 v2 啦
 
 码字 md 是一个在线 markdown 编辑器，自发布以来一直收到很多好评：
 
-前帖：[码字 md - 干净精致的 Markdown 编辑器](/2017/01/01/mazimd)
+前帖：[码字 md - 干净精致的 Markdown 编辑器](./mazimd.md)
 
 ## 码字 md v2 更新内容
 

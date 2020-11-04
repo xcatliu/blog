@@ -1,12 +1,13 @@
 ---
-title: Puppeteer 指南
 date: 2018-09-18
 categories:
-- Programmer
+  - 编程世界
 tags:
-- JavaScript
-- Puppeteer
+  - JavaScript
+  - Puppeteer
 ---
+
+# Puppeteer 指南
 
 Puppeteer 是 Google Chrome 出品的一个无头浏览器。如果你听说过 Phantomjs 或者 Selenium，那么就应该知道它是做什么的了。Puppeteer 与它们类似，提供了一系列 api，通过 DevTools 协议控制 Chromium/Chrome 浏览器的行为。
 
@@ -111,7 +112,7 @@ Puppeteer 通过 DevTools 协议控制 Chromium/Chrome 浏览器。它的结构�
 
 > 下图中淡化显示的可以忽略
 
-![Puppeteer 结构](/assets/puppeteer_turorial/puppeteer-structure.png)
+![Puppeteer 结构](../assets/puppeteer_turorial/puppeteer-structure.png)
 
 - Puppeteer 通过 DevTools 协议控制 Chromium/Chrome 浏览器
 - 一个浏览器（Browser）实例可以包含多个浏览器上下文（Browser contexts），就像我们打开一个普通的 Chrome 之后又打开一个隐身模式的 Chrome
@@ -258,7 +259,7 @@ Page 是 Puppeteer 中最重要的一个 API，也是它的核心所在，这里
 `page.mouse`|访问到页面的 Mouse 对象
 `page.touchscreen`|访问到页面的 TouchScreen 对象
 
-## 参考
+## Links
 
 - [Puppeteer 文档](https://pptr.dev/)
 - [Chromium CLI 参数](https://peter.sh/experiments/chromium-command-line-switches/)

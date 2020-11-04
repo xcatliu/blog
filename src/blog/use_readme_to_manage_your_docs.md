@@ -1,12 +1,13 @@
 ---
-title: 基于 README 的文档管理
 date: 2014-12-09
 categories:
-- Programmer
+  - 编程世界
 tags:
-- README
-- Markdown
+  - README
+  - Markdown
 ---
+
+# 基于 README 的文档管理
 
 ## 什么是 readme
 
@@ -24,7 +25,7 @@ tags:
 
 推荐遵守此规则：
 
-[Markdown 规范][markdown.tv] + [GitHub Flavored Markdown]
+[Markdown 规范][markdown.tw] + [GitHub Flavored Markdown][]
 
 ## 应该叫什么名字
 
@@ -70,8 +71,8 @@ tags:
 ## Links
 
 - [how-to-write-a-good-readme]
-- [Markdown 规范][markdown.tv]
-- [GitHub Flavored Markdown]
+- [Markdown 规范][markdown.tw]
+- [GitHub Flavored Markdown][]
 - [维基百科 README](http://en.wikipedia.org/wiki/README)
 - [Apache HTTP Server README](http://svn.apache.org/repos/asf/httpd/httpd/trunk/README)
 - [README 童话故事](https://gist.github.com/eed3si9n/3920236)

@@ -1,13 +1,14 @@
 ---
-title: 关于 YUI 的重要公告
 categories:
-- Programmer
+  - 编程世界
 tags:
-- YUI
-- JavaScript
-- Translate
+  - YUI
+  - JavaScript
+  - 翻译
 excerpt: 翻译《Important Announcement Regarding YUI》
 ---
+
+# 关于 YUI 的重要公告
 
 > 原文：[Important Announcement Regarding YUI](http://yahooeng.tumblr.com/post/96098168666/important-announcement-regarding-yui)
 

@@ -1,19 +1,18 @@
 ---
-title: GeoJSON 和 TopoJSON
 date: 2015-04-24
 categories:
-- Programmer
+  - 编程世界
 tags:
-- GeoJSON
-- TopoJSON
-- JSON
+  - GeoJSON
+  - TopoJSON
+  - JSON
 ---
+
+# GeoJSON 和 TopoJSON
 
 > GeoJSON 是用来描述一系列几何形状的数据结构。它可以描述以下几种几何类型：Point、LineString、Polygon、MultiPoint、MultiLineString 和 MultiPolygon。
 
 > TopoJSON 是 GeoJSON 的拓展，用来描述拓扑结构。通过提取图形中公用的点来减少冗余，一般可以把 GeoJSON 的大小压缩到原来的 20%。
-
-<!-- more -->
 
 ## GeoJSON
 
@@ -44,7 +43,7 @@ TopoJSON 通过四种方式压缩了 GeoJSON 的大小。
 
 ### TopoJSON 的规范
 
-具体的规范可以直接阅读 [TopoJSON 规范]。
+具体的规范可以直接阅读 [TopoJSON 规范][]。
 
 ### TopoJSON API
 
@@ -72,14 +71,14 @@ TopoJSON 通过四种方式压缩了 GeoJSON 的大小。
 
 - 可以把 GeoJSON、SHP 或 CSV 转化为 TopoJSON
 
-更多请阅读 [TopoJSON API Reference] 和 [Command Line Reference]。
+更多请阅读 [TopoJSON API Reference][] 和 [Command Line Reference][]。
 
 ## Links
 
-- [GeoJSON 规范]
-- [TopoJSON 规范]
-- [TopoJSON API Reference]
-- [Command Line Reference]
+- [GeoJSON 规范][]
+- [TopoJSON 规范][]
+- [TopoJSON API Reference][]
+- [Command Line Reference][]
 
 [GeoJSON 规范]: http://geojson.org/geojson-spec.html
 [TopoJSON 规范]: https://github.com/topojson/topojson-specification/blob/master/README.md

@@ -1,14 +1,14 @@
 ---
-title: 晒键盘 - FILCO 87 双模忍者圣手二代 黑色青轴
 categories:
-- Life
+  - 多彩生活
 tags:
-- Flico
-- Keyboard
-excerpt: <img alt="FLICO-05" src="/assets/flico/FLICO-05.jpeg" />
+  - Flico
+  - 键盘
+links:
+  v2ex: https://v2ex.com/t/337333
 ---
 
-> 发表在 V2EX 上：https://www.v2ex.com/t/337333
+# 晒键盘 - FILCO 87 双模忍者圣手二代 黑色青轴
 
 关注了很久，这款键盘终于又有货了！
 
@@ -16,10 +16,10 @@ excerpt: <img alt="FLICO-05" src="/assets/flico/FLICO-05.jpeg" />
 
 目前用起来还不错，比 2016 mbp 13 寸大一些。
 
-![FLICO-01](/assets/flico/FLICO-01.jpeg)
-![FLICO-02](/assets/flico/FLICO-02.jpeg)
-![FLICO-03](/assets/flico/FLICO-03.jpeg)
-![FLICO-04](/assets/flico/FLICO-04.jpeg)
-![FLICO-05](/assets/flico/FLICO-05.jpeg)
-![FLICO-06](/assets/flico/FLICO-06.jpeg)
-![FLICO-07](/assets/flico/FLICO-07.jpeg)
+![FLICO-01](../assets/flico/FLICO-01.jpeg)
+![FLICO-02](../assets/flico/FLICO-02.jpeg)
+![FLICO-03](../assets/flico/FLICO-03.jpeg)
+![FLICO-04](../assets/flico/FLICO-04.jpeg)
+![FLICO-05](../assets/flico/FLICO-05.jpeg)
+![FLICO-06](../assets/flico/FLICO-06.jpeg)
+![FLICO-07](../assets/flico/FLICO-07.jpeg)

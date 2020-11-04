@@ -1,13 +1,12 @@
 ---
-title: How to Get Changelist in Git Push Hook
-lang: en
 categories:
-- Programmer
+  - 编程世界
 tags:
-- Git
-- Git Hooks
-- en
+  - Git
+  - Git Hooks
 ---
+
+# How to Get Changelist in Git Push Hook
 
 Git hooks is a useful tool to run scripts before or after events. We usually use it to check the format of commit message, lint our code, prevent pushing code to master branch, or run test scripts before pushing.
 

@@ -1,15 +1,14 @@
 ---
-title: Learn TypeScript
 categories:
-- Programmer
+  - 编程世界
 tags:
-- TypeScript
-- JavaScript
+  - TypeScript
+  - JavaScript
 ---
 
-> TypeScript 是 JavaScript 的一个超集，由 Microsoft 开发，代码开源于 GitHub 上。
+# Learn TypeScript
 
-<!-- more -->
+> TypeScript 是 JavaScript 的一个超集，由 Microsoft 开发，代码开源于 GitHub 上。
 
 2016-05-20 更新：打算写成一个系列，放到独立的 repo 中，此篇会拆分为系列的一部分，在此仅做存档。
 

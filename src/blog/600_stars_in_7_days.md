@@ -1,26 +1,22 @@
 ---
-title: 7 天 600 stars， Mobi.css 是如何诞生的
 date: 2016-09-05
 categories:
-- Programmer
+  - 编程世界
 tags:
-- Mobi.css
-- Summary
-- V2EX
-excerpt: Mobi.css 是一个轻量、灵活的移动端 CSS 框架。发布一周以来，获得了 600+ stars，登上了 GitHub Trending Top1（CSS），在 Hacker News 上进入了前三。
+  - Mobi.css
+  - 总结思考
+links:
+  v2ex: https://v2ex.com/t/304129
+  GitHub: https://github.com/xcatliu/mobi.css
+  Mobi.css: https://getmobicss.com
+  Hacker News: https://news.ycombinator.com/item?id=12421804
 ---
 
-> 发表在 V2EX 上：https://www.v2ex.com/t/304129
+# 7 天 600 stars， Mobi.css 是如何诞生的
 
-> 受邀写一篇 Mobi.css 的诞生历程，请原谅我吸引眼球的标题，我会努力把这篇文章写得有一些干货的。
+Mobi.css 是一个轻量、灵活的移动端 CSS 框架。发布一周以来，获得了 600+ stars，登上了 GitHub Trending Top1（CSS），在 Hacker News 上进入了前三。
 
-[GitHub Repo](http://github.com/xcatliu/mobi.css) | [Homepage](http://getmobicss.com)
-
-提要：
-
-> Mobi.css 是一个轻量、灵活的移动端 CSS 框架。发布一周以来，获得了 600+ stars，登上了 GitHub Trending Top1（CSS），在 Hacker News 上进入了前三。
->
-> 这篇文章会先介绍一下创造 Mobi.css 的思路，再介绍一下我在推广 Mobi.css 中的心得。
+这篇文章会先介绍一下创造 Mobi.css 的思路，再介绍一下我在推广 Mobi.css 中的心得。
 
 ## 为什么要创造 Mobi.css
 
@@ -116,7 +112,3 @@ CSS 框架相比于 JavaScript、React 等简单得多，但是也不能忽视�
 Mobi.css 在短时间内获得了很多关注，离不开大家的支持，离不开开源社区的帮助。
 
 我知道这只是 Mobi.css 项目的开始，后面有更长的路要走，感兴趣的可以一起来建设。
-
-[GitHub Repo](http://github.com/xcatliu/mobi.css) | [Homepage](http://getmobicss.com)
-
-[Hacker News 上的讨论](https://news.ycombinator.com/item?id=12421804)

@@ -1,17 +1,18 @@
 ---
-title: GitHub 上的测试覆盖率
 categories:
-- Programmer
+  - 编程世界
 tags:
-- Coverage
-- Test
-- GitHub
+  - 测试覆盖率
+  - 测试
+  - GitHub
 excerpt: 介绍 GitHub 与 Travis CI 结合的文章已经很多了，本篇文章主要介绍一下测试覆盖率的概念以及如何将测试覆盖率的 badge 添加到 README.md 中。
 ---
 
+# GitHub 上的测试覆盖率
+
 开源项目的 README.md 中，一般都会在前面放上一些 badge，除了可以让读者快速的了解项目的一些信息以外，还为 README.md 添加了些许色彩。以 [Pagic](https://github.com/xcatliu/pagic) 为例：
 
-![pagic test coverage](/assets/test_coverage_for_github/pagic.png)
+![pagic test coverage](../assets/test_coverage_for_github/pagic.png)
 
 - 上图中的 `build passing` 表示 [travis](https://travis-ci.org/xcatliu/pagic) build 通过了，用绿色背景显示，表明很安全。
 - `npm v0.4.1` 表示最新版本是 `v0.4.1`，用橙色背景显示，表明是不稳定的版本。

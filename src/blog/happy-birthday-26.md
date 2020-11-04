@@ -1,16 +1,15 @@
 ---
-title: 写给 26 岁的自己
 categories:
-- Life
+  - 多彩生活
 tags:
-- Birthday
+  - 生日快乐
 ---
+
+# 写给 26 岁的自己
 
 今天是我 26 岁的生日，Google 送给我了一个 doodle：
 
-![google-user-birthday](/assets/happy-birthday-26/google-user-birthday.gif)
-
-<!-- more -->
+![google-user-birthday](../assets/happy-birthday-26/google-user-birthday.gif)
 
 年终将至，工作变得繁忙起来。
 

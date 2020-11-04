@@ -1,15 +1,15 @@
 ---
-title: 撸了一个三行情诗表白网页，可朋友圈分享，但是卡爆了
 date: 2015-08-20
 categories:
-- Programmer
+  - 编程世界
 tags:
-- Canvas
-- V2EX
-- JavaScript
+  - Canvas
+  - JavaScript
+links:
+  v2ex: https://v2ex.com/t/214426
 ---
 
-> 发表在 V2EX 上：https://v2ex.com/t/214426
+# 撸了一个三行情诗表白网页，可朋友圈分享，但是卡爆了
 
 *请在手机上访问（或者把 Chrome 开发者模式打开，调整为 iPhone 6[+] 模式）*
 

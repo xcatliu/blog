@@ -1,12 +1,16 @@
 ---
-title: 设计 pagic.config.ts
 date: 2020-07-12
 categories:
-- Programmer
+  - 编程世界
 tags:
-- Pagic
+  - Pagic
 excerpt: Pagic 是一个静态网站生成器，使用 Deno 和 React 开发。本文介绍其配置文件 pagic.config.ts 的设计。
+links:
+  Pagic: https://pagic.org
+  GitHub: https://github.com/xcatliu/pagic
 ---
+
+# 设计 pagic.config.ts
 
 作为一名<del>高级 Markdown 工程师</del>资深博客爱好者，我热衷于<del>写博客</del>折腾各种博客系统，写过多个博客主题。
 

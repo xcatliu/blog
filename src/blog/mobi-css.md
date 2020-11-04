@@ -1,15 +1,15 @@
 ---
-title: 「Mobi.css」轻量，灵活的移动端 css 框架
 date: 2016-08-29
 categories:
-- Programmer
+  - 编程世界
 tags:
-- Mobi.css
-- CSS
-- V2EX
+  - Mobi.css
+  - CSS
+links:
+  v2ex: https://v2ex.com/t/302356
 ---
 
-> 发表在 V2EX 上：https://www.v2ex.com/t/302356
+# 「Mobi.css」轻量，灵活的移动端 css 框架
 
 最近做了一个 CSS 框架，颇废了一番功夫。
 

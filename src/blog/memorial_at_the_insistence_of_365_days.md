@@ -1,13 +1,12 @@
 ---
-title: 纪念一下 365 天的坚持
 date: 2015-06-17
 categories:
-- Programmer
-tags:
-- V2EX
+  - 编程世界
+links:
+  v2ex: https://v2ex.com/t/199391
 ---
 
-> 发表在 V2EX 上：https://v2ex.com/t/199391
+# 纪念一下 365 天的坚持
 
 GitHub: https://github.com/xcatliu
 

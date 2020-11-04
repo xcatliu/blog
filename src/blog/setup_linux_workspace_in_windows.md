@@ -1,16 +1,17 @@
 ---
-title: 在 Windows 中配置 Linux 工作环境
 categories:
-- Programmer
+  - 编程世界
 tags:
-- VituralBox
-- Linux
-- Windows
+  - VituralBox
+  - Linux
+  - Windows
+links:
+  v2ex: https://v2ex.com/t/274202
 ---
 
-> 由于我的大部分项目都是基于 Linux 的，所以在 Windows 中配置一个 Linux 工作环境是非常有必要的（别问我为什么不用 MacBook 了 T_T）
+# 在 Windows 中配置 Linux 工作环境
 
-<!-- more -->
+> 由于我的大部分项目都是基于 Linux 的，所以在 Windows 中配置一个 Linux 工作环境是非常有必要的（别问我为什么不用 MacBook 了 T_T）
 
 2016-05-20 更新：可以使用更加先进的 [Hyper-V + Samba 方案](http://blog.xcatliu.com/2016/05/20/setup-linux-workspace-in-windows-using-hyper-v/)。
 
@@ -90,7 +91,3 @@ https://www.virtualbox.org/ticket/10085
 - [x] 推荐用 samba 进行， sharefolder 中安装某些 nodejs npm 包也会出问题，还有文件权限也是个问题，除了普通文件共享，不建议使用 [@egen](https://v2ex.com/member/egen)
 - [ ] babun 体验更佳 [@cyio](https://v2ex.com/member/cyio)
 - [x] Windows 10 的话直接用系统自带的 Hyper-V 就行了 [@Kymair](https://v2ex.com/member/Kymair)
-
-## Links
-
-- [v2ex 上的讨论](https://v2ex.com/t/274202)

@@ -1,7 +1,7 @@
 ---
 title: {{ title }}
 categories:
-- Programmer
+  - 编程世界
 tags:
-- JavaScript
+  - JavaScript
 ---

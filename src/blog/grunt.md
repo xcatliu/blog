@@ -1,13 +1,14 @@
 ---
-title: Grunt
 date: 2013-09-27
 categories:
-- Programmer
+  - 编程世界
 tags:
-- Grunt
-- JavaScript
-- Share
+  - Grunt
+  - JavaScript
+  - 分享
 ---
+
+# Grunt
 
 ## Grunt API
 

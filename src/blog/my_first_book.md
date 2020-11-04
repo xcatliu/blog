@@ -1,16 +1,14 @@
 ---
-title: 我写的第一本书《TypeScript 入门教程》
 categories:
-- Programmer
+  - 编程世界
 tags:
-- TypeScript
-- Tutorial
-- Book
+  - TypeScript
+  - Tutorial
 ---
 
-持续了大半年的学习和写作，在今天终于告一段落了。
+# 我写的第一本书《TypeScript 入门教程》
 
-<!-- more -->
+持续了大半年的学习和写作，在今天终于告一段落了。
 
 ## 写书之旅
 

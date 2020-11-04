@@ -1,15 +1,15 @@
 ---
-title: Modular JS
 date: 2014-03-06
 categories:
-- Programmer
+  - 编程世界
 tags:
-- Modular
-- JavaScript
-excerpt: 分享一个我在组内分享的 Slide
+  - 模块化
+  - JavaScript
+links:
+  slide: http://slides.com/xcatliu/modular_js/
 ---
 
-> Slide：http://slides.com/xcatliu/modular_js/
+# Modular JS
 
 <iframe src="//slides.com/xcatliu/modular_js/embed" width="620" height="400" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 

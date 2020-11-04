@@ -1,17 +1,16 @@
 ---
-title: 运行一个脚本，看看你的项目的代码质量吧
 date: 2017-09-20
 categories:
-- Programmer
+  - 编程世界
 tags:
-- Quality
-- Complexity
-- V2EX
+  - 代码质量
+  - 代码复杂度
+links:
+  v2ex: https://v2ex.com/t/392337
+  GitHub: https://github.com/xcatliu/cqc
 ---
 
-> 发表在 V2EX 上：https://www.v2ex.com/t/392337
-
-- GitHub: https://github.com/xcatliu/cqc
+# 运行一个脚本，看看你的项目的代码质量吧
 
 代码质量有很多指标：
 

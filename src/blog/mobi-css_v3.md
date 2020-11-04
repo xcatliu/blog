@@ -1,17 +1,17 @@
 ---
-title: Mobi.css v3 发布了，一个轻量、可拓展、移动端优先的 CSS 框架
 date: 2017-09-04
 categories:
-- Programmer
+  - 编程世界
 tags:
-- Mobi.css
-- CSS
-- V2EX
+  - Mobi.css
+  - CSS
+links:
+  v2ex: https://v2ex.com/t/387918
 ---
 
-> 发表在 V2EX 上：https://www.v2ex.com/t/387918
+# Mobi.css v3 发布了，一个轻量、可拓展、移动端优先的 CSS 框架
 
-- github: https://github.com/mobi-css/mobi.css
+- GitHub: https://github.com/mobi-css/mobi.css
 - 官网： http://getmobicss.com/
 
 ## 简单介绍

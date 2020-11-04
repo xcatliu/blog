@@ -1,15 +1,14 @@
 ---
-title: 从 isArray 谈起
 categories:
-- Programmer
+  - 编程世界
 tags:
-- Array
-- JavaScript
+  - Array
+  - JavaScript
 ---
 
-怎么判断数组是前端面试经常被问到的一个问题，数组也是最难以准确判断的类型之一。今天咱们就来谈谈如何判断数组。
+# 从 isArray 谈起
 
-<!-- more -->
+怎么判断数组是前端面试经常被问到的一个问题，数组也是最难以准确判断的类型之一。今天咱们就来谈谈如何判断数组。
 
 ## typeof
 
@@ -218,14 +217,14 @@ function isArray() {
 
 ## Links
 
-1. [MDN typeof]
-2. [es5 typeof]
-3. [MDN instanceof]
-4. [MDN isArray]
-5. [caniuse isArray]
-6. [kangax isArray]
-7. [MDN toString]
-8. [MDN newArray]
+1. [MDN typeof][]
+2. [es5 typeof][]
+3. [MDN instanceof][]
+4. [MDN isArray][]
+5. [caniuse isArray][]
+6. [kangax isArray][]
+7. [MDN toString][]
+8. [MDN newArray][]
 
 [MDN typeof]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof
 [es5 typeof]: http://www.ecma-international.org/ecma-262/5.1/#sec-11.4.3

@@ -1,13 +1,14 @@
 ---
-title: Fetch API
 date: 2015-11-08
 categories:
-- Programmer
+  - 编程世界
 tags:
-- Fetch
-- Translate
-- JavaScript
+  - Fetch
+  - 翻译
+  - JavaScript
 ---
+
+# Fetch API
 
 > 发表在 Mozilla 上：
 >

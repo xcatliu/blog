@@ -1,25 +1,23 @@
 ---
-title: 三分钟创建一个简单精致的 About Me 页面
 categories:
-- Programmer
+  - 编程世界
 tags:
-- About
-- GitHub
-- Jekyll
+  - GitHub
+outdated: true
+links:
+  关于我: https://xcatliu.com
+  GitHub: https://github.com/xcatliu/xcatliu
 ---
 
-> 通过 Fork 一个仓库，创建基于 GitHub Pages 的 About Me 页面。
+# 三分钟创建一个简单精致的 About Me 页面
 
-<!-- more -->
+> 通过 Fork 一个仓库，创建基于 GitHub Pages 的 About Me 页面。
 
 一个「About Me」页面，能够使别人快速的对你有一个大致的了解。
 
 使用 GitHub 提供的 Pages 服务，可以将静态的网页托管在 GitHub 上。而 GitHub Pages 默认的 Jekyll 使得静态网页得以很方便的配置化。
 
 我的 About Me 页面精雕细琢，并且页面的内容均提取成 yaml 配置文件，使大家可以简单几步就创建自己的 About Me 页面。
-
-- [Live Demo](http://xcatliu.com/)
-- [GitHub](https://github.com/xcatliu/xcatliu.github.io)
 
 ## 特点
 
