@@ -1,6 +1,6 @@
 # 流浪小猫的博客
 
-- Homepage: http://blog.xcatliu.com/
+- Homepage: http://blog.xcatliu.com
 - Theme: [Milk](https://github.com/xcatliu/blog/tree/master/themes/milk)
 
 ## Getting Start

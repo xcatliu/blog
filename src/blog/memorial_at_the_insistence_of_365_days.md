@@ -4,11 +4,10 @@ categories:
   - 编程世界
 links:
   v2ex: https://v2ex.com/t/199391
+  GitHub: https://github.com/xcatliu
 ---
 
 # 纪念一下 365 天的坚持
-
-GitHub: https://github.com/xcatliu
 
 ![GitHub-365](https://i.v2ex.co/Ha5GKxxI.jpeg)
 

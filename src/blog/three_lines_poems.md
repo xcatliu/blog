@@ -7,6 +7,7 @@ tags:
   - JavaScript
 links:
   v2ex: https://v2ex.com/t/214426
+  GitHub: https://github.com/xcatliu/rose
 ---
 
 # 撸了一个三行情诗表白网页，可朋友圈分享，但是卡爆了
@@ -15,7 +16,7 @@ links:
 
 链接：http://xcatliu.github.io/rose/
 
-GitHub：https://github.com/xcatliu/rose
+GitHub: https://github.com/xcatliu/rose
 
 由于网站太简单了只有 100+ 行代码，所以 css js 都 inline 了，但是由于直接 copy 了那个玫瑰花，导致在手机上（我用的 iPhone 5s ）卡爆了。
 

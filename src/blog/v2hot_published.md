@@ -8,13 +8,14 @@ tags:
 outdated: true
 links:
   v2ex: https://v2ex.com/t/191420
+  GitHub: https://github.com/xcatliu/v2hot
 ---
 
 # V2HOT 终于上线了，欢迎下载
 
-GitHub：[https://github.com/xcatliu/v2hot](https://github.com/xcatliu/v2hot)
+GitHub: https://github.com/xcatliu/v2hot
 
-快速下载：[https://itunes.apple.com/cn/app/v2hot/id992150357?mt=8](https://itunes.apple.com/cn/app/v2hot/id992150357?mt=8)
+快速下载：https://itunes.apple.com/cn/app/v2hot/id992150357?mt=8
 
 ![Download V2HOT](https://i.v2ex.co/feN495xC.png)
 

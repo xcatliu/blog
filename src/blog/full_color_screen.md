@@ -3,6 +3,7 @@ categories:
   - 编程世界
 links:
   v2ex: https://v2ex.com/t/335504
+  GitHub: https://github.com/hack1day/full-color-screen
 ---
 
 # 随手撸了个测试屏幕坏点的网页

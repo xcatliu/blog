@@ -7,12 +7,14 @@ tags:
   - CSS
 links:
   v2ex: https://v2ex.com/t/387918
+  GitHub: https://github.com/mobi-css/mobi.css
+  homepage: http://getmobicss.com
 ---
 
 # Mobi.css v3 发布了，一个轻量、可拓展、移动端优先的 CSS 框架
 
 - GitHub: https://github.com/mobi-css/mobi.css
-- 官网： http://getmobicss.com/
+- 官网：http://getmobicss.com/
 
 ## 简单介绍
 

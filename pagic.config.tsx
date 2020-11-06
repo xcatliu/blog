@@ -3,31 +3,46 @@ export default {
   theme: 'blog',
   plugins: ['blog'],
   title: '流浪小猫的博客',
-  description: '',
+  description: '欢迎来到我的博客，这里搜集了我的技术文章和生活感悟，欢迎一起交流成长。',
   github: 'https://github.com/xcatliu/blog',
   nav: [
     {
-      text: 'Docs',
-      link: '/docs/introduction.html'
+      text: '首页',
+      link: '/',
+      icon: 'home'
     },
     {
-      text: 'Themes',
-      link: '/themes/'
+      text: '归档',
+      link: '/archives',
+      icon: 'box'
     },
     {
-      text: 'Plugins',
-      link: '/plugins/'
+      text: '分类',
+      link: '/categories',
+      icon: 'category'
     },
     {
-      text: 'Blog',
-      link: '/blog/'
+      text: '标签',
+      link: '/tags',
+      icon: 'tag'
     },
     {
-      text: 'About',
-      link: '/about/'
+      text: '关于',
+      link: '/about',
+      icon: 'about'
+    },
+    {
+      text: '友情链接',
+      link: '/links',
+      icon: 'link'
     }
   ],
   blog: {
-    root: '/blog/'
+    root: '/blog/',
+    social: {
+      github: 'xcatliu',
+      email: 'xcatliu@gmail.com',
+      twitter: 'xcatliu',
+    }
   }
 };
