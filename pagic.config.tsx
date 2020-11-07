@@ -13,32 +13,32 @@ export default {
     },
     {
       text: '归档',
-      link: '/archives',
+      link: '/archives/',
       icon: 'box'
     },
     {
       text: '分类',
-      link: '/categories',
+      link: '/categories/',
       icon: 'category'
     },
     {
       text: '标签',
-      link: '/tags',
+      link: '/tags/',
       icon: 'tag'
     },
     {
       text: '关于',
-      link: '/about',
+      link: '/about/',
       icon: 'about'
     },
     {
       text: '友情链接',
-      link: '/links',
+      link: '/links/',
       icon: 'link'
     }
   ],
   blog: {
-    root: '/blog/',
+    root: '/posts/',
     social: {
       github: 'xcatliu',
       email: 'xcatliu@gmail.com',
