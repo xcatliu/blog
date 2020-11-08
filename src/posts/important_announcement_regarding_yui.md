@@ -5,7 +5,6 @@ tags:
   - YUI
   - JavaScript
   - 翻译
-excerpt: 翻译《Important Announcement Regarding YUI》
 ---
 
 # 关于 YUI 的重要公告

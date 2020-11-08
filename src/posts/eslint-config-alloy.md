@@ -7,6 +7,7 @@ tags:
 excerpt: 我们依据以下三条原则，研读了 ESLint 所有的配置项，定制出了心目中的「完美」ESLint 配置。
 links:
   v2ex: https://v2ex.com/t/385804
+  GitHub: https://github.com/AlloyTeam/eslint-config-alloy
 ---
 
 # 我花了两个月时间，定制出了心目中「完美」的 ESLint 规则，我用四个空格缩进

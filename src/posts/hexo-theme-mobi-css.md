@@ -4,7 +4,6 @@ categories:
 tags:
   - Hexo
   - Mobi.css
-excerpt: 基于 Mobi.css 的官方 Hexo 主题
 links:
   GitHub: https://github.com/xcatliu/hexo-theme-mobi.css
   Mobi.css: http://getmobicss.com

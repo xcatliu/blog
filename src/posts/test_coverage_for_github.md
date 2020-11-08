@@ -5,7 +5,6 @@ tags:
   - 测试覆盖率
   - 测试
   - GitHub
-excerpt: 介绍 GitHub 与 Travis CI 结合的文章已经很多了，本篇文章主要介绍一下测试覆盖率的概念以及如何将测试覆盖率的 badge 添加到 README.md 中。
 ---
 
 # GitHub 上的测试覆盖率

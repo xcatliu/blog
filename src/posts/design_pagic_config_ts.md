@@ -4,7 +4,6 @@ categories:
   - 编程世界
 tags:
   - Pagic
-excerpt: Pagic 是一个静态网站生成器，使用 Deno 和 React 开发。本文介绍其配置文件 pagic.config.ts 的设计。
 links:
   Pagic: https://pagic.org
   GitHub: https://github.com/xcatliu/pagic
