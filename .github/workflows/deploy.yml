@@ -1,0 +1,32 @@
+name: gh-pages
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup deno
+        uses: denolib/setup-deno@v2
+        with:
+          deno-version: v1.3.1
+
+      - name: Build gh-pages
+        run: |
+          curl -fsSL https://deno.land/x/install/install.sh | sh
+          export DENO_INSTALL="/home/runner/.deno"
+          export PATH="$DENO_INSTALL/bin:$PATH"
+          deno --version
+          deno install --unstable --allow-read --allow-write --allow-net --allow-run -n pagic https://deno.land/x/pagic@v0.12.0/mod.ts
+          pagic build
+      - name: Deploy gh-pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          cname: blog.xcatliu.com

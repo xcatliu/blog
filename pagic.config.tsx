@@ -12,11 +12,6 @@ export default {
       icon: 'home'
     },
     {
-      text: '归档',
-      link: '/archives/',
-      icon: 'box'
-    },
-    {
       text: '分类',
       link: '/categories/',
       icon: 'category'
@@ -30,6 +25,11 @@ export default {
       text: '关于',
       link: '/about/',
       icon: 'about'
+    },
+    {
+      text: '归档',
+      link: '/archives/',
+      icon: 'box'
     },
     {
       text: '友情链接',

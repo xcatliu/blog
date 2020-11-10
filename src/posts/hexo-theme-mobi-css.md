@@ -24,3 +24,5 @@ Demo: [我的博客](http://blog.xcatliu.com)和 [Mobi.css 官方文档][Mobi.cs
 - 支持侧边栏自定义内容和顺序
 
 遇到问题或建议请[给我提 Issue](https://github.com/xcatliu/hexo-theme-mobi.css/issues/new)。
+
+[Mobi.css]: http://getmobicss.com
