@@ -1,0 +1,258 @@
+<!doctype html><html class="" data-reactroot=""><head>
+<meta data-react-helmet="true" charset="utf-8"/><meta data-react-helmet="true" http-equiv="x-ua-compatible" content="ie=edge"/><meta data-react-helmet="true" name="description" content="欢迎来到我的博客，这里搜集了我的技术文章和生活感悟，欢迎一起交流成长。"/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1"/>
+<title data-react-helmet="true">抽象语法树在 JavaScript 中的应用 · 流浪小猫的博客</title>
+<link data-react-helmet="true" rel="stylesheet" href="/assets/index.css"/><link data-react-helmet="true" id="prismTheme" rel="stylesheet" href="/assets/prism.css"/>
+<script data-react-helmet="true" >
+    const shouldSetIsDark = document.cookie.includes('is_dark=1') ? true : document.cookie.includes('is_dark=0') ? false : window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (shouldSetIsDark) {
+      document.documentElement.classList.add('is_dark');
+      document.getElementById('prismTheme').href = "/assets/prism_tomorrow.css";
+    }
+  </script>
+</head><body><aside><h1><a href="/">流浪小猫的博客</a></h1><p class="description">欢迎来到我的博客，这里搜集了我的技术文章和生活感悟，欢迎一起交流成长。</p><ul class="social"><li class="flex_center"><a class="czs-github-logo" href="https://github.com/xcatliu" target="_blank" style="background-image:url(&quot;/assets/czs-github-logo.svg&quot;)"></a></li><li class="flex_center"><a class="czs-message-l" href="mailto:xcatliu@gmail.com" target="_blank" style="background-image:url(&quot;/assets/czs-message-l.svg&quot;)"></a></li><li class="flex_center"><a class="czs-twitter" href="https://twitter.com/xcatliu" target="_blank" style="background-image:url(&quot;/assets/czs-twitter.svg&quot;)"></a></li><li style="flex-grow:1"></li><li class="toggle_dark flex_center"><span class="czs-sun" style="background-image:url(&quot;/assets/czs-sun.svg&quot;)"></span><span class="czs-sun-l" style="background-image:url(&quot;/assets/czs-sun-l.svg&quot;)"></span><span class="czs-moon" style="background-image:url(&quot;/assets/czs-moon.svg&quot;)"></span><span class="czs-moon-l" style="background-image:url(&quot;/assets/czs-moon-l.svg&quot;)"></span></li></ul><nav><ul class="menu"><li><a class="flex_center" href="/"><span class="czs-home-l" style="background-image:url(&quot;/assets/czs-home-l.svg&quot;)"></span>首页</a></li><li><a class="flex_center" href="/categories/"><span class="czs-category-l" style="background-image:url(&quot;/assets/czs-category-l.svg&quot;)"></span>分类</a></li><li><a class="flex_center" href="/tags/"><span class="czs-tag-l" style="background-image:url(&quot;/assets/czs-tag-l.svg&quot;)"></span>标签</a></li><li><a class="flex_center" href="/about/"><span class="czs-about-l" style="background-image:url(&quot;/assets/czs-about-l.svg&quot;)"></span>关于</a></li><li><a class="flex_center" href="/archives/"><span class="czs-box-l" style="background-image:url(&quot;/assets/czs-box-l.svg&quot;)"></span>归档</a></li><li><a class="flex_center" href="/links/"><span class="czs-link-l" style="background-image:url(&quot;/assets/czs-link-l.svg&quot;)"></span>友情链接</a></li></ul></nav></aside><section class="main"><h1>抽象语法树在 JavaScript 中的应用</h1><div class="main_post_meta"><time dateTime="Wed Oct 08 2014 00:00:00 GMT+0000 (UTC)">2014-10-09</time> · <!-- -->xcatliu</div><article><blockquote>
+<p>发表在美团技术博客上：<a href="http://tech.meituan.com/abstract-syntax-tree.html">http://tech.meituan.com/abstract-syntax-tree.html</a></p>
+</blockquote>
+<h2 id="%E6%8A%BD%E8%B1%A1%E8%AF%AD%E6%B3%95%E6%A0%91%E6%98%AF%E4%BB%80%E4%B9%88">抽象语法树是什么<a class="anchor" href="#%E6%8A%BD%E8%B1%A1%E8%AF%AD%E6%B3%95%E6%A0%91%E6%98%AF%E4%BB%80%E4%B9%88">§</a></h2>
+<blockquote>
+<p>在计算机科学中，抽象语法树（Abstract syntax tree 或者缩写为 AST），或者语法树（Syntax tree），是源代码的抽象语法结构的树状表现形式，这里特指编程语言的源代码。树上的每个节点都表示源代码中的一种结构。之所以说语法是「抽象」的，是因为这里的语法并不会表示出真实语法中出现的每个细节。<sup><a href="http://en.wikipedia.org/wiki/Abstract_syntax_tree">1</a></sup></p>
+</blockquote>
+<p>果然比较抽象，不如先看几个例子：</p>
+<h2 id="%E6%8A%BD%E8%B1%A1%E8%AF%AD%E6%B3%95%E6%A0%91%E4%B8%BE%E4%BE%8B">抽象语法树举例<a class="anchor" href="#%E6%8A%BD%E8%B1%A1%E8%AF%AD%E6%B3%95%E6%A0%91%E4%B8%BE%E4%BE%8B">§</a></h2>
+<pre class="language-js"><code class="language-js">foo <span class="token operator">=</span> <span class="token string">'hello world'</span><span class="token punctuation">;</span>
+<span class="token comment">/*
+    +-------------+             
+    |  assign(=)  |             
+    +-------------+             
+       X        X               
+      X          X              
++-------+    +-----------------+
+|  foo  |    |  'hello world'  |
++-------+    +-----------------+
+*/</span>
+<span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>foo <span class="token operator">===</span> <span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  bar <span class="token operator">=</span> <span class="token string">'hello world'</span><span class="token punctuation">;</span>
+  <span class="token function">alert</span><span class="token punctuation">(</span>bar<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">/*
+                       +------+                                    
+                       |  if  |                                    
+                       +------+                                    
+                        X    X                                     
+                      X        X                                   
+         +--------------+    +-------------+                       
+         |  equal(===)  |    |  if_body    |                       
+         +--------------+    +-------------+                       
+         X        X              X         X                       
+       X         X                X          X                     
++-------+   +--------+    +-------------+   +------------+         
+|  foo  |   |  true  |    |  assign(=)  |   |  alert()   |         
++-------+   +--------+    +-------------+   +------------+         
+                             X        X                  X         
+                           X            X                  X       
+                       +-------+   +-----------------+    +-------+
+                       |  bar  |   |  'hello world'  |    |  bar  |
+                       +-------+   +-----------------+    +-------+
+*/</span>
+</code></pre>
+<p>从上述两个例子可以看出，抽象语法树是将源代码根据其语法结构，省略一些细节（比如：括号没有生成节点），抽象成树形表达。</p>
+<p>抽象语法树在计算机科学中有很多应用，比如编译器、IDE、压缩优化代码等。下面介绍一下抽象语法树在 JavaScript 中的应用。</p>
+<h2 id="javascript-%E6%8A%BD%E8%B1%A1%E8%AF%AD%E6%B3%95%E6%A0%91">JavaScript 抽象语法树<a class="anchor" href="#javascript-%E6%8A%BD%E8%B1%A1%E8%AF%AD%E6%B3%95%E6%A0%91">§</a></h2>
+<p>构造 JavaScript 抽象语法树有多种工具，比如 <a href="https://github.com/v8/v8/blob/master/src/ast/ast.h">V8</a>、<a href="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey/Parser_API">SpiderMonkey</a>、<a href="http://lisperator.net/uglifyjs/">UglifyJS</a> 等，这里重点介绍 UglifyJS。</p>
+<h3 id="uglifyjs">UglifyJS<a class="anchor" href="#uglifyjs">§</a></h3>
+<p>UglifyJS<sup><a href="http://lisperator.net/uglifyjs/">2</a></sup> 是使用最广的 JavaScript 压缩工具之一，而且自身也是用 JavaScript 写的，使用它的方法很简单（需要 <a href="http://nodejs.org/">Node.js</a> 环境）：</p>
+<p>首先全局安装：</p>
+<pre class="language-shell"><code class="language-shell"><span class="token punctuation">[</span>sudo <span class="token punctuation">]</span>npm <span class="token function">install</span> -g uglify-js
+</code></pre>
+<p>然后就可以使用了：</p>
+<pre class="language-shell"><code class="language-shell">uglifyjs -m srcFileName.js -o destFileName.min.js
+</code></pre>
+<p>关于 UglifyJS 的用法这里就不多介绍了，我们要做的是一些更有趣的事情。</p>
+<h3 id="uglifyjs-tools">UglifyJS Tools<a class="anchor" href="#uglifyjs-tools">§</a></h3>
+<p>UglifyJS 提供了一些工具用于分析 JavaScript 代码，包括：</p>
+<ul>
+<li>parser，把 JavaScript 代码解析成抽象语法树</li>
+<li>code generator，通过抽象语法树生成代码</li>
+<li>mangler，混淆 JavaScript 代码</li>
+<li>scope analyzer，分析变量定义的工具</li>
+<li>tree walker，遍历树节点</li>
+<li>tree transformer，改变树节点</li>
+</ul>
+<h3 id="%E7%94%9F%E6%88%90%E6%8A%BD%E8%B1%A1%E8%AF%AD%E6%B3%95%E6%A0%91">生成抽象语法树<a class="anchor" href="#%E7%94%9F%E6%88%90%E6%8A%BD%E8%B1%A1%E8%AF%AD%E6%B3%95%E6%A0%91">§</a></h3>
+<p>使用 UglifyJS 生成抽象语法树很简单：</p>
+<p>首先安装 UglifyJS 为 npm 包：</p>
+<pre class="language-shell"><code class="language-shell"><span class="token function">npm</span> <span class="token function">install</span> uglify-js --save-dev
+</code></pre>
+<p>然后使用 parse 方法即可：</p>
+<pre class="language-js"><code class="language-js"><span class="token keyword">var</span> <span class="token maybe-class-name">UglifyJS</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'uglify-js'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> ast <span class="token operator">=</span> <span class="token maybe-class-name">UglifyJS</span><span class="token punctuation">.</span><span class="token method function property-access">parse</span><span class="token punctuation">(</span><span class="token string">'function sum(foo, bar){ return foo + bar; }'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>这样生成的 ast 即为那一段代码的抽象语法树。那么我们怎么使用呢？</p>
+<h3 id="%E4%BD%BF%E7%94%A8-mangler-%E5%8E%8B%E7%BC%A9%E4%BB%A3%E7%A0%81">使用 mangler 压缩代码<a class="anchor" href="#%E4%BD%BF%E7%94%A8-mangler-%E5%8E%8B%E7%BC%A9%E4%BB%A3%E7%A0%81">§</a></h3>
+<p>使用 mangler 可以通过将局部变量都缩短成一个字符来压缩代码。</p>
+<pre class="language-js"><code class="language-js"><span class="token keyword">var</span> <span class="token maybe-class-name">UglifyJS</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'uglify-js'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> ast <span class="token operator">=</span> <span class="token maybe-class-name">UglifyJS</span><span class="token punctuation">.</span><span class="token method function property-access">parse</span><span class="token punctuation">(</span><span class="token string">'function sum(foo, bar){ return foo + bar; }'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ast<span class="token punctuation">.</span><span class="token method function property-access">figure_out_scope</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ast<span class="token punctuation">.</span><span class="token method function property-access">mangle_names</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span>ast<span class="token punctuation">.</span><span class="token method function property-access">print_to_string</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// function sum(a,b){return a+b}</span>
+</code></pre>
+<h3 id="%E4%BD%BF%E7%94%A8-walker-%E9%81%8D%E5%8E%86%E6%8A%BD%E8%B1%A1%E8%AF%AD%E6%B3%95%E6%A0%91">使用 walker 遍历抽象语法树<a class="anchor" href="#%E4%BD%BF%E7%94%A8-walker-%E9%81%8D%E5%8E%86%E6%8A%BD%E8%B1%A1%E8%AF%AD%E6%B3%95%E6%A0%91">§</a></h3>
+<p>使用 walker 可以遍历抽象语法树，这种遍历是深度遍历。</p>
+<pre class="language-js"><code class="language-js"><span class="token keyword">var</span> <span class="token maybe-class-name">UglifyJS</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'uglify-js'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> ast <span class="token operator">=</span> <span class="token maybe-class-name">UglifyJS</span><span class="token punctuation">.</span><span class="token method function property-access">parse</span><span class="token punctuation">(</span><span class="token string">'function sum(foo, bar){ return foo + bar; }'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ast<span class="token punctuation">.</span><span class="token method function property-access">figure_out_scope</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ast<span class="token punctuation">.</span><span class="token method function property-access">walk</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">UglifyJS<span class="token punctuation">.</span>TreeWalker</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">node</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span>node<span class="token punctuation">.</span><span class="token method function property-access">print_to_string</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">/*
+function sum(foo,bar){return foo+bar}
+function sum(foo,bar){return foo+bar}
+sum
+foo
+bar
+return foo+bar
+foo+bar
+foo
+bar
+*/</span>
+</code></pre>
+<p>UglifyJS 已经提供了直接压缩代码的脚本，walker 看上去貌似也没啥用，那么这些工具有什么使用场景呢？</p>
+<h2 id="%E6%8A%BD%E8%B1%A1%E8%AF%AD%E6%B3%95%E6%A0%91%E7%9A%84%E5%BA%94%E7%94%A8">抽象语法树的应用<a class="anchor" href="#%E6%8A%BD%E8%B1%A1%E8%AF%AD%E6%B3%95%E6%A0%91%E7%9A%84%E5%BA%94%E7%94%A8">§</a></h2>
+<h3 id="%E5%88%A9%E7%94%A8%E6%8A%BD%E8%B1%A1%E8%AF%AD%E6%B3%95%E6%A0%91%E9%87%8D%E6%9E%84-javascript-%E4%BB%A3%E7%A0%81">利用抽象语法树重构 JavaScript 代码<a class="anchor" href="#%E5%88%A9%E7%94%A8%E6%8A%BD%E8%B1%A1%E8%AF%AD%E6%B3%95%E6%A0%91%E9%87%8D%E6%9E%84-javascript-%E4%BB%A3%E7%A0%81">§</a></h3>
+<p>假如我们有重构 JavaScript 的需求，它们就派上用场啦。</p>
+<p>下面考虑这样一个需求：</p>
+<p>我们知道，<code>parseInt</code> 用于将字符串变成整数，但是它有第二个参数，表示以几进制识别字符串，若没有传第二个参数，则会自行判断，比如：</p>
+<pre class="language-js"><code class="language-js"><span class="token function">parseInt</span><span class="token punctuation">(</span><span class="token string">'10.23'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment">// 10            转换成正整数</span>
+<span class="token function">parseInt</span><span class="token punctuation">(</span><span class="token string">'10abc'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment">// 10            忽略其他字符</span>
+<span class="token function">parseInt</span><span class="token punctuation">(</span><span class="token string">'10'</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">// 10            转换成十进制</span>
+<span class="token function">parseInt</span><span class="token punctuation">(</span><span class="token string">'10'</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment">// 2             转换成二进制</span>
+<span class="token function">parseInt</span><span class="token punctuation">(</span><span class="token string">'0123'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>      <span class="token comment">// 83 or 123     不同浏览器不一样，低版本浏览器会转换成八进制</span>
+<span class="token function">parseInt</span><span class="token punctuation">(</span><span class="token string">'0x11'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>      <span class="token comment">// 17            转换成十六进制</span>
+</code></pre>
+<p>因为有一些情况是和我们预期不同的，所以建议任何时候都加上第二个参数。</p>
+<p>下面希望有一个脚本，查看所有 <code>parseInt</code> 有没有第二个参数，没有的话加上第二个参数 10，表示以十进制识别字符串。</p>
+<p>使用 UglifyJS 可以实现此功能：</p>
+<pre class="language-js"><code class="language-js">#<span class="token operator">!</span> <span class="token operator">/</span>usr<span class="token operator">/</span>bin<span class="token operator">/</span>env node
+
+<span class="token keyword">var</span> <span class="token constant">U2</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"uglify-js"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">replace_parseint</span><span class="token punctuation">(</span><span class="token parameter">code</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> ast <span class="token operator">=</span> <span class="token constant">U2</span><span class="token punctuation">.</span><span class="token method function property-access">parse</span><span class="token punctuation">(</span>code<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// accumulate `parseInt()` nodes in this array</span>
+    <span class="token keyword">var</span> parseint_nodes <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    ast<span class="token punctuation">.</span><span class="token method function property-access">walk</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">U2<span class="token punctuation">.</span>TreeWalker</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">node</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>node <span class="token keyword">instanceof</span> <span class="token class-name">U2<span class="token punctuation">.</span>AST_Call</span>
+            <span class="token operator">&amp;&amp;</span> node<span class="token punctuation">.</span><span class="token property-access">expression</span><span class="token punctuation">.</span><span class="token method function property-access">print_to_string</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token string">'parseInt'</span>
+            <span class="token operator">&amp;&amp;</span> node<span class="token punctuation">.</span><span class="token property-access">args</span><span class="token punctuation">.</span><span class="token property-access">length</span> <span class="token operator">===</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            parseint_nodes<span class="token punctuation">.</span><span class="token method function property-access">push</span><span class="token punctuation">(</span>node<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// now go through the nodes backwards and replace code</span>
+    <span class="token keyword control-flow">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> parseint_nodes<span class="token punctuation">.</span><span class="token property-access">length</span><span class="token punctuation">;</span> <span class="token operator">--</span>i <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">var</span> node <span class="token operator">=</span> parseint_nodes<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">var</span> start_pos <span class="token operator">=</span> node<span class="token punctuation">.</span><span class="token property-access">start</span><span class="token punctuation">.</span><span class="token property-access">pos</span><span class="token punctuation">;</span>
+        <span class="token keyword">var</span> end_pos <span class="token operator">=</span> node<span class="token punctuation">.</span><span class="token property-access">end</span><span class="token punctuation">.</span><span class="token property-access">endpos</span><span class="token punctuation">;</span>
+        node<span class="token punctuation">.</span><span class="token property-access">args</span><span class="token punctuation">.</span><span class="token method function property-access">push</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">U2<span class="token punctuation">.</span>AST_Number</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+            value<span class="token operator">:</span> <span class="token number">10</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">var</span> replacement <span class="token operator">=</span> node<span class="token punctuation">.</span><span class="token method function property-access">print_to_string</span><span class="token punctuation">(</span><span class="token punctuation">{</span> beautify<span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        code <span class="token operator">=</span> <span class="token function">splice_string</span><span class="token punctuation">(</span>code<span class="token punctuation">,</span> start_pos<span class="token punctuation">,</span> end_pos<span class="token punctuation">,</span> replacement<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword control-flow">return</span> code<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">splice_string</span><span class="token punctuation">(</span><span class="token parameter">str<span class="token punctuation">,</span> begin<span class="token punctuation">,</span> end<span class="token punctuation">,</span> replacement</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword control-flow">return</span> str<span class="token punctuation">.</span><span class="token method function property-access">substr</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> begin<span class="token punctuation">)</span> <span class="token operator">+</span> replacement <span class="token operator">+</span> str<span class="token punctuation">.</span><span class="token method function property-access">substr</span><span class="token punctuation">(</span>end<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// test it</span>
+
+<span class="token keyword">function</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>foo<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token function">parseInt</span><span class="token punctuation">(</span><span class="token string">'12342'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">parseInt</span><span class="token punctuation">(</span><span class="token string">'0012'</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token function">replace_parseint</span><span class="token punctuation">(</span>test<span class="token punctuation">.</span><span class="token method function property-access">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">/*
+function test() {
+    if (foo) {
+      parseInt("12342", 10);
+    }
+    parseInt('0012', 3);
+}
+*/</span>
+</code></pre>
+<p>在这里，使用了 walker 找到 <code>parseInt</code> 调用的地方，然后检查是否有第二个参数，没有的话，记录下来，之后根据每个记录，用新的包含第二个参数的内容替换掉原内容，完成代码的重构。</p>
+<p>也许有人会问，这种简单的情况，用正则匹配也可以方便的替换，干嘛要用抽象语法树呢？</p>
+<p>答案就是，<strong>抽象语法树是通过分析语法实现的，有一些正则无法（或者很难）做到的优势，比如，parseInt() 整个是一个字符串，或者在注释中，此种情况会被正则误判</strong>：</p>
+<pre class="language-js"><code class="language-js"><span class="token keyword">var</span> foo <span class="token operator">=</span> <span class="token string">'parseInt("12345")'</span><span class="token punctuation">;</span>
+<span class="token comment">// parseInt("12345");</span>
+</code></pre>
+<h3 id="%E6%8A%BD%E8%B1%A1%E8%AF%AD%E6%B3%95%E6%A0%91%E5%9C%A8%E7%BE%8E%E5%9B%A2%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8">抽象语法树在美团中的应用<a class="anchor" href="#%E6%8A%BD%E8%B1%A1%E8%AF%AD%E6%B3%95%E6%A0%91%E5%9C%A8%E7%BE%8E%E5%9B%A2%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8">§</a></h3>
+<p>在美团前端团队，我们使用 YUI 作为前端底层框架，之前面临的一个实际问题是，模块之间的依赖关系容易出现疏漏。比如：</p>
+<pre class="language-js"><code class="language-js"><span class="token constant">YUI</span><span class="token punctuation">.</span><span class="token method function property-access">add</span><span class="token punctuation">(</span><span class="token string">'mod1'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter"><span class="token constant">Y</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token constant">Y</span><span class="token punctuation">.</span><span class="token method function property-access">one</span><span class="token punctuation">(</span><span class="token string">'#button1'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">simulate</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token constant">Y</span><span class="token punctuation">.</span><span class="token known-class-name class-name">Array</span><span class="token punctuation">.</span><span class="token method function property-access">each</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> fn<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token constant">Y</span><span class="token punctuation">.</span><span class="token method-variable function-variable method function property-access">mod1</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token comment">/**/</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    requires<span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token string">'node'</span><span class="token punctuation">,</span>
+        <span class="token string">'array-extras'</span>
+    <span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token constant">YUI</span><span class="token punctuation">.</span><span class="token method function property-access">add</span><span class="token punctuation">(</span><span class="token string">'mod2'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter"><span class="token constant">Y</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token constant">Y</span><span class="token punctuation">.</span><span class="token method function property-access">mod1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// Y.io(uri, config);</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    requires<span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token string">'mod1'</span><span class="token punctuation">,</span>
+        <span class="token string">'io'</span>
+    <span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>以上代码定义了两个模块，其中 <code>mod1</code> 模拟点击了一下 <code>id</code> 为 <code>button1</code> 的元素，执行了 <code>Y.Array.each</code>，然后定义了方法 <code>Y.mod1</code>，最后声明了依赖 <code>node</code> 和 <code>array-extras</code>；<code>mod2</code> 执行了 <code>mod1</code> 中定义的方法，而<code>Y.io</code> 被注释了，最后声明了依赖 <code>mod1</code> 和 <code>io</code>。</p>
+<p>此处 <code>mod1</code> 出现了两个常见错误，一个是 <code>simulate</code> 是 <code>Y.Node.prototype</code> 上的方法，容易忘掉声明依赖 <code>node-event-simulate</code><sup><a href="http://yuilibrary.com/yui/docs/api/files/node_js_node-event-simulate.js.html#l1">3</a></sup>，另一个是 <code>Y.Array</code> 上只有部分方法需要依赖 <code>array-extras</code>，故此处多声明了依赖 <code>array-extras</code><sup><a href="http://yuilibrary.com/yui/docs/api/classes/Array.html#method_each">4</a></sup>；<code>mod2</code> 中添加注释后，容易忘记删除原来写的依赖 <code>io</code>。</p>
+<p>故正确的依赖关系应该如下：</p>
+<pre class="language-js"><code class="language-js"><span class="token constant">YUI</span><span class="token punctuation">.</span><span class="token method function property-access">add</span><span class="token punctuation">(</span><span class="token string">'mod1'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter"><span class="token constant">Y</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token constant">Y</span><span class="token punctuation">.</span><span class="token method function property-access">one</span><span class="token punctuation">(</span><span class="token string">'#button1'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">simulate</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token constant">Y</span><span class="token punctuation">.</span><span class="token known-class-name class-name">Array</span><span class="token punctuation">.</span><span class="token method function property-access">each</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span> fn<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token constant">Y</span><span class="token punctuation">.</span><span class="token method-variable function-variable method function property-access">mod1</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token comment">/**/</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    requires<span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token string">'node'</span><span class="token punctuation">,</span>
+        <span class="token string">'node-event-simulate'</span>
+    <span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token constant">YUI</span><span class="token punctuation">.</span><span class="token method function property-access">add</span><span class="token punctuation">(</span><span class="token string">'mod2'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter"><span class="token constant">Y</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token constant">Y</span><span class="token punctuation">.</span><span class="token method function property-access">mod1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// Y.io(uri, config);</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    requires<span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token string">'mod1'</span>
+    <span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>为了使模块依赖关系的检测自动化，我们创建了模块依赖关系检测工具，它利用抽象语法树，分析出定义了哪些接口，使用了哪些接口，然后查找这些接口应该依赖哪些模块，进而找到模块依赖关系的错误，大致的过程如下：</p>
+<ol>
+<li>找到代码中模块定义（<code>YUI.add</code>）的部分</li>
+<li>分析每个模块内函数定义，变量定义，赋值语句等，找出符合要求（以 <code>Y</code> 开头）的输出接口（如 <code>mod1</code> 中的 <code>Y.mod1</code>）</li>
+<li>生成「接口 - 模块」对应关系</li>
+<li>分析每个模块内函数调用，变量使用等，找出符合要求的输入接口（如 <code>mod2</code> 中的 <code>Y.one</code>，<code>Y.Array.each</code>，<code>Y.mod1</code>）</li>
+<li>通过「接口 - 模块」对应关系，找到此模块应该依赖哪些其他模块</li>
+<li>分析 requires 中是否有错误</li>
+</ol>
+<p>使用此工具，保证每次提交代码时，依赖关系都是正确无误的，它帮助我们实现了模块依赖关系检测的自动化。</p>
+<h2 id="%E6%80%BB%E7%BB%93">总结<a class="anchor" href="#%E6%80%BB%E7%BB%93">§</a></h2>
+<p>抽象语法树在计算机领域中应用广泛，以上仅讨论了抽象语法树在 JavaScript 中的一些应用，期待更多的用法等着大家去尝试和探索。</p>
+<h2 id="reference">Reference<a class="anchor" href="#reference">§</a></h2>
+<ol>
+<li><a href="http://en.wikipedia.org/wiki/Abstract_syntax_tree">Wikipedia AST</a></li>
+<li><a href="http://lisperator.net/uglifyjs/">UglifyJS</a></li>
+<li><a href="http://yuilibrary.com/yui/docs/api/files/node_js_node-event-simulate.js.html#l1">node-event-simulate</a></li>
+<li><a href="http://yuilibrary.com/yui/docs/api/classes/Array.html#method_each">Y.Array.each</a></li>
+</ol></article></section><footer>Powered by <a href="https://github.com/xcatliu/pagic" target="_blank">Pagic</a></footer><script src="https://cdn.pagic.org/react@16.13.1/umd/react.production.min.js"></script><script src="https://cdn.pagic.org/react-dom@16.13.1/umd/react-dom.production.min.js"></script><script type="module" src="/index.js"></script></body></html>

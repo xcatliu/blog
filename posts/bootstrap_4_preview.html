@@ -1,0 +1,75 @@
+<!doctype html><html class="" data-reactroot=""><head>
+<meta data-react-helmet="true" charset="utf-8"/><meta data-react-helmet="true" http-equiv="x-ua-compatible" content="ie=edge"/><meta data-react-helmet="true" name="description" content="欢迎来到我的博客，这里搜集了我的技术文章和生活感悟，欢迎一起交流成长。"/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1"/>
+<title data-react-helmet="true">Bootstrap 4 初探 · 流浪小猫的博客</title>
+<link data-react-helmet="true" rel="stylesheet" href="/assets/index.css"/><link data-react-helmet="true" id="prismTheme" rel="stylesheet" href="/assets/prism.css"/>
+<script data-react-helmet="true" >
+    const shouldSetIsDark = document.cookie.includes('is_dark=1') ? true : document.cookie.includes('is_dark=0') ? false : window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (shouldSetIsDark) {
+      document.documentElement.classList.add('is_dark');
+      document.getElementById('prismTheme').href = "/assets/prism_tomorrow.css";
+    }
+  </script>
+</head><body><aside><h1><a href="/">流浪小猫的博客</a></h1><p class="description">欢迎来到我的博客，这里搜集了我的技术文章和生活感悟，欢迎一起交流成长。</p><ul class="social"><li class="flex_center"><a class="czs-github-logo" href="https://github.com/xcatliu" target="_blank" style="background-image:url(&quot;/assets/czs-github-logo.svg&quot;)"></a></li><li class="flex_center"><a class="czs-message-l" href="mailto:xcatliu@gmail.com" target="_blank" style="background-image:url(&quot;/assets/czs-message-l.svg&quot;)"></a></li><li class="flex_center"><a class="czs-twitter" href="https://twitter.com/xcatliu" target="_blank" style="background-image:url(&quot;/assets/czs-twitter.svg&quot;)"></a></li><li style="flex-grow:1"></li><li class="toggle_dark flex_center"><span class="czs-sun" style="background-image:url(&quot;/assets/czs-sun.svg&quot;)"></span><span class="czs-sun-l" style="background-image:url(&quot;/assets/czs-sun-l.svg&quot;)"></span><span class="czs-moon" style="background-image:url(&quot;/assets/czs-moon.svg&quot;)"></span><span class="czs-moon-l" style="background-image:url(&quot;/assets/czs-moon-l.svg&quot;)"></span></li></ul><nav><ul class="menu"><li><a class="flex_center" href="/"><span class="czs-home-l" style="background-image:url(&quot;/assets/czs-home-l.svg&quot;)"></span>首页</a></li><li><a class="flex_center" href="/categories/"><span class="czs-category-l" style="background-image:url(&quot;/assets/czs-category-l.svg&quot;)"></span>分类</a></li><li><a class="flex_center" href="/tags/"><span class="czs-tag-l" style="background-image:url(&quot;/assets/czs-tag-l.svg&quot;)"></span>标签</a></li><li><a class="flex_center" href="/about/"><span class="czs-about-l" style="background-image:url(&quot;/assets/czs-about-l.svg&quot;)"></span>关于</a></li><li><a class="flex_center" href="/archives/"><span class="czs-box-l" style="background-image:url(&quot;/assets/czs-box-l.svg&quot;)"></span>归档</a></li><li><a class="flex_center" href="/links/"><span class="czs-link-l" style="background-image:url(&quot;/assets/czs-link-l.svg&quot;)"></span>友情链接</a></li></ul></nav></aside><section class="main"><h1>Bootstrap 4 初探</h1><div class="main_post_meta"><time dateTime="Tue Nov 10 2020 13:57:51 GMT+0000 (UTC)">2020-11-11</time> · <!-- -->xcatliu</div><article><p>Bootstrap 作为 GitHub 上 Stars 最多的项目，可以说是万众瞩目，issues 和 pull requests 也居高不下，足以看出其后劲依然很足。</p>
+<p>截止到本文发布，Bootstrap 4 已经推出 alpha 2 版本一个多月了，让我们一起玩转 Bootstrap 4 吧！</p>
+<h2 id="%E6%96%B0%E7%89%B9%E6%80%A7">新特性<a class="anchor" href="#%E6%96%B0%E7%89%B9%E6%80%A7">§</a></h2>
+<p>先来看看 <a href="http://blog.getbootstrap.com/2015/08/19/bootstrap-4-alpha/">Bootstrap 4 的新特性</a>：</p>
+<h3 id="%E4%BD%BF%E7%94%A8-sass-%E6%9B%BF%E4%BB%A3-less">使用 Sass 替代 Less<a class="anchor" href="#%E4%BD%BF%E7%94%A8-sass-%E6%9B%BF%E4%BB%A3-less">§</a></h3>
+<p>众多 css 预处理器里面，Sass 一直保持了最活跃的开发者社区，使用 Sass 替代 Less 想必是众望所归。</p>
+<h3 id="%E6%94%AF%E6%8C%81-flexbox-%E4%BA%86">支持 Flexbox 了<a class="anchor" href="#%E6%94%AF%E6%8C%81-flexbox-%E4%BA%86">§</a></h3>
+<p>允许用户构建 Bootstrap 的时候将 flexbox 设置为 true，这样网格系统和一些组件都使用 flexbox 布局啦。</p>
+<p>当然兼容性上会存在很大问题，不过如果开发只支持高级浏览器的企业应用，就赶紧拥抱 flexbox 吧。</p>
+<h3 id="%E6%96%B0%E7%BB%84%E4%BB%B6-cards">新组件 Cards<a class="anchor" href="#%E6%96%B0%E7%BB%84%E4%BB%B6-cards">§</a></h3>
+<p>wells，thumbnails 和 panels 被废弃，使用 cards 替代。</p>
+<h3 id="%E6%8F%90%E4%BE%9B%E6%9B%B4%E5%A4%9A%E8%87%AA%E5%AE%9A%E4%B9%89%E9%80%89%E9%A1%B9">提供更多自定义选项<a class="anchor" href="#%E6%8F%90%E4%BE%9B%E6%9B%B4%E5%A4%9A%E8%87%AA%E5%AE%9A%E4%B9%89%E9%80%89%E9%A1%B9">§</a></h3>
+<p>使用 Reboot 替代 Normalize.css，提供了更多的自定义选项。</p>
+<h3 id="%E4%B8%8D%E5%86%8D%E6%94%AF%E6%8C%81-ie8">不再支持 IE8<a class="anchor" href="#%E4%B8%8D%E5%86%8D%E6%94%AF%E6%8C%81-ie8">§</a></h3>
+<p>虽然官方说不支持 IE8 了，但是 Bootstrap 4 在 IE8 下应该也不会有很多 bug，可能需要<a href="http://v4-alpha.getbootstrap.com/getting-started/browsers-devices/">一些兼容性的处理</a>即可。</p>
+<h3 id="%E9%87%8D%E5%86%99%E4%BA%86-javascript-%E7%BB%84%E4%BB%B6">重写了 JavaScript 组件<a class="anchor" href="#%E9%87%8D%E5%86%99%E4%BA%86-javascript-%E7%BB%84%E4%BB%B6">§</a></h3>
+<p>然而还是基于 jQuery 开发，可能是为了适应更广大的用户群体吧。</p>
+<h3 id="%E4%B8%BB%E9%A2%98%E5%B8%82%E5%9C%BA">主题市场<a class="anchor" href="#%E4%B8%BB%E9%A2%98%E5%B8%82%E5%9C%BA">§</a></h3>
+<p>Bootstrap 推出了<a href="http://themes.getbootstrap.com/">官方的主题市场</a>。</p>
+<h2 id="bootstrap-4-%E6%96%87%E6%A1%A3%E4%B8%AD%E5%80%BC%E5%BE%97%E5%85%B3%E6%B3%A8%E7%9A%84%E5%9C%B0%E6%96%B9">Bootstrap 4 文档中值得关注的地方<a class="anchor" href="#bootstrap-4-%E6%96%87%E6%A1%A3%E4%B8%AD%E5%80%BC%E5%BE%97%E5%85%B3%E6%B3%A8%E7%9A%84%E5%9C%B0%E6%96%B9">§</a></h2>
+<p>我推荐大家把 <a href="http://v4-alpha.getbootstrap.com/">Bootstrap 4 文档</a>阅读一遍，不过对于已经很熟悉 Bootstrap 3 的同学，可以只关注以下部分即可：</p>
+<h3 id="%E6%9E%84%E5%BB%BA-bootstrap">构建 Bootstrap<a class="anchor" href="#%E6%9E%84%E5%BB%BA-bootstrap">§</a></h3>
+<ul>
+<li><a href="http://v4-alpha.getbootstrap.com/getting-started/options/">自定义配置</a></li>
+<li><a href="http://v4-alpha.getbootstrap.com/getting-started/flexbox/">Flexbox</a></li>
+<li><a href="http://v4-alpha.getbootstrap.com/getting-started/build-tools/">如何构建</a></li>
+<li><a href="http://v4-alpha.getbootstrap.com/content/reboot/">Reboot</a></li>
+</ul>
+<p><strong>注意：margin-top 不使用了，只有 margin-bottom，这样的好处是单向的 margin 更容易控制</strong></p>
+<h3 id="%E7%A7%BB%E5%8A%A8%E6%94%AF%E6%8C%81">移动支持<a class="anchor" href="#%E7%A7%BB%E5%8A%A8%E6%94%AF%E6%8C%81">§</a></h3>
+<ul>
+<li><a href="http://v4-alpha.getbootstrap.com/layout/responsive-utilities/">Responsive utilities</a></li>
+</ul>
+<h3 id="%E6%96%B0%E7%BB%84%E4%BB%B6">新组件<a class="anchor" href="#%E6%96%B0%E7%BB%84%E4%BB%B6">§</a></h3>
+<ul>
+<li><a href="http://v4-alpha.getbootstrap.com/components/card/">Cards</a></li>
+</ul>
+<h3 id="%E5%85%B6%E4%BB%96">其他<a class="anchor" href="#%E5%85%B6%E4%BB%96">§</a></h3>
+<ul>
+<li><a href="http://v4-alpha.getbootstrap.com/getting-started/browsers-devices/">兼容性的干货</a></li>
+<li><a href="http://v4-alpha.getbootstrap.com/migration/">迁移</a></li>
+</ul>
+<h2 id="%E5%A6%82%E4%BD%95%E5%85%B3%E6%B3%A8-bootstrap-4-%E9%A1%B9%E7%9B%AE">如何关注 Bootstrap 4 项目<a class="anchor" href="#%E5%A6%82%E4%BD%95%E5%85%B3%E6%B3%A8-bootstrap-4-%E9%A1%B9%E7%9B%AE">§</a></h2>
+<p>可以关注以下内容：</p>
+<ul>
+<li><a href="http://blog.getbootstrap.com/">Bootstrap 新闻</a></li>
+<li><a href="https://github.com/twbs/bootstrap/tree/v4-dev">Bootstrap 4 的开发分支</a></li>
+<li><a href="https://bootstrap-slack.herokuapp.com/">Bootstrap Slack 讨论</a></li>
+</ul>
+<h2 id="%E6%80%BB%E7%BB%93">总结<a class="anchor" href="#%E6%80%BB%E7%BB%93">§</a></h2>
+<ul>
+<li>看得出来 Bootstrap 4 提供了很大的自由性，鼓励用户自己编译自己需要的版本</li>
+<li>Bootstrap 布局了 Theme 市场，相信社区会越来越活跃</li>
+<li>Bootstrap 4 摒弃了 IE8，支持了 flexbox，是时候一起推动 css 的迭代了</li>
+</ul>
+<h2 id="links">Links<a class="anchor" href="#links">§</a></h2>
+<ul>
+<li><a href="http://blog.getbootstrap.com/">Bootstrap 新闻</a></li>
+<li><a href="http://v4-alpha.getbootstrap.com/">Bootstrap 4 alpha 文档</a></li>
+<li><a href="http://blog.getbootstrap.com/2015/08/19/bootstrap-4-alpha/">Bootstrap 4 新特性</a></li>
+<li><a href="https://github.com/twbs/bootstrap/tree/v4-dev">Bootstrap 4 开发分支</a></li>
+<li><a href="https://bootstrap-slack.herokuapp.com/">Bootstrap Slack 讨论</a></li>
+<li><a href="http://themes.getbootstrap.com/">Bootstrap Themes</a></li>
+</ul></article></section><footer>Powered by <a href="https://github.com/xcatliu/pagic" target="_blank">Pagic</a></footer><script src="https://cdn.pagic.org/react@16.13.1/umd/react.production.min.js"></script><script src="https://cdn.pagic.org/react-dom@16.13.1/umd/react-dom.production.min.js"></script><script type="module" src="/index.js"></script></body></html>

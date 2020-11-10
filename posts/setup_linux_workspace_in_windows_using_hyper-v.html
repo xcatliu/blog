@@ -1,0 +1,112 @@
+<!doctype html><html class="" data-reactroot=""><head>
+<meta data-react-helmet="true" charset="utf-8"/><meta data-react-helmet="true" http-equiv="x-ua-compatible" content="ie=edge"/><meta data-react-helmet="true" name="description" content="欢迎来到我的博客，这里搜集了我的技术文章和生活感悟，欢迎一起交流成长。"/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1"/>
+<title data-react-helmet="true">在 Windows 中配置 Linux 工作环境（使用 Hyper-V） · 流浪小猫的博客</title>
+<link data-react-helmet="true" rel="stylesheet" href="/assets/index.css"/><link data-react-helmet="true" id="prismTheme" rel="stylesheet" href="/assets/prism.css"/>
+<script data-react-helmet="true" >
+    const shouldSetIsDark = document.cookie.includes('is_dark=1') ? true : document.cookie.includes('is_dark=0') ? false : window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (shouldSetIsDark) {
+      document.documentElement.classList.add('is_dark');
+      document.getElementById('prismTheme').href = "/assets/prism_tomorrow.css";
+    }
+  </script>
+</head><body><aside><h1><a href="/">流浪小猫的博客</a></h1><p class="description">欢迎来到我的博客，这里搜集了我的技术文章和生活感悟，欢迎一起交流成长。</p><ul class="social"><li class="flex_center"><a class="czs-github-logo" href="https://github.com/xcatliu" target="_blank" style="background-image:url(&quot;/assets/czs-github-logo.svg&quot;)"></a></li><li class="flex_center"><a class="czs-message-l" href="mailto:xcatliu@gmail.com" target="_blank" style="background-image:url(&quot;/assets/czs-message-l.svg&quot;)"></a></li><li class="flex_center"><a class="czs-twitter" href="https://twitter.com/xcatliu" target="_blank" style="background-image:url(&quot;/assets/czs-twitter.svg&quot;)"></a></li><li style="flex-grow:1"></li><li class="toggle_dark flex_center"><span class="czs-sun" style="background-image:url(&quot;/assets/czs-sun.svg&quot;)"></span><span class="czs-sun-l" style="background-image:url(&quot;/assets/czs-sun-l.svg&quot;)"></span><span class="czs-moon" style="background-image:url(&quot;/assets/czs-moon.svg&quot;)"></span><span class="czs-moon-l" style="background-image:url(&quot;/assets/czs-moon-l.svg&quot;)"></span></li></ul><nav><ul class="menu"><li><a class="flex_center" href="/"><span class="czs-home-l" style="background-image:url(&quot;/assets/czs-home-l.svg&quot;)"></span>首页</a></li><li><a class="flex_center" href="/categories/"><span class="czs-category-l" style="background-image:url(&quot;/assets/czs-category-l.svg&quot;)"></span>分类</a></li><li><a class="flex_center" href="/tags/"><span class="czs-tag-l" style="background-image:url(&quot;/assets/czs-tag-l.svg&quot;)"></span>标签</a></li><li><a class="flex_center" href="/about/"><span class="czs-about-l" style="background-image:url(&quot;/assets/czs-about-l.svg&quot;)"></span>关于</a></li><li><a class="flex_center" href="/archives/"><span class="czs-box-l" style="background-image:url(&quot;/assets/czs-box-l.svg&quot;)"></span>归档</a></li><li><a class="flex_center" href="/links/"><span class="czs-link-l" style="background-image:url(&quot;/assets/czs-link-l.svg&quot;)"></span>友情链接</a></li></ul></nav></aside><section class="main"><h1>在 Windows 中配置 Linux 工作环境（使用 Hyper-V）</h1><div class="main_post_meta"><time dateTime="Tue Nov 10 2020 13:57:51 GMT+0000 (UTC)">2020-11-11</time> · <!-- -->xcatliu</div><article><blockquote>
+<p><a href="http://blog.xcatliu.com/2016/04/21/setup-linux-workspace-in-windows/">上次使用 Vitural Box 安装了 Ubuntu</a>，结果一个月之后挂了，这次试试上次被推荐的 Hyper-V 吧。</p>
+</blockquote>
+<p>基于<a href="https://v2ex.com/t/274202">上次 v2ex 上的建议</a>，这次选择的方案是：Hyper-V + Ubuntu + PuTTY + Samba。</p>
+<h2 id="hyper-v">Hyper-V<a class="anchor" href="#hyper-v">§</a></h2>
+<p>Hyper-V 是微软的一款虚拟化产品。Windows Server 2008 或者 Windows 7 以上就可以使用了。</p>
+<p>如果你使用的是 Windows 7，按如下方式开启（中文请自行对应）：</p>
+<ol>
+<li>打开 Control Panel =&gt; Programs =&gt; Uninstall a program =&gt; Turn Windows features on or off</li>
+<li>勾选 Hyper-V =&gt; OK</li>
+<li>安装好之后，需要重启系统</li>
+</ol>
+<p>如果是 Windows 10，按如下方式开启：</p>
+<ol>
+<li>搜索 Turn Windows features on or off，打开对应的结果</li>
+<li>勾选 Hyper-V =&gt; OK</li>
+<li>安装好之后，需要重启系统</li>
+</ol>
+<p><img src="http://7xthy2.com1.z0.glb.clouddn.com/blog/2016-05-21-install-hyper-v.png" alt="Install Hyper-V"></p>
+<h2 id="ubuntu">Ubuntu<a class="anchor" href="#ubuntu">§</a></h2>
+<p>官网：<a href="http://www.ubuntu.com/server">http://www.ubuntu.com/server</a></p>
+<p>Linux 中，Ubuntu 使用最广泛，比较适合新手，遇到问题基本都能 Google 出来。既然是在虚拟机中安装 Linux，那么图形界面实在没有多少用途了。纯命令行也很适合学习。</p>
+<p>安装 LTS 版本的 Ubuntu，可以获得五年的支持。Ubuntu 16.04 LTS 已出，所以我选择的是 <code>ubuntu-16.04-server-amd64</code>。</p>
+<p>安装之前，需要在 Hyper-V 中配置一个 Vitural Switch，使 Ubuntu 可以共享 Windows 的网络。步骤如下：</p>
+<ol>
+<li>打开 Hyper-V Manager =&gt; Vitural Switch Manager</li>
+<li>选择 New virtual network switch =&gt; External =&gt; Create Virtual Switch =&gt; 默认配置 =&gt; OK</li>
+<li>安装 Ubuntu 的时候，选择刚刚新建的 Virutal Switch</li>
+</ol>
+<blockquote>
+<p>Tip: 安装过程中，请勾选 SSH Service、Samba Service，可以省去自己安装的麻烦。</p>
+</blockquote>
+<p>安装完成后，登录系统，输入 <code>ifconfig</code> 查询 IP，记录下来。</p>
+<h2 id="putty">PuTTY<a class="anchor" href="#putty">§</a></h2>
+<p>官网：<a href="http://www.putty.org/">http://www.putty.org/</a></p>
+<p>PuTTY 是 Windows 上用于 SSH 连接的工具，使用很方便，输入 IP 即可。</p>
+<blockquote>
+<p>Tip: 如果想要保存自定义的配置，登录之后，打开设置，配置好之后，点 Default Settings，然后点击 Save 即可。</p>
+</blockquote>
+<blockquote>
+<p>Tip: 推荐使用 <a href="https://tmux.github.io/">tmux</a> 保存当前会话。</p>
+</blockquote>
+<h2 id="samba">Samba<a class="anchor" href="#samba">§</a></h2>
+<p>官网：<a href="https://www.samba.org/">https://www.samba.org/</a></p>
+<p>Samba 是 Linux 上在局域网共享文件的服务。之前安装 Ubuntu 的时候，已经选择了安装 Samba Service，如果没有选择，则需要手动安装一下：</p>
+<pre class="language-shell"><code class="language-shell"><span class="token function">sudo</span> <span class="token function">apt-get</span> update
+<span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> samba
+</code></pre>
+<p>下一步需要配置共享文件夹，这里有篇<a href="https://help.ubuntu.com/community/How%20to%20Create%20a%20Network%20Share%20Via%20Samba%20Via%20CLI%20(Command-line%20interface/Linux%20Terminal)%20-%20Uncomplicated,%20Simple%20and%20Brief%20Way!">参考文章</a>，解释的非常详细。我这里做一个简单的介绍：</p>
+<h3 id="1-%E4%B8%BA-samba-%E9%85%8D%E7%BD%AE%E4%B8%80%E4%B8%AA%E7%94%A8%E6%88%B7">1. 为 Samba 配置一个用户<a class="anchor" href="#1-%E4%B8%BA-samba-%E9%85%8D%E7%BD%AE%E4%B8%80%E4%B8%AA%E7%94%A8%E6%88%B7">§</a></h3>
+<pre class="language-shell"><code class="language-shell"><span class="token function">sudo</span> smbpasswd -a <span class="token operator">&lt;</span>user_name<span class="token operator">></span>
+</code></pre>
+<blockquote>
+<p>Tip: Samba 的用户和 Linux 系统的用户是独立的。这里建议可以设置为同样的用户名。</p>
+</blockquote>
+<blockquote>
+<p>Tip: 这里设置的用户名密码用于在主系统（Windows）访问共享文件时的权限认证。</p>
+</blockquote>
+<h3 id="2-%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%85%B1%E4%BA%AB%E6%96%87%E4%BB%B6%E5%A4%B9">2. 创建一个共享文件夹<a class="anchor" href="#2-%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%85%B1%E4%BA%AB%E6%96%87%E4%BB%B6%E5%A4%B9">§</a></h3>
+<pre class="language-shell"><code class="language-shell"><span class="token function">mkdir</span> /home/<span class="token operator">&lt;</span>user_name<span class="token operator">></span>/<span class="token operator">&lt;</span>folder_name<span class="token operator">></span>
+</code></pre>
+<h3 id="3-%E5%B0%86-samba-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%A4%87%E4%BB%BD">3. 将 Samba 配置文件备份<a class="anchor" href="#3-%E5%B0%86-samba-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%A4%87%E4%BB%BD">§</a></h3>
+<pre class="language-shell"><code class="language-shell"><span class="token function">sudo</span> <span class="token function">cp</span> /etc/samba/smb.conf /etc/samba/smb.conf.bak
+</code></pre>
+<h3 id="4-%E4%BF%AE%E6%94%B9-samba-%E9%85%8D%E7%BD%AE">4. 修改 Samba 配置<a class="anchor" href="#4-%E4%BF%AE%E6%94%B9-samba-%E9%85%8D%E7%BD%AE">§</a></h3>
+<pre class="language-shell"><code class="language-shell"><span class="token function">sudo</span> <span class="token function">vi</span> /etc/samba/smb.conf
+</code></pre>
+<p>在末尾添加以下内容：</p>
+<pre class="language-shell"><code class="language-shell"><span class="token punctuation">[</span><span class="token operator">&lt;</span>folder_name<span class="token operator">></span><span class="token punctuation">]</span>
+path <span class="token operator">=</span> /home/<span class="token operator">&lt;</span>user_name<span class="token operator">></span>/<span class="token operator">&lt;</span>folder_name<span class="token operator">></span>
+valid <span class="token function">users</span> <span class="token operator">=</span> <span class="token operator">&lt;</span>user_name<span class="token operator">></span>
+<span class="token builtin class-name">read</span> only <span class="token operator">=</span> no
+</code></pre>
+<blockquote>
+<p>Tip: 注意等号左右必须有一个空格</p>
+</blockquote>
+<h3 id="5-%E9%87%8D%E5%90%AF-samba-%E6%9C%8D%E5%8A%A1">5. 重启 Samba 服务<a class="anchor" href="#5-%E9%87%8D%E5%90%AF-samba-%E6%9C%8D%E5%8A%A1">§</a></h3>
+<pre class="language-shell"><code class="language-shell"><span class="token function">sudo</span> <span class="token function">service</span> smbd restart
+</code></pre>
+<h3 id="6-%E6%B5%8B%E8%AF%95-smbconf-%E9%85%8D%E7%BD%AE%E6%9C%89%E6%B2%A1%E6%9C%89%E9%94%99%E8%AF%AF">6. 测试 smb.conf 配置有没有错误<a class="anchor" href="#6-%E6%B5%8B%E8%AF%95-smbconf-%E9%85%8D%E7%BD%AE%E6%9C%89%E6%B2%A1%E6%9C%89%E9%94%99%E8%AF%AF">§</a></h3>
+<pre class="language-shell"><code class="language-shell">testparm
+</code></pre>
+<h2 id="%E5%9C%A8-windows-%E4%B8%AD%E8%AE%BF%E9%97%AE%E5%85%B1%E4%BA%AB%E6%96%87%E4%BB%B6%E5%A4%B9">在 Windows 中访问共享文件夹<a class="anchor" href="#%E5%9C%A8-windows-%E4%B8%AD%E8%AE%BF%E9%97%AE%E5%85%B1%E4%BA%AB%E6%96%87%E4%BB%B6%E5%A4%B9">§</a></h2>
+<ol>
+<li>打开资源管理器，在地址栏中输入 <code>\\&lt;linux_ip&gt;</code> 回车</li>
+<li>输入刚刚配置的用户名和密码</li>
+<li>将共享的文件夹收藏到 Quick access，或者添加快捷方式到桌面</li>
+</ol>
+<blockquote>
+<p>Tip: 可以把 ip 配置到 hosts 中，方便访问</p>
+</blockquote>
+<h2 id="%E4%BD%BF%E7%94%A8%E4%BD%93%E9%AA%8C">使用体验<a class="anchor" href="#%E4%BD%BF%E7%94%A8%E4%BD%93%E9%AA%8C">§</a></h2>
+<ul>
+<li>解决了 Vitural Box 软链接的问题</li>
+<li>某些 IDE 里面（比如 Atom）如果想要删除文件，只能 Move to trash，不能 Delete，这时会删除失败</li>
+</ul>
+<p>感谢 <a href="https://v2ex.com/member/odirus">@odirus</a> <a href="https://v2ex.com/member/egen">@egen</a> <a href="https://v2ex.com/member/Kymair">@Kymair</a> 提供的建议！</p>
+<h2 id="links">Links<a class="anchor" href="#links">§</a></h2>
+<ul>
+<li><a href="https://help.ubuntu.com/community/How%20to%20Create%20a%20Network%20Share%20Via%20Samba%20Via%20CLI%20(Command-line%20interface/Linux%20Terminal)%20-%20Uncomplicated,%20Simple%20and%20Brief%20Way!">Samba Configuration</a></li>
+</ul></article></section><footer>Powered by <a href="https://github.com/xcatliu/pagic" target="_blank">Pagic</a></footer><script src="https://cdn.pagic.org/react@16.13.1/umd/react.production.min.js"></script><script src="https://cdn.pagic.org/react-dom@16.13.1/umd/react-dom.production.min.js"></script><script type="module" src="/index.js"></script></body></html>

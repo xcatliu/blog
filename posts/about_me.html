@@ -1,0 +1,37 @@
+<!doctype html><html class="" data-reactroot=""><head>
+<meta data-react-helmet="true" charset="utf-8"/><meta data-react-helmet="true" http-equiv="x-ua-compatible" content="ie=edge"/><meta data-react-helmet="true" name="description" content="欢迎来到我的博客，这里搜集了我的技术文章和生活感悟，欢迎一起交流成长。"/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1"/>
+<title data-react-helmet="true">三分钟创建一个简单精致的 About Me 页面 · 流浪小猫的博客</title>
+<link data-react-helmet="true" rel="stylesheet" href="/assets/index.css"/><link data-react-helmet="true" id="prismTheme" rel="stylesheet" href="/assets/prism.css"/>
+<script data-react-helmet="true" >
+    const shouldSetIsDark = document.cookie.includes('is_dark=1') ? true : document.cookie.includes('is_dark=0') ? false : window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (shouldSetIsDark) {
+      document.documentElement.classList.add('is_dark');
+      document.getElementById('prismTheme').href = "/assets/prism_tomorrow.css";
+    }
+  </script>
+</head><body><aside><h1><a href="/">流浪小猫的博客</a></h1><p class="description">欢迎来到我的博客，这里搜集了我的技术文章和生活感悟，欢迎一起交流成长。</p><ul class="social"><li class="flex_center"><a class="czs-github-logo" href="https://github.com/xcatliu" target="_blank" style="background-image:url(&quot;/assets/czs-github-logo.svg&quot;)"></a></li><li class="flex_center"><a class="czs-message-l" href="mailto:xcatliu@gmail.com" target="_blank" style="background-image:url(&quot;/assets/czs-message-l.svg&quot;)"></a></li><li class="flex_center"><a class="czs-twitter" href="https://twitter.com/xcatliu" target="_blank" style="background-image:url(&quot;/assets/czs-twitter.svg&quot;)"></a></li><li style="flex-grow:1"></li><li class="toggle_dark flex_center"><span class="czs-sun" style="background-image:url(&quot;/assets/czs-sun.svg&quot;)"></span><span class="czs-sun-l" style="background-image:url(&quot;/assets/czs-sun-l.svg&quot;)"></span><span class="czs-moon" style="background-image:url(&quot;/assets/czs-moon.svg&quot;)"></span><span class="czs-moon-l" style="background-image:url(&quot;/assets/czs-moon-l.svg&quot;)"></span></li></ul><nav><ul class="menu"><li><a class="flex_center" href="/"><span class="czs-home-l" style="background-image:url(&quot;/assets/czs-home-l.svg&quot;)"></span>首页</a></li><li><a class="flex_center" href="/categories/"><span class="czs-category-l" style="background-image:url(&quot;/assets/czs-category-l.svg&quot;)"></span>分类</a></li><li><a class="flex_center" href="/tags/"><span class="czs-tag-l" style="background-image:url(&quot;/assets/czs-tag-l.svg&quot;)"></span>标签</a></li><li><a class="flex_center" href="/about/"><span class="czs-about-l" style="background-image:url(&quot;/assets/czs-about-l.svg&quot;)"></span>关于</a></li><li><a class="flex_center" href="/archives/"><span class="czs-box-l" style="background-image:url(&quot;/assets/czs-box-l.svg&quot;)"></span>归档</a></li><li><a class="flex_center" href="/links/"><span class="czs-link-l" style="background-image:url(&quot;/assets/czs-link-l.svg&quot;)"></span>友情链接</a></li></ul></nav></aside><section class="main"><h1>三分钟创建一个简单精致的 About Me 页面</h1><div class="main_post_meta"><time dateTime="Tue Nov 10 2020 13:57:51 GMT+0000 (UTC)">2020-11-11</time> · <!-- -->xcatliu</div><article><blockquote>
+<p>通过 Fork 一个仓库，创建基于 GitHub Pages 的 About Me 页面。</p>
+</blockquote>
+<p>一个「About Me」页面，能够使别人快速的对你有一个大致的了解。</p>
+<p>使用 GitHub 提供的 Pages 服务，可以将静态的网页托管在 GitHub 上。而 GitHub Pages 默认的 Jekyll 使得静态网页得以很方便的配置化。</p>
+<p>我的 About Me 页面精雕细琢，并且页面的内容均提取成 yaml 配置文件，使大家可以简单几步就创建自己的 About Me 页面。</p>
+<h2 id="%E7%89%B9%E7%82%B9">特点<a class="anchor" href="#%E7%89%B9%E7%82%B9">§</a></h2>
+<ol>
+<li>托管在 GitHub Pages 上，不需要服务器，不需要注册域名（也可以绑定自己的域名）</li>
+<li>使用 GitHub Pages 上的 Jekyll 自动构建，不需要任何学习成本</li>
+<li>所有内容均配置化，一看就知道如何修改</li>
+<li>GitHub Repos 的信息会自动抓取</li>
+<li>适配了桌面端和移动端，简单精致</li>
+</ol>
+<h2 id="%E5%88%9B%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E9%A1%B5%E9%9D%A2">创建自己的页面<a class="anchor" href="#%E5%88%9B%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E9%A1%B5%E9%9D%A2">§</a></h2>
+<blockquote>
+<p>注意，下面使用 <code>${}</code> 包装的部分需要替换为你自己的内容</p>
+</blockquote>
+<ol>
+<li>Fork <a href="https://github.com/xcatliu/xcatliu.github.io">这个仓库</a></li>
+<li>将仓库名更新为 <code>${YOUR_GITHUB_ID}.github.io</code></li>
+<li>更新 <code>CNAME</code> 为 <code>${YOUR_DOMAIN}</code>，并且在域名的 DNS Records 中，为它添加一个 CNAME 记录指向 <code>${YOUR_GITHUB_ID}.github.io</code>（如果你没有域名，将此文件留空即可）</li>
+<li>更新 <code>_config.yml</code> 以及 <code>assets/img/</code> 中的图片资源</li>
+<li>打开 <code>${YOUR_DOMAIN}</code> 看看吧！（如果你没有域名，请打开 <code>${YOUR_GITHUB_ID}.github.io</code>）</li>
+</ol>
+<p>来创建自己的 About Me 页面吧！</p></article></section><footer>Powered by <a href="https://github.com/xcatliu/pagic" target="_blank">Pagic</a></footer><script src="https://cdn.pagic.org/react@16.13.1/umd/react.production.min.js"></script><script src="https://cdn.pagic.org/react-dom@16.13.1/umd/react-dom.production.min.js"></script><script type="module" src="/index.js"></script></body></html>

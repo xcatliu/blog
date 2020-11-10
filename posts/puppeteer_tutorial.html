@@ -1,0 +1,536 @@
+<!doctype html><html class="" data-reactroot=""><head>
+<meta data-react-helmet="true" charset="utf-8"/><meta data-react-helmet="true" http-equiv="x-ua-compatible" content="ie=edge"/><meta data-react-helmet="true" name="description" content="欢迎来到我的博客，这里搜集了我的技术文章和生活感悟，欢迎一起交流成长。"/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1"/>
+<title data-react-helmet="true">Puppeteer 指南 · 流浪小猫的博客</title>
+<link data-react-helmet="true" rel="stylesheet" href="/assets/index.css"/><link data-react-helmet="true" id="prismTheme" rel="stylesheet" href="/assets/prism.css"/>
+<script data-react-helmet="true" >
+    const shouldSetIsDark = document.cookie.includes('is_dark=1') ? true : document.cookie.includes('is_dark=0') ? false : window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (shouldSetIsDark) {
+      document.documentElement.classList.add('is_dark');
+      document.getElementById('prismTheme').href = "/assets/prism_tomorrow.css";
+    }
+  </script>
+</head><body><aside><h1><a href="/">流浪小猫的博客</a></h1><p class="description">欢迎来到我的博客，这里搜集了我的技术文章和生活感悟，欢迎一起交流成长。</p><ul class="social"><li class="flex_center"><a class="czs-github-logo" href="https://github.com/xcatliu" target="_blank" style="background-image:url(&quot;/assets/czs-github-logo.svg&quot;)"></a></li><li class="flex_center"><a class="czs-message-l" href="mailto:xcatliu@gmail.com" target="_blank" style="background-image:url(&quot;/assets/czs-message-l.svg&quot;)"></a></li><li class="flex_center"><a class="czs-twitter" href="https://twitter.com/xcatliu" target="_blank" style="background-image:url(&quot;/assets/czs-twitter.svg&quot;)"></a></li><li style="flex-grow:1"></li><li class="toggle_dark flex_center"><span class="czs-sun" style="background-image:url(&quot;/assets/czs-sun.svg&quot;)"></span><span class="czs-sun-l" style="background-image:url(&quot;/assets/czs-sun-l.svg&quot;)"></span><span class="czs-moon" style="background-image:url(&quot;/assets/czs-moon.svg&quot;)"></span><span class="czs-moon-l" style="background-image:url(&quot;/assets/czs-moon-l.svg&quot;)"></span></li></ul><nav><ul class="menu"><li><a class="flex_center" href="/"><span class="czs-home-l" style="background-image:url(&quot;/assets/czs-home-l.svg&quot;)"></span>首页</a></li><li><a class="flex_center" href="/categories/"><span class="czs-category-l" style="background-image:url(&quot;/assets/czs-category-l.svg&quot;)"></span>分类</a></li><li><a class="flex_center" href="/tags/"><span class="czs-tag-l" style="background-image:url(&quot;/assets/czs-tag-l.svg&quot;)"></span>标签</a></li><li><a class="flex_center" href="/about/"><span class="czs-about-l" style="background-image:url(&quot;/assets/czs-about-l.svg&quot;)"></span>关于</a></li><li><a class="flex_center" href="/archives/"><span class="czs-box-l" style="background-image:url(&quot;/assets/czs-box-l.svg&quot;)"></span>归档</a></li><li><a class="flex_center" href="/links/"><span class="czs-link-l" style="background-image:url(&quot;/assets/czs-link-l.svg&quot;)"></span>友情链接</a></li></ul></nav></aside><section class="main"><h1>Puppeteer 指南</h1><div class="main_post_meta"><time dateTime="Tue Sep 18 2018 00:00:00 GMT+0000 (UTC)">2018-09-19</time> · <!-- -->xcatliu</div><article><p>Puppeteer 是 Google Chrome 出品的一个无头浏览器。如果你听说过 Phantomjs 或者 Selenium，那么就应该知道它是做什么的了。Puppeteer 与它们类似，提供了一系列 api，通过 DevTools 协议控制 Chromium/Chrome 浏览器的行为。</p>
+<h2 id="%E4%BB%80%E4%B9%88%E6%98%AF%E6%97%A0%E5%A4%B4%E6%B5%8F%E8%A7%88%E5%99%A8">什么是无头浏览器<a class="anchor" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%97%A0%E5%A4%B4%E6%B5%8F%E8%A7%88%E5%99%A8">§</a></h2>
+<p>无头浏览器就是没有用户界面的浏览器，即通过写脚本来使用无头浏览器访问网站，还可以做一些点击等行为。</p>
+<p>Puppeteer 一般使用无头的模式运行，这样的开销较小。当然也提供了使用完整的 Chromium/Chrome 来运行的模式。</p>
+<h2 id="puppeteer-%E8%83%BD%E5%81%9A%E4%BB%80%E4%B9%88">Puppeteer 能做什么<a class="anchor" href="#puppeteer-%E8%83%BD%E5%81%9A%E4%BB%80%E4%B9%88">§</a></h2>
+<p>能够做几乎所有浏览器能做的事情。</p>
+<ul>
+<li>网页截图，或生成 pdf</li>
+<li>爬取 SPA 或 SSR 网站</li>
+<li>自动化表单提交，UI测试，键盘输入等</li>
+<li>创建一个最新的自动化测试环境。使用最新的 js 和最新的 Chrome 浏览器运行测试用例</li>
+<li>捕获网站的时间线，帮助诊断性能问题</li>
+<li>测试 Chrome 插件</li>
+</ul>
+<h2 id="puppeteer-%E4%B8%8E%E5%85%B6%E4%BB%96%E6%97%A0%E5%A4%B4%E6%B5%8F%E8%A7%88%E5%99%A8%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB">Puppeteer 与其他无头浏览器有什么区别？<a class="anchor" href="#puppeteer-%E4%B8%8E%E5%85%B6%E4%BB%96%E6%97%A0%E5%A4%B4%E6%B5%8F%E8%A7%88%E5%99%A8%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB">§</a></h2>
+<ul>
+<li>Puppeteer 由 Google Chrome 维护，速度快、安全、稳定、易用</li>
+<li>其他无头浏览器可以支持多种浏览器环境（Safari, Chrome, Firefox 等），而 Puppeteer 只支持 Chromium/Chrome</li>
+<li>Puppeteer 有完善的事件系统，不需要频繁的 <code>sleep(1000)</code> 了</li>
+<li>Puppeteer 的调试功能很强大，还支持在 DevTools 里面调试</li>
+<li>Puppeteer 能够创建一个「真实」的行为，如点击</li>
+</ul>
+<h2 id="%E5%AE%89%E8%A3%85-puppeteer">安装 Puppeteer<a class="anchor" href="#%E5%AE%89%E8%A3%85-puppeteer">§</a></h2>
+<p>先创建一个测试用的项目，执行 <code>npm init</code> 初始化好 <code>package.json</code>，然后执行以下命令安装 Puppeteer：</p>
+<pre class="language-bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> puppeteer --save-dev
+</code></pre>
+<p>万事开头难，第一步安装时就会遇到问题（如果没有报错，请跳过这一段）。</p>
+<p>Puppeteer 安装过程中会去下载 Chromium，墙内用户则会报错。如果你看到以下信息，说明是下载 Chromium 时连接不上。</p>
+<pre class="language-bash"><code class="language-bash">ERROR: Failed to download Chromium r588429<span class="token operator">!</span> Set <span class="token string">"PUPPETEER_SKIP_CHROMIUM_DOWNLOAD"</span> <span class="token function">env</span> variable to skip download.
+Error: Download failed: server returned code <span class="token number">502</span>. URL: <a class="token url-link" href="https://storage.googleapis.com/chromium-browser-snapshots/Win_x64/588429/chrome-win32.zip">https://storage.googleapis.com/chromium-browser-snapshots/Win_x64/588429/chrome-win32.zip</a>
+</code></pre>
+<p>或者</p>
+<pre class="language-bash"><code class="language-bash">ERROR: Failed to download Chromium r588429<span class="token operator">!</span> Set <span class="token string">"PUPPETEER_SKIP_CHROMIUM_DOWNLOAD"</span> <span class="token function">env</span> variable to skip download.
+<span class="token punctuation">{</span> Error: connect ETIMEDOUT <span class="token number">172.217</span>.24.48:443
+</code></pre>
+<p>如提示所说，设置 <code>PUPPETEER_SKIP_CHROMIUM_DOWNLOAD</code> 可以跳过安装 Chromium。</p>
+<pre class="language-bash"><code class="language-bash"><span class="token assign-left variable">PUPPETEER_SKIP_CHROMIUM_DOWNLOAD</span><span class="token operator">=</span><span class="token number">1</span> <span class="token function">npm</span> <span class="token function">install</span> puppeteer --save-dev
+</code></pre>
+<p>此时可以安装成功，但是使用 Puppeteer 时会由于找不到 Chromium 而报错。可以创建一个文件 <code>test.js</code>，内容如下：</p>
+<pre class="language-js"><code class="language-js"><span class="token keyword">const</span> puppeteer <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'puppeteer'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">(</span><span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> browser <span class="token operator">=</span> <span class="token keyword control-flow">await</span> puppeteer<span class="token punctuation">.</span><span class="token method function property-access">launch</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> page <span class="token operator">=</span> <span class="token keyword control-flow">await</span> browser<span class="token punctuation">.</span><span class="token method function property-access">newPage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword control-flow">await</span> page<span class="token punctuation">.</span><span class="token method function property-access">goto</span><span class="token punctuation">(</span><span class="token string">'<a class="token url-link" href="https://example.com">https://example.com</a>'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword control-flow">await</span> page<span class="token punctuation">.</span><span class="token method function property-access">screenshot</span><span class="token punctuation">(</span><span class="token punctuation">{</span>path<span class="token operator">:</span> <span class="token string">'example.png'</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword control-flow">await</span> browser<span class="token punctuation">.</span><span class="token method function property-access">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>然后执行 <code>node test.js</code> 则会报错：</p>
+<pre class="language-bash"><code class="language-bash">$ node test.js
+<span class="token punctuation">(</span>node:18368<span class="token punctuation">)</span> UnhandledPromiseRejectionWarning: Unhandled promise rejection <span class="token punctuation">(</span>rejection id: <span class="token number">1</span><span class="token punctuation">)</span>: Error: Chromium revision is not downloaded. Run <span class="token string">"npm install"</span> or <span class="token string">"yarn install"</span>
+<span class="token punctuation">(</span>node:18368<span class="token punctuation">)</span> <span class="token punctuation">[</span>DEP0018<span class="token punctuation">]</span> DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero <span class="token builtin class-name">exit</span> code.
+</code></pre>
+<p>一个解决方案是先手动下载 Chromium，然后在执行时通过配置指定 Chromium 位置，<a href="https://juejin.im/post/5b4a043751882519790c7ad7">这篇文章</a>给出了解决步骤。</p>
+<p>但是我更倾向于还原 Puppeteer 安装时的过程。但是由于一些环境原因，即便翻墙了也只能手动下载 Chromium，无法在安装 Puppeteer 时自动下载 Chromium。</p>
+<p>读了一下源码之后，可以这么解决：</p>
+<ol>
+<li>安装 Puppeteer，安装失败，提示无法下载 <code>https://storage.googleapis.com/chromium-browser-snapshots/Win_x64/588429/chrome-win32.zip</code></li>
+<li>使用 <code>PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=1 npm install puppeteer --save-dev</code> 成功安装 Puppeteer</li>
+<li>执行 <code>node test.js</code> 提示无法找到 Chromium</li>
+<li>手动下载步骤 1 中的 <code>chrome-win32.zip</code>，注意不同版本、不同系统的下载地址是不一样的</li>
+<li>开启一个静态文件服务，使得 <code>http://127.0.0.1:8000/chrome-win32.zip</code> 指向需要下载的文件</li>
+<li>改写 <code>downloadURL</code> 方法，使其直接返回 <code>http://127.0.0.1:8000/chrome-win32.zip</code></li>
+<li>执行 <code>node ./node_modules/puppeteer/install.js</code> 完成安装</li>
+<li>执行 <code>node test.js</code> 测试能否成功生成截图</li>
+</ol>
+<p>至此，成功完成了 Puppeteer 的安装。</p>
+<h2 id="puppeteer-%E7%BB%93%E6%9E%84">Puppeteer 结构<a class="anchor" href="#puppeteer-%E7%BB%93%E6%9E%84">§</a></h2>
+<p>Puppeteer 通过 DevTools 协议控制 Chromium/Chrome 浏览器。它的结构和浏览器结构类似。</p>
+<blockquote>
+<p>下图中淡化显示的可以忽略</p>
+</blockquote>
+<p><img src="../assets/puppeteer_turorial/puppeteer-structure.png" alt="Puppeteer 结构"></p>
+<ul>
+<li>Puppeteer 通过 DevTools 协议控制 Chromium/Chrome 浏览器</li>
+<li>一个浏览器（Browser）实例可以包含多个浏览器上下文（Browser contexts），就像我们打开一个普通的 Chrome 之后又打开一个隐身模式的 Chrome</li>
+<li>一个浏览器上下文（BrowserContext）可以包含多个页面（Pages）</li>
+<li>一个页面（Page）包含至少一个主 frame，也可以包含其他 frames（在主 frame 中通过 iframe 或 frame 标签创建的）</li>
+<li>一个 frame 包含至少一个执行上下文（Execution context），也可以包含其他执行上下文（由 Chrome 插件创建的）</li>
+<li>一个 Workder 包含一个执行上下文，由 WebWorker 创建</li>
+</ul>
+<h2 id="puppeteer-api">Puppeteer API<a class="anchor" href="#puppeteer-api">§</a></h2>
+<p>Puppeteer 的大部分 API 的返回值都是 <code>Promise</code>，故推荐使用 <code>async</code> <code>await</code> 来处理异步操作。Puppeteer 的 API 包含以下类：</p>
+<table>
+<thead>
+<tr>
+<th>类名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Puppeteer</code></td>
+<td>主要用于创建一个浏览器实例，也可以用来下载新的 Chromium，或者设置浏览器的默认参数</td>
+</tr>
+<tr>
+<td><code>BrowserFetcher</code></td>
+<td>用于下载和管理 Chromium</td>
+</tr>
+<tr>
+<td><code>Browser</code></td>
+<td>可以创建一个或多个 Page</td>
+</tr>
+<tr>
+<td><code>BrowserContext</code></td>
+<td>创建一个隐身模式的浏览器时需要用到</td>
+</tr>
+<tr>
+<td><code>Page</code></td>
+<td><strong>主要 API，用于操作一个页面，后面会详细介绍</strong></td>
+</tr>
+<tr>
+<td><code>Worker</code></td>
+<td>用于处理 WebWorker</td>
+</tr>
+<tr>
+<td><code>Keyboard</code></td>
+<td>可以触发键盘按键</td>
+</tr>
+<tr>
+<td><code>Mouse</code></td>
+<td>可以触发鼠标动作</td>
+</tr>
+<tr>
+<td><code>TouchScreen</code></td>
+<td>可以触发触摸屏的动作</td>
+</tr>
+<tr>
+<td><code>Tracing</code></td>
+<td>用于分析性能</td>
+</tr>
+<tr>
+<td><code>Dialog</code></td>
+<td>存在于 page 的 <code>dialog</code> 事件回调中，表示调用弹窗后的对象，包括 <code>alert</code>, <code>beforeunload</code>, <code>confirm</code> 和 <code>prompt</code></td>
+</tr>
+<tr>
+<td><code>ConsoleMessage</code></td>
+<td>存在于 page 的 <code>console</code> 事件回调中，表示调用 <code>console.log</code> 等方法后的对象</td>
+</tr>
+<tr>
+<td><code>Frame</code></td>
+<td>常用于处理包含多个 frame 的页面。page 中的很多方法就是直接调用的主 frame 的方法</td>
+</tr>
+<tr>
+<td><code>ExecutionContext</code></td>
+<td>执行上下文存在于 frame、浏览器插件、worker 中。可以用来直接执行一段 js</td>
+</tr>
+<tr>
+<td><code>JSHandle</code></td>
+<td>通过 <code>page.evaluateHandle</code> 生成，用于将页面中的 handler 挑出来传递使用</td>
+</tr>
+<tr>
+<td><code>ElementHandle</code></td>
+<td>通过 <code>page.$</code> 生成，用于将页面中某个元素的 handler 挑出来传递使用</td>
+</tr>
+<tr>
+<td><code>Request</code></td>
+<td>在 <code>page.setRequestInterception</code> 方法中使用，可以处理页面的请求</td>
+</tr>
+<tr>
+<td><code>Response</code></td>
+<td>表示页面接收到的响应</td>
+</tr>
+<tr>
+<td><code>SecurityDetails</code></td>
+<td>表示页面的安全信息</td>
+</tr>
+<tr>
+<td><code>Target</code></td>
+<td>可以是 page, background_page, service_worker, browser 等</td>
+</tr>
+<tr>
+<td><code>CDPSession</code></td>
+<td>用于直接和 Devtools 通信</td>
+</tr>
+<tr>
+<td><code>Coverage</code></td>
+<td>用于分析 js 和 css 的代码被页面使用的比例</td>
+</tr>
+<tr>
+<td><code>TimeoutError</code></td>
+<td>超时错误</td>
+</tr>
+</tbody>
+</table>
+<h3 id="page">Page<a class="anchor" href="#page">§</a></h3>
+<p>Page 是 Puppeteer 中最重要的一个 API，也是它的核心所在，这里会介绍一些常用的 Page API。</p>
+<h4 id="%E8%AE%BE%E7%BD%AE%E9%A1%B5%E9%9D%A2%E7%8E%AF%E5%A2%83">设置页面环境<a class="anchor" href="#%E8%AE%BE%E7%BD%AE%E9%A1%B5%E9%9D%A2%E7%8E%AF%E5%A2%83">§</a></h4>
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>page.emulate</code></td>
+<td>设置 viewport 和 ua</td>
+</tr>
+<tr>
+<td><code>page.setViewport</code></td>
+<td>设置 viewport</td>
+</tr>
+<tr>
+<td><code>page.setUserAgent</code></td>
+<td>设置 ua</td>
+</tr>
+<tr>
+<td><code>page.setRequestInterception</code></td>
+<td><strong>中断所有请求，并可以修改请求的返回值</strong></td>
+</tr>
+<tr>
+<td><code>page.addScriptTag</code></td>
+<td>添加 js 脚本</td>
+</tr>
+<tr>
+<td><code>page.addStyleTag</code></td>
+<td>添加 css</td>
+</tr>
+<tr>
+<td><code>page.setContent</code></td>
+<td>设置整个 html</td>
+</tr>
+<tr>
+<td><code>page.setCacheEnabled</code></td>
+<td>设置缓存是否开启</td>
+</tr>
+<tr>
+<td><code>page.setExtraHTTPHeaders</code></td>
+<td>设置额外的 http 头</td>
+</tr>
+<tr>
+<td><code>page.setGeolocation</code></td>
+<td>设置地理位置</td>
+</tr>
+<tr>
+<td><code>page.setJavaScriptEnabled</code></td>
+<td>设置 js 是否开启</td>
+</tr>
+<tr>
+<td><code>page.setOfflineMode</code></td>
+<td>设置离线模式</td>
+</tr>
+<tr>
+<td><code>page.deleteCookie</code></td>
+<td>删除 cookies</td>
+</tr>
+<tr>
+<td><code>page.setCookie</code></td>
+<td>设置 cookies</td>
+</tr>
+</tbody>
+</table>
+<h4 id="%E6%A8%A1%E6%8B%9F%E5%8A%A8%E4%BD%9C">模拟动作<a class="anchor" href="#%E6%A8%A1%E6%8B%9F%E5%8A%A8%E4%BD%9C">§</a></h4>
+<p>一般会先滚动视窗到相应元素那，再执行动作。</p>
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>page.click</code></td>
+<td>点击</td>
+</tr>
+<tr>
+<td><code>page.tap</code></td>
+<td>手指点击</td>
+</tr>
+<tr>
+<td><code>page.focus</code></td>
+<td>聚焦</td>
+</tr>
+<tr>
+<td><code>page.hover</code></td>
+<td>hover</td>
+</tr>
+<tr>
+<td><code>page.type</code></td>
+<td>在指定元素中输入内容</td>
+</tr>
+<tr>
+<td><code>page.select</code></td>
+<td>选中 <code>&lt;select&gt;</code> 的某个选项</td>
+</tr>
+</tbody>
+</table>
+<h4 id="%E7%AD%89%E5%BE%85">等待<a class="anchor" href="#%E7%AD%89%E5%BE%85">§</a></h4>
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>page.waitFor</code></td>
+<td>等待某个元素渲染出来，或者某个函数执行之后返回 <code>true</code>，或者直接等待指定的时间</td>
+</tr>
+<tr>
+<td><code>page.waitForSelector</code></td>
+<td>等待某个元素被渲染</td>
+</tr>
+<tr>
+<td><code>page.waitForFunction</code></td>
+<td>等待某个函数执行之后返回 <code>true</code></td>
+</tr>
+<tr>
+<td><code>page.waitForNavigation</code></td>
+<td>等待页面跳转</td>
+</tr>
+<tr>
+<td><code>page.waitForRequest</code></td>
+<td>等待某个特定的请求被发出</td>
+</tr>
+<tr>
+<td><code>page.waitForResponse</code></td>
+<td>等待某个特定的请求收到了回应</td>
+</tr>
+</tbody>
+</table>
+<h4 id="%E6%89%A7%E8%A1%8C%E8%84%9A%E6%9C%AC">执行脚本<a class="anchor" href="#%E6%89%A7%E8%A1%8C%E8%84%9A%E6%9C%AC">§</a></h4>
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>page.$</code></td>
+<td>使用 <code>document.querySelector</code> 获取结果，会返回 <code>ElementHandle</code>，可以传递使用</td>
+</tr>
+<tr>
+<td><code>page.$$</code></td>
+<td>同上，不过使用的是 <code>document.querySelectorAll</code></td>
+</tr>
+<tr>
+<td><code>page.$eval</code></td>
+<td>将 <code>document.querySelector</code> 获取的结果传递给 <code>pageFunction</code></td>
+</tr>
+<tr>
+<td><code>page.$$eval</code></td>
+<td>同上，不过使用的是 <code>document.querySelectorAll</code></td>
+</tr>
+<tr>
+<td><code>page.evaluate</code></td>
+<td>直接执行脚本</td>
+</tr>
+<tr>
+<td><code>page.evaluateHandle</code></td>
+<td>执行脚本，返回的是 <code>JSHandle</code>，可以传递使用</td>
+</tr>
+<tr>
+<td><code>page.evaluateOnNewDocument</code></td>
+<td>在下个 frame 执行脚本</td>
+</tr>
+<tr>
+<td><code>page.exposeFunction</code></td>
+<td>将函数注入到 <code>window</code> 对象上</td>
+</tr>
+<tr>
+<td><code>page.queryObjects</code></td>
+<td>获取所有属于这个类的对象，可以传递使用</td>
+</tr>
+</tbody>
+</table>
+<h4 id="%E9%A1%B5%E9%9D%A2%E8%B7%B3%E8%BD%AC">页面跳转<a class="anchor" href="#%E9%A1%B5%E9%9D%A2%E8%B7%B3%E8%BD%AC">§</a></h4>
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>page.goto</code></td>
+<td>跳转页面</td>
+</tr>
+<tr>
+<td><code>page.close</code></td>
+<td>关闭</td>
+</tr>
+<tr>
+<td><code>page.goBack</code></td>
+<td>后退</td>
+</tr>
+<tr>
+<td><code>page.goForward</code></td>
+<td>前进</td>
+</tr>
+<tr>
+<td><code>page.reload</code></td>
+<td>刷新</td>
+</tr>
+<tr>
+<td><code>page.setDefaultNavigationTimeout</code></td>
+<td>设置页面跳转的超时时长</td>
+</tr>
+</tbody>
+</table>
+<h4 id="%E8%8E%B7%E5%8F%96%E5%86%85%E5%AE%B9">获取内容<a class="anchor" href="#%E8%8E%B7%E5%8F%96%E5%86%85%E5%AE%B9">§</a></h4>
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>page.screenshot</code></td>
+<td>截屏</td>
+</tr>
+<tr>
+<td><code>page.pdf</code></td>
+<td>生成 pdf</td>
+</tr>
+<tr>
+<td><code>page.content</code></td>
+<td>获取整个页面内容</td>
+</tr>
+<tr>
+<td><code>page.title</code></td>
+<td>获取页面 title</td>
+</tr>
+<tr>
+<td><code>page.url</code></td>
+<td>获取页面 url</td>
+</tr>
+<tr>
+<td><code>page.viewport</code></td>
+<td>获取页面 viewport</td>
+</tr>
+<tr>
+<td><code>page.cookies</code></td>
+<td>获取 cookies</td>
+</tr>
+</tbody>
+</table>
+<h4 id="%E4%BA%8B%E4%BB%B6">事件<a class="anchor" href="#%E4%BA%8B%E4%BB%B6">§</a></h4>
+<table>
+<thead>
+<tr>
+<th>事件名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>page.on('console')</code></td>
+<td>监听 <code>console.log</code> 等的调用</td>
+</tr>
+<tr>
+<td><code>page.on('dialog')</code></td>
+<td>监听页面的 <code>alert</code>, <code>beforeunload</code>, <code>confirm</code> 和 <code>prompt</code> 弹窗</td>
+</tr>
+<tr>
+<td><code>page.on('load')</code></td>
+<td>监听页面的加载</td>
+</tr>
+<tr>
+<td><code>page.on('domcontentloaded')</code></td>
+<td>监听页面 dom 加载完成</td>
+</tr>
+<tr>
+<td><code>page.on('pageerror')</code></td>
+<td>监听页面错误</td>
+</tr>
+<tr>
+<td><code>page.on('request')</code></td>
+<td>监听页面发送的请求</td>
+</tr>
+<tr>
+<td><code>page.on('requestfailed')</code></td>
+<td>监听失败的请求</td>
+</tr>
+<tr>
+<td><code>page.on('requestfinished')</code></td>
+<td>监听完成的请求</td>
+</tr>
+<tr>
+<td><code>page.on('response')</code></td>
+<td>监听页面接受到的响应</td>
+</tr>
+</tbody>
+</table>
+<h4 id="%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4">命名空间<a class="anchor" href="#%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4">§</a></h4>
+<p>通过一些命名空间可以快速访问到该页面下的其他实例。</p>
+<table>
+<thead>
+<tr>
+<th>属性名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>page.keyboard</code></td>
+<td>访问到页面的 Keyboard 对象</td>
+</tr>
+<tr>
+<td><code>page.mouse</code></td>
+<td>访问到页面的 Mouse 对象</td>
+</tr>
+<tr>
+<td><code>page.touchscreen</code></td>
+<td>访问到页面的 TouchScreen 对象</td>
+</tr>
+</tbody>
+</table>
+<h2 id="links">Links<a class="anchor" href="#links">§</a></h2>
+<ul>
+<li><a href="https://pptr.dev/">Puppeteer 文档</a></li>
+<li><a href="https://peter.sh/experiments/chromium-command-line-switches/">Chromium CLI 参数</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/DeviceDescriptors.js">预设的 EmulateOptions</a></li>
+</ul></article></section><footer>Powered by <a href="https://github.com/xcatliu/pagic" target="_blank">Pagic</a></footer><script src="https://cdn.pagic.org/react@16.13.1/umd/react.production.min.js"></script><script src="https://cdn.pagic.org/react-dom@16.13.1/umd/react-dom.production.min.js"></script><script type="module" src="/index.js"></script></body></html>

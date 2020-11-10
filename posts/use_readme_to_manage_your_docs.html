@@ -1,0 +1,70 @@
+<!doctype html><html class="" data-reactroot=""><head>
+<meta data-react-helmet="true" charset="utf-8"/><meta data-react-helmet="true" http-equiv="x-ua-compatible" content="ie=edge"/><meta data-react-helmet="true" name="description" content="欢迎来到我的博客，这里搜集了我的技术文章和生活感悟，欢迎一起交流成长。"/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1"/>
+<title data-react-helmet="true">基于 README 的文档管理 · 流浪小猫的博客</title>
+<link data-react-helmet="true" rel="stylesheet" href="/assets/index.css"/><link data-react-helmet="true" id="prismTheme" rel="stylesheet" href="/assets/prism.css"/>
+<script data-react-helmet="true" >
+    const shouldSetIsDark = document.cookie.includes('is_dark=1') ? true : document.cookie.includes('is_dark=0') ? false : window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (shouldSetIsDark) {
+      document.documentElement.classList.add('is_dark');
+      document.getElementById('prismTheme').href = "/assets/prism_tomorrow.css";
+    }
+  </script>
+</head><body><aside><h1><a href="/">流浪小猫的博客</a></h1><p class="description">欢迎来到我的博客，这里搜集了我的技术文章和生活感悟，欢迎一起交流成长。</p><ul class="social"><li class="flex_center"><a class="czs-github-logo" href="https://github.com/xcatliu" target="_blank" style="background-image:url(&quot;/assets/czs-github-logo.svg&quot;)"></a></li><li class="flex_center"><a class="czs-message-l" href="mailto:xcatliu@gmail.com" target="_blank" style="background-image:url(&quot;/assets/czs-message-l.svg&quot;)"></a></li><li class="flex_center"><a class="czs-twitter" href="https://twitter.com/xcatliu" target="_blank" style="background-image:url(&quot;/assets/czs-twitter.svg&quot;)"></a></li><li style="flex-grow:1"></li><li class="toggle_dark flex_center"><span class="czs-sun" style="background-image:url(&quot;/assets/czs-sun.svg&quot;)"></span><span class="czs-sun-l" style="background-image:url(&quot;/assets/czs-sun-l.svg&quot;)"></span><span class="czs-moon" style="background-image:url(&quot;/assets/czs-moon.svg&quot;)"></span><span class="czs-moon-l" style="background-image:url(&quot;/assets/czs-moon-l.svg&quot;)"></span></li></ul><nav><ul class="menu"><li><a class="flex_center" href="/"><span class="czs-home-l" style="background-image:url(&quot;/assets/czs-home-l.svg&quot;)"></span>首页</a></li><li><a class="flex_center" href="/categories/"><span class="czs-category-l" style="background-image:url(&quot;/assets/czs-category-l.svg&quot;)"></span>分类</a></li><li><a class="flex_center" href="/tags/"><span class="czs-tag-l" style="background-image:url(&quot;/assets/czs-tag-l.svg&quot;)"></span>标签</a></li><li><a class="flex_center" href="/about/"><span class="czs-about-l" style="background-image:url(&quot;/assets/czs-about-l.svg&quot;)"></span>关于</a></li><li><a class="flex_center" href="/archives/"><span class="czs-box-l" style="background-image:url(&quot;/assets/czs-box-l.svg&quot;)"></span>归档</a></li><li><a class="flex_center" href="/links/"><span class="czs-link-l" style="background-image:url(&quot;/assets/czs-link-l.svg&quot;)"></span>友情链接</a></li></ul></nav></aside><section class="main"><h1>基于 README 的文档管理</h1><div class="main_post_meta"><time dateTime="Tue Dec 09 2014 00:00:00 GMT+0000 (UTC)">2014-12-10</time> · <!-- -->xcatliu</div><article><h2 id="%E4%BB%80%E4%B9%88%E6%98%AF-readme">什么是 readme<a class="anchor" href="#%E4%BB%80%E4%B9%88%E6%98%AF-readme">§</a></h2>
+<blockquote>
+<p>A readme (or read me) file contains information about other files in a directory or archive and is very commonly distributed with computer software.</p>
+</blockquote>
+<h2 id="%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%9C%A8%E4%BB%93%E5%BA%93%E4%B8%AD%E5%86%99%E6%96%87%E6%A1%A3">为什么要在仓库中写文档<a class="anchor" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%9C%A8%E4%BB%93%E5%BA%93%E4%B8%AD%E5%86%99%E6%96%87%E6%A1%A3">§</a></h2>
+<ul>
+<li>文档和代码在一起，方便查看</li>
+<li>文档和代码版本一致</li>
+<li>使用 markdown 格式的 README 文档可以在 GitHub 中直接查看</li>
+<li>可以在 vim 中查看</li>
+<li>README 已经能（并且能更好的）满足大部分需求</li>
+</ul>
+<h2 id="markdown-%E8%A7%84%E5%88%99">markdown 规则<a class="anchor" href="#markdown-%E8%A7%84%E5%88%99">§</a></h2>
+<p>推荐遵守此规则：</p>
+<p><a href="http://markdown.tw/">Markdown 规范</a> + <a href="https://help.github.com/articles/github-flavored-markdown/">GitHub Flavored Markdown</a></p>
+<h2 id="%E5%BA%94%E8%AF%A5%E5%8F%AB%E4%BB%80%E4%B9%88%E5%90%8D%E5%AD%97">应该叫什么名字<a class="anchor" href="#%E5%BA%94%E8%AF%A5%E5%8F%AB%E4%BB%80%E4%B9%88%E5%90%8D%E5%AD%97">§</a></h2>
+<p>建议叫 <a href="http://README.md">README.md</a></p>
+<p>而不是 <a href="http://readme.md">readme.md</a> 或 README.markdown</p>
+<h2 id="%E6%84%BF%E6%99%AF">愿景<a class="anchor" href="#%E6%84%BF%E6%99%AF">§</a></h2>
+<p>尽量替代掉「使用 wiki 或 website 管理文档」（或者 website 是通过 readme 文档生成的，do not repeat yourself）</p>
+<h2 id="readme-%E5%86%85%E5%AE%B9">readme 内容<a class="anchor" href="#readme-%E5%86%85%E5%AE%B9">§</a></h2>
+<p>一个好的 README 需要包含哪些内容？以下是 <a href="http://stackoverflow.com/questions/2304863/how-to-write-a-good-readme">stackoverflow 给出的答案</a>：</p>
+<ul>
+<li>此项目的标题和包含的子模块</li>
+<li>对项目和子模块的描述</li>
+<li>一个简短的例子告诉读者如何使用</li>
+<li>LICENSE</li>
+<li>在哪儿可以找到文档</li>
+<li>怎么安装，配置，运行此程序</li>
+<li>在哪儿可以找到最新代码</li>
+<li>作者</li>
+<li>如何提交 bug，提建议，加入讨论组</li>
+<li>其他联系方式（email，website）</li>
+<li>简短的历史介绍</li>
+<li>法律声明</li>
+</ul>
+<p>我推荐包含以下内容：</p>
+<ul>
+<li>标题</li>
+<li>描述</li>
+<li>使用方式</li>
+<li>[ optional ] 链接（npm，website，wiki，git repo）</li>
+<li>[ optional ] 作者（联系方式）</li>
+<li>[ optional ] 测试脚本</li>
+<li>[ optional ] demo 页</li>
+<li>[ optional ] 代码说明，设计模式，维护须知</li>
+<li>[ optional ] 更新历史</li>
+<li>[ optional ] Troubleshooting</li>
+<li>[ optional ] Todo</li>
+</ul>
+<h2 id="links">Links<a class="anchor" href="#links">§</a></h2>
+<ul>
+<li><a href="http://stackoverflow.com/questions/2304863/how-to-write-a-good-readme">how-to-write-a-good-readme</a></li>
+<li><a href="http://markdown.tw/">Markdown 规范</a></li>
+<li><a href="https://help.github.com/articles/github-flavored-markdown/">GitHub Flavored Markdown</a></li>
+<li><a href="http://en.wikipedia.org/wiki/README">维基百科 README</a></li>
+<li><a href="http://svn.apache.org/repos/asf/httpd/httpd/trunk/README">Apache HTTP Server README</a></li>
+<li><a href="https://gist.github.com/eed3si9n/3920236">README 童话故事</a></li>
+</ul></article></section><footer>Powered by <a href="https://github.com/xcatliu/pagic" target="_blank">Pagic</a></footer><script src="https://cdn.pagic.org/react@16.13.1/umd/react.production.min.js"></script><script src="https://cdn.pagic.org/react-dom@16.13.1/umd/react-dom.production.min.js"></script><script type="module" src="/index.js"></script></body></html>

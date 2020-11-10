@@ -1,0 +1,112 @@
+<!doctype html><html class="" data-reactroot=""><head>
+<meta data-react-helmet="true" charset="utf-8"/><meta data-react-helmet="true" http-equiv="x-ua-compatible" content="ie=edge"/><meta data-react-helmet="true" name="description" content="欢迎来到我的博客，这里搜集了我的技术文章和生活感悟，欢迎一起交流成长。"/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1"/>
+<title data-react-helmet="true">我来微软这半年 · 流浪小猫的博客</title>
+<link data-react-helmet="true" rel="stylesheet" href="/assets/index.css"/><link data-react-helmet="true" id="prismTheme" rel="stylesheet" href="/assets/prism.css"/>
+<script data-react-helmet="true" >
+    const shouldSetIsDark = document.cookie.includes('is_dark=1') ? true : document.cookie.includes('is_dark=0') ? false : window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (shouldSetIsDark) {
+      document.documentElement.classList.add('is_dark');
+      document.getElementById('prismTheme').href = "/assets/prism_tomorrow.css";
+    }
+  </script>
+</head><body><aside><h1><a href="/">流浪小猫的博客</a></h1><p class="description">欢迎来到我的博客，这里搜集了我的技术文章和生活感悟，欢迎一起交流成长。</p><ul class="social"><li class="flex_center"><a class="czs-github-logo" href="https://github.com/xcatliu" target="_blank" style="background-image:url(&quot;/assets/czs-github-logo.svg&quot;)"></a></li><li class="flex_center"><a class="czs-message-l" href="mailto:xcatliu@gmail.com" target="_blank" style="background-image:url(&quot;/assets/czs-message-l.svg&quot;)"></a></li><li class="flex_center"><a class="czs-twitter" href="https://twitter.com/xcatliu" target="_blank" style="background-image:url(&quot;/assets/czs-twitter.svg&quot;)"></a></li><li style="flex-grow:1"></li><li class="toggle_dark flex_center"><span class="czs-sun" style="background-image:url(&quot;/assets/czs-sun.svg&quot;)"></span><span class="czs-sun-l" style="background-image:url(&quot;/assets/czs-sun-l.svg&quot;)"></span><span class="czs-moon" style="background-image:url(&quot;/assets/czs-moon.svg&quot;)"></span><span class="czs-moon-l" style="background-image:url(&quot;/assets/czs-moon-l.svg&quot;)"></span></li></ul><nav><ul class="menu"><li><a class="flex_center" href="/"><span class="czs-home-l" style="background-image:url(&quot;/assets/czs-home-l.svg&quot;)"></span>首页</a></li><li><a class="flex_center" href="/categories/"><span class="czs-category-l" style="background-image:url(&quot;/assets/czs-category-l.svg&quot;)"></span>分类</a></li><li><a class="flex_center" href="/tags/"><span class="czs-tag-l" style="background-image:url(&quot;/assets/czs-tag-l.svg&quot;)"></span>标签</a></li><li><a class="flex_center" href="/about/"><span class="czs-about-l" style="background-image:url(&quot;/assets/czs-about-l.svg&quot;)"></span>关于</a></li><li><a class="flex_center" href="/archives/"><span class="czs-box-l" style="background-image:url(&quot;/assets/czs-box-l.svg&quot;)"></span>归档</a></li><li><a class="flex_center" href="/links/"><span class="czs-link-l" style="background-image:url(&quot;/assets/czs-link-l.svg&quot;)"></span>友情链接</a></li></ul></nav></aside><section class="main"><h1>我来微软这半年</h1><div class="main_post_meta"><time dateTime="Sun Oct 23 2016 00:00:00 GMT+0000 (UTC)">2016-10-24</time> · <!-- -->xcatliu</div><article><p>转眼间已经离开美团，来到微软半年了。</p>
+<h2 id="%E8%83%8C%E6%99%AF">背景<a class="anchor" href="#%E8%83%8C%E6%99%AF">§</a></h2>
+<p>在刚加入微软的时候，我打算过了一个月就写个月度总结。结果一个月后，发现啥都不懂。</p>
+<p>于是想再过一阵子来写个季度总结吧。结果一个季度后，感觉对业务还是一知半解。</p>
+<p>于是想再过一阵子来写个半年总结吧。现在半年过去了，总算有点话可以说了。</p>
+<h2 id="%E7%AC%AC%E4%B8%80%E5%8D%B0%E8%B1%A1">第一印象<a class="anchor" href="#%E7%AC%AC%E4%B8%80%E5%8D%B0%E8%B1%A1">§</a></h2>
+<p>慢——这也许就是我对微软的第一印象吧。</p>
+<p>加入微软之前，我已经有过心理准备，也听说过微软的节奏比较慢。但是不是亲身经历的话，是无法有这种体会的。</p>
+<p>在美团，我带的团队曾经一个多月就完成了包括 iOS 和 Android 的一个完整的 Hybrid 项目。</p>
+<p>在微软，这几乎是不可能的事情。</p>
+<p>做一个 Feature 之前，需要对各个方面进行审核：</p>
+<ul>
+<li>是否合规</li>
+<li>搜集了用户隐私吗</li>
+<li>需要对哪些用户开放</li>
+</ul>
+<p>开发的过程中，需要先进行 Dev design ，也需要考虑一些以前从没考虑过的问题：</p>
+<ul>
+<li>Accessibility ，对于残障人士友好，需要保证在高对比度下可用，对视力障碍的人可以直接听到等</li>
+<li>Globality ，有的国家是从右到左的阅读习惯，有的语言即使表达一个词语，也会有很长的字符</li>
+<li>各种各样的测试，测试的种类太多了，我会在将来再单独分享</li>
+<li>代码 Review 非常严格，给我 Review 代码的同事都看的非常认真</li>
+</ul>
+<p>为了保证一个 Feature 顺利上线，各种措施也不会少：</p>
+<ul>
+<li>配置化的开关，可以通过配置快速的控制一个 Feature 的开关</li>
+<li>灰度上线，保证不影响其他流程的数据</li>
+<li>数据分析，了解用户对于新 Feature 的接受程度</li>
+</ul>
+<p>每一项执行下来，几个月就过去了。</p>
+<p>慢只是表象，认真严谨和对用户负责才是实质。</p>
+<h2 id="%E5%B7%A5%E5%85%B7%E5%8C%96%E5%92%8C%E8%87%AA%E5%8A%A8%E5%8C%96">工具化和自动化<a class="anchor" href="#%E5%B7%A5%E5%85%B7%E5%8C%96%E5%92%8C%E8%87%AA%E5%8A%A8%E5%8C%96">§</a></h2>
+<p>在微软，工具随处可见：</p>
+<ul>
+<li>办公有 Office 全套</li>
+<li>写代码有 Visual Studio ，和专用的 Review 工具，合并工具，全局搜索工具</li>
+<li>知识积累有 Wiki ，问答</li>
+<li>其他的比如 IT 和 HR 等系统都非常专业</li>
+</ul>
+<p>自动化也很完备：自动测试，自动部署，报警电话和邮件等。</p>
+<p>虽然我已经来了半年了，但是感觉仍然只接触到了凤毛麟角。</p>
+<h2 id="%E6%8A%80%E6%9C%AF">技术<a class="anchor" href="#%E6%8A%80%E6%9C%AF">§</a></h2>
+<p>首先，下面这段只表示我在我所在的团队看到的技术，不代表其他团队也是这样。</p>
+<p>其次这是我在短短半年接触到的，不一定准确，也不代表将来不会有新的技术。</p>
+<p>最后，这只是我的个人看法，与其他所有个人和组织都无关。</p>
+<p>作为一个前端，我必须得说，这里并不适合追逐新技术的人才。</p>
+<p>下面就把「<a href="https://www.v2ex.com/t/310767">在 2016 年学 JavaScript 是一种什么样的体验？</a>」中的大部分技术都列举一遍吧：</p>
+<p>没有 jQuery ，没有 React ，没有 ES2016 ，没有 AMD ，没有 CommonJS ，没有 Browserify ，没有 npm ，没有 Bower ，没有 Angular ，没有 Grunt ，没有 Gulp ，没有 Webpack 。</p>
+<p>有 TypeScript ！</p>
+<p>没有 Ramda ，没有 Fetch ，没有 Promise ，没有 await ，没有 async ，没有 Flux ，没有 Redux ，没有 KnockoutJS ，没有 Handlebars ，没有 Mustache ，没有 underscore ，没有 Lodash ，没有 Jade ，没有 EJS ，没有 Elm 。</p>
+<p>没错，大部分新技术这里都没有。只有一个自己写的基础库，实现了 DOM ， Ajax 等一些常见的操作。</p>
+<p>为什么不用一些新技术呢？我觉得是为了追求稳定性吧。</p>
+<p>为什么不用 jQuery 呢？因为自己的基础库比 jQuery 更高效。</p>
+<p>可以使用开源库吗？可以，但是需要报备它的开源协议。</p>
+<p>关于新技术的讨论已经很多了，这里我只列举我所看到的现象，如何评价请见仁见智吧。</p>
+<h2 id="%E7%A6%8F%E5%88%A9%E5%92%8C%E6%96%87%E5%8C%96">福利和文化<a class="anchor" href="#%E7%A6%8F%E5%88%A9%E5%92%8C%E6%96%87%E5%8C%96">§</a></h2>
+<p>外企的福利大家应该听说过了，这也是最值得炫耀的部分了：</p>
+<ul>
+<li>水果、点心、酸奶、牛奶、茶、咖啡等</li>
+<li>不打卡，年假 15+ 天</li>
+<li>健身房，按摩椅，各种健康讲座</li>
+<li>家庭日活动，相信带小孩去玩过一次的话，你想跳槽你的小孩也不同意了</li>
+</ul>
+<p>文化也是我比较关注的方面。</p>
+<p>首先，这里比较注重个人隐私，一般很少会突然出现一个人站在背后来找你。开会也会提前很久通知。</p>
+<p>其次，大家都倾向于能够书面交流就不口头交流，一方面是不打扰到对方一方面是可以留下凭据。</p>
+<p>因为大多数都是结婚有小孩的，所以更多的是陪自己的家人，而不是和同事一起玩。</p>
+<h2 id="%E8%8B%B1%E8%AF%AD">英语<a class="anchor" href="#%E8%8B%B1%E8%AF%AD">§</a></h2>
+<p>为什么英语要单独说呢，因为我的英语比各位都差（四级刚刚过，六级没过）。</p>
+<p>刚来的时候，邮件是英文的还好，可以慢慢读。然而开会和讨论项目都是英文，着实难受了好一阵子。</p>
+<p>其实听英语还好，说出口实在太难了。</p>
+<p>只好慢慢练习慢慢融入，现在基本可以交流了。</p>
+<p>要说诀窍，那就是敢说。外国人并不在乎你说的流不流畅，只要你能让他听懂你的意思就行了，所以可以用肢体语言辅助吧，说英语并不是那么难。</p>
+<h2 id="%E4%B8%9A%E4%BD%99%E7%A7%AF%E7%B4%AF">业余积累<a class="anchor" href="#%E4%B8%9A%E4%BD%99%E7%A7%AF%E7%B4%AF">§</a></h2>
+<p>来微软之前，我就对自己说，一定要利用好自己的业余时间，把之前的坑都慢慢填上。</p>
+<p>可是没想到坑却越来越多了，看来以后得加倍努力了！</p>
+<p>这是我来微软后业余做的一些事情：</p>
+<ul>
+<li>加入了 <a href="https://github.com/xcatliu">Microsoft organization</a></li>
+<li>持续的更新 <a href="https://github.com/xcatliu/jekyllcn">JekyllCN</a></li>
+<li>给 <a href="http://live.nodejs.org">live.nodejs.org</a> <a href="https://github.com/nodejs/live.nodejs.org/pull/43">加入了多语言支持</a></li>
+<li>持续的更新 <a href="https://github.com/xcatliu/react-ie8">React IE8</a></li>
+<li><a href="https://github.com/ruanyf/es6tutorial/pulls?utf8=%E2%9C%93&amp;q=is%3Apr%20author%3Axcatliu%20">给阮一峰的《 ECMAScript 6 入门》提了十多个 pull request</a></li>
+<li>开始写一本书<a href="https://github.com/xcatliu/from-javascript-to-typescript">《 From JavaScript to TypeScript 》</a></li>
+<li>写了<a href="https://www.v2ex.com/t/289667">几个 Hexo 的插件</a>和<a href="https://www.v2ex.com/t/288151">一个 Hexo 的主题</a></li>
+<li>开源了 <a href="https://github.com/xcatliu/mobi.css">Mobi.css</a>，一个轻量灵活的移动端 CSS 框架。并<a href="https://www.v2ex.com/t/304129">在 7 天内获得了 600 个 Stars</a></li>
+<li>组织<a href="https://github.com/xcatliu/yarnpkg-website">翻译 Yarn 文档</a></li>
+</ul>
+<p>欢迎一起来开源！</p>
+<p>对了，听说马上 MacBook Pro 要出新品了，等了大半年，终于可以剁手了！</p>
+<h2 id="faq">FAQ<a class="anchor" href="#faq">§</a></h2>
+<h3 id="1-%E8%BF%99%E6%98%AF%E4%B8%80%E4%B8%AA%E6%8B%9B%E8%81%98%E8%B4%B4%E5%90%97">1. 这是一个招聘贴吗？<a class="anchor" href="#1-%E8%BF%99%E6%98%AF%E4%B8%80%E4%B8%AA%E6%8B%9B%E8%81%98%E8%B4%B4%E5%90%97">§</a></h3>
+<p>显然不是，我还没到那么高的级别可以负责招聘。不过如果感兴趣可以给我发邮件，邮件地址自己去找吧。</p>
+<h3 id="2-%E4%BD%A0%E5%BD%93%E5%88%9D%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BC%9A%E7%A6%BB%E5%BC%80%E7%BE%8E%E5%9B%A2%E5%8A%A0%E5%85%A5%E5%BE%AE%E8%BD%AF">2. 你当初为什么会离开美团加入微软？<a class="anchor" href="#2-%E4%BD%A0%E5%BD%93%E5%88%9D%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BC%9A%E7%A6%BB%E5%BC%80%E7%BE%8E%E5%9B%A2%E5%8A%A0%E5%85%A5%E5%BE%AE%E8%BD%AF">§</a></h3>
+<p>主要原因是想去大外企看看，次要原因是晚餐可以去女朋友学校吃了，很方便卫生。</p>
+<h3 id="3-%E9%9D%A2%E8%AF%95%E5%86%85%E5%AE%B9%E6%98%AF%E4%BB%80%E4%B9%88%E9%9A%BE%E5%90%97">3. 面试内容是什么？难吗？<a class="anchor" href="#3-%E9%9D%A2%E8%AF%95%E5%86%85%E5%AE%B9%E6%98%AF%E4%BB%80%E4%B9%88%E9%9A%BE%E5%90%97">§</a></h3>
+<p>主要面算法，大概在 LeetCode 简单或中等难度，我面试前也刷了一百多道题，所以问题不大。</p>
+<p>这是当时刷的题： <a href="https://github.com/xcatliu/leetcode">https://github.com/xcatliu/leetcode</a></p>
+<hr>
+<p>如果有其他问题，也可以留言。</p>
+<p>更多关于我的介绍，可以看<a href="https://github.com/xcatliu">我的 GitHub</a>。</p></article></section><footer>Powered by <a href="https://github.com/xcatliu/pagic" target="_blank">Pagic</a></footer><script src="https://cdn.pagic.org/react@16.13.1/umd/react.production.min.js"></script><script src="https://cdn.pagic.org/react-dom@16.13.1/umd/react-dom.production.min.js"></script><script type="module" src="/index.js"></script></body></html>

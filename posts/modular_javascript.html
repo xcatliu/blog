@@ -1,0 +1,59 @@
+<!doctype html><html class="" data-reactroot=""><head>
+<meta data-react-helmet="true" charset="utf-8"/><meta data-react-helmet="true" http-equiv="x-ua-compatible" content="ie=edge"/><meta data-react-helmet="true" name="description" content="欢迎来到我的博客，这里搜集了我的技术文章和生活感悟，欢迎一起交流成长。"/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1"/>
+<title data-react-helmet="true">Modular JS · 流浪小猫的博客</title>
+<link data-react-helmet="true" rel="stylesheet" href="/assets/index.css"/><link data-react-helmet="true" id="prismTheme" rel="stylesheet" href="/assets/prism.css"/>
+<script data-react-helmet="true" >
+    const shouldSetIsDark = document.cookie.includes('is_dark=1') ? true : document.cookie.includes('is_dark=0') ? false : window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (shouldSetIsDark) {
+      document.documentElement.classList.add('is_dark');
+      document.getElementById('prismTheme').href = "/assets/prism_tomorrow.css";
+    }
+  </script>
+</head><body><aside><h1><a href="/">流浪小猫的博客</a></h1><p class="description">欢迎来到我的博客，这里搜集了我的技术文章和生活感悟，欢迎一起交流成长。</p><ul class="social"><li class="flex_center"><a class="czs-github-logo" href="https://github.com/xcatliu" target="_blank" style="background-image:url(&quot;/assets/czs-github-logo.svg&quot;)"></a></li><li class="flex_center"><a class="czs-message-l" href="mailto:xcatliu@gmail.com" target="_blank" style="background-image:url(&quot;/assets/czs-message-l.svg&quot;)"></a></li><li class="flex_center"><a class="czs-twitter" href="https://twitter.com/xcatliu" target="_blank" style="background-image:url(&quot;/assets/czs-twitter.svg&quot;)"></a></li><li style="flex-grow:1"></li><li class="toggle_dark flex_center"><span class="czs-sun" style="background-image:url(&quot;/assets/czs-sun.svg&quot;)"></span><span class="czs-sun-l" style="background-image:url(&quot;/assets/czs-sun-l.svg&quot;)"></span><span class="czs-moon" style="background-image:url(&quot;/assets/czs-moon.svg&quot;)"></span><span class="czs-moon-l" style="background-image:url(&quot;/assets/czs-moon-l.svg&quot;)"></span></li></ul><nav><ul class="menu"><li><a class="flex_center" href="/"><span class="czs-home-l" style="background-image:url(&quot;/assets/czs-home-l.svg&quot;)"></span>首页</a></li><li><a class="flex_center" href="/categories/"><span class="czs-category-l" style="background-image:url(&quot;/assets/czs-category-l.svg&quot;)"></span>分类</a></li><li><a class="flex_center" href="/tags/"><span class="czs-tag-l" style="background-image:url(&quot;/assets/czs-tag-l.svg&quot;)"></span>标签</a></li><li><a class="flex_center" href="/about/"><span class="czs-about-l" style="background-image:url(&quot;/assets/czs-about-l.svg&quot;)"></span>关于</a></li><li><a class="flex_center" href="/archives/"><span class="czs-box-l" style="background-image:url(&quot;/assets/czs-box-l.svg&quot;)"></span>归档</a></li><li><a class="flex_center" href="/links/"><span class="czs-link-l" style="background-image:url(&quot;/assets/czs-link-l.svg&quot;)"></span>友情链接</a></li></ul></nav></aside><section class="main"><h1>Modular JS</h1><div class="main_post_meta"><time dateTime="Thu Mar 06 2014 00:00:00 GMT+0000 (UTC)">2014-03-07</time> · <!-- -->xcatliu</div><article><iframe src="//slides.com/xcatliu/modular_js/embed" width="620" height="400" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<h2 id="%E6%A6%82%E8%BF%B0%E5%8F%91%E5%B1%95">概述，发展<a class="anchor" href="#%E6%A6%82%E8%BF%B0%E5%8F%91%E5%B1%95">§</a></h2>
+<h3 id="%E6%A8%A1%E5%9D%97%E5%8C%96%E5%AE%9A%E4%B9%89">模块化定义<a class="anchor" href="#%E6%A8%A1%E5%9D%97%E5%8C%96%E5%AE%9A%E4%B9%89">§</a></h3>
+<ul>
+<li>一种将系统分离成独立功能部分的方法</li>
+<li>优缺点</li>
+</ul>
+<h3 id="js-%E6%A8%A1%E5%9D%97%E5%8C%96%E5%8F%91%E5%B1%95">js 模块化发展<a class="anchor" href="#js-%E6%A8%A1%E5%9D%97%E5%8C%96%E5%8F%91%E5%B1%95">§</a></h3>
+<ul>
+<li>内容样式交互混合</li>
+<li>分离成独立文件</li>
+<li>动态加载</li>
+<li>服务器端 js，CommonJS</li>
+<li>发展到客户端 AMD</li>
+</ul>
+<h2 id="commonjs">CommonJS<a class="anchor" href="#commonjs">§</a></h2>
+<h3 id="commonjs-%E8%A7%84%E8%8C%83">CommonJS 规范<a class="anchor" href="#commonjs-%E8%A7%84%E8%8C%83">§</a></h3>
+<ul>
+<li>CommonJS API 定义很多普通应用程序（主要指非浏览器的应用）使用的API</li>
+<li>CommonJS 规范包括哪些方面</li>
+</ul>
+<h3 id="commonjs-%E5%92%8C-nodejs-%E5%85%B3%E7%B3%BB">CommonJS 和 NodeJS 关系<a class="anchor" href="#commonjs-%E5%92%8C-nodejs-%E5%85%B3%E7%B3%BB">§</a></h3>
+<ul>
+<li>NodeJS 实现了部分 CommonJS API</li>
+</ul>
+<h2 id="amd">AMD<a class="anchor" href="#amd">§</a></h2>
+<h3 id="amd-%E8%A7%84%E8%8C%83">AMD 规范<a class="anchor" href="#amd-%E8%A7%84%E8%8C%83">§</a></h3>
+<ul>
+<li>CommonJS 演变而来</li>
+</ul>
+<h3 id="requirejscurljsseajs">RequireJS，curlJS，seaJS<a class="anchor" href="#requirejscurljsseajs">§</a></h3>
+<ul>
+<li>一些实现</li>
+</ul>
+<h2 id="es6">ES6<a class="anchor" href="#es6">§</a></h2>
+<h3 id="es6-%E8%A7%84%E8%8C%83">ES6 规范<a class="anchor" href="#es6-%E8%A7%84%E8%8C%83">§</a></h3>
+<ul>
+<li>module 规范</li>
+</ul>
+<h2 id="yui">YUI<a class="anchor" href="#yui">§</a></h2>
+<h3 id="yui-%E6%A8%A1%E5%9D%97%E5%8C%96%E7%BC%96%E7%A8%8B">YUI 模块化编程<a class="anchor" href="#yui-%E6%A8%A1%E5%9D%97%E5%8C%96%E7%BC%96%E7%A8%8B">§</a></h3>
+<ul>
+<li>namespace</li>
+</ul>
+<p>##$ YUI 使用 ES6 编写模块</p>
+<ul>
+<li>example</li>
+</ul></article></section><footer>Powered by <a href="https://github.com/xcatliu/pagic" target="_blank">Pagic</a></footer><script src="https://cdn.pagic.org/react@16.13.1/umd/react.production.min.js"></script><script src="https://cdn.pagic.org/react-dom@16.13.1/umd/react-dom.production.min.js"></script><script type="module" src="/index.js"></script></body></html>

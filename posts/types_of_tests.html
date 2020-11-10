@@ -1,0 +1,71 @@
+<!doctype html><html class="" data-reactroot=""><head>
+<meta data-react-helmet="true" charset="utf-8"/><meta data-react-helmet="true" http-equiv="x-ua-compatible" content="ie=edge"/><meta data-react-helmet="true" name="description" content="欢迎来到我的博客，这里搜集了我的技术文章和生活感悟，欢迎一起交流成长。"/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1"/>
+<title data-react-helmet="true">测试的分类 · 流浪小猫的博客</title>
+<link data-react-helmet="true" rel="stylesheet" href="/assets/index.css"/><link data-react-helmet="true" id="prismTheme" rel="stylesheet" href="/assets/prism.css"/>
+<script data-react-helmet="true" >
+    const shouldSetIsDark = document.cookie.includes('is_dark=1') ? true : document.cookie.includes('is_dark=0') ? false : window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (shouldSetIsDark) {
+      document.documentElement.classList.add('is_dark');
+      document.getElementById('prismTheme').href = "/assets/prism_tomorrow.css";
+    }
+  </script>
+</head><body><aside><h1><a href="/">流浪小猫的博客</a></h1><p class="description">欢迎来到我的博客，这里搜集了我的技术文章和生活感悟，欢迎一起交流成长。</p><ul class="social"><li class="flex_center"><a class="czs-github-logo" href="https://github.com/xcatliu" target="_blank" style="background-image:url(&quot;/assets/czs-github-logo.svg&quot;)"></a></li><li class="flex_center"><a class="czs-message-l" href="mailto:xcatliu@gmail.com" target="_blank" style="background-image:url(&quot;/assets/czs-message-l.svg&quot;)"></a></li><li class="flex_center"><a class="czs-twitter" href="https://twitter.com/xcatliu" target="_blank" style="background-image:url(&quot;/assets/czs-twitter.svg&quot;)"></a></li><li style="flex-grow:1"></li><li class="toggle_dark flex_center"><span class="czs-sun" style="background-image:url(&quot;/assets/czs-sun.svg&quot;)"></span><span class="czs-sun-l" style="background-image:url(&quot;/assets/czs-sun-l.svg&quot;)"></span><span class="czs-moon" style="background-image:url(&quot;/assets/czs-moon.svg&quot;)"></span><span class="czs-moon-l" style="background-image:url(&quot;/assets/czs-moon-l.svg&quot;)"></span></li></ul><nav><ul class="menu"><li><a class="flex_center" href="/"><span class="czs-home-l" style="background-image:url(&quot;/assets/czs-home-l.svg&quot;)"></span>首页</a></li><li><a class="flex_center" href="/categories/"><span class="czs-category-l" style="background-image:url(&quot;/assets/czs-category-l.svg&quot;)"></span>分类</a></li><li><a class="flex_center" href="/tags/"><span class="czs-tag-l" style="background-image:url(&quot;/assets/czs-tag-l.svg&quot;)"></span>标签</a></li><li><a class="flex_center" href="/about/"><span class="czs-about-l" style="background-image:url(&quot;/assets/czs-about-l.svg&quot;)"></span>关于</a></li><li><a class="flex_center" href="/archives/"><span class="czs-box-l" style="background-image:url(&quot;/assets/czs-box-l.svg&quot;)"></span>归档</a></li><li><a class="flex_center" href="/links/"><span class="czs-link-l" style="background-image:url(&quot;/assets/czs-link-l.svg&quot;)"></span>友情链接</a></li></ul></nav></aside><section class="main"><h1>测试的分类</h1><div class="main_post_meta"><time dateTime="Mon Mar 11 2019 00:00:00 GMT+0000 (UTC)">2019-03-12</time> · <!-- -->xcatliu</div><article><p>一直以来，我都听到过各式各样的测试——单元测试、黑盒测试、压力测试等等，但是很难对所有的测试方式有一个总体的认知。</p>
+<p>在经过大量的谷歌之后，我终于把各种种类的测试弄清白了，下面针对每一种测试做一个简单的一句话介绍，更详细的介绍可以自行搜索。</p>
+<h2 id="%E6%8C%89%E6%B5%8B%E8%AF%95%E9%98%B6%E6%AE%B5%E5%88%86%E7%B1%BB">按测试阶段分类<a class="anchor" href="#%E6%8C%89%E6%B5%8B%E8%AF%95%E9%98%B6%E6%AE%B5%E5%88%86%E7%B1%BB">§</a></h2>
+<ul>
+<li>单元测试：针对单个函数、类进行测试</li>
+<li>集成测试：将各单元组合之后进行测试，用来验证各个组件之间能否互相配合，正常工作</li>
+<li>系统测试：针对整个系统进行全面的测试，涵盖功能和非功能（兼容性、性能等）方面
+<ul>
+<li>端到端测试：与系统测试类似，模仿完全真实的用户环境，如网络通信、数据库交互等，也会验证其他关联系统。通常会手动测试，很难自动化</li>
+</ul>
+</li>
+<li>验收测试：验证交付的产品是否符合预期的各项要求，测试内容通常是系统测试的子集
+<ul>
+<li>alpha 测试：验收测试的一种，由内部用户在测试环境进行测试</li>
+<li>beta 测试：验收测试的一种，由外部用户在正式环境下进行测试</li>
+</ul>
+</li>
+</ul>
+<h2 id="%E6%98%AF%E5%90%A6%E6%9F%A5%E7%9C%8B%E6%BA%90%E4%BB%A3%E7%A0%81">是否查看源代码<a class="anchor" href="#%E6%98%AF%E5%90%A6%E6%9F%A5%E7%9C%8B%E6%BA%90%E4%BB%A3%E7%A0%81">§</a></h2>
+<ul>
+<li>黑盒测试：不关心内部细节，只要输入和输出符合要求即可</li>
+<li>白盒测试：验证代码中的每条语句，每个分支都能正确运行
+<ul>
+<li>分支测试：白盒测试的一种，在单元测试期间进行，通过遍历每个分支进行彻底的测试</li>
+</ul>
+</li>
+<li>灰盒测试：既考虑产品设计要求，又考虑代码的实现细节</li>
+</ul>
+<h2 id="%E6%98%AF%E5%90%A6%E8%BF%90%E8%A1%8C%E7%A8%8B%E5%BA%8F">是否运行程序<a class="anchor" href="#%E6%98%AF%E5%90%A6%E8%BF%90%E8%A1%8C%E7%A8%8B%E5%BA%8F">§</a></h2>
+<ul>
+<li>静态测试：不运行程序，仅通过语法分析来检查程序的正确性。代表：ESLint</li>
+<li>动态测试：通过运行程序，检查运行结果与预期结果的差异</li>
+</ul>
+<h2 id="%E6%98%AF%E5%90%A6%E9%AA%8C%E8%AF%81%E4%BA%A7%E5%93%81%E5%8A%9F%E8%83%BD">是否验证产品功能<a class="anchor" href="#%E6%98%AF%E5%90%A6%E9%AA%8C%E8%AF%81%E4%BA%A7%E5%93%81%E5%8A%9F%E8%83%BD">§</a></h2>
+<ul>
+<li>功能测试：验证产品功能是否符合预期</li>
+<li>非功能测试：可用性、兼容性、性能、负载、压力、可伸缩性、安全性等
+<ul>
+<li>可用性测试：验证新用户是否可以轻松理解如何使用产品</li>
+<li>可访问性测试：残疾人能否正常使用产品</li>
+<li>兼容性测试：验证在不同版本的终端上是否能正确运行</li>
+<li>边界值测试：检查输入为边界值时程序能否正确运行</li>
+<li>负载测试：考察当前软硬件环境下系统所能承受的最大负荷</li>
+<li>压力测试：在一定的负载下系统长时间运行的稳定性</li>
+<li>性能测试：检查系统是否满足性能要求</li>
+<li>体积测试：当遇到大量数据时是否会影响系统性能</li>
+<li>安全测试：检查系统是否存在安全漏洞</li>
+</ul>
+</li>
+</ul>
+<h2 id="%E5%85%B6%E4%BB%96">其他<a class="anchor" href="#%E5%85%B6%E4%BB%96">§</a></h2>
+<ul>
+<li>猴子测试：无需理解程序，由随机的输入进行测试</li>
+<li>突变测试：修改一小段源代码，验证现有测试用例能否识别此缺陷</li>
+<li>恢复测试：验证系统能否从灾难（断电、断网等）中恢复</li>
+<li>冒烟测试：对一个新版本进行系统大规模的测试之前，先验证一下软件的基本功能是否实现，是否具备可测性</li>
+<li>回归测试：验证代码更改是否不会影响产品的现有功能</li>
+</ul>
+<p>还有很多种测试，由于比较偏门所以我没有列出来。</p>
+<p>我参考了大量<a href="https://www.softwaretestinghelp.com/types-of-software-testing/">这个网站</a>的内容，感兴趣的可以看看。</p></article></section><footer>Powered by <a href="https://github.com/xcatliu/pagic" target="_blank">Pagic</a></footer><script src="https://cdn.pagic.org/react@16.13.1/umd/react.production.min.js"></script><script src="https://cdn.pagic.org/react-dom@16.13.1/umd/react-dom.production.min.js"></script><script type="module" src="/index.js"></script></body></html>

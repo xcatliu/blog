@@ -1,0 +1,95 @@
+<!doctype html><html class="" data-reactroot=""><head>
+<meta data-react-helmet="true" charset="utf-8"/><meta data-react-helmet="true" http-equiv="x-ua-compatible" content="ie=edge"/><meta data-react-helmet="true" name="description" content="欢迎来到我的博客，这里搜集了我的技术文章和生活感悟，欢迎一起交流成长。"/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1"/>
+<title data-react-helmet="true">Hybrid App &amp; WebViewJavascriptBridge · 流浪小猫的博客</title>
+<link data-react-helmet="true" rel="stylesheet" href="/assets/index.css"/><link data-react-helmet="true" id="prismTheme" rel="stylesheet" href="/assets/prism.css"/>
+<script data-react-helmet="true" >
+    const shouldSetIsDark = document.cookie.includes('is_dark=1') ? true : document.cookie.includes('is_dark=0') ? false : window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (shouldSetIsDark) {
+      document.documentElement.classList.add('is_dark');
+      document.getElementById('prismTheme').href = "/assets/prism_tomorrow.css";
+    }
+  </script>
+</head><body><aside><h1><a href="/">流浪小猫的博客</a></h1><p class="description">欢迎来到我的博客，这里搜集了我的技术文章和生活感悟，欢迎一起交流成长。</p><ul class="social"><li class="flex_center"><a class="czs-github-logo" href="https://github.com/xcatliu" target="_blank" style="background-image:url(&quot;/assets/czs-github-logo.svg&quot;)"></a></li><li class="flex_center"><a class="czs-message-l" href="mailto:xcatliu@gmail.com" target="_blank" style="background-image:url(&quot;/assets/czs-message-l.svg&quot;)"></a></li><li class="flex_center"><a class="czs-twitter" href="https://twitter.com/xcatliu" target="_blank" style="background-image:url(&quot;/assets/czs-twitter.svg&quot;)"></a></li><li style="flex-grow:1"></li><li class="toggle_dark flex_center"><span class="czs-sun" style="background-image:url(&quot;/assets/czs-sun.svg&quot;)"></span><span class="czs-sun-l" style="background-image:url(&quot;/assets/czs-sun-l.svg&quot;)"></span><span class="czs-moon" style="background-image:url(&quot;/assets/czs-moon.svg&quot;)"></span><span class="czs-moon-l" style="background-image:url(&quot;/assets/czs-moon-l.svg&quot;)"></span></li></ul><nav><ul class="menu"><li><a class="flex_center" href="/"><span class="czs-home-l" style="background-image:url(&quot;/assets/czs-home-l.svg&quot;)"></span>首页</a></li><li><a class="flex_center" href="/categories/"><span class="czs-category-l" style="background-image:url(&quot;/assets/czs-category-l.svg&quot;)"></span>分类</a></li><li><a class="flex_center" href="/tags/"><span class="czs-tag-l" style="background-image:url(&quot;/assets/czs-tag-l.svg&quot;)"></span>标签</a></li><li><a class="flex_center" href="/about/"><span class="czs-about-l" style="background-image:url(&quot;/assets/czs-about-l.svg&quot;)"></span>关于</a></li><li><a class="flex_center" href="/archives/"><span class="czs-box-l" style="background-image:url(&quot;/assets/czs-box-l.svg&quot;)"></span>归档</a></li><li><a class="flex_center" href="/links/"><span class="czs-link-l" style="background-image:url(&quot;/assets/czs-link-l.svg&quot;)"></span>友情链接</a></li></ul></nav></aside><section class="main"><h1>Hybrid App &amp; WebViewJavascriptBridge</h1><div class="main_post_meta"><time dateTime="Mon Oct 27 2014 00:00:00 GMT+0000 (UTC)">2014-10-28</time> · <!-- -->xcatliu</div><article><blockquote>
+<p>Hybrid App（混合模式移动应用）是指介于 Web App 和 Native App 这两者之间的 App，兼具「Native App 良好用户交互体验的优势」和「Web App 跨平台开发的优势」。</p>
+</blockquote>
+<h2 id="%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86">实现原理<a class="anchor" href="#%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86">§</a></h2>
+<p>Hybrid App 的原理很简单——在原生应用中开启一个网页。可以是全屏都交给网页，或者是一部分（比如导航栏）由原生应用实现，另一部分是一个网页。</p>
+<h2 id="%E6%8A%80%E6%9C%AF%E7%BB%86%E8%8A%82">技术细节<a class="anchor" href="#%E6%8A%80%E6%9C%AF%E7%BB%86%E8%8A%82">§</a></h2>
+<h3 id="h5-%E9%A1%B5%E9%9D%A2%E7%9A%84%E5%AE%9E%E7%8E%B0">H5 页面的实现<a class="anchor" href="#h5-%E9%A1%B5%E9%9D%A2%E7%9A%84%E5%AE%9E%E7%8E%B0">§</a></h3>
+<p>作为前端，对这块应该已经很熟悉了，与传统的网页不同，H5 页面需要注意以下几点：</p>
+<ul>
+<li>适应手机屏幕
+<ul>
+<li>viewport</li>
+<li>0.5px border</li>
+<li>high resolution @2x @3x</li>
+</ul>
+</li>
+<li>控制页面大小
+<ul>
+<li>模块化加载</li>
+<li>资源缓存</li>
+<li>Loading 动画</li>
+</ul>
+</li>
+<li>兼容性
+<ul>
+<li>Android 和 iPhone 均为 Webkit 内核</li>
+<li>手机浏览器和应用中的 WebView 有区别（更多的是需要 Native 去处理）</li>
+<li>不同版本的 Android 有区别</li>
+</ul>
+</li>
+</ul>
+<p>以上问题可以带着关键字 Google 一下，一般均可以解决。</p>
+<p>处理了以上的问题之后，一个简单的 H5 页面就可以实现出来了，接下来就是 WebView 和 Native 之间的交互。</p>
+<h3 id="webview-%E5%92%8C-native-%E4%B9%8B%E9%97%B4%E7%9A%84%E4%BA%A4%E4%BA%92">WebView 和 Native 之间的交互<a class="anchor" href="#webview-%E5%92%8C-native-%E4%B9%8B%E9%97%B4%E7%9A%84%E4%BA%A4%E4%BA%92">§</a></h3>
+<p>与传统的网页不同，Hybrid 的优势在于 WebView 和 Native 之间可以交互。有如下几种成熟的解决方案：</p>
+<ul>
+<li>自定义 scheme</li>
+<li>WebViewJavaScriptBridge</li>
+</ul>
+<p>自定义 scheme 可以理解为，定义一种 xxx 协议，把网页中链接的地址设置为 xxx://do.something，当点击这个链接的时候，则会被 Native 截获，优点是简单，缺点是单向的。</p>
+<p>WebViewJavaScriptBridge 则是在 WebView 的全局环境（window）中注入一个 bridge 对象，js 中需要对它进行初始化，监听事件，这样就可以接收到 Native 中发出的事件。同时 Native 中也监听了事件，可以收到 WebView 中发出的事件。这样就实现了双向的通信。</p>
+<p><a href="https://github.com/marcuswestin/WebViewJavascriptBridge">WebViewJavaScriptBridge 的 iOS 实现</a></p>
+<p><a href="https://github.com/fangj/WebViewJavascriptBridge">WebViewJavaScriptBeige 的 Android 实现</a></p>
+<p>iOS 和 Android 端有各自的实现，不做介绍，只简单看看 JavaScript 端的实现：</p>
+<pre class="language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">connectWebViewJavascriptBridge</span><span class="token punctuation">(</span><span class="token parameter">callback</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span><span class="token dom variable">window</span><span class="token punctuation">.</span><span class="token property-access"><span class="token maybe-class-name">WebViewJavascriptBridge</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">callback</span><span class="token punctuation">(</span><span class="token maybe-class-name">WebViewJavascriptBridge</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span> <span class="token keyword control-flow">else</span> <span class="token punctuation">{</span>
+        <span class="token dom variable">document</span><span class="token punctuation">.</span><span class="token method function property-access">addEventListener</span><span class="token punctuation">(</span><span class="token string">'WebViewJavascriptBridgeReady'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token function">callback</span><span class="token punctuation">(</span><span class="token maybe-class-name">WebViewJavascriptBridge</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">connectWebViewJavascriptBridge</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">bridge</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token comment">/* Init your app here */</span>
+
+    bridge<span class="token punctuation">.</span><span class="token method function property-access">init</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">message<span class="token punctuation">,</span> responseCallback</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'Received message: '</span> <span class="token operator">+</span> message<span class="token punctuation">)</span>
+        <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>responseCallback<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token function">responseCallback</span><span class="token punctuation">(</span><span class="token string">"Right back atcha"</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    bridge<span class="token punctuation">.</span><span class="token method function property-access">send</span><span class="token punctuation">(</span><span class="token string">'Hello from the javascript'</span><span class="token punctuation">)</span>
+    bridge<span class="token punctuation">.</span><span class="token method function property-access">send</span><span class="token punctuation">(</span><span class="token string">'Please respond to this'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token function">responseCallback</span><span class="token punctuation">(</span><span class="token parameter">responseData</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">"Javascript got its response"</span><span class="token punctuation">,</span> responseData<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
+<p>代码很简单，自己看吧。</p>
+<h3 id="%E5%BB%BA%E8%AE%AE%E9%80%9A%E8%BF%87-bridge-%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%8A%9F%E8%83%BD">建议通过 bridge 实现的功能<a class="anchor" href="#%E5%BB%BA%E8%AE%AE%E9%80%9A%E8%BF%87-bridge-%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%8A%9F%E8%83%BD">§</a></h3>
+<ul>
+<li>地理位置</li>
+<li>摄像头</li>
+<li>选取文件</li>
+<li>等等</li>
+</ul>
+<h3 id="%E5%85%B6%E4%BB%96%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E9%97%AE%E9%A2%98">其他需要注意的问题<a class="anchor" href="#%E5%85%B6%E4%BB%96%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E9%97%AE%E9%A2%98">§</a></h3>
+<ul>
+<li>时效性</li>
+<li>权限验证</li>
+<li>Android 可能会为了释放内存，杀掉 WebView 进程，所以最好能够保存当前页面的状态</li>
+</ul></article></section><footer>Powered by <a href="https://github.com/xcatliu/pagic" target="_blank">Pagic</a></footer><script src="https://cdn.pagic.org/react@16.13.1/umd/react.production.min.js"></script><script src="https://cdn.pagic.org/react-dom@16.13.1/umd/react-dom.production.min.js"></script><script type="module" src="/index.js"></script></body></html>

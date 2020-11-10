@@ -1,0 +1,104 @@
+<!doctype html><html class="" data-reactroot=""><head>
+<meta data-react-helmet="true" charset="utf-8"/><meta data-react-helmet="true" http-equiv="x-ua-compatible" content="ie=edge"/><meta data-react-helmet="true" name="description" content="欢迎来到我的博客，这里搜集了我的技术文章和生活感悟，欢迎一起交流成长。"/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1"/>
+<title data-react-helmet="true">Grunt Getting Started · 流浪小猫的博客</title>
+<link data-react-helmet="true" rel="stylesheet" href="/assets/index.css"/><link data-react-helmet="true" id="prismTheme" rel="stylesheet" href="/assets/prism.css"/>
+<script data-react-helmet="true" >
+    const shouldSetIsDark = document.cookie.includes('is_dark=1') ? true : document.cookie.includes('is_dark=0') ? false : window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (shouldSetIsDark) {
+      document.documentElement.classList.add('is_dark');
+      document.getElementById('prismTheme').href = "/assets/prism_tomorrow.css";
+    }
+  </script>
+</head><body><aside><h1><a href="/">流浪小猫的博客</a></h1><p class="description">欢迎来到我的博客，这里搜集了我的技术文章和生活感悟，欢迎一起交流成长。</p><ul class="social"><li class="flex_center"><a class="czs-github-logo" href="https://github.com/xcatliu" target="_blank" style="background-image:url(&quot;/assets/czs-github-logo.svg&quot;)"></a></li><li class="flex_center"><a class="czs-message-l" href="mailto:xcatliu@gmail.com" target="_blank" style="background-image:url(&quot;/assets/czs-message-l.svg&quot;)"></a></li><li class="flex_center"><a class="czs-twitter" href="https://twitter.com/xcatliu" target="_blank" style="background-image:url(&quot;/assets/czs-twitter.svg&quot;)"></a></li><li style="flex-grow:1"></li><li class="toggle_dark flex_center"><span class="czs-sun" style="background-image:url(&quot;/assets/czs-sun.svg&quot;)"></span><span class="czs-sun-l" style="background-image:url(&quot;/assets/czs-sun-l.svg&quot;)"></span><span class="czs-moon" style="background-image:url(&quot;/assets/czs-moon.svg&quot;)"></span><span class="czs-moon-l" style="background-image:url(&quot;/assets/czs-moon-l.svg&quot;)"></span></li></ul><nav><ul class="menu"><li><a class="flex_center" href="/"><span class="czs-home-l" style="background-image:url(&quot;/assets/czs-home-l.svg&quot;)"></span>首页</a></li><li><a class="flex_center" href="/categories/"><span class="czs-category-l" style="background-image:url(&quot;/assets/czs-category-l.svg&quot;)"></span>分类</a></li><li><a class="flex_center" href="/tags/"><span class="czs-tag-l" style="background-image:url(&quot;/assets/czs-tag-l.svg&quot;)"></span>标签</a></li><li><a class="flex_center" href="/about/"><span class="czs-about-l" style="background-image:url(&quot;/assets/czs-about-l.svg&quot;)"></span>关于</a></li><li><a class="flex_center" href="/archives/"><span class="czs-box-l" style="background-image:url(&quot;/assets/czs-box-l.svg&quot;)"></span>归档</a></li><li><a class="flex_center" href="/links/"><span class="czs-link-l" style="background-image:url(&quot;/assets/czs-link-l.svg&quot;)"></span>友情链接</a></li></ul></nav></aside><section class="main"><h1>Grunt Getting Started</h1><div class="main_post_meta"><time dateTime="Fri Nov 08 2013 00:00:00 GMT+0000 (UTC)">2013-11-09</time> · <!-- -->xcatliu</div><article><h2 id="grunt-%E7%AE%80%E4%BB%8B">Grunt 简介<a class="anchor" href="#grunt-%E7%AE%80%E4%BB%8B">§</a></h2>
+<p>每个前端开发工程师都会遇到前端文件校验、打包、压缩的问题。使用 Grunt 之前，你可能也使用过 Shell 脚本或者 Ant 脚本，来实现校验合并压缩等任务。</p>
+<p>Grunt 是一个基于任务的 JavaScript 项目命令行构建工具，运行于 Node.js 平台。 Grunt 能够从模板快速创建项目，合并、压缩和校验 CSS&amp;JS 文件，运行单元测试以及启动静态服务器。</p>
+<h3 id="grunt-%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84">grunt 是如何工作的？<a class="anchor" href="#grunt-%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84">§</a></h3>
+<p>刚刚接触 grunt ，举个例子可能不太恰当，但应该可以让你先比较准确的认识它。</p>
+<p>就好像一个万能工厂（grunt），只负责执行任务（Task），不关心每个任务到底都干了什么。 这些任务比如：</p>
+<ul>
+<li>clean:删除临时文件</li>
+<li>uglify:压缩</li>
+<li>qunit:测试</li>
+<li>concat:合并</li>
+</ul>
+<p>任务流程可能是这样的：</p>
+<ul>
+<li>task:clean</li>
+<li>task:uglify</li>
+<li>task:qunit</li>
+<li>task:concat</li>
+</ul>
+<h3 id="why-use-a-task-runner">Why use a task runner?<a class="anchor" href="#why-use-a-task-runner">§</a></h3>
+<blockquote>
+<p>In one word: automation. The less work you have to do when performing repetitive tasks like minification, compilation, unit testing, linting, etc, the easier your job becomes. After you've configured it, a task runner can do most of that mundane work for you—and your team—with basically zero effort.</p>
+</blockquote>
+<h3 id="why-use-grunt">Why use Grunt?<a class="anchor" href="#why-use-grunt">§</a></h3>
+<blockquote>
+<p>The Grunt ecosystem is huge and it's growing every day. With literally hundreds of plugins to choose from, you can use Grunt to automate just about anything with a minimum of effort. If someone hasn't already built what you need, authoring and publishing your own Grunt plugin to npm is a breeze.</p>
+</blockquote>
+<h2 id="%E5%AE%89%E8%A3%85">安装<a class="anchor" href="#%E5%AE%89%E8%A3%85">§</a></h2>
+<p>安装 Grunt 之前得安装 nodejs 和 npm 。（以下步骤默认已经安装了 nodejs 和 npm ）</p>
+<h3 id="%E5%AE%89%E8%A3%85-grunt-cli">安装 grunt CLI<a class="anchor" href="#%E5%AE%89%E8%A3%85-grunt-cli">§</a></h3>
+<pre class="language-shell"><code class="language-shell"><span class="token function">npm</span> <span class="token function">install</span> -g grunt-cli
+</code></pre>
+<h3 id="%E5%9C%A8%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%BD%BF%E7%94%A8-grunt">在项目中使用 grunt<a class="anchor" href="#%E5%9C%A8%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%BD%BF%E7%94%A8-grunt">§</a></h3>
+<p>使用 grunt 之前，需要在项目根目录下创建文件 <code>package.json</code>，<code>package.json</code> 是用来存放 npm 的项目配置，与 grunt 关系最大的配置在 <code>devDependencies</code> 中。一个最基础的 <code>package.json</code> 如下：</p>
+<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"my-project-name"</span><span class="token punctuation">,</span>
+  <span class="token property">"version"</span><span class="token operator">:</span> <span class="token string">"0.1.0"</span><span class="token punctuation">,</span>
+  <span class="token property">"devDependencies"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"grunt"</span><span class="token operator">:</span> <span class="token string">"~0.4.1"</span><span class="token punctuation">,</span>
+    <span class="token property">"grunt-contrib-uglify"</span><span class="token operator">:</span> <span class="token string">"~0.2.2"</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="%E5%AE%89%E8%A3%85-grunt">安装 grunt<a class="anchor" href="#%E5%AE%89%E8%A3%85-grunt">§</a></h3>
+<p>进入项目所在目录，运行：</p>
+<pre class="language-shell"><code class="language-shell"><span class="token function">npm</span> <span class="token function">install</span>
+</code></pre>
+<p>npm 会根据 <code>package.json</code> 中的配置，将需要的 grunt 及其插件下载到你的项目目录中。</p>
+<p>当需要下载一个新的 grunt plugins 时，执行如下命令，会同步更新 <code>package.json</code> 中的 <code>devDependencies</code>。</p>
+<pre class="language-shell"><code class="language-shell"><span class="token function">npm</span> <span class="token function">install</span> grunt-cmd-concat --save-dev    <span class="token comment">#  --save-dev: Package will appear in your devDependencies.</span>
+</code></pre>
+<h3 id="%E7%AE%80%E5%8D%95%E4%BE%8B%E5%AD%90">简单例子<a class="anchor" href="#%E7%AE%80%E5%8D%95%E4%BE%8B%E5%AD%90">§</a></h3>
+<p>grunt 的任务都是在 <code>Gruntfile.js</code> 中定义的，<code>Gruntfile.js</code> 在项目根目录下，注意 <code>G</code> 得要大写，一个简单的 <code>Gruntfile.js</code> 如下：</p>
+<pre class="language-js"><code class="language-js">module<span class="token punctuation">.</span><span class="token method-variable function-variable method function property-access">exports</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">grunt</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>    <span class="token comment">//Gruntfile基本框架</span>
+
+  <span class="token comment">// Project configuration.</span>
+  grunt<span class="token punctuation">.</span><span class="token method function property-access">initConfig</span><span class="token punctuation">(</span><span class="token punctuation">{</span>    <span class="token comment">//大多数Grunt任务需要依赖传入initConfig中的对象</span>
+    pkg<span class="token operator">:</span> grunt<span class="token punctuation">.</span><span class="token property-access">file</span><span class="token punctuation">.</span><span class="token method function property-access">readJSON</span><span class="token punctuation">(</span><span class="token string">'package.json'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>    <span class="token comment">//以JSON格式读取package.json文件，后面用到了pkg.name</span>
+    uglify<span class="token operator">:</span> <span class="token punctuation">{</span>    <span class="token comment">//uglify任务</span>
+      options<span class="token operator">:</span> <span class="token punctuation">{</span>    <span class="token comment">//uglify任务的特殊的选项</span>
+        banner<span class="token operator">:</span> <span class="token string">'/*! &lt;%= pkg.name %> &lt;%= grunt.template.today("yyyy-mm-dd") %> */\n'</span>    <span class="token comment">//文件头部添加一行注释</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      build<span class="token operator">:</span> <span class="token punctuation">{</span>
+        src<span class="token operator">:</span> <span class="token string">'helloworld.js'</span><span class="token punctuation">,</span>    <span class="token comment">//源文件</span>
+        dest<span class="token operator">:</span> <span class="token string">'helloworld.min.js'</span>    <span class="token comment">//目标文件</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// Load the plugin that provides the "uglify" task.</span>
+  grunt<span class="token punctuation">.</span><span class="token method function property-access">loadNpmTasks</span><span class="token punctuation">(</span><span class="token string">'grunt-contrib-uglify'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// Default task(s).</span>
+  grunt<span class="token punctuation">.</span><span class="token method function property-access">registerTask</span><span class="token punctuation">(</span><span class="token string">'default'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'uglify'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+<p>这个 Gruntfile 定义了 uglify 任务，可以在命令行中运行：</p>
+<pre class="language-shell"><code class="language-shell">grunt    <span class="token comment">#默认执行default任务</span>
+</code></pre>
+<p>或者</p>
+<pre class="language-shell"><code class="language-shell">grunt uglify    <span class="token comment">#执行uglify任务，将helloworld.js文件压缩到helloworld.min.js文件</span>
+</code></pre>
+<p>可以看到，新生成的 <code>helloworld.min.js</code> 文件是被压缩过的。</p>
+<h2 id="links">Links<a class="anchor" href="#links">§</a></h2>
+<ul>
+<li><a href="http://gruntjs.com/getting-started">http://gruntjs.com/getting-started</a></li>
+<li><a href="http://lostjs.com/2012/12/08/grunt-the-best/">Grunt -- 最好的前端构建框架</a></li>
+<li><a href="http://docs.spmjs.org/contrib/simple-grunt">关于Grunt，从一个简单的配置开始！</a></li>
+<li><a href="http://gruntjs.com/">Grunt官网</a></li>
+<li><a href="http://wiki.sankuai.com/pages/viewpage.action?pageId=70704478">Node环境搭建及对应的包管理</a></li>
+<li><a href="http://www.gruntjs.org/article/getting_started.html">Grunt中文帮助</a></li>
+</ul></article></section><footer>Powered by <a href="https://github.com/xcatliu/pagic" target="_blank">Pagic</a></footer><script src="https://cdn.pagic.org/react@16.13.1/umd/react.production.min.js"></script><script src="https://cdn.pagic.org/react-dom@16.13.1/umd/react-dom.production.min.js"></script><script type="module" src="/index.js"></script></body></html>

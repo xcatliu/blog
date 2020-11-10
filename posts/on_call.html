@@ -1,0 +1,40 @@
+<!doctype html><html class="" data-reactroot=""><head>
+<meta data-react-helmet="true" charset="utf-8"/><meta data-react-helmet="true" http-equiv="x-ua-compatible" content="ie=edge"/><meta data-react-helmet="true" name="description" content="欢迎来到我的博客，这里搜集了我的技术文章和生活感悟，欢迎一起交流成长。"/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1"/>
+<title data-react-helmet="true">在微软 on call 的经历 · 流浪小猫的博客</title>
+<link data-react-helmet="true" rel="stylesheet" href="/assets/index.css"/><link data-react-helmet="true" id="prismTheme" rel="stylesheet" href="/assets/prism.css"/>
+<script data-react-helmet="true" >
+    const shouldSetIsDark = document.cookie.includes('is_dark=1') ? true : document.cookie.includes('is_dark=0') ? false : window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (shouldSetIsDark) {
+      document.documentElement.classList.add('is_dark');
+      document.getElementById('prismTheme').href = "/assets/prism_tomorrow.css";
+    }
+  </script>
+</head><body><aside><h1><a href="/">流浪小猫的博客</a></h1><p class="description">欢迎来到我的博客，这里搜集了我的技术文章和生活感悟，欢迎一起交流成长。</p><ul class="social"><li class="flex_center"><a class="czs-github-logo" href="https://github.com/xcatliu" target="_blank" style="background-image:url(&quot;/assets/czs-github-logo.svg&quot;)"></a></li><li class="flex_center"><a class="czs-message-l" href="mailto:xcatliu@gmail.com" target="_blank" style="background-image:url(&quot;/assets/czs-message-l.svg&quot;)"></a></li><li class="flex_center"><a class="czs-twitter" href="https://twitter.com/xcatliu" target="_blank" style="background-image:url(&quot;/assets/czs-twitter.svg&quot;)"></a></li><li style="flex-grow:1"></li><li class="toggle_dark flex_center"><span class="czs-sun" style="background-image:url(&quot;/assets/czs-sun.svg&quot;)"></span><span class="czs-sun-l" style="background-image:url(&quot;/assets/czs-sun-l.svg&quot;)"></span><span class="czs-moon" style="background-image:url(&quot;/assets/czs-moon.svg&quot;)"></span><span class="czs-moon-l" style="background-image:url(&quot;/assets/czs-moon-l.svg&quot;)"></span></li></ul><nav><ul class="menu"><li><a class="flex_center" href="/"><span class="czs-home-l" style="background-image:url(&quot;/assets/czs-home-l.svg&quot;)"></span>首页</a></li><li><a class="flex_center" href="/categories/"><span class="czs-category-l" style="background-image:url(&quot;/assets/czs-category-l.svg&quot;)"></span>分类</a></li><li><a class="flex_center" href="/tags/"><span class="czs-tag-l" style="background-image:url(&quot;/assets/czs-tag-l.svg&quot;)"></span>标签</a></li><li><a class="flex_center" href="/about/"><span class="czs-about-l" style="background-image:url(&quot;/assets/czs-about-l.svg&quot;)"></span>关于</a></li><li><a class="flex_center" href="/archives/"><span class="czs-box-l" style="background-image:url(&quot;/assets/czs-box-l.svg&quot;)"></span>归档</a></li><li><a class="flex_center" href="/links/"><span class="czs-link-l" style="background-image:url(&quot;/assets/czs-link-l.svg&quot;)"></span>友情链接</a></li></ul></nav></aside><section class="main"><h1>在微软 on call 的经历</h1><div class="main_post_meta"><time dateTime="Tue Nov 10 2020 13:57:51 GMT+0000 (UTC)">2020-11-11</time> · <!-- -->xcatliu</div><article><p>之前一直听说微软、亚马逊等企业需要 on call，但是不清楚具体要做什么。</p>
+<p>上周第一次在微软 on call，写一点感受。</p>
+<h2 id="on-call-%E6%98%AF%E4%BB%80%E4%B9%88">On call 是什么<a class="anchor" href="#on-call-%E6%98%AF%E4%BB%80%E4%B9%88">§</a></h2>
+<p>就是需要保持电话畅通，随时都可能接到电话说哪个服务挂了，哪个测试失败了等等。</p>
+<p>然后需要具体问题具体分析，直到问题缓解或者解决了为止。</p>
+<p>On call 中文一般称为值班。</p>
+<h2 id="%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81-on-call">为什么要 on call<a class="anchor" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81-on-call">§</a></h2>
+<p>为了保证一旦服务出现问题，能够第一时间解决，不至于照成严重的影响。</p>
+<h2 id="%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E9%9C%80%E8%A6%81-on-call">什么时候需要 on call<a class="anchor" href="#%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E9%9C%80%E8%A6%81-on-call">§</a></h2>
+<p>全球性的企业这时就体现出了它的优势了，不需要 24 小时 on call，而是根据时区，一般只会在工作时间内 on call。</p>
+<p>到了节假日则是每人一天轮流。</p>
+<h2 id="%E5%85%B7%E4%BD%93%E9%9C%80%E8%A6%81%E5%81%9A%E4%BB%80%E4%B9%88">具体需要做什么<a class="anchor" href="#%E5%85%B7%E4%BD%93%E9%9C%80%E8%A6%81%E5%81%9A%E4%BB%80%E4%B9%88">§</a></h2>
+<p>这里不能说太详细了，大概就是这样：</p>
+<ol>
+<li>保持电话畅通，随时接听电话</li>
+<li>接到电话后确认问题</li>
+<li>调查问题严重性，会不会影响线上产品，如果会影响，转 4，否则转 5</li>
+<li>尝试通过配置文件禁用相关功能，转 6</li>
+<li>持续调查</li>
+<li>确认问题是否减缓</li>
+<li>通知相关人，协助一起解决问题</li>
+<li>总结问题</li>
+</ol>
+<h2 id="%E6%AF%8F%E5%A4%A9%E4%BC%9A%E7%A2%B0%E5%88%B0%E5%87%A0%E4%B8%AA%E9%97%AE%E9%A2%98%E5%91%A2">每天会碰到几个问题呢<a class="anchor" href="#%E6%AF%8F%E5%A4%A9%E4%BC%9A%E7%A2%B0%E5%88%B0%E5%87%A0%E4%B8%AA%E9%97%AE%E9%A2%98%E5%91%A2">§</a></h2>
+<p>看人品，少则没有，多则整天都需要处理。</p>
+<h2 id="%E5%85%B6%E4%BB%96%E6%84%9F%E5%8F%97">其他感受<a class="anchor" href="#%E5%85%B6%E4%BB%96%E6%84%9F%E5%8F%97">§</a></h2>
+<p>值班的那几天可能是压力比较大，夜里没睡好觉。但事实上并没有很严重的问题出现。</p>
+<p>也许是又一次进去了黑暗森林的状态吧。</p>
+<p>另外，在美团也经历过 on call，不过只需要节假日值班（工作日每天都需要 24 小时在线，但是真正的问题并不多）。</p></article></section><footer>Powered by <a href="https://github.com/xcatliu/pagic" target="_blank">Pagic</a></footer><script src="https://cdn.pagic.org/react@16.13.1/umd/react.production.min.js"></script><script src="https://cdn.pagic.org/react-dom@16.13.1/umd/react-dom.production.min.js"></script><script type="module" src="/index.js"></script></body></html>

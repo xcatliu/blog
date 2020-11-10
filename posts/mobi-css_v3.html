@@ -1,0 +1,33 @@
+<!doctype html><html class="" data-reactroot=""><head>
+<meta data-react-helmet="true" charset="utf-8"/><meta data-react-helmet="true" http-equiv="x-ua-compatible" content="ie=edge"/><meta data-react-helmet="true" name="description" content="欢迎来到我的博客，这里搜集了我的技术文章和生活感悟，欢迎一起交流成长。"/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1"/>
+<title data-react-helmet="true">Mobi.css v3 发布了，一个轻量、可拓展、移动端优先的 CSS 框架 · 流浪小猫的博客</title>
+<link data-react-helmet="true" rel="stylesheet" href="/assets/index.css"/><link data-react-helmet="true" id="prismTheme" rel="stylesheet" href="/assets/prism.css"/>
+<script data-react-helmet="true" >
+    const shouldSetIsDark = document.cookie.includes('is_dark=1') ? true : document.cookie.includes('is_dark=0') ? false : window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (shouldSetIsDark) {
+      document.documentElement.classList.add('is_dark');
+      document.getElementById('prismTheme').href = "/assets/prism_tomorrow.css";
+    }
+  </script>
+</head><body><aside><h1><a href="/">流浪小猫的博客</a></h1><p class="description">欢迎来到我的博客，这里搜集了我的技术文章和生活感悟，欢迎一起交流成长。</p><ul class="social"><li class="flex_center"><a class="czs-github-logo" href="https://github.com/xcatliu" target="_blank" style="background-image:url(&quot;/assets/czs-github-logo.svg&quot;)"></a></li><li class="flex_center"><a class="czs-message-l" href="mailto:xcatliu@gmail.com" target="_blank" style="background-image:url(&quot;/assets/czs-message-l.svg&quot;)"></a></li><li class="flex_center"><a class="czs-twitter" href="https://twitter.com/xcatliu" target="_blank" style="background-image:url(&quot;/assets/czs-twitter.svg&quot;)"></a></li><li style="flex-grow:1"></li><li class="toggle_dark flex_center"><span class="czs-sun" style="background-image:url(&quot;/assets/czs-sun.svg&quot;)"></span><span class="czs-sun-l" style="background-image:url(&quot;/assets/czs-sun-l.svg&quot;)"></span><span class="czs-moon" style="background-image:url(&quot;/assets/czs-moon.svg&quot;)"></span><span class="czs-moon-l" style="background-image:url(&quot;/assets/czs-moon-l.svg&quot;)"></span></li></ul><nav><ul class="menu"><li><a class="flex_center" href="/"><span class="czs-home-l" style="background-image:url(&quot;/assets/czs-home-l.svg&quot;)"></span>首页</a></li><li><a class="flex_center" href="/categories/"><span class="czs-category-l" style="background-image:url(&quot;/assets/czs-category-l.svg&quot;)"></span>分类</a></li><li><a class="flex_center" href="/tags/"><span class="czs-tag-l" style="background-image:url(&quot;/assets/czs-tag-l.svg&quot;)"></span>标签</a></li><li><a class="flex_center" href="/about/"><span class="czs-about-l" style="background-image:url(&quot;/assets/czs-about-l.svg&quot;)"></span>关于</a></li><li><a class="flex_center" href="/archives/"><span class="czs-box-l" style="background-image:url(&quot;/assets/czs-box-l.svg&quot;)"></span>归档</a></li><li><a class="flex_center" href="/links/"><span class="czs-link-l" style="background-image:url(&quot;/assets/czs-link-l.svg&quot;)"></span>友情链接</a></li></ul></nav></aside><section class="main"><h1>Mobi.css v3 发布了，一个轻量、可拓展、移动端优先的 CSS 框架</h1><div class="main_post_meta"><time dateTime="Mon Sep 04 2017 00:00:00 GMT+0000 (UTC)">2017-09-05</time> · <!-- -->xcatliu</div><article><ul>
+<li>GitHub: <a href="https://github.com/mobi-css/mobi.css">https://github.com/mobi-css/mobi.css</a></li>
+<li>官网：<a href="http://getmobicss.com/">http://getmobicss.com/</a></li>
+</ul>
+<h2 id="%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D">简单介绍<a class="anchor" href="#%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D">§</a></h2>
+<ul>
+<li>轻量级：压缩 gzip 后只有 2.6 kb</li>
+<li>可拓展：可以引入 plugin 来拓展 Mobi.css ，并且每个 plugin 都可以独立于框架使用</li>
+<li>移动端优先：为移动端设计，在桌面端也表现良好</li>
+</ul>
+<p>前贴：<a href="/2016/08/29/mobi-css">「Mobi.css」轻量，灵活的移动端 css 框架</a></p>
+<h2 id="qa">Q&amp;A<a class="anchor" href="#qa">§</a></h2>
+<h3 id="mobicss-%E6%9C%89%E5%93%AA%E4%BA%9B%E5%85%B6%E4%BB%96%E6%A1%86%E6%9E%B6%E6%B2%A1%E6%9C%89%E7%9A%84%E7%89%B9%E6%80%A7%E5%91%A2">Mobi.css 有哪些其他框架没有的特性呢？<a class="anchor" href="#mobicss-%E6%9C%89%E5%93%AA%E4%BA%9B%E5%85%B6%E4%BB%96%E6%A1%86%E6%9E%B6%E6%B2%A1%E6%9C%89%E7%9A%84%E7%89%B9%E6%80%A7%E5%91%A2">§</a></h3>
+<ol>
+<li>flexbox 很好用 <a href="http://getmobicss.com/docs/flexbox.html">http://getmobicss.com/docs/flexbox.html</a></li>
+<li>每个 plugin 可以独立使用，即使你不想用 Mobi.css ，也可以只用其中一个 plugin</li>
+<li>认为只使用 margin-top 分隔块比较好，所以几乎所有 margin-bottom 都为 0</li>
+</ol>
+<h3 id="%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BB%8E-v1-%E7%9B%B4%E6%8E%A5%E8%B7%B3%E5%88%B0-v3-%E4%BA%86">为什么从 v1 直接跳到 v3 了？<a class="anchor" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BB%8E-v1-%E7%9B%B4%E6%8E%A5%E8%B7%B3%E5%88%B0-v3-%E4%BA%86">§</a></h3>
+<p>因为开发了 v2 一段时间之后，遇到一些问题，过了一段时间才找到解决方案，此时以及离 v2 beta 版相差有点远了，所以就直接跳到了 v3</p>
+<h3 id="%E6%9C%89-qq-%E7%BE%A4%E6%88%96%E5%BE%AE%E4%BF%A1%E7%BE%A4%E8%AE%A8%E8%AE%BA%E5%90%97">有 qq 群或微信群讨论吗？<a class="anchor" href="#%E6%9C%89-qq-%E7%BE%A4%E6%88%96%E5%BE%AE%E4%BF%A1%E7%BE%A4%E8%AE%A8%E8%AE%BA%E5%90%97">§</a></h3>
+<p>有，qq 群 378244667 微信请加我 xcatliu，注明姓名和来自 v2ex，我拉你进群</p></article></section><footer>Powered by <a href="https://github.com/xcatliu/pagic" target="_blank">Pagic</a></footer><script src="https://cdn.pagic.org/react@16.13.1/umd/react.production.min.js"></script><script src="https://cdn.pagic.org/react-dom@16.13.1/umd/react-dom.production.min.js"></script><script type="module" src="/index.js"></script></body></html>
