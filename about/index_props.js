@@ -6,7 +6,7 @@ export default {
     'outputPath': "about/index.html",
     'title': "关于",
     'content': React.createElement("article", { dangerouslySetInnerHTML: {
-            __html: '<h1>关于</h1>'
+            __html: '<h1>关于</h1>\n<p>你好！很高兴认识你！</p>\n<p>我的网名是流浪小猫，英文是 xcatliu，基本上在任何社交网站上看到这个 id 就是我啦！</p>\n<p>我毕业于武汉大学，前后就职于美团、微软、腾讯。</p>\n<p>我非常热爱开源项目，以下是我开发或维护的一些开源项目：</p>\n<ul>\n<li><a href="https://github.com/xcatliu/pagic">Pagic</a>：Deno + React 驱动的静态网站生成器，本博客也是用 Pagic 生成的哦！</li>\n<li><a href="https://github.com/AlloyTeam/eslint-config-alloy">eslint-config-alloy</a>：国内最广泛使用的 ESLint 配置，也是你配置个性化 ESLint 规则的最佳参考。</li>\n</ul>'
         } }),
     'head': null,
     'script': React.createElement(React.Fragment, null,
@@ -15,7 +15,7 @@ export default {
         React.createElement("script", { src: "/index.js", type: "module" })),
     'contentTitle': React.createElement("h1", { key: "0" }, "\u5173\u4E8E"),
     'contentBody': React.createElement("article", { dangerouslySetInnerHTML: {
-            __html: ''
+            __html: '<p>你好！很高兴认识你！</p>\n<p>我的网名是流浪小猫，英文是 xcatliu，基本上在任何社交网站上看到这个 id 就是我啦！</p>\n<p>我毕业于武汉大学，前后就职于美团、微软、腾讯。</p>\n<p>我非常热爱开源项目，以下是我开发或维护的一些开源项目：</p>\n<ul>\n<li><a href="https://github.com/xcatliu/pagic">Pagic</a>：Deno + React 驱动的静态网站生成器，本博客也是用 Pagic 生成的哦！</li>\n<li><a href="https://github.com/AlloyTeam/eslint-config-alloy">eslint-config-alloy</a>：国内最广泛使用的 ESLint 配置，也是你配置个性化 ESLint 规则的最佳参考。</li>\n</ul>'
         } }),
     'toc': null,
     'author': "xcatliu",
@@ -23,8 +23,8 @@ export default {
         "xcatliu"
     ],
     'date': "2020-11-07T02:33:59.000Z",
-    'updated': null,
-    'excerpt': "",
+    'updated': "2020-11-11T13:52:21.000Z",
+    'excerpt': "你好！很高兴认识你！ 我的网名是流浪小猫，英文是 xcatliu，基本上在任何社交网站上看到这个 id 就是我啦！ 我毕业于武汉大学，前后就职于美团、微软、腾讯。 我非常热爱开源项目，以下是我开发或维护的一些开源项目： - Pagi...",
     'cover': undefined,
     'blog': {
         "isPost": false,

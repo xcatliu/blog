@@ -40,7 +40,7 @@ export default {
     blog: {
         root: '/posts/',
         social: {
-            github: 'xcatliu',
+            github: 'xcatliu/blog',
             email: 'xcatliu@gmail.com',
             twitter: 'xcatliu',
         }
