@@ -18,8 +18,8 @@ export default {
                 "pagePath": "posts/important_announcement_regarding_yui.md",
                 "title": "关于 YUI 的重要公告",
                 "link": "posts/important_announcement_regarding_yui.html",
-                "date": "2020-11-10T13:57:51.000Z",
-                "updated": null,
+                "date": "2015-12-06T12:04:30.000Z",
+                "updated": "2020-11-08T17:05:30.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -39,7 +39,7 @@ export default {
                 "title": "Fetch API",
                 "link": "posts/fetch_api.html",
                 "date": "2015-11-08T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"

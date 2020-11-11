@@ -18,8 +18,8 @@ export default {
                 "pagePath": "posts/hexo-theme-mobi-css.md",
                 "title": "基于 Mobi.css 的官方 Hexo 主题",
                 "link": "posts/hexo-theme-mobi-css.html",
-                "date": "2020-11-10T13:57:51.000Z",
-                "updated": null,
+                "date": "2016-10-30T14:40:54.000Z",
+                "updated": "2020-11-10T13:57:51.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -37,8 +37,8 @@ export default {
                 "pagePath": "posts/two_hexo_plugins.md",
                 "title": "撸了两个 Hexo 的 Plugins",
                 "link": "posts/two_hexo_plugins.html",
-                "date": "2020-11-10T13:57:51.000Z",
-                "updated": null,
+                "date": "2016-07-01T11:10:46.000Z",
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -57,7 +57,7 @@ export default {
                 "title": "新姿势：在 GitHub 基于 Hexo 写 Wiki",
                 "link": "posts/hexo-theme-wiki-i18n.html",
                 "date": "2016-06-25T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"

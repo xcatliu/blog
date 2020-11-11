@@ -19,7 +19,7 @@ export default {
                 "title": "GeoJSON 和 TopoJSON",
                 "link": "posts/geojson_and_topojson.html",
                 "date": "2015-04-24T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"

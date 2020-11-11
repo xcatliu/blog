@@ -6,7 +6,7 @@ export default {
     'outputPath': "posts/setup_linux_workspace_in_windows_using_hyper-v.html",
     'title': "在 Windows 中配置 Linux 工作环境（使用 Hyper-V）",
     'content': React.createElement("article", { dangerouslySetInnerHTML: {
-            __html: '<h1>在 Windows 中配置 Linux 工作环境（使用 Hyper-V）</h1>\n<blockquote>\n<p><a href="http://blog.xcatliu.com/2016/04/21/setup-linux-workspace-in-windows/">上次使用 Vitural Box 安装了 Ubuntu</a>，结果一个月之后挂了，这次试试上次被推荐的 Hyper-V 吧。</p>\n</blockquote>\n<p>基于<a href="https://v2ex.com/t/274202">上次 v2ex 上的建议</a>，这次选择的方案是：Hyper-V + Ubuntu + PuTTY + Samba。</p>\n<h2 id="hyper-v">Hyper-V<a class="anchor" href="#hyper-v">§</a></h2>\n<p>Hyper-V 是微软的一款虚拟化产品。Windows Server 2008 或者 Windows 7 以上就可以使用了。</p>\n<p>如果你使用的是 Windows 7，按如下方式开启（中文请自行对应）：</p>\n<ol>\n<li>打开 Control Panel =&gt; Programs =&gt; Uninstall a program =&gt; Turn Windows features on or off</li>\n<li>勾选 Hyper-V =&gt; OK</li>\n<li>安装好之后，需要重启系统</li>\n</ol>\n<p>如果是 Windows 10，按如下方式开启：</p>\n<ol>\n<li>搜索 Turn Windows features on or off，打开对应的结果</li>\n<li>勾选 Hyper-V =&gt; OK</li>\n<li>安装好之后，需要重启系统</li>\n</ol>\n<p><img src="http://7xthy2.com1.z0.glb.clouddn.com/blog/2016-05-21-install-hyper-v.png" alt="Install Hyper-V"></p>\n<h2 id="ubuntu">Ubuntu<a class="anchor" href="#ubuntu">§</a></h2>\n<p>官网：<a href="http://www.ubuntu.com/server">http://www.ubuntu.com/server</a></p>\n<p>Linux 中，Ubuntu 使用最广泛，比较适合新手，遇到问题基本都能 Google 出来。既然是在虚拟机中安装 Linux，那么图形界面实在没有多少用途了。纯命令行也很适合学习。</p>\n<p>安装 LTS 版本的 Ubuntu，可以获得五年的支持。Ubuntu 16.04 LTS 已出，所以我选择的是 <code>ubuntu-16.04-server-amd64</code>。</p>\n<p>安装之前，需要在 Hyper-V 中配置一个 Vitural Switch，使 Ubuntu 可以共享 Windows 的网络。步骤如下：</p>\n<ol>\n<li>打开 Hyper-V Manager =&gt; Vitural Switch Manager</li>\n<li>选择 New virtual network switch =&gt; External =&gt; Create Virtual Switch =&gt; 默认配置 =&gt; OK</li>\n<li>安装 Ubuntu 的时候，选择刚刚新建的 Virutal Switch</li>\n</ol>\n<blockquote>\n<p>Tip: 安装过程中，请勾选 SSH Service、Samba Service，可以省去自己安装的麻烦。</p>\n</blockquote>\n<p>安装完成后，登录系统，输入 <code>ifconfig</code> 查询 IP，记录下来。</p>\n<h2 id="putty">PuTTY<a class="anchor" href="#putty">§</a></h2>\n<p>官网：<a href="http://www.putty.org/">http://www.putty.org/</a></p>\n<p>PuTTY 是 Windows 上用于 SSH 连接的工具，使用很方便，输入 IP 即可。</p>\n<blockquote>\n<p>Tip: 如果想要保存自定义的配置，登录之后，打开设置，配置好之后，点 Default Settings，然后点击 Save 即可。</p>\n</blockquote>\n<blockquote>\n<p>Tip: 推荐使用 <a href="https://tmux.github.io/">tmux</a> 保存当前会话。</p>\n</blockquote>\n<h2 id="samba">Samba<a class="anchor" href="#samba">§</a></h2>\n<p>官网：<a href="https://www.samba.org/">https://www.samba.org/</a></p>\n<p>Samba 是 Linux 上在局域网共享文件的服务。之前安装 Ubuntu 的时候，已经选择了安装 Samba Service，如果没有选择，则需要手动安装一下：</p>\n<pre class="language-shell"><code class="language-shell"><span class="token function">sudo</span> <span class="token function">apt-get</span> update\n<span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> samba\n</code></pre>\n<p>下一步需要配置共享文件夹，这里有篇<a href="https://help.ubuntu.com/community/How%20to%20Create%20a%20Network%20Share%20Via%20Samba%20Via%20CLI%20(Command-line%20interface/Linux%20Terminal)%20-%20Uncomplicated,%20Simple%20and%20Brief%20Way!">参考文章</a>，解释的非常详细。我这里做一个简单的介绍：</p>\n<h3 id="1-%E4%B8%BA-samba-%E9%85%8D%E7%BD%AE%E4%B8%80%E4%B8%AA%E7%94%A8%E6%88%B7">1. 为 Samba 配置一个用户<a class="anchor" href="#1-%E4%B8%BA-samba-%E9%85%8D%E7%BD%AE%E4%B8%80%E4%B8%AA%E7%94%A8%E6%88%B7">§</a></h3>\n<pre class="language-shell"><code class="language-shell"><span class="token function">sudo</span> smbpasswd -a <span class="token operator">&lt;</span>user_name<span class="token operator">></span>\n</code></pre>\n<blockquote>\n<p>Tip: Samba 的用户和 Linux 系统的用户是独立的。这里建议可以设置为同样的用户名。</p>\n</blockquote>\n<blockquote>\n<p>Tip: 这里设置的用户名密码用于在主系统（Windows）访问共享文件时的权限认证。</p>\n</blockquote>\n<h3 id="2-%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%85%B1%E4%BA%AB%E6%96%87%E4%BB%B6%E5%A4%B9">2. 创建一个共享文件夹<a class="anchor" href="#2-%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%85%B1%E4%BA%AB%E6%96%87%E4%BB%B6%E5%A4%B9">§</a></h3>\n<pre class="language-shell"><code class="language-shell"><span class="token function">mkdir</span> /home/<span class="token operator">&lt;</span>user_name<span class="token operator">></span>/<span class="token operator">&lt;</span>folder_name<span class="token operator">></span>\n</code></pre>\n<h3 id="3-%E5%B0%86-samba-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%A4%87%E4%BB%BD">3. 将 Samba 配置文件备份<a class="anchor" href="#3-%E5%B0%86-samba-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%A4%87%E4%BB%BD">§</a></h3>\n<pre class="language-shell"><code class="language-shell"><span class="token function">sudo</span> <span class="token function">cp</span> /etc/samba/smb.conf /etc/samba/smb.conf.bak\n</code></pre>\n<h3 id="4-%E4%BF%AE%E6%94%B9-samba-%E9%85%8D%E7%BD%AE">4. 修改 Samba 配置<a class="anchor" href="#4-%E4%BF%AE%E6%94%B9-samba-%E9%85%8D%E7%BD%AE">§</a></h3>\n<pre class="language-shell"><code class="language-shell"><span class="token function">sudo</span> <span class="token function">vi</span> /etc/samba/smb.conf\n</code></pre>\n<p>在末尾添加以下内容：</p>\n<pre class="language-shell"><code class="language-shell"><span class="token punctuation">[</span><span class="token operator">&lt;</span>folder_name<span class="token operator">></span><span class="token punctuation">]</span>\npath <span class="token operator">=</span> /home/<span class="token operator">&lt;</span>user_name<span class="token operator">></span>/<span class="token operator">&lt;</span>folder_name<span class="token operator">></span>\nvalid <span class="token function">users</span> <span class="token operator">=</span> <span class="token operator">&lt;</span>user_name<span class="token operator">></span>\n<span class="token builtin class-name">read</span> only <span class="token operator">=</span> no\n</code></pre>\n<blockquote>\n<p>Tip: 注意等号左右必须有一个空格</p>\n</blockquote>\n<h3 id="5-%E9%87%8D%E5%90%AF-samba-%E6%9C%8D%E5%8A%A1">5. 重启 Samba 服务<a class="anchor" href="#5-%E9%87%8D%E5%90%AF-samba-%E6%9C%8D%E5%8A%A1">§</a></h3>\n<pre class="language-shell"><code class="language-shell"><span class="token function">sudo</span> <span class="token function">service</span> smbd restart\n</code></pre>\n<h3 id="6-%E6%B5%8B%E8%AF%95-smbconf-%E9%85%8D%E7%BD%AE%E6%9C%89%E6%B2%A1%E6%9C%89%E9%94%99%E8%AF%AF">6. 测试 smb.conf 配置有没有错误<a class="anchor" href="#6-%E6%B5%8B%E8%AF%95-smbconf-%E9%85%8D%E7%BD%AE%E6%9C%89%E6%B2%A1%E6%9C%89%E9%94%99%E8%AF%AF">§</a></h3>\n<pre class="language-shell"><code class="language-shell">testparm\n</code></pre>\n<h2 id="%E5%9C%A8-windows-%E4%B8%AD%E8%AE%BF%E9%97%AE%E5%85%B1%E4%BA%AB%E6%96%87%E4%BB%B6%E5%A4%B9">在 Windows 中访问共享文件夹<a class="anchor" href="#%E5%9C%A8-windows-%E4%B8%AD%E8%AE%BF%E9%97%AE%E5%85%B1%E4%BA%AB%E6%96%87%E4%BB%B6%E5%A4%B9">§</a></h2>\n<ol>\n<li>打开资源管理器，在地址栏中输入 <code>\\&lt;linux_ip&gt;</code> 回车</li>\n<li>输入刚刚配置的用户名和密码</li>\n<li>将共享的文件夹收藏到 Quick access，或者添加快捷方式到桌面</li>\n</ol>\n<blockquote>\n<p>Tip: 可以把 ip 配置到 hosts 中，方便访问</p>\n</blockquote>\n<h2 id="%E4%BD%BF%E7%94%A8%E4%BD%93%E9%AA%8C">使用体验<a class="anchor" href="#%E4%BD%BF%E7%94%A8%E4%BD%93%E9%AA%8C">§</a></h2>\n<ul>\n<li>解决了 Vitural Box 软链接的问题</li>\n<li>某些 IDE 里面（比如 Atom）如果想要删除文件，只能 Move to trash，不能 Delete，这时会删除失败</li>\n</ul>\n<p>感谢 <a href="https://v2ex.com/member/odirus">@odirus</a> <a href="https://v2ex.com/member/egen">@egen</a> <a href="https://v2ex.com/member/Kymair">@Kymair</a> 提供的建议！</p>\n<h2 id="links">Links<a class="anchor" href="#links">§</a></h2>\n<ul>\n<li><a href="https://help.ubuntu.com/community/How%20to%20Create%20a%20Network%20Share%20Via%20Samba%20Via%20CLI%20(Command-line%20interface/Linux%20Terminal)%20-%20Uncomplicated,%20Simple%20and%20Brief%20Way!">Samba Configuration</a></li>\n</ul>'
+            __html: '<h1>在 Windows 中配置 Linux 工作环境（使用 Hyper-V）</h1>\n<blockquote>\n<p><a href="http://blog.xcatliu.com/2016/04/21/setup-linux-workspace-in-windows/">上次使用 Vitural Box 安装了 Ubuntu</a>，结果一个月之后挂了，这次试试上次被推荐的 Hyper-V 吧。</p>\n</blockquote>\n<p>基于<a href="https://v2ex.com/t/274202">上次 v2ex 上的建议</a>，这次选择的方案是：Hyper-V + Ubuntu + PuTTY + Samba。</p>\n<h2 id="hyper-v">Hyper-V<a class="anchor" href="#hyper-v">§</a></h2>\n<p>Hyper-V 是微软的一款虚拟化产品。Windows Server 2008 或者 Windows 7 以上就可以使用了。</p>\n<p>如果你使用的是 Windows 7，按如下方式开启（中文请自行对应）：</p>\n<ol>\n<li>打开 Control Panel =&gt; Programs =&gt; Uninstall a program =&gt; Turn Windows features on or off</li>\n<li>勾选 Hyper-V =&gt; OK</li>\n<li>安装好之后，需要重启系统</li>\n</ol>\n<p>如果是 Windows 10，按如下方式开启：</p>\n<ol>\n<li>搜索 Turn Windows features on or off，打开对应的结果</li>\n<li>勾选 Hyper-V =&gt; OK</li>\n<li>安装好之后，需要重启系统</li>\n</ol>\n<h2 id="ubuntu">Ubuntu<a class="anchor" href="#ubuntu">§</a></h2>\n<p>官网：<a href="http://www.ubuntu.com/server">http://www.ubuntu.com/server</a></p>\n<p>Linux 中，Ubuntu 使用最广泛，比较适合新手，遇到问题基本都能 Google 出来。既然是在虚拟机中安装 Linux，那么图形界面实在没有多少用途了。纯命令行也很适合学习。</p>\n<p>安装 LTS 版本的 Ubuntu，可以获得五年的支持。Ubuntu 16.04 LTS 已出，所以我选择的是 <code>ubuntu-16.04-server-amd64</code>。</p>\n<p>安装之前，需要在 Hyper-V 中配置一个 Vitural Switch，使 Ubuntu 可以共享 Windows 的网络。步骤如下：</p>\n<ol>\n<li>打开 Hyper-V Manager =&gt; Vitural Switch Manager</li>\n<li>选择 New virtual network switch =&gt; External =&gt; Create Virtual Switch =&gt; 默认配置 =&gt; OK</li>\n<li>安装 Ubuntu 的时候，选择刚刚新建的 Virutal Switch</li>\n</ol>\n<blockquote>\n<p>Tip: 安装过程中，请勾选 SSH Service、Samba Service，可以省去自己安装的麻烦。</p>\n</blockquote>\n<p>安装完成后，登录系统，输入 <code>ifconfig</code> 查询 IP，记录下来。</p>\n<h2 id="putty">PuTTY<a class="anchor" href="#putty">§</a></h2>\n<p>官网：<a href="http://www.putty.org/">http://www.putty.org/</a></p>\n<p>PuTTY 是 Windows 上用于 SSH 连接的工具，使用很方便，输入 IP 即可。</p>\n<blockquote>\n<p>Tip: 如果想要保存自定义的配置，登录之后，打开设置，配置好之后，点 Default Settings，然后点击 Save 即可。</p>\n</blockquote>\n<blockquote>\n<p>Tip: 推荐使用 <a href="https://tmux.github.io/">tmux</a> 保存当前会话。</p>\n</blockquote>\n<h2 id="samba">Samba<a class="anchor" href="#samba">§</a></h2>\n<p>官网：<a href="https://www.samba.org/">https://www.samba.org/</a></p>\n<p>Samba 是 Linux 上在局域网共享文件的服务。之前安装 Ubuntu 的时候，已经选择了安装 Samba Service，如果没有选择，则需要手动安装一下：</p>\n<pre class="language-shell"><code class="language-shell"><span class="token function">sudo</span> <span class="token function">apt-get</span> update\n<span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> samba\n</code></pre>\n<p>下一步需要配置共享文件夹，这里有篇<a href="https://help.ubuntu.com/community/How%20to%20Create%20a%20Network%20Share%20Via%20Samba%20Via%20CLI%20(Command-line%20interface/Linux%20Terminal)%20-%20Uncomplicated,%20Simple%20and%20Brief%20Way!">参考文章</a>，解释的非常详细。我这里做一个简单的介绍：</p>\n<h3 id="1-%E4%B8%BA-samba-%E9%85%8D%E7%BD%AE%E4%B8%80%E4%B8%AA%E7%94%A8%E6%88%B7">1. 为 Samba 配置一个用户<a class="anchor" href="#1-%E4%B8%BA-samba-%E9%85%8D%E7%BD%AE%E4%B8%80%E4%B8%AA%E7%94%A8%E6%88%B7">§</a></h3>\n<pre class="language-shell"><code class="language-shell"><span class="token function">sudo</span> smbpasswd -a <span class="token operator">&lt;</span>user_name<span class="token operator">></span>\n</code></pre>\n<blockquote>\n<p>Tip: Samba 的用户和 Linux 系统的用户是独立的。这里建议可以设置为同样的用户名。</p>\n</blockquote>\n<blockquote>\n<p>Tip: 这里设置的用户名密码用于在主系统（Windows）访问共享文件时的权限认证。</p>\n</blockquote>\n<h3 id="2-%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%85%B1%E4%BA%AB%E6%96%87%E4%BB%B6%E5%A4%B9">2. 创建一个共享文件夹<a class="anchor" href="#2-%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%85%B1%E4%BA%AB%E6%96%87%E4%BB%B6%E5%A4%B9">§</a></h3>\n<pre class="language-shell"><code class="language-shell"><span class="token function">mkdir</span> /home/<span class="token operator">&lt;</span>user_name<span class="token operator">></span>/<span class="token operator">&lt;</span>folder_name<span class="token operator">></span>\n</code></pre>\n<h3 id="3-%E5%B0%86-samba-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%A4%87%E4%BB%BD">3. 将 Samba 配置文件备份<a class="anchor" href="#3-%E5%B0%86-samba-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%A4%87%E4%BB%BD">§</a></h3>\n<pre class="language-shell"><code class="language-shell"><span class="token function">sudo</span> <span class="token function">cp</span> /etc/samba/smb.conf /etc/samba/smb.conf.bak\n</code></pre>\n<h3 id="4-%E4%BF%AE%E6%94%B9-samba-%E9%85%8D%E7%BD%AE">4. 修改 Samba 配置<a class="anchor" href="#4-%E4%BF%AE%E6%94%B9-samba-%E9%85%8D%E7%BD%AE">§</a></h3>\n<pre class="language-shell"><code class="language-shell"><span class="token function">sudo</span> <span class="token function">vi</span> /etc/samba/smb.conf\n</code></pre>\n<p>在末尾添加以下内容：</p>\n<pre class="language-shell"><code class="language-shell"><span class="token punctuation">[</span><span class="token operator">&lt;</span>folder_name<span class="token operator">></span><span class="token punctuation">]</span>\npath <span class="token operator">=</span> /home/<span class="token operator">&lt;</span>user_name<span class="token operator">></span>/<span class="token operator">&lt;</span>folder_name<span class="token operator">></span>\nvalid <span class="token function">users</span> <span class="token operator">=</span> <span class="token operator">&lt;</span>user_name<span class="token operator">></span>\n<span class="token builtin class-name">read</span> only <span class="token operator">=</span> no\n</code></pre>\n<blockquote>\n<p>Tip: 注意等号左右必须有一个空格</p>\n</blockquote>\n<h3 id="5-%E9%87%8D%E5%90%AF-samba-%E6%9C%8D%E5%8A%A1">5. 重启 Samba 服务<a class="anchor" href="#5-%E9%87%8D%E5%90%AF-samba-%E6%9C%8D%E5%8A%A1">§</a></h3>\n<pre class="language-shell"><code class="language-shell"><span class="token function">sudo</span> <span class="token function">service</span> smbd restart\n</code></pre>\n<h3 id="6-%E6%B5%8B%E8%AF%95-smbconf-%E9%85%8D%E7%BD%AE%E6%9C%89%E6%B2%A1%E6%9C%89%E9%94%99%E8%AF%AF">6. 测试 smb.conf 配置有没有错误<a class="anchor" href="#6-%E6%B5%8B%E8%AF%95-smbconf-%E9%85%8D%E7%BD%AE%E6%9C%89%E6%B2%A1%E6%9C%89%E9%94%99%E8%AF%AF">§</a></h3>\n<pre class="language-shell"><code class="language-shell">testparm\n</code></pre>\n<h2 id="%E5%9C%A8-windows-%E4%B8%AD%E8%AE%BF%E9%97%AE%E5%85%B1%E4%BA%AB%E6%96%87%E4%BB%B6%E5%A4%B9">在 Windows 中访问共享文件夹<a class="anchor" href="#%E5%9C%A8-windows-%E4%B8%AD%E8%AE%BF%E9%97%AE%E5%85%B1%E4%BA%AB%E6%96%87%E4%BB%B6%E5%A4%B9">§</a></h2>\n<ol>\n<li>打开资源管理器，在地址栏中输入 <code>\\&lt;linux_ip&gt;</code> 回车</li>\n<li>输入刚刚配置的用户名和密码</li>\n<li>将共享的文件夹收藏到 Quick access，或者添加快捷方式到桌面</li>\n</ol>\n<blockquote>\n<p>Tip: 可以把 ip 配置到 hosts 中，方便访问</p>\n</blockquote>\n<h2 id="%E4%BD%BF%E7%94%A8%E4%BD%93%E9%AA%8C">使用体验<a class="anchor" href="#%E4%BD%BF%E7%94%A8%E4%BD%93%E9%AA%8C">§</a></h2>\n<ul>\n<li>解决了 Vitural Box 软链接的问题</li>\n<li>某些 IDE 里面（比如 Atom）如果想要删除文件，只能 Move to trash，不能 Delete，这时会删除失败</li>\n</ul>\n<p>感谢 <a href="https://v2ex.com/member/odirus">@odirus</a> <a href="https://v2ex.com/member/egen">@egen</a> <a href="https://v2ex.com/member/Kymair">@Kymair</a> 提供的建议！</p>\n<h2 id="links">Links<a class="anchor" href="#links">§</a></h2>\n<ul>\n<li><a href="https://help.ubuntu.com/community/How%20to%20Create%20a%20Network%20Share%20Via%20Samba%20Via%20CLI%20(Command-line%20interface/Linux%20Terminal)%20-%20Uncomplicated,%20Simple%20and%20Brief%20Way!">Samba Configuration</a></li>\n</ul>'
         } }),
     'head': null,
     'script': React.createElement(React.Fragment, null,
@@ -15,7 +15,7 @@ export default {
         React.createElement("script", { src: "/index.js", type: "module" })),
     'contentTitle': React.createElement("h1", { key: "0" }, "\u5728 Windows \u4E2D\u914D\u7F6E Linux \u5DE5\u4F5C\u73AF\u5883\uFF08\u4F7F\u7528 Hyper-V\uFF09"),
     'contentBody': React.createElement("article", { dangerouslySetInnerHTML: {
-            __html: '<blockquote>\n<p><a href="http://blog.xcatliu.com/2016/04/21/setup-linux-workspace-in-windows/">上次使用 Vitural Box 安装了 Ubuntu</a>，结果一个月之后挂了，这次试试上次被推荐的 Hyper-V 吧。</p>\n</blockquote>\n<p>基于<a href="https://v2ex.com/t/274202">上次 v2ex 上的建议</a>，这次选择的方案是：Hyper-V + Ubuntu + PuTTY + Samba。</p>\n<h2 id="hyper-v">Hyper-V<a class="anchor" href="#hyper-v">§</a></h2>\n<p>Hyper-V 是微软的一款虚拟化产品。Windows Server 2008 或者 Windows 7 以上就可以使用了。</p>\n<p>如果你使用的是 Windows 7，按如下方式开启（中文请自行对应）：</p>\n<ol>\n<li>打开 Control Panel =&gt; Programs =&gt; Uninstall a program =&gt; Turn Windows features on or off</li>\n<li>勾选 Hyper-V =&gt; OK</li>\n<li>安装好之后，需要重启系统</li>\n</ol>\n<p>如果是 Windows 10，按如下方式开启：</p>\n<ol>\n<li>搜索 Turn Windows features on or off，打开对应的结果</li>\n<li>勾选 Hyper-V =&gt; OK</li>\n<li>安装好之后，需要重启系统</li>\n</ol>\n<p><img src="http://7xthy2.com1.z0.glb.clouddn.com/blog/2016-05-21-install-hyper-v.png" alt="Install Hyper-V"></p>\n<h2 id="ubuntu">Ubuntu<a class="anchor" href="#ubuntu">§</a></h2>\n<p>官网：<a href="http://www.ubuntu.com/server">http://www.ubuntu.com/server</a></p>\n<p>Linux 中，Ubuntu 使用最广泛，比较适合新手，遇到问题基本都能 Google 出来。既然是在虚拟机中安装 Linux，那么图形界面实在没有多少用途了。纯命令行也很适合学习。</p>\n<p>安装 LTS 版本的 Ubuntu，可以获得五年的支持。Ubuntu 16.04 LTS 已出，所以我选择的是 <code>ubuntu-16.04-server-amd64</code>。</p>\n<p>安装之前，需要在 Hyper-V 中配置一个 Vitural Switch，使 Ubuntu 可以共享 Windows 的网络。步骤如下：</p>\n<ol>\n<li>打开 Hyper-V Manager =&gt; Vitural Switch Manager</li>\n<li>选择 New virtual network switch =&gt; External =&gt; Create Virtual Switch =&gt; 默认配置 =&gt; OK</li>\n<li>安装 Ubuntu 的时候，选择刚刚新建的 Virutal Switch</li>\n</ol>\n<blockquote>\n<p>Tip: 安装过程中，请勾选 SSH Service、Samba Service，可以省去自己安装的麻烦。</p>\n</blockquote>\n<p>安装完成后，登录系统，输入 <code>ifconfig</code> 查询 IP，记录下来。</p>\n<h2 id="putty">PuTTY<a class="anchor" href="#putty">§</a></h2>\n<p>官网：<a href="http://www.putty.org/">http://www.putty.org/</a></p>\n<p>PuTTY 是 Windows 上用于 SSH 连接的工具，使用很方便，输入 IP 即可。</p>\n<blockquote>\n<p>Tip: 如果想要保存自定义的配置，登录之后，打开设置，配置好之后，点 Default Settings，然后点击 Save 即可。</p>\n</blockquote>\n<blockquote>\n<p>Tip: 推荐使用 <a href="https://tmux.github.io/">tmux</a> 保存当前会话。</p>\n</blockquote>\n<h2 id="samba">Samba<a class="anchor" href="#samba">§</a></h2>\n<p>官网：<a href="https://www.samba.org/">https://www.samba.org/</a></p>\n<p>Samba 是 Linux 上在局域网共享文件的服务。之前安装 Ubuntu 的时候，已经选择了安装 Samba Service，如果没有选择，则需要手动安装一下：</p>\n<pre class="language-shell"><code class="language-shell"><span class="token function">sudo</span> <span class="token function">apt-get</span> update\n<span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> samba\n</code></pre>\n<p>下一步需要配置共享文件夹，这里有篇<a href="https://help.ubuntu.com/community/How%20to%20Create%20a%20Network%20Share%20Via%20Samba%20Via%20CLI%20(Command-line%20interface/Linux%20Terminal)%20-%20Uncomplicated,%20Simple%20and%20Brief%20Way!">参考文章</a>，解释的非常详细。我这里做一个简单的介绍：</p>\n<h3 id="1-%E4%B8%BA-samba-%E9%85%8D%E7%BD%AE%E4%B8%80%E4%B8%AA%E7%94%A8%E6%88%B7">1. 为 Samba 配置一个用户<a class="anchor" href="#1-%E4%B8%BA-samba-%E9%85%8D%E7%BD%AE%E4%B8%80%E4%B8%AA%E7%94%A8%E6%88%B7">§</a></h3>\n<pre class="language-shell"><code class="language-shell"><span class="token function">sudo</span> smbpasswd -a <span class="token operator">&lt;</span>user_name<span class="token operator">></span>\n</code></pre>\n<blockquote>\n<p>Tip: Samba 的用户和 Linux 系统的用户是独立的。这里建议可以设置为同样的用户名。</p>\n</blockquote>\n<blockquote>\n<p>Tip: 这里设置的用户名密码用于在主系统（Windows）访问共享文件时的权限认证。</p>\n</blockquote>\n<h3 id="2-%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%85%B1%E4%BA%AB%E6%96%87%E4%BB%B6%E5%A4%B9">2. 创建一个共享文件夹<a class="anchor" href="#2-%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%85%B1%E4%BA%AB%E6%96%87%E4%BB%B6%E5%A4%B9">§</a></h3>\n<pre class="language-shell"><code class="language-shell"><span class="token function">mkdir</span> /home/<span class="token operator">&lt;</span>user_name<span class="token operator">></span>/<span class="token operator">&lt;</span>folder_name<span class="token operator">></span>\n</code></pre>\n<h3 id="3-%E5%B0%86-samba-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%A4%87%E4%BB%BD">3. 将 Samba 配置文件备份<a class="anchor" href="#3-%E5%B0%86-samba-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%A4%87%E4%BB%BD">§</a></h3>\n<pre class="language-shell"><code class="language-shell"><span class="token function">sudo</span> <span class="token function">cp</span> /etc/samba/smb.conf /etc/samba/smb.conf.bak\n</code></pre>\n<h3 id="4-%E4%BF%AE%E6%94%B9-samba-%E9%85%8D%E7%BD%AE">4. 修改 Samba 配置<a class="anchor" href="#4-%E4%BF%AE%E6%94%B9-samba-%E9%85%8D%E7%BD%AE">§</a></h3>\n<pre class="language-shell"><code class="language-shell"><span class="token function">sudo</span> <span class="token function">vi</span> /etc/samba/smb.conf\n</code></pre>\n<p>在末尾添加以下内容：</p>\n<pre class="language-shell"><code class="language-shell"><span class="token punctuation">[</span><span class="token operator">&lt;</span>folder_name<span class="token operator">></span><span class="token punctuation">]</span>\npath <span class="token operator">=</span> /home/<span class="token operator">&lt;</span>user_name<span class="token operator">></span>/<span class="token operator">&lt;</span>folder_name<span class="token operator">></span>\nvalid <span class="token function">users</span> <span class="token operator">=</span> <span class="token operator">&lt;</span>user_name<span class="token operator">></span>\n<span class="token builtin class-name">read</span> only <span class="token operator">=</span> no\n</code></pre>\n<blockquote>\n<p>Tip: 注意等号左右必须有一个空格</p>\n</blockquote>\n<h3 id="5-%E9%87%8D%E5%90%AF-samba-%E6%9C%8D%E5%8A%A1">5. 重启 Samba 服务<a class="anchor" href="#5-%E9%87%8D%E5%90%AF-samba-%E6%9C%8D%E5%8A%A1">§</a></h3>\n<pre class="language-shell"><code class="language-shell"><span class="token function">sudo</span> <span class="token function">service</span> smbd restart\n</code></pre>\n<h3 id="6-%E6%B5%8B%E8%AF%95-smbconf-%E9%85%8D%E7%BD%AE%E6%9C%89%E6%B2%A1%E6%9C%89%E9%94%99%E8%AF%AF">6. 测试 smb.conf 配置有没有错误<a class="anchor" href="#6-%E6%B5%8B%E8%AF%95-smbconf-%E9%85%8D%E7%BD%AE%E6%9C%89%E6%B2%A1%E6%9C%89%E9%94%99%E8%AF%AF">§</a></h3>\n<pre class="language-shell"><code class="language-shell">testparm\n</code></pre>\n<h2 id="%E5%9C%A8-windows-%E4%B8%AD%E8%AE%BF%E9%97%AE%E5%85%B1%E4%BA%AB%E6%96%87%E4%BB%B6%E5%A4%B9">在 Windows 中访问共享文件夹<a class="anchor" href="#%E5%9C%A8-windows-%E4%B8%AD%E8%AE%BF%E9%97%AE%E5%85%B1%E4%BA%AB%E6%96%87%E4%BB%B6%E5%A4%B9">§</a></h2>\n<ol>\n<li>打开资源管理器，在地址栏中输入 <code>\\&lt;linux_ip&gt;</code> 回车</li>\n<li>输入刚刚配置的用户名和密码</li>\n<li>将共享的文件夹收藏到 Quick access，或者添加快捷方式到桌面</li>\n</ol>\n<blockquote>\n<p>Tip: 可以把 ip 配置到 hosts 中，方便访问</p>\n</blockquote>\n<h2 id="%E4%BD%BF%E7%94%A8%E4%BD%93%E9%AA%8C">使用体验<a class="anchor" href="#%E4%BD%BF%E7%94%A8%E4%BD%93%E9%AA%8C">§</a></h2>\n<ul>\n<li>解决了 Vitural Box 软链接的问题</li>\n<li>某些 IDE 里面（比如 Atom）如果想要删除文件，只能 Move to trash，不能 Delete，这时会删除失败</li>\n</ul>\n<p>感谢 <a href="https://v2ex.com/member/odirus">@odirus</a> <a href="https://v2ex.com/member/egen">@egen</a> <a href="https://v2ex.com/member/Kymair">@Kymair</a> 提供的建议！</p>\n<h2 id="links">Links<a class="anchor" href="#links">§</a></h2>\n<ul>\n<li><a href="https://help.ubuntu.com/community/How%20to%20Create%20a%20Network%20Share%20Via%20Samba%20Via%20CLI%20(Command-line%20interface/Linux%20Terminal)%20-%20Uncomplicated,%20Simple%20and%20Brief%20Way!">Samba Configuration</a></li>\n</ul>'
+            __html: '<blockquote>\n<p><a href="http://blog.xcatliu.com/2016/04/21/setup-linux-workspace-in-windows/">上次使用 Vitural Box 安装了 Ubuntu</a>，结果一个月之后挂了，这次试试上次被推荐的 Hyper-V 吧。</p>\n</blockquote>\n<p>基于<a href="https://v2ex.com/t/274202">上次 v2ex 上的建议</a>，这次选择的方案是：Hyper-V + Ubuntu + PuTTY + Samba。</p>\n<h2 id="hyper-v">Hyper-V<a class="anchor" href="#hyper-v">§</a></h2>\n<p>Hyper-V 是微软的一款虚拟化产品。Windows Server 2008 或者 Windows 7 以上就可以使用了。</p>\n<p>如果你使用的是 Windows 7，按如下方式开启（中文请自行对应）：</p>\n<ol>\n<li>打开 Control Panel =&gt; Programs =&gt; Uninstall a program =&gt; Turn Windows features on or off</li>\n<li>勾选 Hyper-V =&gt; OK</li>\n<li>安装好之后，需要重启系统</li>\n</ol>\n<p>如果是 Windows 10，按如下方式开启：</p>\n<ol>\n<li>搜索 Turn Windows features on or off，打开对应的结果</li>\n<li>勾选 Hyper-V =&gt; OK</li>\n<li>安装好之后，需要重启系统</li>\n</ol>\n<h2 id="ubuntu">Ubuntu<a class="anchor" href="#ubuntu">§</a></h2>\n<p>官网：<a href="http://www.ubuntu.com/server">http://www.ubuntu.com/server</a></p>\n<p>Linux 中，Ubuntu 使用最广泛，比较适合新手，遇到问题基本都能 Google 出来。既然是在虚拟机中安装 Linux，那么图形界面实在没有多少用途了。纯命令行也很适合学习。</p>\n<p>安装 LTS 版本的 Ubuntu，可以获得五年的支持。Ubuntu 16.04 LTS 已出，所以我选择的是 <code>ubuntu-16.04-server-amd64</code>。</p>\n<p>安装之前，需要在 Hyper-V 中配置一个 Vitural Switch，使 Ubuntu 可以共享 Windows 的网络。步骤如下：</p>\n<ol>\n<li>打开 Hyper-V Manager =&gt; Vitural Switch Manager</li>\n<li>选择 New virtual network switch =&gt; External =&gt; Create Virtual Switch =&gt; 默认配置 =&gt; OK</li>\n<li>安装 Ubuntu 的时候，选择刚刚新建的 Virutal Switch</li>\n</ol>\n<blockquote>\n<p>Tip: 安装过程中，请勾选 SSH Service、Samba Service，可以省去自己安装的麻烦。</p>\n</blockquote>\n<p>安装完成后，登录系统，输入 <code>ifconfig</code> 查询 IP，记录下来。</p>\n<h2 id="putty">PuTTY<a class="anchor" href="#putty">§</a></h2>\n<p>官网：<a href="http://www.putty.org/">http://www.putty.org/</a></p>\n<p>PuTTY 是 Windows 上用于 SSH 连接的工具，使用很方便，输入 IP 即可。</p>\n<blockquote>\n<p>Tip: 如果想要保存自定义的配置，登录之后，打开设置，配置好之后，点 Default Settings，然后点击 Save 即可。</p>\n</blockquote>\n<blockquote>\n<p>Tip: 推荐使用 <a href="https://tmux.github.io/">tmux</a> 保存当前会话。</p>\n</blockquote>\n<h2 id="samba">Samba<a class="anchor" href="#samba">§</a></h2>\n<p>官网：<a href="https://www.samba.org/">https://www.samba.org/</a></p>\n<p>Samba 是 Linux 上在局域网共享文件的服务。之前安装 Ubuntu 的时候，已经选择了安装 Samba Service，如果没有选择，则需要手动安装一下：</p>\n<pre class="language-shell"><code class="language-shell"><span class="token function">sudo</span> <span class="token function">apt-get</span> update\n<span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> samba\n</code></pre>\n<p>下一步需要配置共享文件夹，这里有篇<a href="https://help.ubuntu.com/community/How%20to%20Create%20a%20Network%20Share%20Via%20Samba%20Via%20CLI%20(Command-line%20interface/Linux%20Terminal)%20-%20Uncomplicated,%20Simple%20and%20Brief%20Way!">参考文章</a>，解释的非常详细。我这里做一个简单的介绍：</p>\n<h3 id="1-%E4%B8%BA-samba-%E9%85%8D%E7%BD%AE%E4%B8%80%E4%B8%AA%E7%94%A8%E6%88%B7">1. 为 Samba 配置一个用户<a class="anchor" href="#1-%E4%B8%BA-samba-%E9%85%8D%E7%BD%AE%E4%B8%80%E4%B8%AA%E7%94%A8%E6%88%B7">§</a></h3>\n<pre class="language-shell"><code class="language-shell"><span class="token function">sudo</span> smbpasswd -a <span class="token operator">&lt;</span>user_name<span class="token operator">></span>\n</code></pre>\n<blockquote>\n<p>Tip: Samba 的用户和 Linux 系统的用户是独立的。这里建议可以设置为同样的用户名。</p>\n</blockquote>\n<blockquote>\n<p>Tip: 这里设置的用户名密码用于在主系统（Windows）访问共享文件时的权限认证。</p>\n</blockquote>\n<h3 id="2-%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%85%B1%E4%BA%AB%E6%96%87%E4%BB%B6%E5%A4%B9">2. 创建一个共享文件夹<a class="anchor" href="#2-%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%85%B1%E4%BA%AB%E6%96%87%E4%BB%B6%E5%A4%B9">§</a></h3>\n<pre class="language-shell"><code class="language-shell"><span class="token function">mkdir</span> /home/<span class="token operator">&lt;</span>user_name<span class="token operator">></span>/<span class="token operator">&lt;</span>folder_name<span class="token operator">></span>\n</code></pre>\n<h3 id="3-%E5%B0%86-samba-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%A4%87%E4%BB%BD">3. 将 Samba 配置文件备份<a class="anchor" href="#3-%E5%B0%86-samba-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%A4%87%E4%BB%BD">§</a></h3>\n<pre class="language-shell"><code class="language-shell"><span class="token function">sudo</span> <span class="token function">cp</span> /etc/samba/smb.conf /etc/samba/smb.conf.bak\n</code></pre>\n<h3 id="4-%E4%BF%AE%E6%94%B9-samba-%E9%85%8D%E7%BD%AE">4. 修改 Samba 配置<a class="anchor" href="#4-%E4%BF%AE%E6%94%B9-samba-%E9%85%8D%E7%BD%AE">§</a></h3>\n<pre class="language-shell"><code class="language-shell"><span class="token function">sudo</span> <span class="token function">vi</span> /etc/samba/smb.conf\n</code></pre>\n<p>在末尾添加以下内容：</p>\n<pre class="language-shell"><code class="language-shell"><span class="token punctuation">[</span><span class="token operator">&lt;</span>folder_name<span class="token operator">></span><span class="token punctuation">]</span>\npath <span class="token operator">=</span> /home/<span class="token operator">&lt;</span>user_name<span class="token operator">></span>/<span class="token operator">&lt;</span>folder_name<span class="token operator">></span>\nvalid <span class="token function">users</span> <span class="token operator">=</span> <span class="token operator">&lt;</span>user_name<span class="token operator">></span>\n<span class="token builtin class-name">read</span> only <span class="token operator">=</span> no\n</code></pre>\n<blockquote>\n<p>Tip: 注意等号左右必须有一个空格</p>\n</blockquote>\n<h3 id="5-%E9%87%8D%E5%90%AF-samba-%E6%9C%8D%E5%8A%A1">5. 重启 Samba 服务<a class="anchor" href="#5-%E9%87%8D%E5%90%AF-samba-%E6%9C%8D%E5%8A%A1">§</a></h3>\n<pre class="language-shell"><code class="language-shell"><span class="token function">sudo</span> <span class="token function">service</span> smbd restart\n</code></pre>\n<h3 id="6-%E6%B5%8B%E8%AF%95-smbconf-%E9%85%8D%E7%BD%AE%E6%9C%89%E6%B2%A1%E6%9C%89%E9%94%99%E8%AF%AF">6. 测试 smb.conf 配置有没有错误<a class="anchor" href="#6-%E6%B5%8B%E8%AF%95-smbconf-%E9%85%8D%E7%BD%AE%E6%9C%89%E6%B2%A1%E6%9C%89%E9%94%99%E8%AF%AF">§</a></h3>\n<pre class="language-shell"><code class="language-shell">testparm\n</code></pre>\n<h2 id="%E5%9C%A8-windows-%E4%B8%AD%E8%AE%BF%E9%97%AE%E5%85%B1%E4%BA%AB%E6%96%87%E4%BB%B6%E5%A4%B9">在 Windows 中访问共享文件夹<a class="anchor" href="#%E5%9C%A8-windows-%E4%B8%AD%E8%AE%BF%E9%97%AE%E5%85%B1%E4%BA%AB%E6%96%87%E4%BB%B6%E5%A4%B9">§</a></h2>\n<ol>\n<li>打开资源管理器，在地址栏中输入 <code>\\&lt;linux_ip&gt;</code> 回车</li>\n<li>输入刚刚配置的用户名和密码</li>\n<li>将共享的文件夹收藏到 Quick access，或者添加快捷方式到桌面</li>\n</ol>\n<blockquote>\n<p>Tip: 可以把 ip 配置到 hosts 中，方便访问</p>\n</blockquote>\n<h2 id="%E4%BD%BF%E7%94%A8%E4%BD%93%E9%AA%8C">使用体验<a class="anchor" href="#%E4%BD%BF%E7%94%A8%E4%BD%93%E9%AA%8C">§</a></h2>\n<ul>\n<li>解决了 Vitural Box 软链接的问题</li>\n<li>某些 IDE 里面（比如 Atom）如果想要删除文件，只能 Move to trash，不能 Delete，这时会删除失败</li>\n</ul>\n<p>感谢 <a href="https://v2ex.com/member/odirus">@odirus</a> <a href="https://v2ex.com/member/egen">@egen</a> <a href="https://v2ex.com/member/Kymair">@Kymair</a> 提供的建议！</p>\n<h2 id="links">Links<a class="anchor" href="#links">§</a></h2>\n<ul>\n<li><a href="https://help.ubuntu.com/community/How%20to%20Create%20a%20Network%20Share%20Via%20Samba%20Via%20CLI%20(Command-line%20interface/Linux%20Terminal)%20-%20Uncomplicated,%20Simple%20and%20Brief%20Way!">Samba Configuration</a></li>\n</ul>'
         } }),
     'toc': React.createElement("aside", { dangerouslySetInnerHTML: {
             __html: '<nav class="toc"><ol><li><a href="#hyper-v">Hyper-V</a></li><li><a href="#ubuntu">Ubuntu</a></li><li><a href="#putty">PuTTY</a></li><li><a href="#samba">Samba</a><ol><li><a href="#1-%E4%B8%BA-samba-%E9%85%8D%E7%BD%AE%E4%B8%80%E4%B8%AA%E7%94%A8%E6%88%B7">1. 为 Samba 配置一个用户</a></li><li><a href="#2-%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%85%B1%E4%BA%AB%E6%96%87%E4%BB%B6%E5%A4%B9">2. 创建一个共享文件夹</a></li><li><a href="#3-%E5%B0%86-samba-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%A4%87%E4%BB%BD">3. 将 Samba 配置文件备份</a></li><li><a href="#4-%E4%BF%AE%E6%94%B9-samba-%E9%85%8D%E7%BD%AE">4. 修改 Samba 配置</a></li><li><a href="#5-%E9%87%8D%E5%90%AF-samba-%E6%9C%8D%E5%8A%A1">5. 重启 Samba 服务</a></li><li><a href="#6-%E6%B5%8B%E8%AF%95-smbconf-%E9%85%8D%E7%BD%AE%E6%9C%89%E6%B2%A1%E6%9C%89%E9%94%99%E8%AF%AF">6. 测试 smb.conf 配置有没有错误</a></li></ol></li><li><a href="#%E5%9C%A8-windows-%E4%B8%AD%E8%AE%BF%E9%97%AE%E5%85%B1%E4%BA%AB%E6%96%87%E4%BB%B6%E5%A4%B9">在 Windows 中访问共享文件夹</a></li><li><a href="#%E4%BD%BF%E7%94%A8%E4%BD%93%E9%AA%8C">使用体验</a></li><li><a href="#links">Links</a></li></ol></nav>'
@@ -24,10 +24,10 @@ export default {
     'contributors': [
         "xcatliu"
     ],
-    'date': "2020-11-10T13:57:51.000Z",
-    'updated': null,
+    'date': "2016-05-20T07:57:04.000Z",
+    'updated': "2020-11-11T13:06:02.000Z",
     'excerpt': "基于上次 v2ex 上的建议，这次选择的方案是：Hyper-V + Ubuntu + PuTTY + Samba。 Hyper-V Hyper-V 是微软的一款虚拟化产品。Windows Server 2008 或者 Windows 7 以上就可以使用了。 如果你使用的是 Windows 7，按如下方式开启...",
-    'cover': "http://7xthy2.com1.z0.glb.clouddn.com/blog/2016-05-21-install-hyper-v.png",
+    'cover': undefined,
     'categories': [
         "编程世界"
     ],
@@ -40,369 +40,11 @@ export default {
         "isPost": true,
         "posts": [
             {
-                "pagePath": "posts/isarray.md",
-                "title": "从 isArray 谈起",
-                "link": "posts/isarray.html",
-                "date": "2020-11-10T13:57:51.000Z",
-                "updated": null,
-                "author": "xcatliu",
-                "contributors": [
-                    "xcatliu"
-                ],
-                "categories": [
-                    "编程世界"
-                ],
-                "tags": [
-                    "Array",
-                    "JavaScript"
-                ],
-                "excerpt": "怎么判断数组是前端面试经常被问到的一个问题，数组也是最难以准确判断的类型之一。今天咱们就来谈谈如何判断数组。 typeof typeof 是 JavaScript 中判断类型的运算符，语法如下1： typeof operand 可是 typeof 返回的结果不尽..."
-            },
-            {
-                "pagePath": "posts/my_first_book.md",
-                "title": "我写的第一本书《TypeScript 入门教程》",
-                "link": "posts/my_first_book.html",
-                "date": "2020-11-10T13:57:51.000Z",
-                "updated": null,
-                "author": "xcatliu",
-                "contributors": [
-                    "xcatliu"
-                ],
-                "categories": [
-                    "编程世界"
-                ],
-                "tags": [
-                    "TypeScript",
-                    "Tutorial"
-                ],
-                "excerpt": "持续了大半年的学习和写作，在今天终于告一段落了。 写书之旅 最初有写书的想法，是刚加入微软的时候。 由于工作中需要重度使用 TypeScript，所以我花了几天的时间研读了好几遍官方手册和中文翻译版。 对于一个把 OOP 早就还给..."
-            },
-            {
-                "pagePath": "posts/about_me.md",
-                "title": "三分钟创建一个简单精致的 About Me 页面",
-                "link": "posts/about_me.html",
-                "date": "2020-11-10T13:57:51.000Z",
-                "updated": null,
-                "author": "xcatliu",
-                "contributors": [
-                    "xcatliu"
-                ],
-                "categories": [
-                    "编程世界"
-                ],
-                "tags": [
-                    "GitHub"
-                ],
-                "excerpt": "一个「About Me」页面，能够使别人快速的对你有一个大致的了解。 使用 GitHub 提供的 Pages 服务，可以将静态的网页托管在 GitHub 上。而 GitHub Pages 默认的 Jekyll 使得静态网页得以很方便的配置化。 我的 About Me 页面精雕..."
-            },
-            {
-                "pagePath": "posts/on_call.md",
-                "title": "在微软 on call 的经历",
-                "link": "posts/on_call.html",
-                "date": "2020-11-10T13:57:51.000Z",
-                "updated": null,
-                "author": "xcatliu",
-                "contributors": [
-                    "xcatliu"
-                ],
-                "categories": [
-                    "编程世界"
-                ],
-                "tags": [
-                    "On call",
-                    "微软",
-                    "总结思考"
-                ],
-                "excerpt": "之前一直听说微软、亚马逊等企业需要 on call，但是不清楚具体要做什么。 上周第一次在微软 on call，写一点感受。 On call 是什么 就是需要保持电话畅通，随时都可能接到电话说哪个服务挂了，哪个测试失败了等等。 然后需要具..."
-            },
-            {
-                "pagePath": "posts/setup_linux_workspace_in_windows_using_hyper-v.md",
-                "title": "在 Windows 中配置 Linux 工作环境（使用 Hyper-V）",
-                "link": "posts/setup_linux_workspace_in_windows_using_hyper-v.html",
-                "date": "2020-11-10T13:57:51.000Z",
-                "updated": null,
-                "author": "xcatliu",
-                "contributors": [
-                    "xcatliu"
-                ],
-                "categories": [
-                    "编程世界"
-                ],
-                "tags": [
-                    "Hyper-V",
-                    "Samba",
-                    "Windows"
-                ],
-                "excerpt": "基于上次 v2ex 上的建议，这次选择的方案是：Hyper-V + Ubuntu + PuTTY + Samba。 Hyper-V Hyper-V 是微软的一款虚拟化产品。Windows Server 2008 或者 Windows 7 以上就可以使用了。 如果你使用的是 Windows 7，按如下方式开启...",
-                "cover": "http://7xthy2.com1.z0.glb.clouddn.com/blog/2016-05-21-install-hyper-v.png"
-            },
-            {
-                "pagePath": "posts/important_announcement_regarding_yui.md",
-                "title": "关于 YUI 的重要公告",
-                "link": "posts/important_announcement_regarding_yui.html",
-                "date": "2020-11-10T13:57:51.000Z",
-                "updated": null,
-                "author": "xcatliu",
-                "contributors": [
-                    "xcatliu"
-                ],
-                "categories": [
-                    "编程世界"
-                ],
-                "tags": [
-                    "YUI",
-                    "JavaScript",
-                    "翻译"
-                ],
-                "excerpt": "译者按：YUI 伴随着我两年有余，我见证了它的伟大与落魄。它开创了模块加载，发扬了命名空间。它有强大的事件和控件机制，也有臃肿的条件加载和皮肤。它的精髓有如一座图书馆，让你不由得感慨设计之宏大，它的 features 有如一..."
-            },
-            {
-                "pagePath": "posts/bootstrap_4_preview.md",
-                "title": "Bootstrap 4 初探",
-                "link": "posts/bootstrap_4_preview.html",
-                "date": "2020-11-10T13:57:51.000Z",
-                "updated": null,
-                "author": "xcatliu",
-                "contributors": [
-                    "xcatliu"
-                ],
-                "categories": [
-                    "编程世界"
-                ],
-                "tags": [
-                    "Bootstrap",
-                    "CSS"
-                ],
-                "excerpt": "Bootstrap 作为 GitHub 上 Stars 最多的项目，可以说是万众瞩目，issues 和 pull requests 也居高不下，足以看出其后劲依然很足。 截止到本文发布，Bootstrap 4 已经推出 alpha 2 版本一个多月了，让我们一起玩转 Bootstrap 4 ..."
-            },
-            {
-                "pagePath": "posts/hexo-theme-mobi-css.md",
-                "title": "基于 Mobi.css 的官方 Hexo 主题",
-                "link": "posts/hexo-theme-mobi-css.html",
-                "date": "2020-11-10T13:57:51.000Z",
-                "updated": null,
-                "author": "xcatliu",
-                "contributors": [
-                    "xcatliu"
-                ],
-                "categories": [
-                    "编程世界"
-                ],
-                "tags": [
-                    "Hexo",
-                    "Mobi.css"
-                ],
-                "excerpt": "Demo: 我的博客和 Mobi.css 官方文档 经过多天的开发，基于 Mobi.css 的 Hexo 主题终于完成了。 特性介绍 - 支持移动端，Mobi.css 是一个轻量灵活的移动端 CSS 框架，这是它的官方 Hexo 主题 - 支持多语言，既可以写博客（我的..."
-            },
-            {
-                "pagePath": "posts/two_hexo_plugins.md",
-                "title": "撸了两个 Hexo 的 Plugins",
-                "link": "posts/two_hexo_plugins.html",
-                "date": "2020-11-10T13:57:51.000Z",
-                "updated": null,
-                "author": "xcatliu",
-                "contributors": [
-                    "xcatliu"
-                ],
-                "categories": [
-                    "编程世界"
-                ],
-                "tags": [
-                    "Hexo",
-                    "JavaScript"
-                ],
-                "excerpt": "都是从 git log 获取数据填充到 posts 中： hexo-filter-date-from-git - 获取 post 的第一个提交的 date 作为 front-matter 中的 date - 获取 post 的最后一个提交的 date 作为 front-matter 中的 updated 解决的问题 hexo 中..."
-            },
-            {
-                "pagePath": "posts/setup_linux_workspace_in_windows.md",
-                "title": "在 Windows 中配置 Linux 工作环境",
-                "link": "posts/setup_linux_workspace_in_windows.html",
-                "date": "2020-11-10T13:57:51.000Z",
-                "updated": null,
-                "author": "xcatliu",
-                "contributors": [
-                    "xcatliu"
-                ],
-                "categories": [
-                    "编程世界"
-                ],
-                "tags": [
-                    "VituralBox",
-                    "Linux",
-                    "Windows"
-                ],
-                "excerpt": "2016-05-20 更新：可以使用更加先进的 Hyper-V + Samba 方案。 要在 Windows 上使用 Linux，最方便最好用的就是装个虚拟机，再用 SSH 连上了。Linux 当然选择无图形界面的 Server 版，所以还需要能够方便的在 Windows 上访问到..."
-            },
-            {
-                "pagePath": "posts/flico.md",
-                "title": "晒键盘 - FILCO 87 双模忍者圣手二代 黑色青轴",
-                "link": "posts/flico.html",
-                "date": "2020-11-10T13:57:51.000Z",
-                "updated": null,
-                "author": "xcatliu",
-                "contributors": [
-                    "xcatliu"
-                ],
-                "categories": [
-                    "多彩生活"
-                ],
-                "tags": [
-                    "Flico",
-                    "键盘"
-                ],
-                "excerpt": "关注了很久，这款键盘终于又有货了！ 没抢到什么优惠券，狠下心还是入手了。 目前用起来还不错，比 2016 mbp 13 寸大一些。 ",
-                "cover": "../assets/flico/FLICO-01.jpeg"
-            },
-            {
-                "pagePath": "posts/full_color_screen.md",
-                "title": "随手撸了个测试屏幕坏点的网页",
-                "link": "posts/full_color_screen.html",
-                "date": "2020-11-10T13:57:51.000Z",
-                "updated": null,
-                "author": "xcatliu",
-                "contributors": [
-                    "xcatliu"
-                ],
-                "categories": [
-                    "编程世界"
-                ],
-                "excerpt": "新入手的 MacBook Pro 需要测试屏幕坏点，随手撸了一个，需要的人拿去吧~ GitHub: https://github.com/hack1day/full-color-screen Usage - Open http://full-color-screen.hack1day.com - Press SPACE or ENTER or click anyw..."
-            },
-            {
-                "pagePath": "posts/debug_android_browser_in_chrome.md",
-                "title": "在 Chrome 中调试 Android 浏览器",
-                "link": "posts/debug_android_browser_in_chrome.html",
-                "date": "2020-11-10T13:57:51.000Z",
-                "updated": null,
-                "author": "xcatliu",
-                "contributors": [
-                    "xcatliu"
-                ],
-                "categories": [
-                    "编程世界"
-                ],
-                "tags": [
-                    "Debug",
-                    "Android"
-                ],
-                "excerpt": "最近需要使用 Chrome Developer Tools 调试 Android 浏览器，但是官方指南并不是很好使，经过一番折腾，终于调试成功了，在此把经验分享给需要的朋友。 Chrome Developer Tools 是前端工程师必不可少的工具，它极大的提高了我们...",
-                "cover": "../assets/debug_android_browser_in_chrome/android_build_number.png"
-            },
-            {
-                "pagePath": "posts/how-to-get-changelist-in-git-push-hook.md",
-                "title": "How to Get Changelist in Git Push Hook",
-                "link": "posts/how-to-get-changelist-in-git-push-hook.html",
-                "date": "2020-11-10T13:57:51.000Z",
-                "updated": null,
-                "author": "xcatliu",
-                "contributors": [
-                    "xcatliu"
-                ],
-                "categories": [
-                    "编程世界"
-                ],
-                "tags": [
-                    "Git",
-                    "Git Hooks"
-                ],
-                "excerpt": "Git hooks is a useful tool to run scripts before or after events. We usually use it to check the format of commit message, lint our code, prevent pushing code to master branch, or run test scripts before pushin..."
-            },
-            {
-                "pagePath": "posts/if_the_human_race_die_out.md",
-                "title": "假如人类灭绝了，可以留给下一个文明有限的遗产，那么该留些什么呢？",
-                "link": "posts/if_the_human_race_die_out.html",
-                "date": "2020-11-10T13:57:51.000Z",
-                "updated": null,
-                "author": "xcatliu",
-                "contributors": [
-                    "xcatliu"
-                ],
-                "excerpt": "这种情况下，是否人文比科学更有价值？更能证明人类的存在？ 科学是客观存在的，在很长的时间跨度下，科技树总有一天会被再次点满，下个文明总有人会发明三角函数，微积分，肯定有人会发现牛顿力学（虽然下一个文明肯定不叫牛顿..."
-            },
-            {
-                "pagePath": "posts/test_coverage_for_github.md",
-                "title": "GitHub 上的测试覆盖率",
-                "link": "posts/test_coverage_for_github.html",
-                "date": "2020-11-10T13:57:51.000Z",
-                "updated": null,
-                "author": "xcatliu",
-                "contributors": [
-                    "xcatliu"
-                ],
-                "categories": [
-                    "编程世界"
-                ],
-                "tags": [
-                    "测试覆盖率",
-                    "测试",
-                    "GitHub"
-                ],
-                "excerpt": "开源项目的 README.md 中，一般都会在前面放上一些 badge，除了可以让读者快速的了解项目的一些信息以外，还为 README.md 添加了些许色彩。以 Pagic 为例： - 上图中的 build passing 表示 travis build 通过了，用绿色背景显示...",
-                "cover": "../assets/test_coverage_for_github/pagic.png"
-            },
-            {
-                "pagePath": "posts/happy-birthday-26.md",
-                "title": "写给 26 岁的自己",
-                "link": "posts/happy-birthday-26.html",
-                "date": "2020-11-10T13:57:51.000Z",
-                "updated": null,
-                "author": "xcatliu",
-                "contributors": [
-                    "xcatliu"
-                ],
-                "categories": [
-                    "多彩生活"
-                ],
-                "tags": [
-                    "生日快乐"
-                ],
-                "excerpt": "今天是我 26 岁的生日，Google 送给我了一个 doodle： 年终将至，工作变得繁忙起来。 总结还是留到跨年的时候再写吧。 最近比较浮躁，希望自己将来能够脚踏实地的进步，厚积而薄发。 加油！",
-                "cover": "../assets/happy-birthday-26/google-user-birthday.gif"
-            },
-            {
-                "pagePath": "posts/learn_typescript.md",
-                "title": "Learn TypeScript",
-                "link": "posts/learn_typescript.html",
-                "date": "2020-11-10T13:57:51.000Z",
-                "updated": null,
-                "author": "xcatliu",
-                "contributors": [
-                    "xcatliu"
-                ],
-                "categories": [
-                    "编程世界"
-                ],
-                "tags": [
-                    "TypeScript",
-                    "JavaScript"
-                ],
-                "excerpt": "2016-05-20 更新：打算写成一个系列，放到独立的 repo 中，此篇会拆分为系列的一部分，在此仅做存档。 它的第一个版本发布于 2012 年 10 月，经历了多次更新后，现在已成为前端社区中不可忽视的力量，不仅在 Microsoft 内部得到..."
-            },
-            {
-                "pagePath": "posts/the_way_to_become_a_senior_software_engineer.md",
-                "title": "高级工程师之路",
-                "link": "posts/the_way_to_become_a_senior_software_engineer.html",
-                "date": "2020-11-10T13:57:51.000Z",
-                "updated": null,
-                "author": "xcatliu",
-                "contributors": [
-                    "xcatliu"
-                ],
-                "categories": [
-                    "编程世界"
-                ],
-                "tags": [
-                    "高级工程师",
-                    "总结思考"
-                ],
-                "excerpt": "美团对工程师文化非常重视，我有幸参加了公司的第三期高工训练营，听到了各个大牛的分享，觉得不能无所作为，于是想对每一期有个总结思考，并对接下来的行动有个计划。 PPT 就不放出来了，欢迎大家加入美团一起成长。 做好技术..."
-            },
-            {
                 "pagePath": "posts/design_pagic_config_ts.md",
                 "title": "设计 pagic.config.ts",
                 "link": "posts/design_pagic_config_ts.html",
                 "date": "2020-07-12T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-08T17:05:30.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -420,7 +62,7 @@ export default {
                 "title": "测试的分类",
                 "link": "posts/types_of_tests.html",
                 "date": "2019-03-11T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -438,7 +80,7 @@ export default {
                 "title": "Puppeteer 指南",
                 "link": "posts/puppeteer_tutorial.html",
                 "date": "2018-09-18T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -454,11 +96,30 @@ export default {
                 "cover": "../assets/puppeteer_turorial/puppeteer-structure.png"
             },
             {
+                "pagePath": "posts/how-to-get-changelist-in-git-push-hook.md",
+                "title": "How to Get Changelist in Git Push Hook",
+                "link": "posts/how-to-get-changelist-in-git-push-hook.html",
+                "date": "2017-09-26T00:39:25.000Z",
+                "updated": "2020-11-07T02:33:59.000Z",
+                "author": "xcatliu",
+                "contributors": [
+                    "xcatliu"
+                ],
+                "categories": [
+                    "编程世界"
+                ],
+                "tags": [
+                    "Git",
+                    "Git Hooks"
+                ],
+                "excerpt": "Git hooks is a useful tool to run scripts before or after events. We usually use it to check the format of commit message, lint our code, prevent pushing code to master branch, or run test scripts before pushin..."
+            },
+            {
                 "pagePath": "posts/cqc.md",
                 "title": "运行一个脚本，看看你的项目的代码质量吧",
                 "link": "posts/cqc.html",
                 "date": "2017-09-20T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -477,7 +138,7 @@ export default {
                 "title": "Mobi.css v3 发布了，一个轻量、可拓展、移动端优先的 CSS 框架",
                 "link": "posts/mobi-css_v3.html",
                 "date": "2017-09-04T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -496,7 +157,7 @@ export default {
                 "title": "我花了两个月时间，定制出了心目中「完美」的 ESLint 规则，我用四个空格缩进",
                 "link": "posts/eslint-config-alloy.html",
                 "date": "2017-08-25T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-08T17:05:30.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -514,7 +175,7 @@ export default {
                 "title": "码字 md 发布 v2 啦",
                 "link": "posts/mazimd_v2.html",
                 "date": "2017-07-17T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -529,11 +190,104 @@ export default {
                 "excerpt": "码字 md 是一个在线 markdown 编辑器，自发布以来一直收到很多好评： 前帖：码字 md - 干净精致的 Markdown 编辑器 码字 md v2 更新内容 已完成 - [x] 支持永久保存 - [x] 支持衍生 TODOs - [ ] 支持包含过期时间的保存 - [ ] ..."
             },
             {
+                "pagePath": "posts/test_coverage_for_github.md",
+                "title": "GitHub 上的测试覆盖率",
+                "link": "posts/test_coverage_for_github.html",
+                "date": "2017-03-12T08:27:05.000Z",
+                "updated": "2020-11-08T17:05:30.000Z",
+                "author": "xcatliu",
+                "contributors": [
+                    "xcatliu"
+                ],
+                "categories": [
+                    "编程世界"
+                ],
+                "tags": [
+                    "测试覆盖率",
+                    "测试",
+                    "GitHub"
+                ],
+                "excerpt": "开源项目的 README.md 中，一般都会在前面放上一些 badge，除了可以让读者快速的了解项目的一些信息以外，还为 README.md 添加了些许色彩。以 Pagic 为例： - 上图中的 build passing 表示 travis build 通过了，用绿色背景显示...",
+                "cover": "../assets/test_coverage_for_github/pagic.png"
+            },
+            {
+                "pagePath": "posts/about_me.md",
+                "title": "三分钟创建一个简单精致的 About Me 页面",
+                "link": "posts/about_me.html",
+                "date": "2017-02-13T12:03:15.000Z",
+                "updated": "2020-11-07T02:33:59.000Z",
+                "author": "xcatliu",
+                "contributors": [
+                    "xcatliu"
+                ],
+                "categories": [
+                    "编程世界"
+                ],
+                "tags": [
+                    "GitHub"
+                ],
+                "excerpt": "一个「About Me」页面，能够使别人快速的对你有一个大致的了解。 使用 GitHub 提供的 Pages 服务，可以将静态的网页托管在 GitHub 上。而 GitHub Pages 默认的 Jekyll 使得静态网页得以很方便的配置化。 我的 About Me 页面精雕..."
+            },
+            {
+                "pagePath": "posts/flico.md",
+                "title": "晒键盘 - FILCO 87 双模忍者圣手二代 黑色青轴",
+                "link": "posts/flico.html",
+                "date": "2017-01-29T09:51:31.000Z",
+                "updated": "2020-11-07T02:33:59.000Z",
+                "author": "xcatliu",
+                "contributors": [
+                    "xcatliu"
+                ],
+                "categories": [
+                    "多彩生活"
+                ],
+                "tags": [
+                    "Flico",
+                    "键盘"
+                ],
+                "excerpt": "关注了很久，这款键盘终于又有货了！ 没抢到什么优惠券，狠下心还是入手了。 目前用起来还不错，比 2016 mbp 13 寸大一些。 ",
+                "cover": "../assets/flico/FLICO-01.jpeg"
+            },
+            {
+                "pagePath": "posts/full_color_screen.md",
+                "title": "随手撸了个测试屏幕坏点的网页",
+                "link": "posts/full_color_screen.html",
+                "date": "2017-01-18T16:22:34.000Z",
+                "updated": "2020-11-07T02:33:59.000Z",
+                "author": "xcatliu",
+                "contributors": [
+                    "xcatliu"
+                ],
+                "categories": [
+                    "编程世界"
+                ],
+                "excerpt": "新入手的 MacBook Pro 需要测试屏幕坏点，随手撸了一个，需要的人拿去吧~ GitHub: https://github.com/hack1day/full-color-screen Usage - Open http://full-color-screen.hack1day.com - Press SPACE or ENTER or click anyw..."
+            },
+            {
+                "pagePath": "posts/my_first_book.md",
+                "title": "我写的第一本书《TypeScript 入门教程》",
+                "link": "posts/my_first_book.html",
+                "date": "2017-01-17T09:55:08.000Z",
+                "updated": "2020-11-07T02:33:59.000Z",
+                "author": "xcatliu",
+                "contributors": [
+                    "xcatliu"
+                ],
+                "categories": [
+                    "编程世界"
+                ],
+                "tags": [
+                    "TypeScript",
+                    "Tutorial"
+                ],
+                "excerpt": "持续了大半年的学习和写作，在今天终于告一段落了。 写书之旅 最初有写书的想法，是刚加入微软的时候。 由于工作中需要重度使用 TypeScript，所以我花了几天的时间研读了好几遍官方手册和中文翻译版。 对于一个把 OOP 早就还给..."
+            },
+            {
                 "pagePath": "posts/2016_summery.md",
                 "title": "我的 2016 年总结",
                 "link": "posts/2016_summery.html",
                 "date": "2017-01-06T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -552,7 +306,7 @@ export default {
                 "title": "码字 md - 干净精致的 Markdown 编辑器",
                 "link": "posts/mazimd.html",
                 "date": "2017-01-01T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -567,11 +321,69 @@ export default {
                 "excerpt": "新写了一个 Online Markdown 编辑器，目前还不是很完善。 先分享出来，希望大家会喜欢。 码字 md 介绍 - 基于 SimpleMDE 和 Mobi.css，加入了中文适配 - 精致的预览页，可以直接拷贝到 word 或导出为 pdf （开发中） - 主题可单..."
             },
             {
+                "pagePath": "posts/happy-birthday-26.md",
+                "title": "写给 26 岁的自己",
+                "link": "posts/happy-birthday-26.html",
+                "date": "2016-12-14T12:42:22.000Z",
+                "updated": "2020-11-07T02:33:59.000Z",
+                "author": "xcatliu",
+                "contributors": [
+                    "xcatliu"
+                ],
+                "categories": [
+                    "多彩生活"
+                ],
+                "tags": [
+                    "生日快乐"
+                ],
+                "excerpt": "今天是我 26 岁的生日，Google 送给我了一个 doodle： 年终将至，工作变得繁忙起来。 总结还是留到跨年的时候再写吧。 最近比较浮躁，希望自己将来能够脚踏实地的进步，厚积而薄发。 加油！",
+                "cover": "../assets/happy-birthday-26/google-user-birthday.gif"
+            },
+            {
+                "pagePath": "posts/on_call.md",
+                "title": "在微软 on call 的经历",
+                "link": "posts/on_call.html",
+                "date": "2016-11-12T09:15:40.000Z",
+                "updated": "2020-11-10T13:57:51.000Z",
+                "author": "xcatliu",
+                "contributors": [
+                    "xcatliu"
+                ],
+                "categories": [
+                    "编程世界"
+                ],
+                "tags": [
+                    "On call",
+                    "微软",
+                    "总结思考"
+                ],
+                "excerpt": "之前一直听说微软、亚马逊等企业需要 on call，但是不清楚具体要做什么。 上周第一次在微软 on call，写一点感受。 On call 是什么 就是需要保持电话畅通，随时都可能接到电话说哪个服务挂了，哪个测试失败了等等。 然后需要具..."
+            },
+            {
+                "pagePath": "posts/hexo-theme-mobi-css.md",
+                "title": "基于 Mobi.css 的官方 Hexo 主题",
+                "link": "posts/hexo-theme-mobi-css.html",
+                "date": "2016-10-30T14:40:54.000Z",
+                "updated": "2020-11-10T13:57:51.000Z",
+                "author": "xcatliu",
+                "contributors": [
+                    "xcatliu"
+                ],
+                "categories": [
+                    "编程世界"
+                ],
+                "tags": [
+                    "Hexo",
+                    "Mobi.css"
+                ],
+                "excerpt": "Demo: 我的博客和 Mobi.css 官方文档 经过多天的开发，基于 Mobi.css 的 Hexo 主题终于完成了。 特性介绍 - 支持移动端，Mobi.css 是一个轻量灵活的移动端 CSS 框架，这是它的官方 Hexo 主题 - 支持多语言，既可以写博客（我的..."
+            },
+            {
                 "pagePath": "posts/half_year_in_microsoft.md",
                 "title": "我来微软这半年",
                 "link": "posts/half_year_in_microsoft.html",
                 "date": "2016-10-23T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -590,7 +402,7 @@ export default {
                 "title": "7 天 600 stars， Mobi.css 是如何诞生的",
                 "link": "posts/600_stars_in_7_days.html",
                 "date": "2016-09-05T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -609,7 +421,7 @@ export default {
                 "title": "「Mobi.css」轻量，灵活的移动端 css 框架",
                 "link": "posts/mobi-css.html",
                 "date": "2016-08-29T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -625,11 +437,30 @@ export default {
                 "cover": "https://i.v2ex.co/6v65Q0LY.png"
             },
             {
+                "pagePath": "posts/two_hexo_plugins.md",
+                "title": "撸了两个 Hexo 的 Plugins",
+                "link": "posts/two_hexo_plugins.html",
+                "date": "2016-07-01T11:10:46.000Z",
+                "updated": "2020-11-07T02:33:59.000Z",
+                "author": "xcatliu",
+                "contributors": [
+                    "xcatliu"
+                ],
+                "categories": [
+                    "编程世界"
+                ],
+                "tags": [
+                    "Hexo",
+                    "JavaScript"
+                ],
+                "excerpt": "都是从 git log 获取数据填充到 posts 中： hexo-filter-date-from-git - 获取 post 的第一个提交的 date 作为 front-matter 中的 date - 获取 post 的最后一个提交的 date 作为 front-matter 中的 updated 解决的问题 hexo 中..."
+            },
+            {
                 "pagePath": "posts/hexo-theme-wiki-i18n.md",
                 "title": "新姿势：在 GitHub 基于 Hexo 写 Wiki",
                 "link": "posts/hexo-theme-wiki-i18n.html",
                 "date": "2016-06-25T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -645,11 +476,160 @@ export default {
                 "cover": "../assets/hexo-theme-wiki-i18n/screenshot_1.png"
             },
             {
+                "pagePath": "posts/setup_linux_workspace_in_windows_using_hyper-v.md",
+                "title": "在 Windows 中配置 Linux 工作环境（使用 Hyper-V）",
+                "link": "posts/setup_linux_workspace_in_windows_using_hyper-v.html",
+                "date": "2016-05-20T07:57:04.000Z",
+                "updated": "2020-11-11T13:06:02.000Z",
+                "author": "xcatliu",
+                "contributors": [
+                    "xcatliu"
+                ],
+                "categories": [
+                    "编程世界"
+                ],
+                "tags": [
+                    "Hyper-V",
+                    "Samba",
+                    "Windows"
+                ],
+                "excerpt": "基于上次 v2ex 上的建议，这次选择的方案是：Hyper-V + Ubuntu + PuTTY + Samba。 Hyper-V Hyper-V 是微软的一款虚拟化产品。Windows Server 2008 或者 Windows 7 以上就可以使用了。 如果你使用的是 Windows 7，按如下方式开启..."
+            },
+            {
+                "pagePath": "posts/debug_android_browser_in_chrome.md",
+                "title": "在 Chrome 中调试 Android 浏览器",
+                "link": "posts/debug_android_browser_in_chrome.html",
+                "date": "2016-04-28T09:53:39.000Z",
+                "updated": "2020-11-07T02:33:59.000Z",
+                "author": "xcatliu",
+                "contributors": [
+                    "xcatliu"
+                ],
+                "categories": [
+                    "编程世界"
+                ],
+                "tags": [
+                    "Debug",
+                    "Android"
+                ],
+                "excerpt": "最近需要使用 Chrome Developer Tools 调试 Android 浏览器，但是官方指南并不是很好使，经过一番折腾，终于调试成功了，在此把经验分享给需要的朋友。 Chrome Developer Tools 是前端工程师必不可少的工具，它极大的提高了我们...",
+                "cover": "../assets/debug_android_browser_in_chrome/android_build_number.png"
+            },
+            {
+                "pagePath": "posts/setup_linux_workspace_in_windows.md",
+                "title": "在 Windows 中配置 Linux 工作环境",
+                "link": "posts/setup_linux_workspace_in_windows.html",
+                "date": "2016-04-25T03:37:38.000Z",
+                "updated": "2020-11-07T02:33:59.000Z",
+                "author": "xcatliu",
+                "contributors": [
+                    "xcatliu"
+                ],
+                "categories": [
+                    "编程世界"
+                ],
+                "tags": [
+                    "VituralBox",
+                    "Linux",
+                    "Windows"
+                ],
+                "excerpt": "2016-05-20 更新：可以使用更加先进的 Hyper-V + Samba 方案。 要在 Windows 上使用 Linux，最方便最好用的就是装个虚拟机，再用 SSH 连上了。Linux 当然选择无图形界面的 Server 版，所以还需要能够方便的在 Windows 上访问到..."
+            },
+            {
+                "pagePath": "posts/if_the_human_race_die_out.md",
+                "title": "假如人类灭绝了，可以留给下一个文明有限的遗产，那么该留些什么呢？",
+                "link": "posts/if_the_human_race_die_out.html",
+                "date": "2016-01-31T01:42:54.000Z",
+                "updated": "2020-11-07T02:33:59.000Z",
+                "author": "xcatliu",
+                "contributors": [
+                    "xcatliu"
+                ],
+                "excerpt": "这种情况下，是否人文比科学更有价值？更能证明人类的存在？ 科学是客观存在的，在很长的时间跨度下，科技树总有一天会被再次点满，下个文明总有人会发明三角函数，微积分，肯定有人会发现牛顿力学（虽然下一个文明肯定不叫牛顿..."
+            },
+            {
+                "pagePath": "posts/learn_typescript.md",
+                "title": "Learn TypeScript",
+                "link": "posts/learn_typescript.html",
+                "date": "2016-01-29T03:52:52.000Z",
+                "updated": "2020-11-07T02:33:59.000Z",
+                "author": "xcatliu",
+                "contributors": [
+                    "xcatliu"
+                ],
+                "categories": [
+                    "编程世界"
+                ],
+                "tags": [
+                    "TypeScript",
+                    "JavaScript"
+                ],
+                "excerpt": "2016-05-20 更新：打算写成一个系列，放到独立的 repo 中，此篇会拆分为系列的一部分，在此仅做存档。 它的第一个版本发布于 2012 年 10 月，经历了多次更新后，现在已成为前端社区中不可忽视的力量，不仅在 Microsoft 内部得到..."
+            },
+            {
+                "pagePath": "posts/bootstrap_4_preview.md",
+                "title": "Bootstrap 4 初探",
+                "link": "posts/bootstrap_4_preview.html",
+                "date": "2016-01-12T12:11:56.000Z",
+                "updated": "2020-11-07T02:33:59.000Z",
+                "author": "xcatliu",
+                "contributors": [
+                    "xcatliu"
+                ],
+                "categories": [
+                    "编程世界"
+                ],
+                "tags": [
+                    "Bootstrap",
+                    "CSS"
+                ],
+                "excerpt": "Bootstrap 作为 GitHub 上 Stars 最多的项目，可以说是万众瞩目，issues 和 pull requests 也居高不下，足以看出其后劲依然很足。 截止到本文发布，Bootstrap 4 已经推出 alpha 2 版本一个多月了，让我们一起玩转 Bootstrap 4 ..."
+            },
+            {
+                "pagePath": "posts/the_way_to_become_a_senior_software_engineer.md",
+                "title": "高级工程师之路",
+                "link": "posts/the_way_to_become_a_senior_software_engineer.html",
+                "date": "2015-12-25T13:37:55.000Z",
+                "updated": "2020-11-07T02:33:59.000Z",
+                "author": "xcatliu",
+                "contributors": [
+                    "xcatliu"
+                ],
+                "categories": [
+                    "编程世界"
+                ],
+                "tags": [
+                    "高级工程师",
+                    "总结思考"
+                ],
+                "excerpt": "美团对工程师文化非常重视，我有幸参加了公司的第三期高工训练营，听到了各个大牛的分享，觉得不能无所作为，于是想对每一期有个总结思考，并对接下来的行动有个计划。 PPT 就不放出来了，欢迎大家加入美团一起成长。 做好技术..."
+            },
+            {
+                "pagePath": "posts/important_announcement_regarding_yui.md",
+                "title": "关于 YUI 的重要公告",
+                "link": "posts/important_announcement_regarding_yui.html",
+                "date": "2015-12-06T12:04:30.000Z",
+                "updated": "2020-11-08T17:05:30.000Z",
+                "author": "xcatliu",
+                "contributors": [
+                    "xcatliu"
+                ],
+                "categories": [
+                    "编程世界"
+                ],
+                "tags": [
+                    "YUI",
+                    "JavaScript",
+                    "翻译"
+                ],
+                "excerpt": "译者按：YUI 伴随着我两年有余，我见证了它的伟大与落魄。它开创了模块加载，发扬了命名空间。它有强大的事件和控件机制，也有臃肿的条件加载和皮肤。它的精髓有如一座图书馆，让你不由得感慨设计之宏大，它的 features 有如一..."
+            },
+            {
                 "pagePath": "posts/javascript_fetch_api.md",
                 "title": "JavaScript Fetch API",
                 "link": "posts/javascript_fetch_api.html",
                 "date": "2015-11-10T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -669,7 +649,7 @@ export default {
                 "title": "Fetch API",
                 "link": "posts/fetch_api.html",
                 "date": "2015-11-08T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -685,11 +665,30 @@ export default {
                 "excerpt": ""
             },
             {
+                "pagePath": "posts/isarray.md",
+                "title": "从 isArray 谈起",
+                "link": "posts/isarray.html",
+                "date": "2015-11-03T10:16:17.000Z",
+                "updated": "2020-11-07T02:33:59.000Z",
+                "author": "xcatliu",
+                "contributors": [
+                    "xcatliu"
+                ],
+                "categories": [
+                    "编程世界"
+                ],
+                "tags": [
+                    "Array",
+                    "JavaScript"
+                ],
+                "excerpt": "怎么判断数组是前端面试经常被问到的一个问题，数组也是最难以准确判断的类型之一。今天咱们就来谈谈如何判断数组。 typeof typeof 是 JavaScript 中判断类型的运算符，语法如下1： typeof operand 可是 typeof 返回的结果不尽..."
+            },
+            {
                 "pagePath": "posts/seminar_in_wuhan.md",
                 "title": "武汉宣讲会",
                 "link": "posts/seminar_in_wuhan.html",
                 "date": "2015-09-28T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -707,7 +706,7 @@ export default {
                 "title": "撸了一个三行情诗表白网页，可朋友圈分享，但是卡爆了",
                 "link": "posts/three_lines_poems.html",
                 "date": "2015-08-20T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -726,7 +725,7 @@ export default {
                 "title": "React Native and V2HOT",
                 "link": "posts/react_native_and_v2hot.html",
                 "date": "2015-07-10T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -746,7 +745,7 @@ export default {
                 "title": "React 组件开发",
                 "link": "posts/developing_react_components.html",
                 "date": "2015-06-26T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -766,7 +765,7 @@ export default {
                 "title": "纪念一下 365 天的坚持",
                 "link": "posts/memorial_at_the_insistence_of_365_days.html",
                 "date": "2015-06-17T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -782,7 +781,7 @@ export default {
                 "title": "V2HOT 终于上线了，欢迎下载",
                 "link": "posts/v2hot_published.html",
                 "date": "2015-05-16T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -802,7 +801,7 @@ export default {
                 "title": "GeoJSON 和 TopoJSON",
                 "link": "posts/geojson_and_topojson.html",
                 "date": "2015-04-24T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -822,7 +821,7 @@ export default {
                 "title": "npm 语义化版本号",
                 "link": "posts/semantic_versioning_and_npm.html",
                 "date": "2015-04-14T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -842,7 +841,7 @@ export default {
                 "title": "展望 2015",
                 "link": "posts/hello_2015.html",
                 "date": "2015-01-01T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -861,7 +860,7 @@ export default {
                 "title": "基于 README 的文档管理",
                 "link": "posts/use_readme_to_manage_your_docs.html",
                 "date": "2014-12-09T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -880,7 +879,7 @@ export default {
                 "title": "Thinking in React",
                 "link": "posts/thinking_in_react.html",
                 "date": "2014-12-04T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -899,7 +898,7 @@ export default {
                 "title": "校招季",
                 "link": "posts/campus_recruitment.html",
                 "date": "2014-11-03T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -917,7 +916,7 @@ export default {
                 "title": "Hybrid App & WebViewJavascriptBridge",
                 "link": "posts/hybrid_app_and_webviewjavascriptbridge.html",
                 "date": "2014-10-27T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -937,7 +936,7 @@ export default {
                 "title": "设计模式浅析",
                 "link": "posts/design_patterns.html",
                 "date": "2014-10-24T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -956,7 +955,7 @@ export default {
                 "title": "抽象语法树在 JavaScript 中的应用",
                 "link": "posts/abstract_syntax_tree.html",
                 "date": "2014-10-08T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -976,7 +975,7 @@ export default {
                 "title": "Modular JS",
                 "link": "posts/modular_javascript.html",
                 "date": "2014-03-06T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -995,7 +994,7 @@ export default {
                 "title": "Grunt Custom Task 指南",
                 "link": "posts/grunt_custom_task_guide.html",
                 "date": "2013-12-04T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -1014,7 +1013,7 @@ export default {
                 "title": "Grunt Getting Started",
                 "link": "posts/grunt_getting_started.html",
                 "date": "2013-11-08T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -1033,7 +1032,7 @@ export default {
                 "title": "The Many Meanings of Open",
                 "link": "posts/the_many_meanings_of_open.html",
                 "date": "2013-11-08T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -1051,7 +1050,7 @@ export default {
                 "title": "Grunt",
                 "link": "posts/grunt.html",
                 "date": "2013-09-27T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -1071,7 +1070,7 @@ export default {
                 "title": "美团一个月",
                 "link": "posts/monthly_summery_in_meituan.html",
                 "date": "2013-01-04T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"

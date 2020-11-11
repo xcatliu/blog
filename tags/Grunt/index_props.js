@@ -19,7 +19,7 @@ export default {
                 "title": "Grunt Custom Task 指南",
                 "link": "posts/grunt_custom_task_guide.html",
                 "date": "2013-12-04T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -38,7 +38,7 @@ export default {
                 "title": "Grunt Getting Started",
                 "link": "posts/grunt_getting_started.html",
                 "date": "2013-11-08T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -57,7 +57,7 @@ export default {
                 "title": "Grunt",
                 "link": "posts/grunt.html",
                 "date": "2013-09-27T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"

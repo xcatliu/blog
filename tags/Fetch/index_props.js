@@ -19,7 +19,7 @@ export default {
                 "title": "JavaScript Fetch API",
                 "link": "posts/javascript_fetch_api.html",
                 "date": "2015-11-10T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -39,7 +39,7 @@ export default {
                 "title": "Fetch API",
                 "link": "posts/fetch_api.html",
                 "date": "2015-11-08T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"

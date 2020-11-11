@@ -19,7 +19,7 @@ export default {
                 "title": "Puppeteer 指南",
                 "link": "posts/puppeteer_tutorial.html",
                 "date": "2018-09-18T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"

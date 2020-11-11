@@ -19,7 +19,7 @@ export default {
                 "title": "JavaScript Fetch API",
                 "link": "posts/javascript_fetch_api.html",
                 "date": "2015-11-10T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -39,7 +39,7 @@ export default {
                 "title": "React Native and V2HOT",
                 "link": "posts/react_native_and_v2hot.html",
                 "date": "2015-07-10T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -59,7 +59,7 @@ export default {
                 "title": "React 组件开发",
                 "link": "posts/developing_react_components.html",
                 "date": "2015-06-26T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -79,7 +79,7 @@ export default {
                 "title": "Thinking in React",
                 "link": "posts/thinking_in_react.html",
                 "date": "2014-12-04T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -98,7 +98,7 @@ export default {
                 "title": "设计模式浅析",
                 "link": "posts/design_patterns.html",
                 "date": "2014-10-24T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -117,7 +117,7 @@ export default {
                 "title": "Grunt",
                 "link": "posts/grunt.html",
                 "date": "2013-09-27T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"

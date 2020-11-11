@@ -19,7 +19,7 @@ export default {
                 "title": "撸了一个三行情诗表白网页，可朋友圈分享，但是卡爆了",
                 "link": "posts/three_lines_poems.html",
                 "date": "2015-08-20T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"

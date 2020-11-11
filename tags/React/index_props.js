@@ -19,7 +19,7 @@ export default {
                 "title": "React 组件开发",
                 "link": "posts/developing_react_components.html",
                 "date": "2015-06-26T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -39,7 +39,7 @@ export default {
                 "title": "Thinking in React",
                 "link": "posts/thinking_in_react.html",
                 "date": "2014-12-04T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"

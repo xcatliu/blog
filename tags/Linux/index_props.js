@@ -18,8 +18,8 @@ export default {
                 "pagePath": "posts/setup_linux_workspace_in_windows.md",
                 "title": "在 Windows 中配置 Linux 工作环境",
                 "link": "posts/setup_linux_workspace_in_windows.html",
-                "date": "2020-11-10T13:57:51.000Z",
-                "updated": null,
+                "date": "2016-04-25T03:37:38.000Z",
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"

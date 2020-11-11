@@ -19,7 +19,7 @@ export default {
                 "title": "设计 pagic.config.ts",
                 "link": "posts/design_pagic_config_ts.html",
                 "date": "2020-07-12T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-08T17:05:30.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"

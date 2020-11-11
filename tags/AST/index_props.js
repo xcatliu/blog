@@ -19,7 +19,7 @@ export default {
                 "title": "抽象语法树在 JavaScript 中的应用",
                 "link": "posts/abstract_syntax_tree.html",
                 "date": "2014-10-08T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"

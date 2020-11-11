@@ -18,8 +18,8 @@ export default {
                 "pagePath": "posts/debug_android_browser_in_chrome.md",
                 "title": "在 Chrome 中调试 Android 浏览器",
                 "link": "posts/debug_android_browser_in_chrome.html",
-                "date": "2020-11-10T13:57:51.000Z",
-                "updated": null,
+                "date": "2016-04-28T09:53:39.000Z",
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"

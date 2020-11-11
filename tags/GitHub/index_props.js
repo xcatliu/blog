@@ -15,29 +15,11 @@ export default {
         "isPost": false,
         "posts": [
             {
-                "pagePath": "posts/about_me.md",
-                "title": "三分钟创建一个简单精致的 About Me 页面",
-                "link": "posts/about_me.html",
-                "date": "2020-11-10T13:57:51.000Z",
-                "updated": null,
-                "author": "xcatliu",
-                "contributors": [
-                    "xcatliu"
-                ],
-                "categories": [
-                    "编程世界"
-                ],
-                "tags": [
-                    "GitHub"
-                ],
-                "excerpt": "一个「About Me」页面，能够使别人快速的对你有一个大致的了解。 使用 GitHub 提供的 Pages 服务，可以将静态的网页托管在 GitHub 上。而 GitHub Pages 默认的 Jekyll 使得静态网页得以很方便的配置化。 我的 About Me 页面精雕..."
-            },
-            {
                 "pagePath": "posts/test_coverage_for_github.md",
                 "title": "GitHub 上的测试覆盖率",
                 "link": "posts/test_coverage_for_github.html",
-                "date": "2020-11-10T13:57:51.000Z",
-                "updated": null,
+                "date": "2017-03-12T08:27:05.000Z",
+                "updated": "2020-11-08T17:05:30.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -52,6 +34,24 @@ export default {
                 ],
                 "excerpt": "开源项目的 README.md 中，一般都会在前面放上一些 badge，除了可以让读者快速的了解项目的一些信息以外，还为 README.md 添加了些许色彩。以 Pagic 为例： - 上图中的 build passing 表示 travis build 通过了，用绿色背景显示...",
                 "cover": "../assets/test_coverage_for_github/pagic.png"
+            },
+            {
+                "pagePath": "posts/about_me.md",
+                "title": "三分钟创建一个简单精致的 About Me 页面",
+                "link": "posts/about_me.html",
+                "date": "2017-02-13T12:03:15.000Z",
+                "updated": "2020-11-07T02:33:59.000Z",
+                "author": "xcatliu",
+                "contributors": [
+                    "xcatliu"
+                ],
+                "categories": [
+                    "编程世界"
+                ],
+                "tags": [
+                    "GitHub"
+                ],
+                "excerpt": "一个「About Me」页面，能够使别人快速的对你有一个大致的了解。 使用 GitHub 提供的 Pages 服务，可以将静态的网页托管在 GitHub 上。而 GitHub Pages 默认的 Jekyll 使得静态网页得以很方便的配置化。 我的 About Me 页面精雕..."
             }
         ],
         "tags": [

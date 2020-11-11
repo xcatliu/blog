@@ -18,8 +18,8 @@ export default {
                 "pagePath": "posts/on_call.md",
                 "title": "在微软 on call 的经历",
                 "link": "posts/on_call.html",
-                "date": "2020-11-10T13:57:51.000Z",
-                "updated": null,
+                "date": "2016-11-12T09:15:40.000Z",
+                "updated": "2020-11-10T13:57:51.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"

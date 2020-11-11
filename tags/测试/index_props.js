@@ -15,11 +15,29 @@ export default {
         "isPost": false,
         "posts": [
             {
+                "pagePath": "posts/types_of_tests.md",
+                "title": "测试的分类",
+                "link": "posts/types_of_tests.html",
+                "date": "2019-03-11T00:00:00.000Z",
+                "updated": "2020-11-07T02:33:59.000Z",
+                "author": "xcatliu",
+                "contributors": [
+                    "xcatliu"
+                ],
+                "categories": [
+                    "编程世界"
+                ],
+                "tags": [
+                    "测试"
+                ],
+                "excerpt": "一直以来，我都听到过各式各样的测试——单元测试、黑盒测试、压力测试等等，但是很难对所有的测试方式有一个总体的认知。 在经过大量的谷歌之后，我终于把各种种类的测试弄清白了，下面针对每一种测试做一个简单的一句话介绍，..."
+            },
+            {
                 "pagePath": "posts/test_coverage_for_github.md",
                 "title": "GitHub 上的测试覆盖率",
                 "link": "posts/test_coverage_for_github.html",
-                "date": "2020-11-10T13:57:51.000Z",
-                "updated": null,
+                "date": "2017-03-12T08:27:05.000Z",
+                "updated": "2020-11-08T17:05:30.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -34,24 +52,6 @@ export default {
                 ],
                 "excerpt": "开源项目的 README.md 中，一般都会在前面放上一些 badge，除了可以让读者快速的了解项目的一些信息以外，还为 README.md 添加了些许色彩。以 Pagic 为例： - 上图中的 build passing 表示 travis build 通过了，用绿色背景显示...",
                 "cover": "../assets/test_coverage_for_github/pagic.png"
-            },
-            {
-                "pagePath": "posts/types_of_tests.md",
-                "title": "测试的分类",
-                "link": "posts/types_of_tests.html",
-                "date": "2019-03-11T00:00:00.000Z",
-                "updated": null,
-                "author": "xcatliu",
-                "contributors": [
-                    "xcatliu"
-                ],
-                "categories": [
-                    "编程世界"
-                ],
-                "tags": [
-                    "测试"
-                ],
-                "excerpt": "一直以来，我都听到过各式各样的测试——单元测试、黑盒测试、压力测试等等，但是很难对所有的测试方式有一个总体的认知。 在经过大量的谷歌之后，我终于把各种种类的测试弄清白了，下面针对每一种测试做一个简单的一句话介绍，..."
             }
         ],
         "tags": [

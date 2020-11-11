@@ -19,7 +19,7 @@ export default {
                 "title": "Modular JS",
                 "link": "posts/modular_javascript.html",
                 "date": "2014-03-06T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"

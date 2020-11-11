@@ -18,8 +18,8 @@ export default {
                 "pagePath": "posts/bootstrap_4_preview.md",
                 "title": "Bootstrap 4 初探",
                 "link": "posts/bootstrap_4_preview.html",
-                "date": "2020-11-10T13:57:51.000Z",
-                "updated": null,
+                "date": "2016-01-12T12:11:56.000Z",
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"

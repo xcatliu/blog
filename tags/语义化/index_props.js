@@ -19,7 +19,7 @@ export default {
                 "title": "npm 语义化版本号",
                 "link": "posts/semantic_versioning_and_npm.html",
                 "date": "2015-04-14T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"

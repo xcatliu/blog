@@ -19,7 +19,7 @@ export default {
                 "title": "React Native and V2HOT",
                 "link": "posts/react_native_and_v2hot.html",
                 "date": "2015-07-10T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -39,7 +39,7 @@ export default {
                 "title": "V2HOT 终于上线了，欢迎下载",
                 "link": "posts/v2hot_published.html",
                 "date": "2015-05-16T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"

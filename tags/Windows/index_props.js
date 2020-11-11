@@ -18,8 +18,8 @@ export default {
                 "pagePath": "posts/setup_linux_workspace_in_windows_using_hyper-v.md",
                 "title": "在 Windows 中配置 Linux 工作环境（使用 Hyper-V）",
                 "link": "posts/setup_linux_workspace_in_windows_using_hyper-v.html",
-                "date": "2020-11-10T13:57:51.000Z",
-                "updated": null,
+                "date": "2016-05-20T07:57:04.000Z",
+                "updated": "2020-11-11T13:06:02.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -32,15 +32,14 @@ export default {
                     "Samba",
                     "Windows"
                 ],
-                "excerpt": "基于上次 v2ex 上的建议，这次选择的方案是：Hyper-V + Ubuntu + PuTTY + Samba。 Hyper-V Hyper-V 是微软的一款虚拟化产品。Windows Server 2008 或者 Windows 7 以上就可以使用了。 如果你使用的是 Windows 7，按如下方式开启...",
-                "cover": "http://7xthy2.com1.z0.glb.clouddn.com/blog/2016-05-21-install-hyper-v.png"
+                "excerpt": "基于上次 v2ex 上的建议，这次选择的方案是：Hyper-V + Ubuntu + PuTTY + Samba。 Hyper-V Hyper-V 是微软的一款虚拟化产品。Windows Server 2008 或者 Windows 7 以上就可以使用了。 如果你使用的是 Windows 7，按如下方式开启..."
             },
             {
                 "pagePath": "posts/setup_linux_workspace_in_windows.md",
                 "title": "在 Windows 中配置 Linux 工作环境",
                 "link": "posts/setup_linux_workspace_in_windows.html",
-                "date": "2020-11-10T13:57:51.000Z",
-                "updated": null,
+                "date": "2016-04-25T03:37:38.000Z",
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"

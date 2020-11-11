@@ -19,7 +19,7 @@ export default {
                 "title": "我花了两个月时间，定制出了心目中「完美」的 ESLint 规则，我用四个空格缩进",
                 "link": "posts/eslint-config-alloy.html",
                 "date": "2017-08-25T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-08T17:05:30.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"

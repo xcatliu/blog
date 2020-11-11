@@ -18,8 +18,8 @@ export default {
                 "pagePath": "posts/test_coverage_for_github.md",
                 "title": "GitHub 上的测试覆盖率",
                 "link": "posts/test_coverage_for_github.html",
-                "date": "2020-11-10T13:57:51.000Z",
-                "updated": null,
+                "date": "2017-03-12T08:27:05.000Z",
+                "updated": "2020-11-08T17:05:30.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"

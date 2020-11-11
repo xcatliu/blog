@@ -18,8 +18,8 @@ export default {
                 "pagePath": "posts/happy-birthday-26.md",
                 "title": "写给 26 岁的自己",
                 "link": "posts/happy-birthday-26.html",
-                "date": "2020-11-10T13:57:51.000Z",
-                "updated": null,
+                "date": "2016-12-14T12:42:22.000Z",
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"

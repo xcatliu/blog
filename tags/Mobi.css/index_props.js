@@ -15,30 +15,11 @@ export default {
         "isPost": false,
         "posts": [
             {
-                "pagePath": "posts/hexo-theme-mobi-css.md",
-                "title": "基于 Mobi.css 的官方 Hexo 主题",
-                "link": "posts/hexo-theme-mobi-css.html",
-                "date": "2020-11-10T13:57:51.000Z",
-                "updated": null,
-                "author": "xcatliu",
-                "contributors": [
-                    "xcatliu"
-                ],
-                "categories": [
-                    "编程世界"
-                ],
-                "tags": [
-                    "Hexo",
-                    "Mobi.css"
-                ],
-                "excerpt": "Demo: 我的博客和 Mobi.css 官方文档 经过多天的开发，基于 Mobi.css 的 Hexo 主题终于完成了。 特性介绍 - 支持移动端，Mobi.css 是一个轻量灵活的移动端 CSS 框架，这是它的官方 Hexo 主题 - 支持多语言，既可以写博客（我的..."
-            },
-            {
                 "pagePath": "posts/mobi-css_v3.md",
                 "title": "Mobi.css v3 发布了，一个轻量、可拓展、移动端优先的 CSS 框架",
                 "link": "posts/mobi-css_v3.html",
                 "date": "2017-09-04T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -53,11 +34,30 @@ export default {
                 "excerpt": " - GitHub: https://github.com/mobi-css/mobi.css - 官网：http://getmobicss.com/ 简单介绍 - 轻量级：压缩 gzip 后只有 2.6 kb - 可拓展：可以引入 plugin 来拓展 Mobi.css ，并且每个 plugin 都可以独立于框架使用 - 移动端..."
             },
             {
+                "pagePath": "posts/hexo-theme-mobi-css.md",
+                "title": "基于 Mobi.css 的官方 Hexo 主题",
+                "link": "posts/hexo-theme-mobi-css.html",
+                "date": "2016-10-30T14:40:54.000Z",
+                "updated": "2020-11-10T13:57:51.000Z",
+                "author": "xcatliu",
+                "contributors": [
+                    "xcatliu"
+                ],
+                "categories": [
+                    "编程世界"
+                ],
+                "tags": [
+                    "Hexo",
+                    "Mobi.css"
+                ],
+                "excerpt": "Demo: 我的博客和 Mobi.css 官方文档 经过多天的开发，基于 Mobi.css 的 Hexo 主题终于完成了。 特性介绍 - 支持移动端，Mobi.css 是一个轻量灵活的移动端 CSS 框架，这是它的官方 Hexo 主题 - 支持多语言，既可以写博客（我的..."
+            },
+            {
                 "pagePath": "posts/600_stars_in_7_days.md",
                 "title": "7 天 600 stars， Mobi.css 是如何诞生的",
                 "link": "posts/600_stars_in_7_days.html",
                 "date": "2016-09-05T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -76,7 +76,7 @@ export default {
                 "title": "「Mobi.css」轻量，灵活的移动端 css 框架",
                 "link": "posts/mobi-css.html",
                 "date": "2016-08-29T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"

@@ -18,8 +18,8 @@ export default {
                 "pagePath": "posts/the_way_to_become_a_senior_software_engineer.md",
                 "title": "高级工程师之路",
                 "link": "posts/the_way_to_become_a_senior_software_engineer.html",
-                "date": "2020-11-10T13:57:51.000Z",
-                "updated": null,
+                "date": "2015-12-25T13:37:55.000Z",
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"

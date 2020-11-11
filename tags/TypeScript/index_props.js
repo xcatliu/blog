@@ -18,8 +18,8 @@ export default {
                 "pagePath": "posts/my_first_book.md",
                 "title": "我写的第一本书《TypeScript 入门教程》",
                 "link": "posts/my_first_book.html",
-                "date": "2020-11-10T13:57:51.000Z",
-                "updated": null,
+                "date": "2017-01-17T09:55:08.000Z",
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -37,8 +37,8 @@ export default {
                 "pagePath": "posts/learn_typescript.md",
                 "title": "Learn TypeScript",
                 "link": "posts/learn_typescript.html",
-                "date": "2020-11-10T13:57:51.000Z",
-                "updated": null,
+                "date": "2016-01-29T03:52:52.000Z",
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"

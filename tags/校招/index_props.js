@@ -19,7 +19,7 @@ export default {
                 "title": "校招季",
                 "link": "posts/campus_recruitment.html",
                 "date": "2014-11-03T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"

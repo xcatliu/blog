@@ -18,8 +18,8 @@ export default {
                 "pagePath": "posts/flico.md",
                 "title": "晒键盘 - FILCO 87 双模忍者圣手二代 黑色青轴",
                 "link": "posts/flico.html",
-                "date": "2020-11-10T13:57:51.000Z",
-                "updated": null,
+                "date": "2017-01-29T09:51:31.000Z",
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -35,30 +35,11 @@ export default {
                 "cover": "../assets/flico/FLICO-01.jpeg"
             },
             {
-                "pagePath": "posts/happy-birthday-26.md",
-                "title": "写给 26 岁的自己",
-                "link": "posts/happy-birthday-26.html",
-                "date": "2020-11-10T13:57:51.000Z",
-                "updated": null,
-                "author": "xcatliu",
-                "contributors": [
-                    "xcatliu"
-                ],
-                "categories": [
-                    "多彩生活"
-                ],
-                "tags": [
-                    "生日快乐"
-                ],
-                "excerpt": "今天是我 26 岁的生日，Google 送给我了一个 doodle： 年终将至，工作变得繁忙起来。 总结还是留到跨年的时候再写吧。 最近比较浮躁，希望自己将来能够脚踏实地的进步，厚积而薄发。 加油！",
-                "cover": "../assets/happy-birthday-26/google-user-birthday.gif"
-            },
-            {
                 "pagePath": "posts/2016_summery.md",
                 "title": "我的 2016 年总结",
                 "link": "posts/2016_summery.html",
                 "date": "2017-01-06T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -73,11 +54,30 @@ export default {
                 "cover": "../assets/2016_summery/turkey_ocean.jpg"
             },
             {
+                "pagePath": "posts/happy-birthday-26.md",
+                "title": "写给 26 岁的自己",
+                "link": "posts/happy-birthday-26.html",
+                "date": "2016-12-14T12:42:22.000Z",
+                "updated": "2020-11-07T02:33:59.000Z",
+                "author": "xcatliu",
+                "contributors": [
+                    "xcatliu"
+                ],
+                "categories": [
+                    "多彩生活"
+                ],
+                "tags": [
+                    "生日快乐"
+                ],
+                "excerpt": "今天是我 26 岁的生日，Google 送给我了一个 doodle： 年终将至，工作变得繁忙起来。 总结还是留到跨年的时候再写吧。 最近比较浮躁，希望自己将来能够脚踏实地的进步，厚积而薄发。 加油！",
+                "cover": "../assets/happy-birthday-26/google-user-birthday.gif"
+            },
+            {
                 "pagePath": "posts/seminar_in_wuhan.md",
                 "title": "武汉宣讲会",
                 "link": "posts/seminar_in_wuhan.html",
                 "date": "2015-09-28T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -95,7 +95,7 @@ export default {
                 "title": "展望 2015",
                 "link": "posts/hello_2015.html",
                 "date": "2015-01-01T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -114,7 +114,7 @@ export default {
                 "title": "校招季",
                 "link": "posts/campus_recruitment.html",
                 "date": "2014-11-03T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -132,7 +132,7 @@ export default {
                 "title": "The Many Meanings of Open",
                 "link": "posts/the_many_meanings_of_open.html",
                 "date": "2013-11-08T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"

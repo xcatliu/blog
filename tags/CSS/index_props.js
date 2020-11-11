@@ -15,30 +15,11 @@ export default {
         "isPost": false,
         "posts": [
             {
-                "pagePath": "posts/bootstrap_4_preview.md",
-                "title": "Bootstrap 4 初探",
-                "link": "posts/bootstrap_4_preview.html",
-                "date": "2020-11-10T13:57:51.000Z",
-                "updated": null,
-                "author": "xcatliu",
-                "contributors": [
-                    "xcatliu"
-                ],
-                "categories": [
-                    "编程世界"
-                ],
-                "tags": [
-                    "Bootstrap",
-                    "CSS"
-                ],
-                "excerpt": "Bootstrap 作为 GitHub 上 Stars 最多的项目，可以说是万众瞩目，issues 和 pull requests 也居高不下，足以看出其后劲依然很足。 截止到本文发布，Bootstrap 4 已经推出 alpha 2 版本一个多月了，让我们一起玩转 Bootstrap 4 ..."
-            },
-            {
                 "pagePath": "posts/mobi-css_v3.md",
                 "title": "Mobi.css v3 发布了，一个轻量、可拓展、移动端优先的 CSS 框架",
                 "link": "posts/mobi-css_v3.html",
                 "date": "2017-09-04T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -57,7 +38,7 @@ export default {
                 "title": "「Mobi.css」轻量，灵活的移动端 css 框架",
                 "link": "posts/mobi-css.html",
                 "date": "2016-08-29T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -71,6 +52,25 @@ export default {
                 ],
                 "excerpt": "最近做了一个 CSS 框架，颇废了一番功夫。 这里先把它分享给大家，欢迎 Star，欢迎试用！ - GitHub - Homepage 简单介绍 Mobi.css 是一个轻量，灵活的移动端 CSS 框架。特点如下： - 压缩后只有 4.6kb，比 Skeleton、Pure.css、...",
                 "cover": "https://i.v2ex.co/6v65Q0LY.png"
+            },
+            {
+                "pagePath": "posts/bootstrap_4_preview.md",
+                "title": "Bootstrap 4 初探",
+                "link": "posts/bootstrap_4_preview.html",
+                "date": "2016-01-12T12:11:56.000Z",
+                "updated": "2020-11-07T02:33:59.000Z",
+                "author": "xcatliu",
+                "contributors": [
+                    "xcatliu"
+                ],
+                "categories": [
+                    "编程世界"
+                ],
+                "tags": [
+                    "Bootstrap",
+                    "CSS"
+                ],
+                "excerpt": "Bootstrap 作为 GitHub 上 Stars 最多的项目，可以说是万众瞩目，issues 和 pull requests 也居高不下，足以看出其后劲依然很足。 截止到本文发布，Bootstrap 4 已经推出 alpha 2 版本一个多月了，让我们一起玩转 Bootstrap 4 ..."
             }
         ],
         "tags": [

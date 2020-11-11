@@ -19,7 +19,7 @@ export default {
                 "title": "码字 md 发布 v2 啦",
                 "link": "posts/mazimd_v2.html",
                 "date": "2017-07-17T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -38,7 +38,7 @@ export default {
                 "title": "码字 md - 干净精致的 Markdown 编辑器",
                 "link": "posts/mazimd.html",
                 "date": "2017-01-01T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"

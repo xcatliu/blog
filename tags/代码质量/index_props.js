@@ -19,7 +19,7 @@ export default {
                 "title": "运行一个脚本，看看你的项目的代码质量吧",
                 "link": "posts/cqc.html",
                 "date": "2017-09-20T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"

@@ -19,7 +19,7 @@ export default {
                 "title": "基于 README 的文档管理",
                 "link": "posts/use_readme_to_manage_your_docs.html",
                 "date": "2014-12-09T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"

@@ -15,11 +15,30 @@ export default {
         "isPost": false,
         "posts": [
             {
+                "pagePath": "posts/2016_summery.md",
+                "title": "我的 2016 年总结",
+                "link": "posts/2016_summery.html",
+                "date": "2017-01-06T00:00:00.000Z",
+                "updated": "2020-11-07T02:33:59.000Z",
+                "author": "xcatliu",
+                "contributors": [
+                    "xcatliu"
+                ],
+                "categories": [
+                    "多彩生活"
+                ],
+                "tags": [
+                    "总结思考"
+                ],
+                "excerpt": "出游土耳其 2016 年 2 月，我去土耳其游玩了半个月。 即使是我蹩脚的英语，也挡不住土耳其人的热情。 蔚蓝的天空和大海： 形似雪山的棉花堡： 外星地貌的卡帕多奇亚 遍地清真寺的伊斯坦布尔 这里留下了太多回忆。 入职微软 之前...",
+                "cover": "../assets/2016_summery/turkey_ocean.jpg"
+            },
+            {
                 "pagePath": "posts/on_call.md",
                 "title": "在微软 on call 的经历",
                 "link": "posts/on_call.html",
-                "date": "2020-11-10T13:57:51.000Z",
-                "updated": null,
+                "date": "2016-11-12T09:15:40.000Z",
+                "updated": "2020-11-10T13:57:51.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -35,49 +54,11 @@ export default {
                 "excerpt": "之前一直听说微软、亚马逊等企业需要 on call，但是不清楚具体要做什么。 上周第一次在微软 on call，写一点感受。 On call 是什么 就是需要保持电话畅通，随时都可能接到电话说哪个服务挂了，哪个测试失败了等等。 然后需要具..."
             },
             {
-                "pagePath": "posts/the_way_to_become_a_senior_software_engineer.md",
-                "title": "高级工程师之路",
-                "link": "posts/the_way_to_become_a_senior_software_engineer.html",
-                "date": "2020-11-10T13:57:51.000Z",
-                "updated": null,
-                "author": "xcatliu",
-                "contributors": [
-                    "xcatliu"
-                ],
-                "categories": [
-                    "编程世界"
-                ],
-                "tags": [
-                    "高级工程师",
-                    "总结思考"
-                ],
-                "excerpt": "美团对工程师文化非常重视，我有幸参加了公司的第三期高工训练营，听到了各个大牛的分享，觉得不能无所作为，于是想对每一期有个总结思考，并对接下来的行动有个计划。 PPT 就不放出来了，欢迎大家加入美团一起成长。 做好技术..."
-            },
-            {
-                "pagePath": "posts/2016_summery.md",
-                "title": "我的 2016 年总结",
-                "link": "posts/2016_summery.html",
-                "date": "2017-01-06T00:00:00.000Z",
-                "updated": null,
-                "author": "xcatliu",
-                "contributors": [
-                    "xcatliu"
-                ],
-                "categories": [
-                    "多彩生活"
-                ],
-                "tags": [
-                    "总结思考"
-                ],
-                "excerpt": "出游土耳其 2016 年 2 月，我去土耳其游玩了半个月。 即使是我蹩脚的英语，也挡不住土耳其人的热情。 蔚蓝的天空和大海： 形似雪山的棉花堡： 外星地貌的卡帕多奇亚 遍地清真寺的伊斯坦布尔 这里留下了太多回忆。 入职微软 之前...",
-                "cover": "../assets/2016_summery/turkey_ocean.jpg"
-            },
-            {
                 "pagePath": "posts/half_year_in_microsoft.md",
                 "title": "我来微软这半年",
                 "link": "posts/half_year_in_microsoft.html",
                 "date": "2016-10-23T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -96,7 +77,7 @@ export default {
                 "title": "7 天 600 stars， Mobi.css 是如何诞生的",
                 "link": "posts/600_stars_in_7_days.html",
                 "date": "2016-09-05T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -111,11 +92,30 @@ export default {
                 "excerpt": "Mobi.css 是一个轻量、灵活的移动端 CSS 框架。发布一周以来，获得了 600+ stars，登上了 GitHub Trending Top1（CSS），在 Hacker News 上进入了前三。 这篇文章会先介绍一下创造 Mobi.css 的思路，再介绍一下我在推广 Mobi.c..."
             },
             {
+                "pagePath": "posts/the_way_to_become_a_senior_software_engineer.md",
+                "title": "高级工程师之路",
+                "link": "posts/the_way_to_become_a_senior_software_engineer.html",
+                "date": "2015-12-25T13:37:55.000Z",
+                "updated": "2020-11-07T02:33:59.000Z",
+                "author": "xcatliu",
+                "contributors": [
+                    "xcatliu"
+                ],
+                "categories": [
+                    "编程世界"
+                ],
+                "tags": [
+                    "高级工程师",
+                    "总结思考"
+                ],
+                "excerpt": "美团对工程师文化非常重视，我有幸参加了公司的第三期高工训练营，听到了各个大牛的分享，觉得不能无所作为，于是想对每一期有个总结思考，并对接下来的行动有个计划。 PPT 就不放出来了，欢迎大家加入美团一起成长。 做好技术..."
+            },
+            {
                 "pagePath": "posts/seminar_in_wuhan.md",
                 "title": "武汉宣讲会",
                 "link": "posts/seminar_in_wuhan.html",
                 "date": "2015-09-28T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -133,7 +133,7 @@ export default {
                 "title": "展望 2015",
                 "link": "posts/hello_2015.html",
                 "date": "2015-01-01T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -152,7 +152,7 @@ export default {
                 "title": "The Many Meanings of Open",
                 "link": "posts/the_many_meanings_of_open.html",
                 "date": "2013-11-08T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -170,7 +170,7 @@ export default {
                 "title": "美团一个月",
                 "link": "posts/monthly_summery_in_meituan.html",
                 "date": "2013-01-04T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"

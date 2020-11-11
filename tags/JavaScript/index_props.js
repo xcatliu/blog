@@ -15,11 +15,11 @@ export default {
         "isPost": false,
         "posts": [
             {
-                "pagePath": "posts/isarray.md",
-                "title": "从 isArray 谈起",
-                "link": "posts/isarray.html",
-                "date": "2020-11-10T13:57:51.000Z",
-                "updated": null,
+                "pagePath": "posts/puppeteer_tutorial.md",
+                "title": "Puppeteer 指南",
+                "link": "posts/puppeteer_tutorial.html",
+                "date": "2018-09-18T00:00:00.000Z",
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -28,37 +28,18 @@ export default {
                     "编程世界"
                 ],
                 "tags": [
-                    "Array",
-                    "JavaScript"
-                ],
-                "excerpt": "怎么判断数组是前端面试经常被问到的一个问题，数组也是最难以准确判断的类型之一。今天咱们就来谈谈如何判断数组。 typeof typeof 是 JavaScript 中判断类型的运算符，语法如下1： typeof operand 可是 typeof 返回的结果不尽..."
-            },
-            {
-                "pagePath": "posts/important_announcement_regarding_yui.md",
-                "title": "关于 YUI 的重要公告",
-                "link": "posts/important_announcement_regarding_yui.html",
-                "date": "2020-11-10T13:57:51.000Z",
-                "updated": null,
-                "author": "xcatliu",
-                "contributors": [
-                    "xcatliu"
-                ],
-                "categories": [
-                    "编程世界"
-                ],
-                "tags": [
-                    "YUI",
                     "JavaScript",
-                    "翻译"
+                    "Puppeteer"
                 ],
-                "excerpt": "译者按：YUI 伴随着我两年有余，我见证了它的伟大与落魄。它开创了模块加载，发扬了命名空间。它有强大的事件和控件机制，也有臃肿的条件加载和皮肤。它的精髓有如一座图书馆，让你不由得感慨设计之宏大，它的 features 有如一..."
+                "excerpt": "Puppeteer 是 Google Chrome 出品的一个无头浏览器。如果你听说过 Phantomjs 或者 Selenium，那么就应该知道它是做什么的了。Puppeteer 与它们类似，提供了一系列 api，通过 DevTools 协议控制 Chromium/Chrome 浏览器的行为。...",
+                "cover": "../assets/puppeteer_turorial/puppeteer-structure.png"
             },
             {
                 "pagePath": "posts/two_hexo_plugins.md",
                 "title": "撸了两个 Hexo 的 Plugins",
                 "link": "posts/two_hexo_plugins.html",
-                "date": "2020-11-10T13:57:51.000Z",
-                "updated": null,
+                "date": "2016-07-01T11:10:46.000Z",
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -76,8 +57,8 @@ export default {
                 "pagePath": "posts/learn_typescript.md",
                 "title": "Learn TypeScript",
                 "link": "posts/learn_typescript.html",
-                "date": "2020-11-10T13:57:51.000Z",
-                "updated": null,
+                "date": "2016-01-29T03:52:52.000Z",
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -92,11 +73,11 @@ export default {
                 "excerpt": "2016-05-20 更新：打算写成一个系列，放到独立的 repo 中，此篇会拆分为系列的一部分，在此仅做存档。 它的第一个版本发布于 2012 年 10 月，经历了多次更新后，现在已成为前端社区中不可忽视的力量，不仅在 Microsoft 内部得到..."
             },
             {
-                "pagePath": "posts/puppeteer_tutorial.md",
-                "title": "Puppeteer 指南",
-                "link": "posts/puppeteer_tutorial.html",
-                "date": "2018-09-18T00:00:00.000Z",
-                "updated": null,
+                "pagePath": "posts/important_announcement_regarding_yui.md",
+                "title": "关于 YUI 的重要公告",
+                "link": "posts/important_announcement_regarding_yui.html",
+                "date": "2015-12-06T12:04:30.000Z",
+                "updated": "2020-11-08T17:05:30.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -105,18 +86,18 @@ export default {
                     "编程世界"
                 ],
                 "tags": [
+                    "YUI",
                     "JavaScript",
-                    "Puppeteer"
+                    "翻译"
                 ],
-                "excerpt": "Puppeteer 是 Google Chrome 出品的一个无头浏览器。如果你听说过 Phantomjs 或者 Selenium，那么就应该知道它是做什么的了。Puppeteer 与它们类似，提供了一系列 api，通过 DevTools 协议控制 Chromium/Chrome 浏览器的行为。...",
-                "cover": "../assets/puppeteer_turorial/puppeteer-structure.png"
+                "excerpt": "译者按：YUI 伴随着我两年有余，我见证了它的伟大与落魄。它开创了模块加载，发扬了命名空间。它有强大的事件和控件机制，也有臃肿的条件加载和皮肤。它的精髓有如一座图书馆，让你不由得感慨设计之宏大，它的 features 有如一..."
             },
             {
                 "pagePath": "posts/javascript_fetch_api.md",
                 "title": "JavaScript Fetch API",
                 "link": "posts/javascript_fetch_api.html",
                 "date": "2015-11-10T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -136,7 +117,7 @@ export default {
                 "title": "Fetch API",
                 "link": "posts/fetch_api.html",
                 "date": "2015-11-08T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -152,11 +133,30 @@ export default {
                 "excerpt": ""
             },
             {
+                "pagePath": "posts/isarray.md",
+                "title": "从 isArray 谈起",
+                "link": "posts/isarray.html",
+                "date": "2015-11-03T10:16:17.000Z",
+                "updated": "2020-11-07T02:33:59.000Z",
+                "author": "xcatliu",
+                "contributors": [
+                    "xcatliu"
+                ],
+                "categories": [
+                    "编程世界"
+                ],
+                "tags": [
+                    "Array",
+                    "JavaScript"
+                ],
+                "excerpt": "怎么判断数组是前端面试经常被问到的一个问题，数组也是最难以准确判断的类型之一。今天咱们就来谈谈如何判断数组。 typeof typeof 是 JavaScript 中判断类型的运算符，语法如下1： typeof operand 可是 typeof 返回的结果不尽..."
+            },
+            {
                 "pagePath": "posts/three_lines_poems.md",
                 "title": "撸了一个三行情诗表白网页，可朋友圈分享，但是卡爆了",
                 "link": "posts/three_lines_poems.html",
                 "date": "2015-08-20T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -175,7 +175,7 @@ export default {
                 "title": "React 组件开发",
                 "link": "posts/developing_react_components.html",
                 "date": "2015-06-26T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -195,7 +195,7 @@ export default {
                 "title": "npm 语义化版本号",
                 "link": "posts/semantic_versioning_and_npm.html",
                 "date": "2015-04-14T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -215,7 +215,7 @@ export default {
                 "title": "Hybrid App & WebViewJavascriptBridge",
                 "link": "posts/hybrid_app_and_webviewjavascriptbridge.html",
                 "date": "2014-10-27T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -235,7 +235,7 @@ export default {
                 "title": "抽象语法树在 JavaScript 中的应用",
                 "link": "posts/abstract_syntax_tree.html",
                 "date": "2014-10-08T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -255,7 +255,7 @@ export default {
                 "title": "Modular JS",
                 "link": "posts/modular_javascript.html",
                 "date": "2014-03-06T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -274,7 +274,7 @@ export default {
                 "title": "Grunt Custom Task 指南",
                 "link": "posts/grunt_custom_task_guide.html",
                 "date": "2013-12-04T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -293,7 +293,7 @@ export default {
                 "title": "Grunt Getting Started",
                 "link": "posts/grunt_getting_started.html",
                 "date": "2013-11-08T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
@@ -312,7 +312,7 @@ export default {
                 "title": "Grunt",
                 "link": "posts/grunt.html",
                 "date": "2013-09-27T00:00:00.000Z",
-                "updated": null,
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"

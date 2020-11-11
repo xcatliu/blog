@@ -18,8 +18,8 @@ export default {
                 "pagePath": "posts/how-to-get-changelist-in-git-push-hook.md",
                 "title": "How to Get Changelist in Git Push Hook",
                 "link": "posts/how-to-get-changelist-in-git-push-hook.html",
-                "date": "2020-11-10T13:57:51.000Z",
-                "updated": null,
+                "date": "2017-09-26T00:39:25.000Z",
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"

@@ -18,8 +18,8 @@ export default {
                 "pagePath": "posts/isarray.md",
                 "title": "从 isArray 谈起",
                 "link": "posts/isarray.html",
-                "date": "2020-11-10T13:57:51.000Z",
-                "updated": null,
+                "date": "2015-11-03T10:16:17.000Z",
+                "updated": "2020-11-07T02:33:59.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
