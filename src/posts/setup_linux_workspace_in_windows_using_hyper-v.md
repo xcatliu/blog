@@ -29,8 +29,6 @@ Hyper-V 是微软的一款虚拟化产品。Windows Server 2008 或者 Windows 7
 2. 勾选 Hyper-V => OK
 3. 安装好之后，需要重启系统
 
-![Install Hyper-V](http://7xthy2.com1.z0.glb.clouddn.com/blog/2016-05-21-install-hyper-v.png)
-
 ## Ubuntu
 
 官网：http://www.ubuntu.com/server
