@@ -54,3 +54,4 @@
 - [梦遥奇缘](http://www.idiot6.com/)
 - [Peter1303's Blog](http://peter1303.github.io/)
 - [怡红院落](https://imnerd.org/)
+- [饮冰先生的博客](https://mayanbin.com/)
