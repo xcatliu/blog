@@ -55,3 +55,4 @@
 - [Peter1303's Blog](http://peter1303.github.io/)
 - [怡红院落](https://imnerd.org/)
 - [杜老师说](https://dusays.com/)
+- [饮冰先生的博客](https://mayanbin.com/)
