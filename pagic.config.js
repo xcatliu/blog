@@ -9,32 +9,32 @@ export default {
         {
             text: '首页',
             link: '/',
-            icon: 'home'
+            icon: 'czs-home-l'
         },
         {
             text: '分类',
             link: '/categories/',
-            icon: 'category'
+            icon: 'czs-category-l'
         },
         {
             text: '标签',
             link: '/tags/',
-            icon: 'tag'
+            icon: 'czs-tag-l'
         },
         {
             text: '关于',
             link: '/about/',
-            icon: 'about'
+            icon: 'czs-about-l'
         },
         {
             text: '归档',
             link: '/archives/',
-            icon: 'box'
+            icon: 'czs-box-l'
         },
         {
             text: '友情链接',
             link: '/links/',
-            icon: 'link'
+            icon: 'czs-link-l'
         }
     ],
     blog: {

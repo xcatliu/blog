@@ -68,7 +68,7 @@ const Aside = ({ config, isDark, setIsDark, outputPath }) => {
                             // @ts-ignore
                             document.documentElement.classList.remove('show_aside');
                         } },
-                        React.createElement("span", { className: `czs-${icon}-l`, style: { backgroundImage: `url("${config.root}assets/czs-${icon}-l.svg")` } }),
+                        React.createElement("span", { className: icon, style: { backgroundImage: `url("${config.root}assets/${icon}.svg")` } }),
                         text)))))))));
 };
 export default Aside;
