@@ -306,6 +306,10 @@ export default {
                 "count": 1
             },
             {
+                "name": "Google Analytics",
+                "count": 1
+            },
+            {
                 "name": "Hybrid App",
                 "count": 1
             },
@@ -421,7 +425,7 @@ export default {
         "categories": [
             {
                 "name": "编程世界",
-                "count": 47
+                "count": 48
             },
             {
                 "name": "多彩生活",

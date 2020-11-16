@@ -1,0 +1,63 @@
+<!doctype html><html class="" data-reactroot=""><head>
+<meta data-react-helmet="true" charset="utf-8"/><meta data-react-helmet="true" http-equiv="x-ua-compatible" content="ie=edge"/><meta data-react-helmet="true" name="description" content="欢迎来到我的博客，这里搜集了我的技术文章和生活感悟，欢迎一起交流成长。"/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1"/>
+<title data-react-helmet="true">Google Analytics 的 Tracking ID 不见了？ · 流浪小猫的博客</title>
+<link data-react-helmet="true" rel="stylesheet" href="/assets/index.css"/><link data-react-helmet="true" id="prismTheme" rel="stylesheet" href="/assets/prism.css"/>
+<script data-react-helmet="true" >
+    const shouldSetIsDark = document.cookie.includes('is_dark=1') ? true : document.cookie.includes('is_dark=0') ? false : window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (shouldSetIsDark) {
+      document.documentElement.classList.add('is_dark');
+      document.getElementById('prismTheme').href = "/assets/prism_tomorrow.css";
+    }
+  </script>
+</head><body><a class="czs-menu-l show_on_mobile aside_button_open" href="#" style="background-image:url(&quot;/assets/czs-menu-l.svg&quot;)"></a><a class="show_on_mobile aside_button_text" href="/">流浪小猫的博客</a><aside class="hide_on_mobile"><a class="czs-menu-l show_on_mobile aside_button_close" href="#" style="background-image:url(&quot;/assets/czs-close-l.svg&quot;)"></a><h1><a href="/">流浪小猫的博客</a></h1><p class="description">欢迎来到我的博客，这里搜集了我的技术文章和生活感悟，欢迎一起交流成长。</p><ul class="social list_style_none"><li class="flex_center"><a class="czs-github-logo" href="https://github.com/xcatliu/blog" target="_blank" style="background-image:url(&quot;/assets/czs-github-logo.svg&quot;)"></a></li><li class="flex_center"><a class="czs-message-l" href="mailto:xcatliu@gmail.com" target="_blank" style="background-image:url(&quot;/assets/czs-message-l.svg&quot;)"></a></li><li class="flex_center"><a class="czs-twitter" href="https://twitter.com/xcatliu" target="_blank" style="background-image:url(&quot;/assets/czs-twitter.svg&quot;)"></a></li><li style="flex-grow:1"></li><li class="toggle_dark flex_center"><span class="czs-sun" style="background-image:url(&quot;/assets/czs-sun.svg&quot;)"></span><span class="czs-sun-l" style="background-image:url(&quot;/assets/czs-sun-l.svg&quot;)"></span><span class="czs-moon" style="background-image:url(&quot;/assets/czs-moon.svg&quot;)"></span><span class="czs-moon-l" style="background-image:url(&quot;/assets/czs-moon-l.svg&quot;)"></span></li></ul><nav><ul class="menu list_style_none"><li><a class="flex_center" href="/"><span class="czs-home-l" style="background-image:url(&quot;/assets/czs-home-l.svg&quot;)"></span>首页</a></li><li><a class="flex_center" href="/categories/"><span class="czs-category-l" style="background-image:url(&quot;/assets/czs-category-l.svg&quot;)"></span>分类</a></li><li><a class="flex_center" href="/tags/"><span class="czs-tag-l" style="background-image:url(&quot;/assets/czs-tag-l.svg&quot;)"></span>标签</a></li><li><a class="flex_center" href="/about/"><span class="czs-about-l" style="background-image:url(&quot;/assets/czs-about-l.svg&quot;)"></span>关于</a></li><li><a class="flex_center" href="/archives/"><span class="czs-box-l" style="background-image:url(&quot;/assets/czs-box-l.svg&quot;)"></span>归档</a></li><li><a class="flex_center" href="/links/"><span class="czs-link-l" style="background-image:url(&quot;/assets/czs-link-l.svg&quot;)"></span>友情链接</a></li></ul></nav></aside><section class="main"><h1>Google Analytics 的 Tracking ID 不见了？</h1><div class="main_post_meta"><time dateTime="Mon Nov 16 2020 13:01:58 GMT+0000 (UTC)">2020-11-17</time> · <!-- -->xcatliu</div><article><p>最近新创建了一个 Google Analytics 的 Property（媒体资源），但是找不到它的 Tracking ID 了。根据文档，需要创建一个 Data Stream，然后通过这样的方式引入一个被称为 <code>gtag.js</code> 的代码：</p>
+<pre class="language-html"><code class="language-html"><span class="token comment">&lt;!-- Global site tag (gtag.js) - Google Analytics --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">async</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><a class="token url-link" href="https://www.googletagmanager.com/gtag/js?id=G-FDL7K6SCFE">https://www.googletagmanager.com/gtag/js?id=G-FDL7K6SCFE</a><span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+  <span class="token dom variable">window</span><span class="token punctuation">.</span><span class="token property-access">dataLayer</span> <span class="token operator">=</span> <span class="token dom variable">window</span><span class="token punctuation">.</span><span class="token property-access">dataLayer</span> <span class="token operator">||</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token keyword">function</span> <span class="token function">gtag</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>dataLayer<span class="token punctuation">.</span><span class="token method function property-access">push</span><span class="token punctuation">(</span>arguments<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span>
+  <span class="token function">gtag</span><span class="token punctuation">(</span><span class="token string">'js'</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token function">gtag</span><span class="token punctuation">(</span><span class="token string">'config'</span><span class="token punctuation">,</span> <span class="token string">'G-FDL7K6SCFE'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+</code></pre>
+<p>经过尝试，引入此资源（<code>https://www.googletagmanager.com/gtag/js?id=G-FDL7K6SCFE</code>）会加载另一个 js，插入到 <code>&lt;head&gt;</code> 中。</p>
+<p>由于 <a href="https://github.com/xcatliu/pagic">Pagic</a> 暂不支持以操作 dom 的方式来修改 <code>&lt;head&gt;</code>（仅支持在 React 中操作 <code>&lt;head&gt;</code>），所以我需要找到以前的 Tracking ID，然后通过这样的方式引入代码：</p>
+<pre class="language-jsx"><code class="language-jsx"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">async</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><a class="token url-link" href="https://www.google-analytics.com/analytics.js">https://www.google-analytics.com/analytics.js</a><span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span>
+  <span class="token attr-name">dangerouslySetInnerHTML</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span>
+    __html<span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">
+      window.GoogleAnalyticsObject="ga";(window.ga=window.ga||function(){(window.ga.q=window.ga.q||[]).push(arguments);}),(window.ga.l=1*new Date());
+
+      ga('create', '</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>id<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">', 'auto');
+      ga('send', 'pageview');</span><span class="token template-punctuation string">`</span></span>
+  <span class="token punctuation">}</span><span class="token punctuation">}</span></span>
+<span class="token punctuation">/></span></span>
+</code></pre>
+<p>经过一段不那么顺利的查找资料，我终于搞清楚了如何找到 Tracking ID。</p>
+<h2 id="analyticsjs-gtagjs-%E5%92%8C-gajs-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB"><code>analytics.js</code>, <code>gtag.js</code> 和 <code>ga.js</code> 有什么区别？<a class="anchor" href="#analyticsjs-gtagjs-%E5%92%8C-gajs-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB">§</a></h2>
+<p>根据<a href="https://daan.dev/wordpress/difference-analyics-gtag-ga-js/">这篇文章</a>介绍，</p>
+<ul>
+<li><code>ga.js</code> 是 Google Analytics 最老的一个脚本，现在已经不推荐使用了</li>
+<li><code>analytics.js</code> 是比较高级的一个脚本，它包含了 Google Analytics 的整个功能集</li>
+<li><code>gtag.js</code> 是更高级更专业的一个脚本，如果你使用了其他基于 Google Analytics 的谷歌服务，那么可以使用 <code>gtag.js</code></li>
+</ul>
+<p>尽管 Google Analytics 官方将 <code>gtag.js</code> 视为更先进的版本（2020-10-14 后，默认创建的 Property 就是使用 <code>gtag.js</code> 的，而且还有一篇官方文章专门介绍<a href="https://developers.google.com/analytics/devguides/collection/upgrade/analyticsjs">如何将 <code>analytics.js</code> 升级到 <code>gtag.js</code></a>），但我们还是有充足的理由使用 <code>analytics.js</code>：</p>
+<ol>
+<li><code>gtag.js</code> 太专业了，大部分人只需要简单的 pv、uv、按钮点击上报</li>
+<li><code>gtag.js</code> 性能较差：</li>
+</ol>
+<ul>
+<li><code>gtag.js</code> 的链接带了一个小尾巴 <code>?id=G-FDL7K6SCFE</code>，这导致不同网站之间的资源不能在浏览器共享缓存</li>
+<li><code>gtag.js</code> 会异步加载 <code>analytics.js</code>，多了一次网络请求</li>
+<li><code>gtag.js</code> + <code>analytics.js</code> 总共占有 90kb 的大小，相比之下 <code>analytics.js</code> 只有 30kb</li>
+</ul>
+<p>综上所述，<code>analytics.js</code> 应该是我们的首选。</p>
+<h2 id="%E9%82%A3%E4%B9%88%E6%96%B0%E5%88%9B%E5%BB%BA%E7%9A%84-property-%E5%A6%82%E4%BD%95%E6%89%BE%E5%88%B0-tracking-id-%E5%91%A2">那么新创建的 Property 如何找到 Tracking ID 呢？<a class="anchor" href="#%E9%82%A3%E4%B9%88%E6%96%B0%E5%88%9B%E5%BB%BA%E7%9A%84-property-%E5%A6%82%E4%BD%95%E6%89%BE%E5%88%B0-tracking-id-%E5%91%A2">§</a></h2>
+<p>如我之前所说，2020-10-14 后，默认创建的 Property 就是使用 <code>gtag.js</code> 的，它只包含 MEASUREMENT ID，没有 Tracking ID。</p>
+<p>经过一番 google，终于在<a href="https://analyticshelp.io/blog/google-analytics-property-tracking-id/">这篇文章的评论区</a>找到了：</p>
+<ol>
+<li>2020-10-14 前创建的 Property 是 GA3 版本，包含 Tracking ID，可以升级到 GA4 版本</li>
+<li>2020-10-14 后创建的 Property 是 GA4 版本，不包含 Tracking ID，而且无法降级</li>
+<li>创建 Property 时，可以勾选 <strong>Show advanced options</strong>，并且开启 <strong>Create a Universal Analytics property</strong>，这样就可以创建一个包含 Tracking ID 的旧版的 Property 了</li>
+</ol>
+<p>至此，终于解决了找不到 Tracking ID 的问题了。</p></article></section><footer>Powered by <a href="https://github.com/xcatliu/pagic" target="_blank">Pagic</a></footer><script src="https://cdn.pagic.org/react@16.13.1/umd/react.production.min.js"></script><script src="https://cdn.pagic.org/react-dom@16.13.1/umd/react-dom.production.min.js"></script><script type="module" src="/index.js"></script></body></html>

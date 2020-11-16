@@ -15,6 +15,24 @@ export default {
         "isPost": false,
         "posts": [
             {
+                "pagePath": "posts/google_analytics.md",
+                "title": "Google Analytics 的 Tracking ID 不见了？",
+                "link": "posts/google_analytics.html",
+                "date": "2020-11-16T13:01:58.000Z",
+                "updated": null,
+                "author": "xcatliu",
+                "contributors": [
+                    "xcatliu"
+                ],
+                "categories": [
+                    "编程世界"
+                ],
+                "tags": [
+                    "Google Analytics"
+                ],
+                "excerpt": "最近新创建了一个 Google Analytics 的 Property（媒体资源），但是找不到它的 Tracking ID 了。根据文档，需要创建一个 Data Stream，然后通过这样的方式引入一个被称为 gtag.js 的代码： <!-- Global site tag (gtag.js) - G..."
+            },
+            {
                 "pagePath": "posts/design_pagic_config_ts.md",
                 "title": "设计 pagic.config.ts",
                 "link": "posts/design_pagic_config_ts.html",
@@ -1038,6 +1056,10 @@ export default {
                 "count": 1
             },
             {
+                "name": "Google Analytics",
+                "count": 1
+            },
+            {
                 "name": "Hybrid App",
                 "count": 1
             },
@@ -1153,7 +1175,7 @@ export default {
         "categories": [
             {
                 "name": "编程世界",
-                "count": 47
+                "count": 48
             },
             {
                 "name": "多彩生活",

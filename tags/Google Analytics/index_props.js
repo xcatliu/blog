@@ -1,37 +1,36 @@
 import projectConfig from '/pagic.config.js';
 export default {
     config: { "root": "/", ...projectConfig },
-    'pagePath': "tags/生日快乐/",
+    'pagePath': "tags/Google Analytics/",
     'layoutPath': "archives/_layout.tsx",
-    'outputPath': "tags/生日快乐/index.html",
+    'outputPath': "tags/Google Analytics/index.html",
     'head': null,
     'script': React.createElement(React.Fragment, null,
         React.createElement("script", { src: "https://cdn.pagic.org/react@16.13.1/umd/react.production.min.js" }),
         React.createElement("script", { src: "https://cdn.pagic.org/react-dom@16.13.1/umd/react-dom.production.min.js" }),
         React.createElement("script", { src: "/index.js", type: "module" })),
-    'title': "生日快乐",
+    'title': "Google Analytics",
     'content': null,
     'blog': {
         "isPost": false,
         "posts": [
             {
-                "pagePath": "posts/happy-birthday-26.md",
-                "title": "写给 26 岁的自己",
-                "link": "posts/happy-birthday-26.html",
-                "date": "2016-12-14T12:42:22.000Z",
-                "updated": "2020-11-07T02:33:59.000Z",
+                "pagePath": "posts/google_analytics.md",
+                "title": "Google Analytics 的 Tracking ID 不见了？",
+                "link": "posts/google_analytics.html",
+                "date": "2020-11-16T13:01:58.000Z",
+                "updated": null,
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
                 ],
                 "categories": [
-                    "多彩生活"
+                    "编程世界"
                 ],
                 "tags": [
-                    "生日快乐"
+                    "Google Analytics"
                 ],
-                "excerpt": "今天是我 26 岁的生日，Google 送给我了一个 doodle： 年终将至，工作变得繁忙起来。 总结还是留到跨年的时候再写吧。 最近比较浮躁，希望自己将来能够脚踏实地的进步，厚积而薄发。 加油！",
-                "cover": "../assets/happy-birthday-26/google-user-birthday.gif"
+                "excerpt": "最近新创建了一个 Google Analytics 的 Property（媒体资源），但是找不到它的 Tracking ID 了。根据文档，需要创建一个 Data Stream，然后通过这样的方式引入一个被称为 gtag.js 的代码： <!-- Global site tag (gtag.js) - G..."
             }
         ],
         "tags": [
