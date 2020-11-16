@@ -52,9 +52,9 @@ tags:
 
 1. `gtag.js` 太专业了，大部分人只需要简单的 pv、uv、按钮点击上报
 2. `gtag.js` 性能较差：
-  - `gtag.js` 的链接带了一个小尾巴 `?id=G-FDL7K6SCFE`，这导致不同网站之间的资源不能在浏览器共享缓存
-  - `gtag.js` 会异步加载 `analytics.js`，多了一次网络请求
-  - `gtag.js` + `analytics.js` 总共占有 90kb 的大小，相比之下 `analytics.js` 只有 30kb
+    - `gtag.js` 的链接带了一个小尾巴 `?id=G-FDL7K6SCFE`，这导致不同网站之间的资源不能在浏览器共享缓存
+    - `gtag.js` 会异步加载 `analytics.js`，多了一次网络请求
+    - `gtag.js` + `analytics.js` 总共占有 90kb 的大小，相比之下 `analytics.js` 只有 30kb
 
 综上所述，`analytics.js` 应该是我们的首选。
 
