@@ -44,13 +44,14 @@
 <p>尽管 Google Analytics 官方将 <code>gtag.js</code> 视为更先进的版本（2020-10-14 后，默认创建的 Property 就是使用 <code>gtag.js</code> 的，而且还有一篇官方文章专门介绍<a href="https://developers.google.com/analytics/devguides/collection/upgrade/analyticsjs">如何将 <code>analytics.js</code> 升级到 <code>gtag.js</code></a>），但我们还是有充足的理由使用 <code>analytics.js</code>：</p>
 <ol>
 <li><code>gtag.js</code> 太专业了，大部分人只需要简单的 pv、uv、按钮点击上报</li>
-<li><code>gtag.js</code> 性能较差：</li>
-</ol>
+<li><code>gtag.js</code> 性能较差：
 <ul>
 <li><code>gtag.js</code> 的链接带了一个小尾巴 <code>?id=G-FDL7K6SCFE</code>，这导致不同网站之间的资源不能在浏览器共享缓存</li>
 <li><code>gtag.js</code> 会异步加载 <code>analytics.js</code>，多了一次网络请求</li>
 <li><code>gtag.js</code> + <code>analytics.js</code> 总共占有 90kb 的大小，相比之下 <code>analytics.js</code> 只有 30kb</li>
 </ul>
+</li>
+</ol>
 <p>综上所述，<code>analytics.js</code> 应该是我们的首选。</p>
 <h2 id="%E9%82%A3%E4%B9%88%E6%96%B0%E5%88%9B%E5%BB%BA%E7%9A%84-property-%E5%A6%82%E4%BD%95%E6%89%BE%E5%88%B0-tracking-id-%E5%91%A2">那么新创建的 Property 如何找到 Tracking ID 呢？<a class="anchor" href="#%E9%82%A3%E4%B9%88%E6%96%B0%E5%88%9B%E5%BB%BA%E7%9A%84-property-%E5%A6%82%E4%BD%95%E6%89%BE%E5%88%B0-tracking-id-%E5%91%A2">§</a></h2>
 <p>如我之前所说，2020-10-14 后，默认创建的 Property 就是使用 <code>gtag.js</code> 的，它只包含 MEASUREMENT ID，没有 Tracking ID。</p>

@@ -40,7 +40,7 @@ export default {
                 "title": "Google Analytics 的 Tracking ID 不见了？",
                 "link": "posts/google_analytics.html",
                 "date": "2020-11-16T13:01:58.000Z",
-                "updated": null,
+                "updated": "2020-11-16T13:24:46.000Z",
                 "author": "xcatliu",
                 "contributors": [
                     "xcatliu"
