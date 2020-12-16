@@ -1,6 +1,6 @@
 import projectConfig from '/pagic.config.js';
 export default {
-    config: { "root": "/", ...projectConfig },
+    config: { "root": "/", ...projectConfig, branch: 'master' },
     'pagePath': "tags/Markdown/",
     'layoutPath': "archives/_layout.tsx",
     'outputPath': "tags/Markdown/index.html",
@@ -70,6 +70,16 @@ export default {
                     "Markdown"
                 ],
                 "excerpt": "什么是 readme 为什么要在仓库中写文档 - 文档和代码在一起，方便查看 - 文档和代码版本一致 - 使用 markdown 格式的 README 文档可以在 GitHub 中直接查看 - 可以在 vim 中查看 - README 已经能（并且能更好的）满足大部分需求..."
+            }
+        ],
+        "categories": [
+            {
+                "name": "编程世界",
+                "count": 48
+            },
+            {
+                "name": "多彩生活",
+                "count": 7
             }
         ],
         "tags": [
@@ -308,16 +318,6 @@ export default {
             {
                 "name": "高级工程师",
                 "count": 1
-            }
-        ],
-        "categories": [
-            {
-                "name": "编程世界",
-                "count": 48
-            },
-            {
-                "name": "多彩生活",
-                "count": 7
             }
         ]
     }

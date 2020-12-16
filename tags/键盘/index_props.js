@@ -1,6 +1,6 @@
 import projectConfig from '/pagic.config.js';
 export default {
-    config: { "root": "/", ...projectConfig },
+    config: { "root": "/", ...projectConfig, branch: 'master' },
     'pagePath': "tags/键盘/",
     'layoutPath': "archives/_layout.tsx",
     'outputPath': "tags/键盘/index.html",
@@ -33,6 +33,16 @@ export default {
                 ],
                 "excerpt": "关注了很久，这款键盘终于又有货了！ 没抢到什么优惠券，狠下心还是入手了。 目前用起来还不错，比 2016 mbp 13 寸大一些。 ",
                 "cover": "../assets/flico/FLICO-01.jpeg"
+            }
+        ],
+        "categories": [
+            {
+                "name": "编程世界",
+                "count": 48
+            },
+            {
+                "name": "多彩生活",
+                "count": 7
             }
         ],
         "tags": [
@@ -271,16 +281,6 @@ export default {
             {
                 "name": "高级工程师",
                 "count": 1
-            }
-        ],
-        "categories": [
-            {
-                "name": "编程世界",
-                "count": 48
-            },
-            {
-                "name": "多彩生活",
-                "count": 7
             }
         ]
     }

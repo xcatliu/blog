@@ -2,24 +2,24 @@ import { classnames } from './_utils.js';
 const SOCIAL_MAP = {
     github: {
         icon: 'czs-github-logo',
-        linkPrefix: 'https://github.com/'
+        linkPrefix: 'https://github.com/',
     },
     email: {
         icon: 'czs-message-l',
-        linkPrefix: 'mailto:'
+        linkPrefix: 'mailto:',
     },
     twitter: {
         icon: 'czs-twitter',
-        linkPrefix: 'https://twitter.com/'
+        linkPrefix: 'https://twitter.com/',
     },
     v2ex: {
         icon: 'czs-v2ex',
-        linkPrefix: 'https://v2ex.com/member/'
+        linkPrefix: 'https://v2ex.com/member/',
     },
     zhihu: {
         icon: 'czs-zhihu',
-        linkPrefix: 'https://www.zhihu.com/people/'
-    }
+        linkPrefix: 'https://www.zhihu.com/people/',
+    },
 };
 const Aside = ({ config, isDark, setIsDark, outputPath }) => {
     var _a, _b, _c;
@@ -63,7 +63,7 @@ const Aside = ({ config, isDark, setIsDark, outputPath }) => {
             React.createElement("nav", null,
                 React.createElement("ul", { className: "menu list_style_none" }, (_c = config.nav) === null || _c === void 0 ? void 0 : _c.map(({ text, link, icon, target }) => (React.createElement("li", { key: link },
                     React.createElement("a", { className: classnames('flex_center', {
-                            active: outputPath === 'index.html' ? link === '/' : link !== '/' && `/${outputPath}`.startsWith(link)
+                            active: outputPath === 'index.html' ? link === '/' : link !== '/' && `/${outputPath}`.startsWith(link),
                         }), href: link, target: target, onClick: () => {
                             // @ts-ignore
                             document.documentElement.classList.remove('show_aside');

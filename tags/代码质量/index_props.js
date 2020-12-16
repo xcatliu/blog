@@ -1,6 +1,6 @@
 import projectConfig from '/pagic.config.js';
 export default {
-    config: { "root": "/", ...projectConfig },
+    config: { "root": "/", ...projectConfig, branch: 'master' },
     'pagePath': "tags/代码质量/",
     'layoutPath': "archives/_layout.tsx",
     'outputPath': "tags/代码质量/index.html",
@@ -32,6 +32,16 @@ export default {
                     "代码复杂度"
                 ],
                 "excerpt": "代码质量有很多指标： 1. 源代码行数 2. 代码重复率 3. 圈复杂度 4. 报错量（ Bug 数）占比 5. 测试覆盖率 6. 开发约束（代码块行数等） 我做了一个脚本可以测出上面的 1, 2, 3 大家都来试一试吧！ Supported Languages - js, ..."
+            }
+        ],
+        "categories": [
+            {
+                "name": "编程世界",
+                "count": 48
+            },
+            {
+                "name": "多彩生活",
+                "count": 7
             }
         ],
         "tags": [
@@ -270,16 +280,6 @@ export default {
             {
                 "name": "高级工程师",
                 "count": 1
-            }
-        ],
-        "categories": [
-            {
-                "name": "编程世界",
-                "count": 48
-            },
-            {
-                "name": "多彩生活",
-                "count": 7
             }
         ]
     }

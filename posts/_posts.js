@@ -5,10 +5,10 @@ const Posts = (props) => {
         React.createElement("article", null, contentTitle !== null && contentTitle !== void 0 ? contentTitle : (title && React.createElement("h1", null, title)),
             React.createElement("ul", { className: "main_posts list_style_none" }, blog === null || blog === void 0 ? void 0 : blog.posts.map(({ title, link, date, author, categories, excerpt, cover }) => (React.createElement("li", { key: link },
                 cover && (React.createElement("div", { className: "main_posts_cover", style: {
-                        backgroundImage: `url("${cover}")`
+                        backgroundImage: `url("${cover}")`,
                     } })),
                 React.createElement("h1", null,
-                    React.createElement("a", { href: link }, title)),
+                    React.createElement("a", { href: `${config.root}${link}` }, title)),
                 excerpt && React.createElement("p", null, excerpt),
                 React.createElement("div", { className: "main_posts_meta" },
                     React.createElement("time", { dateTime: date.toString() }, dateFormatter['YYYY-MM-DD'](date)),

@@ -1,6 +1,6 @@
 import projectConfig from '/pagic.config.js';
 export default {
-    config: { "root": "/", ...projectConfig },
+    config: { "root": "/", ...projectConfig, branch: 'master' },
     'pagePath': "tags/测试/",
     'layoutPath': "archives/_layout.tsx",
     'outputPath': "tags/测试/index.html",
@@ -52,6 +52,16 @@ export default {
                 ],
                 "excerpt": "开源项目的 README.md 中，一般都会在前面放上一些 badge，除了可以让读者快速的了解项目的一些信息以外，还为 README.md 添加了些许色彩。以 Pagic 为例： - 上图中的 build passing 表示 travis build 通过了，用绿色背景显示...",
                 "cover": "../assets/test_coverage_for_github/pagic.png"
+            }
+        ],
+        "categories": [
+            {
+                "name": "编程世界",
+                "count": 48
+            },
+            {
+                "name": "多彩生活",
+                "count": 7
             }
         ],
         "tags": [
@@ -290,16 +300,6 @@ export default {
             {
                 "name": "高级工程师",
                 "count": 1
-            }
-        ],
-        "categories": [
-            {
-                "name": "编程世界",
-                "count": 48
-            },
-            {
-                "name": "多彩生活",
-                "count": 7
             }
         ]
     }

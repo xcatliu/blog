@@ -1,6 +1,6 @@
 import projectConfig from '/pagic.config.js';
 export default {
-    config: { "root": "/", ...projectConfig },
+    config: { "root": "/", ...projectConfig, branch: 'master' },
     'pagePath': "tags/校招/",
     'layoutPath': "archives/_layout.tsx",
     'outputPath': "tags/校招/index.html",
@@ -31,6 +31,16 @@ export default {
                     "校招"
                 ],
                 "excerpt": "一年一度的校招季快要结束了，同学们是不是拿 offer 拿到手软呢？ 今年我有幸参与了合肥南京和武汉的校招工作，忙碌之后终于有时间把这段珍贵的经历记录下来。 合肥 五个小时的高铁，迎接我们的是磅礴的大雨，人头攒动的火车站..."
+            }
+        ],
+        "categories": [
+            {
+                "name": "编程世界",
+                "count": 48
+            },
+            {
+                "name": "多彩生活",
+                "count": 7
             }
         ],
         "tags": [
@@ -269,16 +279,6 @@ export default {
             {
                 "name": "高级工程师",
                 "count": 1
-            }
-        ],
-        "categories": [
-            {
-                "name": "编程世界",
-                "count": 48
-            },
-            {
-                "name": "多彩生活",
-                "count": 7
             }
         ]
     }
