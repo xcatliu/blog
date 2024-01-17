@@ -7,6 +7,9 @@ tags:
 
 # Google Analytics 的 Tracking ID 不见了？
 
+> 该文章内容可能已过时，这里有一篇 2024 年的文档可以参考：
+> [Ultimate Beginner’s Guide to Google Analytics 4 (NEW 2024 Interface)](https://www.websiteplanet.com/blog/ultimate-beginners-guide-google-analytics/)
+
 最近新创建了一个 Google Analytics 的 Property（媒体资源），但是找不到它的 Tracking ID 了。根据文档，需要创建一个 Data Stream，然后通过这样的方式引入一个被称为 `gtag.js` 的代码：
 
 ```html
